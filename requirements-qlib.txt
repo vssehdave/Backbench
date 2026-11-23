@@ -1,0 +1,2 @@
+# Integration target: CPython 3.11 x64.
+pyqlib==0.9.7

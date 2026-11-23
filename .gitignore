@@ -4,3 +4,9 @@ __pycache__/
 /threshold.json
 /cash.json
 /equity.json
+
+/data/
+/reports/
+*.sqlite*
+*.db
+/.env

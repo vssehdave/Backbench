@@ -34,7 +34,7 @@ The selected profile is IBKR Pro US stocks, fixed pricing, standard whole-share 
 
 Reports include parameters, seed, data fingerprint, currency, fold bounds, equity and order records. Compare runs with matching data hashes, calendars, opening capital and fee assumptions. Fold equity includes open positions. USD amounts precede personal taxes, FX conversion, market impact, subscriptions and slippage. Crypto requires its own execution costs and 24/7 calendar before any crypto result is usable.
 
-Next milestones are a pinned Qlib environment with a real provider integration fixture, calendar integrity checks, versioned fee profiles, fitted strategies with leakage-aware internal validation, regime attribution, multi-asset and execution perturbations, and automated matched-run comparison. Later infrastructure includes CAD reporting and tax accounting. Keep all candidate investment strategies downstream of harness validation. See [platform research plan](docs/platform-plan.md) for the full acceptance criteria.
+Remaining research includes exchange-calendar verification, corporate actions, historical fee schedules, and multi-asset portfolio replay. Later infrastructure includes CAD reporting and tax accounting. Keep all candidate investment strategies downstream of harness validation. See [platform research plan](docs/platform-plan.md) for the full acceptance criteria.
 
 ## Fitted strategies and diagnostics
 
@@ -43,3 +43,15 @@ Run the fitted control with `python harness.py --strategy controls:MeanThreshold
 Within each six-month training batch the first three months fit each candidate and the last three score it chronologically. Select the parameter with the best ending marked equity. Refit on the entire six-month batch before the first forward open and hold the selected artifact fixed during all forward decisions and perturbation trials. Neighbouring parameters are refitted on training data solely for separate sensitivity runs. The earlier static-rule interface retains its six-month grid search. For fitted strategies, selection_return covers the three-month inner validation period. The six-month train_return and forward_minus_train fields are null because their durations would be inconsistent. Compare forward performance across independent batches and inspect the raw equity curves.
 
 Each forward report attributes daily net marked P&L to the direction of the preceding twenty-session return, known before the open. Session counts and dollar changes are additive across regimes, including any sessions without sufficient history. These fields describe the baseline strategy. Fitting and attribution tests use synthetic prices and do not establish profitability.
+
+## Research data and validation
+
+Local OHLCV data can enter via `--minute-csv PATH --symbol QQQ`. Daily simulations use the first observed regular-hours open and last observed close. Each report records short sessions; verify exchange holidays and missing minutes separately. Keep downloaded or institutionally licensed data outside Git.
+
+- [QQQ and TQQQ inventory](docs/local-data-audit.md)
+- [Historical tick sourcing and coverage](docs/data-sources.md)
+- [Resumable trades and quotes archive](docs/tick-archive.md)
+- [Perturbation replay](docs/perturbation-replay.md)
+- [Matched strategy comparisons](docs/comparing-runs.md)
+- [Qlib provider acceptance](docs/qlib-provider.md)
+- [Alpaca historical bars](docs/alpaca.md)
