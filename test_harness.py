@@ -24,6 +24,24 @@ class ResearchChecks(unittest.TestCase):
         self.assertTrue(run(100)[2])
         self.assertEqual(run(100), run(100))
 
+    def test_future_prices_cannot_change_prior_orders(self):
+        rows = fixture()
+        def first_batch(bars):
+            return study(bars, threshold, [98,100,102], 1, 0, 42,
+                         date(2022,1,1), date(2023,1,1))[0]
+        baseline = first_batch(rows)
+        for i, (day, opening, close) in enumerate(rows):
+            if not date(2022,7,1) <= day < date(2023,1,1):
+                continue
+            # At today's open even today's close is unknown.
+            altered = rows[:i] + [(day, opening, close * 2)]
+            altered.extend((d, o * 2, c * 2) for d,o,c in rows[i+1:])
+            replayed = first_batch(altered)
+            self.assertEqual(baseline["selected"], replayed["selected"])
+            def through_open(fold):
+                return [t for t in fold["fills"] if t["date"] <= day.isoformat()]
+            self.assertEqual(through_open(baseline), through_open(replayed))
+
     def test_folds_and_future_isolation(self):
         rows = fixture()
         def evaluate(data, strategy):
