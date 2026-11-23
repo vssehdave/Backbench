@@ -5,8 +5,24 @@ import importlib
 import json
 import math
 import random
+from collections import deque
+from dataclasses import asdict
 from datetime import date, timedelta
 from pathlib import Path
+from stress import StressConfig, max_drawdown
+from spot import Spot, spot_fixture
+
+
+def engine_digest(root=None):
+    """Identify the core replay and stress implementation across checkouts."""
+    root = Path(__file__).resolve().parent if root is None else Path(root)
+    sources = {}
+    for name in ("harness.py", "stress.py"):
+        # Universal newlines keep a Windows checkout comparable with a POSIX checkout.
+        source = (root / name).read_text(encoding="utf-8")
+        sources[name] = hashlib.sha256(source.encode("utf-8")).hexdigest()
+    manifest = json.dumps(sources, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(manifest.encode("utf-8")).hexdigest()
 
 
 def fixture():
@@ -43,11 +59,13 @@ def months_after(start, months):
     return date(start.year + (month > 12), (month - 1) % 12 + 1, 1)
 
 
-def replay(rows, strategy, level, state, history, seed=None, shock_bps=0):
+def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None):
     cash, shares = state
     history = list(history)
     rng = random.Random(seed)
     multiplier = 1.0
+    targets = deque()
+    execution_rng = random.Random(f"{seed}:execution")
     fills, equity = [], []
     for day, opening, closing in rows:
         # A return innovation scales both today's open and close and propagates forward.
@@ -57,16 +75,29 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0):
         target = strategy(tuple(history), level) if history else shares
         if type(target) is not int or target < 0:
             raise ValueError("Expected nonnegative integer target position")
+        if stress:
+            targets.append(target)
+            target = targets.popleft() if len(targets) > stress.delay_sessions else shares
         delta = target - shares
-        commission, regulatory = fees(delta, opening)
-        debit = delta * opening + commission + regulatory
-        if delta and cash >= debit:
+        if stress:
+            # One draw per session makes rejections comparable across strategies.
+            if execution_rng.random() < stress.reject_probability:
+                delta = 0
+            elif delta:
+                opening *= 1 + math.copysign(stress.half_spread_bps / 10000, delta)
+        quantity = delta * spot.lot_size if spot else delta
+        order_value = quantity * opening
+        commission, regulatory = (spot.commission(order_value), 0.) if spot else fees(delta, opening)
+        debit = order_value + commission + regulatory
+        meets_minimum = not spot or abs(order_value) >= spot.min_notional_usd
+        if delta and meets_minimum and cash >= debit:
             cash -= debit
             shares = target
-            fills.append(dict(date=str(day), shares=delta, price=opening,
+            fills.append(dict(date=str(day), shares=quantity, lots=delta, quantity=quantity, price=opening,
                               commission=commission, regulatory=regulatory))
         history.append(closing)
-        equity.append(cash + shares * closing)
+        held_quantity = shares * spot.lot_size if spot else shares
+        equity.append(cash + held_quantity * closing)
     return (cash, shares), equity, fills
 
 
@@ -88,12 +119,16 @@ def trend_attribution(train, forward, equity, starting_equity):
     return groups
 
 
-def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
+def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None):
     if not rows or any(not all(math.isfinite(x) and x > 0 for x in r[1:]) for r in rows):
         raise ValueError("Expected positive finite OHLC observations")
     dates = [r[0] for r in rows]
     if dates != sorted(set(dates)):
         raise ValueError("Expected unique, ordered daily observations")
+    if spot:
+        expected = (end - start).days
+        if sum(start <= day < end for day in dates) != expected:
+            raise ValueError("Spot replay requires a bar for every UTC date in the requested interval")
     results = []
     while months_after(start, 12) <= end:
         split = months_after(start, 6)
@@ -117,23 +152,29 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
         scores = {}
         for p in levels:
             parameter = fit(tuple(prefix), p) if fit else p
-            scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup)[1][-1]
+            scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup, spot=spot)[1][-1]
         best = max(levels, key=scores.get)
         # Fit using only this batch. Each artifact must be immutable and decisions pure.
         artifacts = {p: fit(tuple(train), p) if fit else p for p in levels}
         history = [r[2] for r in train]
         opening_state = (10000., 0)
-        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history)
+        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history, spot=spot)
         selection_return = scores[best] / opening_state[0] - 1
         train_return = None if fit else selection_return
         forward_return = equity[-1] / opening_state[0] - 1
-        neighbours = {p: replay(forward, decide, artifacts[p], opening_state, history)[1][-1] for p in levels}
+        neighbours = {p: replay(forward, decide, artifacts[p], opening_state, history, spot=spot)[1][-1] for p in levels}
         scenarios = []
+        original = {(t["date"], t["shares"]) for t in fills}
         for i in range(paths):
             path_seed = seed + len(results) * paths + i
-            _, curve, trades = replay(forward, decide, artifacts[best], opening_state, history,
-                                      path_seed, shock_bps)
-            scenarios.append(dict(seed=path_seed, ending_equity=curve[-1], fills=len(trades)))
+            draw = stress_config.draw(path_seed, levels, best)
+            _, curve, trades = replay(forward, decide, artifacts[draw.level], opening_state, history,
+                                      path_seed, shock_bps, draw, spot)
+            simulated = {(t["date"], t["shares"]) for t in trades}
+            scenarios.append(dict(seed=path_seed, ending_equity=curve[-1], fills=len(trades),
+                                  perturbations=asdict(draw), drawdown=max_drawdown(curve, opening_state[0]),
+                                  ending_delta_usd=curve[-1]-equity[-1], added_fills=len(simulated-original),
+                                  removed_fills=len(original-simulated)))
         results.append(dict(train_start=str(start), forward_start=str(split), end_exclusive=str(stop),
                             selected=best, train_scores=scores, sensitivity=neighbours,
                             train_return=train_return, forward_return=forward_return,
@@ -155,26 +196,71 @@ def main():
     parser.add_argument("--levels", nargs="+", type=float, default=[98., 100., 102.])
     parser.add_argument("--paths", type=int, default=20)
     parser.add_argument("--shock-bps", type=float, default=10.)
+    parser.add_argument("--max-delay-sessions", type=int, default=0)
+    parser.add_argument("--max-half-spread-bps", type=float, default=0.)
+    parser.add_argument("--reject-probability", type=float, default=0.)
+    parser.add_argument("--neighbour-steps", type=int, default=0)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--provider", help="Local Qlib provider with as-traded USD whole-share prices")
+    sources = parser.add_mutually_exclusive_group()
+    sources.add_argument("--spot-fixture", action="store_true", help="Synthetic 24/7 USD spot-market bars")
+    sources.add_argument("--provider", help="Local Qlib provider with as-traded USD whole-share prices")
+    sources.add_argument("--minute-csv", type=Path, help="Local VWAP TT minute OHLCV file")
     parser.add_argument("--symbol", default="FIXTURE")
+    parser.add_argument("--spot-fee-bps", type=float, help="Assumed spot fee per side, charged in USD")
+    parser.add_argument("--spot-lot", type=float, help="Base asset units per lot")
+    parser.add_argument("--spot-min-usd", type=float, help="Minimum eligible order value in USD")
     parser.add_argument("--start", type=date.fromisoformat, default=date(2022, 1, 1))
     parser.add_argument("--end", type=date.fromisoformat, default=date(2024, 1, 1), help="Exclusive")
     parser.add_argument("--out", type=Path, default=Path("run.json"))
     args = parser.parse_args()
+    spot = None
+    assumptions = [args.spot_fee_bps, args.spot_lot, args.spot_min_usd]
+    if args.spot_fixture:
+        if None in assumptions:
+            parser.error("--spot-fixture requires --spot-fee-bps, --spot-lot and --spot-min-usd")
+        try:
+            spot = Spot(*assumptions)
+        except ValueError as exc:
+            parser.error(str(exc))
+    elif any(value is not None for value in assumptions):
+        parser.error("Spot costs and lots require --spot-fixture")
+    try:
+        stress_config = StressConfig(args.max_delay_sessions, args.max_half_spread_bps,
+                                     args.reject_probability, args.neighbour_steps)
+    except ValueError as exc:
+        parser.error(str(exc))
     if (args.start.day != 1 or args.paths < 1 or not math.isfinite(args.shock_bps)
             or args.shock_bps < 0 or not all(map(math.isfinite, args.levels))):
         parser.error("Use a month-start date, positive path count and finite parameters")
     module, name = args.strategy.split(":")
     strategy = getattr(importlib.import_module(module), name)
-    rows = qlib_rows(args.provider, args.symbol, args.start.isoformat(),
-                     (args.end - timedelta(days=1)).isoformat()) if args.provider else fixture()
+    quality = {}
+    if args.spot_fixture:
+        rows, source = spot_fixture(), "synthetic_spot_utc"
+    elif args.minute_csv:
+        from minute_bars import daily_from_minutes
+        if args.symbol == "FIXTURE":
+            parser.error("--minute-csv requires --symbol")
+        rows, quality = daily_from_minutes(args.minute_csv, args.symbol, args.start, args.end)
+        source = "minute_csv"
+    elif args.provider:
+        rows = qlib_rows(args.provider, args.symbol, args.start.isoformat(),
+                         (args.end - timedelta(days=1)).isoformat())
+        source = "qlib"
+    else:
+        rows, source = fixture(), "synthetic"
     if not rows or rows[0][0] > args.start + timedelta(days=7) or rows[-1][0] < args.end - timedelta(days=8):
         parser.error("Data does not cover the requested research period")
-    report = dict(config=vars(args), data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
-                  currency="USD", source="qlib" if args.provider else "synthetic",
+    # Paths are machine-specific. Source and the content digest identify the actual input.
+    config = {key: value for key, value in vars(args).items()
+              if key not in {"provider", "minute_csv", "out"}}
+    report = dict(config=config, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
+                  execution_contract=dict(engine_sha256=engine_digest(),
+                                          fee_profile=spot.profile if spot else "ibkr-us-fixed-2026-11-22",
+                                          starting_cash=10000.0),
+                  currency="USD", source=source, data_quality=quality,
                   folds=study(rows, strategy, args.levels, args.paths, args.shock_bps,
-                              args.seed, args.start, args.end))
+                              args.seed, args.start, args.end, stress_config, spot))
     args.out.write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
 
 
