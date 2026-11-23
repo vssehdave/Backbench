@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+/run.json
+/threshold.json
+/cash.json
+/equity.json

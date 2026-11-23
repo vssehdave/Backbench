@@ -1,0 +1,38 @@
+import unittest
+from datetime import date
+from controls import cash, threshold
+from harness import fees, fixture, replay, study
+
+
+class ResearchChecks(unittest.TestCase):
+    def test_published_commission_examples_and_sell_fee(self):
+        for qty, price, expected in [(100,25,1), (1000,25,5), (1000,.25,2.5)]:
+            self.assertEqual(fees(qty, price)[0], expected)
+        self.assertGreater(fees(-10, 100)[1], fees(10, 100)[1])
+
+    def test_hand_accounted_round_trip(self):
+        rows = [(date(2023,1,3),100,90), (date(2023,1,4),95,95)]
+        state, _, trades = replay(rows, threshold, 99, (10000,0), [101])
+        self.assertEqual([t["shares"] for t in trades], [10,-10])
+        self.assertAlmostEqual(state[0], 10000-50-2-20*.000003-950*.0000206)
+
+    def test_perturbation_changes_decision(self):
+        rows = [(date(2023,1,d),100,100) for d in range(1,8)]
+        def run(shock):
+            return replay(rows,threshold,100,(10000,0),[100],42,shock)
+        self.assertEqual(run(0)[2], [])
+        self.assertTrue(run(100)[2])
+        self.assertEqual(run(100), run(100))
+
+    def test_folds_and_future_isolation(self):
+        rows = fixture()
+        def evaluate(data, strategy):
+            return study(data,strategy,[98,100,102],2,0,42,date(2022,1,1),date(2024,1,1))
+        folds = evaluate(rows,threshold)
+        self.assertEqual(len(folds),3)
+        changed = [(d,o,c*2 if d >= date(2022,7,1) else c) for d,o,c in rows]
+        self.assertEqual(folds[0]["train_scores"],evaluate(changed,threshold)[0]["train_scores"])
+        for fold in evaluate(rows,cash):
+            self.assertEqual(set(fold["equity"]), {10000})
+        for fold in folds:
+            self.assertEqual(fold["equity"][-1],fold["scenarios"][0]["ending_equity"])
