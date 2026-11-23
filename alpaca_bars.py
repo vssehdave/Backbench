@@ -22,17 +22,21 @@ class SplitInRange(ValueError):
     pass
 
 
-def credentials(env_file=ROOT / ".env"):
-    keys = ("APCA_API_KEY_ID", "APCA_API_SECRET_KEY")
-    found = {k: os.environ[k] for k in keys if os.environ.get(k)}
-    if len(found) < 2 and Path(env_file).is_file():
+def _env(env_file=ROOT / ".env"):
+    values = {k: v for k, v in os.environ.items() if k.startswith("APCA_") and v}
+    if Path(env_file).is_file():
         for line in Path(env_file).read_text(encoding="utf-8-sig").splitlines():
             name, sep, value = line.strip().partition("=")
-            if sep and name in keys and name not in found and value.strip().strip("\"'"):
-                found[name] = value.strip().strip("\"'")
-    if len(found) < 2:
+            if sep and name.startswith("APCA_") and name not in values and value.strip().strip("\"'"):
+                values[name] = value.strip().strip("\"'")
+    return values
+
+
+def credentials(env_file=ROOT / ".env"):
+    values = _env(env_file)
+    if not {"APCA_API_KEY_ID", "APCA_API_SECRET_KEY"} <= values.keys():
         raise RuntimeError("Set APCA_API_KEY_ID and APCA_API_SECRET_KEY in the environment or .env")
-    return {"APCA-API-KEY-ID": found[keys[0]], "APCA-API-SECRET-KEY": found[keys[1]]}
+    return {"APCA-API-KEY-ID": values["APCA_API_KEY_ID"], "APCA-API-SECRET-KEY": values["APCA_API_SECRET_KEY"]}
 
 
 def _get(url, headers, retries=5):
@@ -66,24 +70,34 @@ def _digest(payload):
     return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
+def _calendar(start, end, headers):
+    base = _env().get("APCA_API_BASE_URL", "https://paper-api.alpaca.markets/v2").rstrip("/")
+    query = urllib.parse.urlencode({"start": str(start), "end": str(end - timedelta(days=1))})
+    return _get(f"{base}/calendar?{query}", headers)
+
+
 def fetch(symbol, start, end, feed="sip", data_dir=Path("data/alpaca")):
-    """Raw bar and corporate-action pages for [start, end), cached with provenance."""
+    """Raw bar, corporate-action and trading-calendar payloads for [start, end), cached with provenance."""
     cache = Path(data_dir) / f"{symbol.upper()}_{start}_{end}_{feed}_raw.json"
-    if cache.is_file():
-        return json.loads(cache.read_text(encoding="utf-8"))
+    record = json.loads(cache.read_text(encoding="utf-8")) if cache.is_file() else None
+    if record and "calendar" in record["pages"]:
+        return record
     headers = credentials()
-    last = end - timedelta(days=1)
-    bar_params = {"timeframe": "1Min", "adjustment": "raw", "feed": feed, "limit": 10000, "sort": "asc",
-                  "start": f"{start}T00:00:00Z", "end": f"{end}T00:00:00Z"}
-    action_params = {"symbols": symbol.upper(), "types": ACTION_TYPES, "start": str(start), "end": str(last),
-                     "limit": 1000}
-    started = datetime.now(timezone.utc)
-    pages = {"bars": _pages(f"/v2/stocks/{symbol.upper()}/bars", bar_params, headers),
-             "corporate_actions": _pages("/v1/corporate-actions", action_params, headers)}
-    record = {"provenance": {"source": "alpaca", "feed": feed, "adjustment": "raw", "symbol": symbol.upper(),
-                             "bars_request": bar_params, "corporate_actions_request": action_params,
-                             "fetched_at_utc": started.isoformat(), "pages_sha256": _digest(pages)},
-              "pages": pages}
+    if record is None:
+        last = end - timedelta(days=1)
+        bar_params = {"timeframe": "1Min", "adjustment": "raw", "feed": feed, "limit": 10000, "sort": "asc",
+                      "start": f"{start}T00:00:00Z", "end": f"{end}T00:00:00Z"}
+        action_params = {"symbols": symbol.upper(), "types": ACTION_TYPES, "start": str(start), "end": str(last),
+                         "limit": 1000}
+        record = {"provenance": {"source": "alpaca", "feed": feed, "adjustment": "raw", "symbol": symbol.upper(),
+                                 "bars_request": bar_params, "corporate_actions_request": action_params,
+                                 "fetched_at_utc": datetime.now(timezone.utc).isoformat()},
+                  "pages": {"bars": _pages(f"/v2/stocks/{symbol.upper()}/bars", bar_params, headers),
+                            "corporate_actions": _pages("/v1/corporate-actions", action_params, headers)}}
+    # Caches written before the calendar existed are completed here rather than refetched.
+    record["pages"]["calendar"] = _calendar(start, end, headers)
+    record["provenance"]["calendar_request"] = {"start": str(start), "end": str(end - timedelta(days=1))}
+    record["provenance"]["pages_sha256"] = _digest(record["pages"])
     cache.parent.mkdir(parents=True, exist_ok=True)
     temporary = cache.with_suffix(".tmp")
     temporary.write_text(json.dumps(record), encoding="utf-8")
@@ -110,6 +124,10 @@ def daily_from_alpaca(symbol, start, end, feed="sip", data_dir=Path("data/alpaca
         raise SplitInRange(f"{symbol} has splits in {start}..{end}: "
                            + ", ".join(f"{s['type']} {s.get('ex_date') or s.get('effective_date')}" for s in splits)
                            + ". As-traded prices break across splits; pass --allow-splits to accept this.")
+    sessions = {}
+    for entry in record["pages"]["calendar"]:
+        (oh, om), (ch, cm) = (map(int, entry[k].split(":")) for k in ("open", "close"))
+        sessions[date.fromisoformat(entry["date"])] = (oh * 60 + om, ch * 60 + cm)
     bars, counts, previous = [], [], None
     for page in record["pages"]["bars"]:
         for raw in _bars(page, symbol):
@@ -117,6 +135,10 @@ def daily_from_alpaca(symbol, start, end, feed="sip", data_dir=Path("data/alpaca
             minute = moment.hour * 60 + moment.minute
             day = moment.date()
             if not start <= day < end or not 570 <= minute < 960:
+                continue
+            if day not in sessions:
+                raise ValueError(f"Regular-hours bar on {day}, which is not in Alpaca's trading calendar")
+            if not sessions[day][0] <= minute < sessions[day][1]:
                 continue
             if previous and (day, minute) <= previous:
                 raise ValueError(f"Duplicate or unordered minute at {raw['t']}")
@@ -131,17 +153,24 @@ def daily_from_alpaca(symbol, start, end, feed="sip", data_dir=Path("data/alpaca
                 counts[-1][2] = minute
                 counts[-1][3] += 1
             previous = (day, minute)
+    missing = sorted(set(sessions) - {b[0] for b in bars})
+    if missing:
+        raise ValueError(f"No regular-hours bars for calendar sessions: {', '.join(map(str, missing))}")
     return bars, {
-        "resolution": "daily from observed 09:30-15:59 Eastern minute bars",
+        "resolution": "daily from observed Eastern minute bars within each calendar session",
         "symbol_source": "user supplied",
         "feed": feed,
         "adjustment": "raw",
         "pages_sha256": record["provenance"]["pages_sha256"],
         "fetched_at_utc": record["provenance"]["fetched_at_utc"],
         "session_count": len(bars),
-        "sessions_under_390": [
-            {"date": d, "first_minute": first, "last_minute": last, "observations": n}
-            for d, first, last, n in counts if n < 390
+        "early_closes": [{"date": d.isoformat(), "close_minute": c} for d, (_, c) in sorted(sessions.items())
+                         if c != 960],
+        "sessions_short_of_calendar": [
+            {"date": d, "first_minute": first, "last_minute": last, "observations": n,
+             "expected": sessions[date.fromisoformat(d)][1] - sessions[date.fromisoformat(d)][0]}
+            for d, first, last, n in counts
+            if n < sessions[date.fromisoformat(d)][1] - sessions[date.fromisoformat(d)][0]
         ],
         "splits": splits,
         "splits_allowed": bool(splits),
