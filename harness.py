@@ -76,7 +76,6 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
     dates = [r[0] for r in rows]
     if dates != sorted(set(dates)):
         raise ValueError("Expected unique, ordered daily observations")
-    state = (10000., 0)
     results = []
     while half_year(half_year(start)) <= end:
         split = half_year(start)
@@ -87,9 +86,11 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
             raise ValueError("Empty training or forward window")
         scores = {p: replay(train, strategy, p, (10000., 0), [])[1][-1] for p in levels}
         best = max(levels, key=scores.get)
-        history = [r[2] for r in rows if r[0] < split]
-        opening_state = state
-        state, equity, fills = replay(forward, strategy, best, state, history)
+        history = [r[2] for r in train]
+        opening_state = (10000., 0)
+        _, equity, fills = replay(forward, strategy, best, opening_state, history)
+        train_return = scores[best] / opening_state[0] - 1
+        forward_return = equity[-1] / opening_state[0] - 1
         neighbours = {p: replay(forward, strategy, p, opening_state, history)[1][-1] for p in levels}
         scenarios = []
         for i in range(paths):
@@ -99,8 +100,12 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
             scenarios.append(dict(seed=path_seed, ending_equity=curve[-1], fills=len(trades)))
         results.append(dict(train_start=str(start), forward_start=str(split), end_exclusive=str(stop),
                             selected=best, train_scores=scores, sensitivity=neighbours,
+                            train_return=train_return, forward_return=forward_return,
+                            forward_minus_train=forward_return - train_return,
+                            forward_buys=sum(t["shares"] > 0 for t in fills),
+                            forward_sells=sum(t["shares"] < 0 for t in fills),
                             equity=equity, fills=fills, scenarios=scenarios))
-        start = split
+        start = stop
     if not results:
         raise ValueError("Supply at least twelve complete calendar months")
     return results

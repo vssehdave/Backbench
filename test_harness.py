@@ -29,7 +29,20 @@ class ResearchChecks(unittest.TestCase):
         def evaluate(data, strategy):
             return study(data,strategy,[98,100,102],2,0,42,date(2022,1,1),date(2024,1,1))
         folds = evaluate(rows,threshold)
-        self.assertEqual(len(folds),3)
+        self.assertEqual([(f["train_start"], f["forward_start"], f["end_exclusive"])
+                          for f in folds], [
+            ("2022-01-01", "2022-07-01", "2023-01-01"),
+            ("2023-01-01", "2023-07-01", "2024-01-01")])
+        for year, fold in zip((2022, 2023), folds):
+            train = [r for r in rows if r[0].year == year and r[0].month <= 6]
+            forward = [r for r in rows if r[0].year == year and r[0].month > 6]
+            _, expected, orders = replay(forward, threshold, fold["selected"],
+                                         (10000., 0), [r[2] for r in train])
+            self.assertEqual((fold["equity"], fold["fills"]), (expected, orders))
+            self.assertGreater(fold["forward_buys"], 0)
+            self.assertGreater(fold["forward_sells"], 0)
+        altered = [(d,o,c*2 if d.year == 2022 and d.month > 6 else c) for d,o,c in rows]
+        self.assertEqual(folds[1], evaluate(altered, threshold)[1])
         changed = [(d,o,c*2 if d >= date(2022,7,1) else c) for d,o,c in rows]
         self.assertEqual(folds[0]["train_scores"],evaluate(changed,threshold)[0]["train_scores"])
         for fold in evaluate(rows,cash):
