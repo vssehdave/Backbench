@@ -1,4 +1,4 @@
-"""Alpaca Market Data v2 one-minute bars as as-traded regular-hours daily bars."""
+"""Alpaca Market Data v2 one-minute bars as as-traded daily bars."""
 import hashlib
 import json
 import math
@@ -80,7 +80,7 @@ def fetch(symbol, start, end, feed="sip", data_dir=Path("data/alpaca")):
     """Raw bar, corporate-action and trading-calendar payloads for [start, end), cached with provenance."""
     cache = Path(data_dir) / f"{symbol.upper()}_{start}_{end}_{feed}_raw.json"
     record = json.loads(cache.read_text(encoding="utf-8")) if cache.is_file() else None
-    if record and "calendar" in record["pages"]:
+    if record and {"calendar", "daily"} <= record["pages"].keys():
         return record
     headers = credentials()
     if record is None:
@@ -94,8 +94,13 @@ def fetch(symbol, start, end, feed="sip", data_dir=Path("data/alpaca")):
                                  "fetched_at_utc": datetime.now(timezone.utc).isoformat()},
                   "pages": {"bars": _pages(f"/v2/stocks/{symbol.upper()}/bars", bar_params, headers),
                             "corporate_actions": _pages("/v1/corporate-actions", action_params, headers)}}
-    # Caches written before the calendar existed are completed here rather than refetched.
-    record["pages"]["calendar"] = _calendar(start, end, headers)
+    # Caches written before these payloads existed are completed here rather than refetched.
+    if "calendar" not in record["pages"]:
+        record["pages"]["calendar"] = _calendar(start, end, headers)
+    if "daily" not in record["pages"]:
+        daily_params = dict(record["provenance"]["bars_request"], timeframe="1Day", limit=1000)
+        record["provenance"]["daily_request"] = daily_params
+        record["pages"]["daily"] = _pages(f"/v2/stocks/{symbol.upper()}/bars", daily_params, headers)
     record["provenance"]["calendar_request"] = {"start": str(start), "end": str(end - timedelta(days=1))}
     record["provenance"]["pages_sha256"] = _digest(record["pages"])
     cache.parent.mkdir(parents=True, exist_ok=True)
@@ -128,6 +133,17 @@ def daily_from_alpaca(symbol, start, end, feed="sip", data_dir=Path("data/alpaca
     for entry in record["pages"]["calendar"]:
         (oh, om), (ch, cm) = (map(int, entry[k].split(":")) for k in ("open", "close"))
         sessions[date.fromisoformat(entry["date"])] = (oh * 60 + om, ch * 60 + cm)
+    daily = {}
+    for page in record["pages"]["daily"]:
+        for raw in _bars(page, symbol):
+            day = datetime.fromisoformat(raw["t"].replace("Z", "+00:00")).astimezone(EASTERN).date()
+            if start <= day < end:
+                daily[day] = (day, float(raw["o"]), float(raw["c"]))
+    if set(daily) != set(sessions):
+        raise ValueError("Alpaca daily bars and trading calendar differ on: "
+                         + ", ".join(map(str, sorted(set(daily) ^ set(sessions)))))
+    if not all(math.isfinite(x) and x > 0 for row in daily.values() for x in row[1:]):
+        raise ValueError("Unusable open or close in Alpaca daily bars")
     bars, counts, previous = [], [], None
     for page in record["pages"]["bars"]:
         for raw in _bars(page, symbol):
@@ -146,24 +162,23 @@ def daily_from_alpaca(symbol, start, end, feed="sip", data_dir=Path("data/alpaca
             if not all(math.isfinite(x) and x > 0 for x in (op, close)):
                 raise ValueError(f"Unusable open or close at {raw['t']}")
             if not previous or day != previous[0]:
-                bars.append((day, op, close))
+                bars.append(day)
                 counts.append([day.isoformat(), minute, minute, 1])
             else:
-                bars[-1] = (day, bars[-1][1], close)
                 counts[-1][2] = minute
                 counts[-1][3] += 1
             previous = (day, minute)
-    missing = sorted(set(sessions) - {b[0] for b in bars})
+    missing = sorted(set(sessions) - set(bars))
     if missing:
         raise ValueError(f"No regular-hours bars for calendar sessions: {', '.join(map(str, missing))}")
-    return bars, {
-        "resolution": "daily from observed Eastern minute bars within each calendar session",
+    return [daily[d] for d in sorted(daily)], {
+        "resolution": "official daily open and close from SIP daily bars; minute bars checked for coverage only",
         "symbol_source": "user supplied",
         "feed": feed,
         "adjustment": "raw",
         "pages_sha256": record["provenance"]["pages_sha256"],
         "fetched_at_utc": record["provenance"]["fetched_at_utc"],
-        "session_count": len(bars),
+        "session_count": len(daily),
         "early_closes": [{"date": d.isoformat(), "close_minute": c} for d, (_, c) in sorted(sessions.items())
                          if c != 960],
         "sessions_short_of_calendar": [
