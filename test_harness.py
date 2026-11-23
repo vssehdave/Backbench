@@ -1,10 +1,42 @@
 import unittest
 from datetime import date
-from controls import cash, threshold
-from harness import fees, fixture, replay, study
+from controls import MeanThreshold, cash, threshold
+from harness import fees, fixture, replay, study, trend_attribution
 
 
 class ResearchChecks(unittest.TestCase):
+    def test_regime_known_at_open_reconciles_to_total(self):
+        train = [(None, 0, price) for price in range(80, 101)]
+        forward = [(None, 0, 50), (None, 0, 200)]
+        groups = trend_attribution(train, forward, [9900, 9970], 10000)
+        self.assertEqual(groups["rising"], {"sessions": 1, "net_pnl_usd": -100})
+        self.assertEqual(groups["falling"], {"sessions": 1, "net_pnl_usd": 70})
+        self.assertEqual(sum(g["net_pnl_usd"] for g in groups.values()), -30)
+
+    def test_fitted_strategy_uses_only_pre_cutoff_rows(self):
+        fits = []
+        class Logged(MeanThreshold):
+            @staticmethod
+            def fit(rows, offset):
+                fits.append((rows[0][0], rows[-1][0], offset))
+                return MeanThreshold.fit(rows, offset)
+        def evaluate(rows):
+            return study(rows, Logged, [-1, 0, 1], 3, 5, 42,
+                         date(2022,1,1), date(2023,1,1))[0]
+        rows = fixture()
+        baseline = evaluate(rows)
+        self.assertEqual(len(fits), 6)
+        self.assertEqual([last.month for _, last, _ in fits], [3]*3 + [6]*3)
+        self.assertTrue(all(first == date(2022,1,3) for first, _, _ in fits))
+        self.assertGreater(min(baseline["forward_buys"], baseline["forward_sells"]), 0)
+        cut = date(2022,9,1)
+        changed = [(d, o*2 if d > cut else o, c*2 if d >= cut else c) for d,o,c in rows]
+        other = evaluate(changed)
+        self.assertEqual(baseline["train_scores"], other["train_scores"])
+        self.assertEqual(baseline["selected"], other["selected"])
+        prior = lambda fold: [t for t in fold["fills"] if t["date"] <= cut.isoformat()]
+        self.assertEqual(prior(baseline), prior(other))
+
     def test_published_commission_examples_and_sell_fee(self):
         for qty, price, expected in [(100,25,1), (1000,25,5), (1000,.25,2.5)]:
             self.assertEqual(fees(qty, price)[0], expected)

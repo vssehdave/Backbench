@@ -38,8 +38,8 @@ def fees(delta, price):
     return commission, regulatory
 
 
-def half_year(start):
-    month = start.month + 6
+def months_after(start, months):
+    month = start.month + months
     return date(start.year + (month > 12), (month - 1) % 12 + 1, 1)
 
 
@@ -70,6 +70,24 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0):
     return (cash, shares), equity, fills
 
 
+def trend_attribution(train, forward, equity, starting_equity):
+    """Attribute each close-to-close change to the trend known at that open."""
+    history = [r[2] for r in train]
+    groups = {}
+    previous = starting_equity
+    for row, marked in zip(forward, equity, strict=True):
+        regime = "insufficient_history"
+        if len(history) >= 21:
+            change = history[-1] - history[-21]
+            regime = "rising" if change > 0 else "falling" if change < 0 else "flat"
+        group = groups.setdefault(regime, {"sessions": 0, "net_pnl_usd": 0.})
+        group["sessions"] += 1
+        group["net_pnl_usd"] += marked - previous
+        previous = marked
+        history.append(row[2])
+    return groups
+
+
 def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
     if not rows or any(not all(math.isfinite(x) and x > 0 for x in r[1:]) for r in rows):
         raise ValueError("Expected positive finite OHLC observations")
@@ -77,33 +95,53 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end):
     if dates != sorted(set(dates)):
         raise ValueError("Expected unique, ordered daily observations")
     results = []
-    while half_year(half_year(start)) <= end:
-        split = half_year(start)
-        stop = half_year(split)
+    while months_after(start, 12) <= end:
+        split = months_after(start, 6)
+        stop = months_after(split, 6)
         train = [r for r in rows if start <= r[0] < split]
         forward = [r for r in rows if split <= r[0] < stop]
         if not train or not forward:
             raise ValueError("Empty training or forward window")
-        scores = {p: replay(train, strategy, p, (10000., 0), [])[1][-1] for p in levels}
+        fit = getattr(strategy, "fit", None)
+        decide = strategy.decide if fit else strategy
+        selection_rows = train
+        warmup = []
+        prefix = []
+        if fit:
+            inner_cut = months_after(start, 3)
+            prefix = [r for r in train if r[0] < inner_cut]
+            selection_rows = [r for r in train if r[0] >= inner_cut]
+            if not prefix or not selection_rows:
+                raise ValueError("Fitted strategies require observations in both training halves")
+            warmup = [r[2] for r in prefix]
+        scores = {}
+        for p in levels:
+            parameter = fit(tuple(prefix), p) if fit else p
+            scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup)[1][-1]
         best = max(levels, key=scores.get)
+        # Fit using only this batch. Each artifact must be immutable and decisions pure.
+        artifacts = {p: fit(tuple(train), p) if fit else p for p in levels}
         history = [r[2] for r in train]
         opening_state = (10000., 0)
-        _, equity, fills = replay(forward, strategy, best, opening_state, history)
-        train_return = scores[best] / opening_state[0] - 1
+        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history)
+        selection_return = scores[best] / opening_state[0] - 1
+        train_return = None if fit else selection_return
         forward_return = equity[-1] / opening_state[0] - 1
-        neighbours = {p: replay(forward, strategy, p, opening_state, history)[1][-1] for p in levels}
+        neighbours = {p: replay(forward, decide, artifacts[p], opening_state, history)[1][-1] for p in levels}
         scenarios = []
         for i in range(paths):
             path_seed = seed + len(results) * paths + i
-            _, curve, trades = replay(forward, strategy, best, opening_state, history,
+            _, curve, trades = replay(forward, decide, artifacts[best], opening_state, history,
                                       path_seed, shock_bps)
             scenarios.append(dict(seed=path_seed, ending_equity=curve[-1], fills=len(trades)))
         results.append(dict(train_start=str(start), forward_start=str(split), end_exclusive=str(stop),
                             selected=best, train_scores=scores, sensitivity=neighbours,
                             train_return=train_return, forward_return=forward_return,
-                            forward_minus_train=forward_return - train_return,
+                            selection_start=str(selection_rows[0][0]), selection_return=selection_return,
+                            forward_minus_train=None if fit else forward_return - train_return,
                             forward_buys=sum(t["shares"] > 0 for t in fills),
                             forward_sells=sum(t["shares"] < 0 for t in fills),
+                            trend_regimes=trend_attribution(train, forward, equity, opening_state[0]),
                             equity=equity, fills=fills, scenarios=scenarios))
         start = stop
     if not results:
