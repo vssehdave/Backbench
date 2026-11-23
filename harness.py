@@ -205,6 +205,9 @@ def main():
     sources.add_argument("--spot-fixture", action="store_true", help="Synthetic 24/7 USD spot-market bars")
     sources.add_argument("--provider", help="Local Qlib provider with as-traded USD whole-share prices")
     sources.add_argument("--minute-csv", type=Path, help="Local VWAP TT minute OHLCV file")
+    sources.add_argument("--alpaca", action="store_true", help="Alpaca SIP one-minute bars, raw prices")
+    parser.add_argument("--allow-splits", action="store_true", help="Accept splits inside an --alpaca range")
+    parser.add_argument("--alpaca-dir", type=Path, default=Path("data/alpaca"), help="Raw Alpaca cache")
     parser.add_argument("--symbol", default="FIXTURE")
     parser.add_argument("--spot-fee-bps", type=float, help="Assumed spot fee per side, charged in USD")
     parser.add_argument("--spot-lot", type=float, help="Base asset units per lot")
@@ -243,6 +246,16 @@ def main():
             parser.error("--minute-csv requires --symbol")
         rows, quality = daily_from_minutes(args.minute_csv, args.symbol, args.start, args.end)
         source = "minute_csv"
+    elif args.alpaca:
+        from alpaca_bars import daily_from_alpaca
+        if args.symbol == "FIXTURE":
+            parser.error("--alpaca requires --symbol")
+        try:
+            rows, quality = daily_from_alpaca(args.symbol, args.start, args.end, "sip", args.alpaca_dir,
+                                              args.allow_splits)
+        except (ValueError, RuntimeError) as exc:
+            parser.error(str(exc))
+        source = "alpaca_sip_raw"
     elif args.provider:
         rows = qlib_rows(args.provider, args.symbol, args.start.isoformat(),
                          (args.end - timedelta(days=1)).isoformat())
@@ -253,7 +266,7 @@ def main():
         parser.error("Data does not cover the requested research period")
     # Paths are machine-specific. Source and the content digest identify the actual input.
     config = {key: value for key, value in vars(args).items()
-              if key not in {"provider", "minute_csv", "out"}}
+              if key not in {"provider", "minute_csv", "alpaca_dir", "out"}}
     report = dict(config=config, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                   execution_contract=dict(engine_sha256=engine_digest(),
                                           fee_profile=spot.profile if spot else "ibkr-us-fixed-2026-11-22",
