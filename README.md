@@ -55,3 +55,4 @@ Local OHLCV data can enter via `--minute-csv PATH --symbol QQQ`. Daily simulatio
 - [Matched strategy comparisons](docs/comparing-runs.md)
 - [Qlib provider acceptance](docs/qlib-provider.md)
 - [Alpaca historical bars](docs/alpaca.md)
+- [Strategy manifests and the money CLI](docs/strategies.md)

@@ -25,6 +25,9 @@ def engine_digest(root=None):
     return hashlib.sha256(manifest.encode("utf-8")).hexdigest()
 
 
+FEE_PROFILE = "ibkr-us-fixed-2026-11-22"
+
+
 def fixture():
     day = date(2022, 1, 1)
     rows = []
@@ -59,7 +62,7 @@ def months_after(start, months):
     return date(start.year + (month > 12), (month - 1) % 12 + 1, 1)
 
 
-def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None):
+def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None, log=None):
     cash, shares = state
     history = list(history)
     rng = random.Random(seed)
@@ -73,11 +76,16 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress
         opening *= multiplier
         closing *= multiplier
         target = strategy(tuple(history), level) if history else shares
-        if type(target) is not int or target < 0:
-            raise ValueError("Expected nonnegative integer target position")
+        if target is None and log is not None:
+            log["abstentions"] += 1
+        if target is not None and (type(target) is not int or target < 0):
+            raise ValueError("Expected nonnegative integer target position, or None to hold")
         if stress:
+            # An abstention is queued as None so a delayed hold never reverts to a stale position.
             targets.append(target)
-            target = targets.popleft() if len(targets) > stress.delay_sessions else shares
+            target = targets.popleft() if len(targets) > stress.delay_sessions else None
+        if target is None:
+            target = shares
         delta = target - shares
         if stress:
             # One draw per session makes rejections comparable across strategies.
@@ -158,7 +166,8 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
         artifacts = {p: fit(tuple(train), p) if fit else p for p in levels}
         history = [r[2] for r in train]
         opening_state = (10000., 0)
-        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history, spot=spot)
+        log = {"abstentions": 0}
+        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history, spot=spot, log=log)
         selection_return = scores[best] / opening_state[0] - 1
         train_return = None if fit else selection_return
         forward_return = equity[-1] / opening_state[0] - 1
@@ -180,6 +189,7 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
                             train_return=train_return, forward_return=forward_return,
                             selection_start=str(selection_rows[0][0]), selection_return=selection_return,
                             forward_minus_train=None if fit else forward_return - train_return,
+                            abstentions=log["abstentions"],
                             forward_buys=sum(t["shares"] > 0 for t in fills),
                             forward_sells=sum(t["shares"] < 0 for t in fills),
                             trend_regimes=trend_attribution(train, forward, equity, opening_state[0]),
@@ -269,7 +279,7 @@ def main():
               if key not in {"provider", "minute_csv", "alpaca_dir", "out"}}
     report = dict(config=config, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                   execution_contract=dict(engine_sha256=engine_digest(),
-                                          fee_profile=spot.profile if spot else "ibkr-us-fixed-2026-11-22",
+                                          fee_profile=spot.profile if spot else FEE_PROFILE,
                                           starting_cash=10000.0),
                   currency="USD", source=source, data_quality=quality,
                   folds=study(rows, strategy, args.levels, args.paths, args.shock_bps,
