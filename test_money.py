@@ -54,6 +54,31 @@ class ManifestChecks(unittest.TestCase):
         self.assertGreater(len(report["folds"][0]["fills"]), 0)
 
 
+class FittedReplayChecks(unittest.TestCase):
+    def test_fit_sees_only_pre_start_rows(self):
+        fitted = []
+        real = money.Plugin.__init__
+        def spy(self, manifest):
+            real(self, manifest)
+            inner = self.fit
+            self.fit = lambda rows, p: fitted.append(inner(rows, p)) or fitted[-1]
+        money.Plugin.__init__ = spy
+        self.addCleanup(setattr, money.Plugin, "__init__", real)
+        manifest = money.load_manifest(Path("strategies/mean_threshold.json"))
+        start, end = date(2022, 6, 1), date(2022, 8, 1)
+        money.run_replay(manifest, start, end, 0.)
+        real_rows = harness.fixture
+        self.addCleanup(setattr, harness, "fixture", real_rows)
+        harness.fixture = lambda: [(d, o * 3, c * 3) if d >= start else (d, o, c) for d, o, c in real_rows()]
+        money.run_replay(manifest, start, end, 0.)
+        self.assertEqual(fitted[0], fitted[1])
+
+    def test_fitted_replay_without_prior_history_is_a_clear_error(self):
+        manifest = money.load_manifest(Path("strategies/mean_threshold.json"))
+        with self.assertRaisesRegex(ValueError, "history before --start"):
+            money.run_replay(manifest, date(2022, 1, 1), date(2022, 3, 1), 0.)
+
+
 class AbstentionChecks(unittest.TestCase):
     def test_none_holds_position_and_is_counted(self):
         rows = [(date(2023, 1, d), 100, 100) for d in range(1, 6)]

@@ -175,6 +175,8 @@ def run_replay(manifest, start, end, level):
         raise ValueError("Data does not cover the warmup and the requested range")
     plugin = Plugin(manifest)
     fit = getattr(plugin, "fit", None)
+    if fit and not prior:
+        raise ValueError("A fitted strategy needs history before --start to fit on")
     parameter = fit(tuple(prior), level) if fit else level
     log = {"abstentions": 0}
     (_, shares), equity, fills = harness.replay(window, plugin, parameter, (START_CASH, 0),

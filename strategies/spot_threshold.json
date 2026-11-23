@@ -1,0 +1,23 @@
+{
+  "id": "spot_threshold",
+  "entry": "controls:threshold",
+  "levels": [
+    98,
+    100,
+    102
+  ],
+  "version": "1",
+  "data": {
+    "kind": "spot_fixture",
+    "symbol": "FIXTURE"
+  },
+  "calendar": "utc24",
+  "warmup": 0,
+  "costs": {
+    "fee_bps": 10,
+    "lot": 0.1,
+    "min_usd": 10
+  },
+  "benchmark": "cash",
+  "max_exposure": 1.0
+}
