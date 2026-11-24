@@ -27,6 +27,7 @@ class Costs:
     borrow_bps: float = 50.  # annual, general collateral
     sell_fee_pct: float = 0.0000206  # sell-side regulatory estimate, as in harness.fees
     sell_fee_per_share: float = 0.000003
+    margin_bps: float = 0.  # annual interest on negative cash (leverage), booked under "borrow"; 0 keeps old runs unchanged
 
 
 @dataclass(frozen=True)
@@ -125,6 +126,10 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                 cash -= fee
                 paid["borrow"] += fee
                 last[s] = price
+            if cash < 0 and costs.margin_bps:
+                fee = -cash * costs.margin_bps / 10000 * gap / 365
+                cash -= fee
+                paid["borrow"] += fee
             if pending is not None:
                 value = cash + sum(units[s] * last[s] for s in units)
                 for s in sorted(set(units) | set(pending)):
