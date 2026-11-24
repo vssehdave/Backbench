@@ -16,3 +16,8 @@ class MeanThreshold:
         return sum(close for _, _, close in rows) / len(rows) + offset
 
     decide = staticmethod(threshold)
+
+
+def buy_and_hold(history, level):
+    """Benchmark: hold the catalog's fixed position (half of 10,000 at the fold's first training close)."""
+    return int(5000 / history[0])

@@ -1,0 +1,17 @@
+{
+  "id": "bench-buy-and-hold-spy",
+  "version": "1",
+  "entry": "controls:buy_and_hold",
+  "data": {
+    "kind": "alpaca",
+    "symbol": "SPY"
+  },
+  "calendar": "xnys",
+  "warmup": 0,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": "cash",
+  "max_exposure": 1.0
+}

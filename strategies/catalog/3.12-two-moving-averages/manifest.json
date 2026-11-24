@@ -1,0 +1,17 @@
+{
+  "id": "cat-3.12-two-moving-averages",
+  "version": "1",
+  "entry": "strategy:decide",
+  "data": {
+    "kind": "alpaca",
+    "symbol": "SPY"
+  },
+  "calendar": "xnys",
+  "warmup": 31,
+  "levels": [
+    30
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": "buy_and_hold",
+  "max_exposure": 1.0
+}
