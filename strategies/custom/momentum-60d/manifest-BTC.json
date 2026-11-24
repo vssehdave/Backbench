@@ -1,0 +1,2 @@
+{"id": "custom_mom60_BTC", "version": "1", "entry": "mom60_rules:decide", "data": {"kind": "kraken", "symbol": "XBTUSD"},
+ "calendar": "utc24", "warmup": 61, "levels": [60], "costs": {"fee_bps": 26, "lot": 0.0001, "min_usd": 10}, "benchmark": "cash", "max_exposure": 1.0}

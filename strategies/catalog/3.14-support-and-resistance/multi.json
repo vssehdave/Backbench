@@ -1,0 +1,22 @@
+{
+  "id": "cat-3.14",
+  "version": "1",
+  "entry": "catalog_rules:pivot",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "SPY"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 2,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  },
+  "allow_short": true,
+  "borrow_bps_per_year": 50
+}

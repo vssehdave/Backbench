@@ -1,0 +1,21 @@
+{
+  "id": "cat-9.3",
+  "version": "1",
+  "entry": "catalog_rules:commodity_passive",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "SPY",
+      "DBC"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 0,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  }
+}

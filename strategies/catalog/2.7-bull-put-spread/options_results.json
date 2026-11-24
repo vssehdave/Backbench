@@ -1,0 +1,1312 @@
+{
+  "source": "Alpaca historical option bars (trade closes), SPY daily closes",
+  "main": {
+    "strategy": "bull_put_spread",
+    "parameters": {
+      "section": "2.7",
+      "legs": [
+        [
+          "put",
+          1,
+          -0.05,
+          false
+        ],
+        [
+          "put",
+          -1,
+          -0.025,
+          false
+        ]
+      ],
+      "half_spread_per_share": 0.02,
+      "fee_per_contract": 0.65,
+      "capital": 100000.0,
+      "shares": 0,
+      "contracts_per_unit": 2
+    },
+    "summary": {
+      "start": "2024-01-19",
+      "end": "2026-11-20",
+      "cycles": 34,
+      "cycles_opened": 34,
+      "no_bar_days": 3,
+      "mark_gap_days": 2,
+      "itm_expiries": 9,
+      "assignments": 5,
+      "fees": 88.4,
+      "end_equity": 101741.5999999998,
+      "total_return": 0.0174159999999981,
+      "max_drawdown": -0.050130970026271315
+    },
+    "buy_and_hold": {
+      "end_equity": 141476.0,
+      "total_return": 0.41476,
+      "max_drawdown": -0.18469468675654244
+    },
+    "cycles": [
+      {
+        "entry_date": "2024-01-19",
+        "expiry": "2024-02-16",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 2,
+        "underlying_at_expiry": 499.51,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-02-16",
+            "symbol": "SPY240216P00458000",
+            "strike": 458.0,
+            "bar_close": 0.93,
+            "fill": 0.9500000000000001,
+            "entry_fill_date": "2024-01-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-02-16",
+            "symbol": "SPY240216P00470000",
+            "strike": 470.0,
+            "bar_close": 2.0,
+            "fill": 1.98,
+            "entry_fill_date": "2024-01-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-02-16",
+        "expiry": "2024-03-15",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 509.83,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-03-15",
+            "symbol": "SPY240315P00475000",
+            "strike": 475.0,
+            "bar_close": 1.3,
+            "fill": 1.32,
+            "entry_fill_date": "2024-02-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-03-15",
+            "symbol": "SPY240315P00487000",
+            "strike": 487.0,
+            "bar_close": 2.65,
+            "fill": 2.63,
+            "entry_fill_date": "2024-02-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-03-15",
+        "expiry": "2024-04-19",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 495.16,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-04-19",
+            "symbol": "SPY240419P00484000",
+            "strike": 484.0,
+            "bar_close": 1.57,
+            "fill": 1.59,
+            "entry_fill_date": "2024-03-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-04-19",
+            "symbol": "SPY240419P00497000",
+            "strike": 497.0,
+            "bar_close": 3.19,
+            "fill": 3.17,
+            "entry_fill_date": "2024-03-15",
+            "intrinsic": 1.839999999999975
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-04-19",
+        "expiry": "2024-05-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 529.45,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-05-17",
+            "symbol": "SPY240517P00470000",
+            "strike": 470.0,
+            "bar_close": 2.3,
+            "fill": 2.32,
+            "entry_fill_date": "2024-04-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-05-17",
+            "symbol": "SPY240517P00483000",
+            "strike": 483.0,
+            "bar_close": 4.44,
+            "fill": 4.420000000000001,
+            "entry_fill_date": "2024-04-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-05-17",
+        "expiry": "2024-06-21",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 544.51,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-06-21",
+            "symbol": "SPY240621P00503000",
+            "strike": 503.0,
+            "bar_close": 1.15,
+            "fill": 1.17,
+            "entry_fill_date": "2024-05-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-06-21",
+            "symbol": "SPY240621P00516000",
+            "strike": 516.0,
+            "bar_close": 2.45,
+            "fill": 2.43,
+            "entry_fill_date": "2024-05-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-06-21",
+        "expiry": "2024-07-19",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 548.99,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-07-19",
+            "symbol": "SPY240719P00517000",
+            "strike": 517.0,
+            "bar_close": 0.96,
+            "fill": 0.98,
+            "entry_fill_date": "2024-06-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-07-19",
+            "symbol": "SPY240719P00531000",
+            "strike": 531.0,
+            "bar_close": 2.2,
+            "fill": 2.18,
+            "entry_fill_date": "2024-06-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-07-19",
+        "expiry": "2024-08-16",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 554.31,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-08-16",
+            "symbol": "SPY240816P00522000",
+            "strike": 522.0,
+            "bar_close": 1.98,
+            "fill": 2.0,
+            "entry_fill_date": "2024-07-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-08-16",
+            "symbol": "SPY240816P00535000",
+            "strike": 535.0,
+            "bar_close": 3.68,
+            "fill": 3.66,
+            "entry_fill_date": "2024-07-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-08-16",
+        "expiry": "2024-09-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 568.25,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-09-20",
+            "symbol": "SPY240920P00527000",
+            "strike": 527.0,
+            "bar_close": 2.27,
+            "fill": 2.29,
+            "entry_fill_date": "2024-08-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-09-20",
+            "symbol": "SPY240920P00540000",
+            "strike": 540.0,
+            "bar_close": 3.93,
+            "fill": 3.91,
+            "entry_fill_date": "2024-08-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-09-20",
+        "expiry": "2024-10-18",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 584.59,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-10-18",
+            "symbol": "SPY241018P00540000",
+            "strike": 540.0,
+            "bar_close": 1.98,
+            "fill": 2.0,
+            "entry_fill_date": "2024-09-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-10-18",
+            "symbol": "SPY241018P00554000",
+            "strike": 554.0,
+            "bar_close": 3.24,
+            "fill": 3.22,
+            "entry_fill_date": "2024-09-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-10-18",
+        "expiry": "2024-11-15",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 585.75,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-11-15",
+            "symbol": "SPY241115P00555000",
+            "strike": 555.0,
+            "bar_close": 2.37,
+            "fill": 2.39,
+            "entry_fill_date": "2024-10-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-11-15",
+            "symbol": "SPY241115P00570000",
+            "strike": 570.0,
+            "bar_close": 4.39,
+            "fill": 4.37,
+            "entry_fill_date": "2024-10-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-11-15",
+        "expiry": "2024-12-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 591.15,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-12-20",
+            "symbol": "SPY241220P00556000",
+            "strike": 556.0,
+            "bar_close": 2.81,
+            "fill": 2.83,
+            "entry_fill_date": "2024-11-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-12-20",
+            "symbol": "SPY241220P00571000",
+            "strike": 571.0,
+            "bar_close": 4.77,
+            "fill": 4.75,
+            "entry_fill_date": "2024-11-15",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-12-20",
+        "expiry": "2025-01-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 597.58,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-01-17",
+            "symbol": "SPY250117P00562000",
+            "strike": 562.0,
+            "bar_close": 2.83,
+            "fill": 2.85,
+            "entry_fill_date": "2024-12-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-01-17",
+            "symbol": "SPY250117P00576000",
+            "strike": 576.0,
+            "bar_close": 4.86,
+            "fill": 4.840000000000001,
+            "entry_fill_date": "2024-12-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-01-17",
+        "expiry": "2025-02-21",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 599.94,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-02-21",
+            "symbol": "SPY250221P00568000",
+            "strike": 568.0,
+            "bar_close": 2.38,
+            "fill": 2.4,
+            "entry_fill_date": "2025-01-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-02-21",
+            "symbol": "SPY250221P00583000",
+            "strike": 583.0,
+            "bar_close": 4.4,
+            "fill": 4.380000000000001,
+            "entry_fill_date": "2025-01-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-02-21",
+        "expiry": "2025-03-21",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 563.98,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-03-21",
+            "symbol": "SPY250321P00570000",
+            "strike": 570.0,
+            "bar_close": 2.81,
+            "fill": 2.83,
+            "entry_fill_date": "2025-02-21",
+            "intrinsic": 6.019999999999982
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-03-21",
+            "symbol": "SPY250321P00585000",
+            "strike": 585.0,
+            "bar_close": 4.93,
+            "fill": 4.91,
+            "entry_fill_date": "2025-02-21",
+            "intrinsic": 21.019999999999982
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-03-21",
+        "expiry": "2025-04-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 526.41,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-04-17",
+            "symbol": "SPY250417P00536000",
+            "strike": 536.0,
+            "bar_close": 2.84,
+            "fill": 2.86,
+            "entry_fill_date": "2025-03-21",
+            "intrinsic": 9.590000000000032
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-04-17",
+            "symbol": "SPY250417P00550000",
+            "strike": 550.0,
+            "bar_close": 5.33,
+            "fill": 5.3100000000000005,
+            "entry_fill_date": "2025-03-21",
+            "intrinsic": 23.590000000000032
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-04-17",
+        "expiry": "2025-05-16",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 594.2,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-05-16",
+            "symbol": "SPY250516P00500000",
+            "strike": 500.0,
+            "bar_close": 6.68,
+            "fill": 6.699999999999999,
+            "entry_fill_date": "2025-04-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-05-16",
+            "symbol": "SPY250516P00513000",
+            "strike": 513.0,
+            "bar_close": 10.02,
+            "fill": 10.0,
+            "entry_fill_date": "2025-04-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-05-16",
+        "expiry": "2025-06-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 594.28,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-06-20",
+            "symbol": "SPY250620P00564000",
+            "strike": 564.0,
+            "bar_close": 3.42,
+            "fill": 3.44,
+            "entry_fill_date": "2025-05-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-06-20",
+            "symbol": "SPY250620P00579000",
+            "strike": 579.0,
+            "bar_close": 5.75,
+            "fill": 5.73,
+            "entry_fill_date": "2025-05-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-06-20",
+        "expiry": "2025-07-18",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 627.58,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-07-18",
+            "symbol": "SPY250718P00565000",
+            "strike": 565.0,
+            "bar_close": 3.63,
+            "fill": 3.65,
+            "entry_fill_date": "2025-06-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-07-18",
+            "symbol": "SPY250718P00579000",
+            "strike": 579.0,
+            "bar_close": 5.83,
+            "fill": 5.8100000000000005,
+            "entry_fill_date": "2025-06-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-07-18",
+        "expiry": "2025-08-15",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 643.44,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-08-15",
+            "symbol": "SPY250815P00596000",
+            "strike": 596.0,
+            "bar_close": 2.29,
+            "fill": 2.31,
+            "entry_fill_date": "2025-07-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-08-15",
+            "symbol": "SPY250815P00612000",
+            "strike": 612.0,
+            "bar_close": 4.42,
+            "fill": 4.4,
+            "entry_fill_date": "2025-07-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-08-15",
+        "expiry": "2025-09-19",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 1,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 663.7,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-09-19",
+            "symbol": "SPY250919P00611000",
+            "strike": 611.0,
+            "bar_close": 2.77,
+            "fill": 2.79,
+            "entry_fill_date": "2025-08-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-09-19",
+            "symbol": "SPY250919P00627000",
+            "strike": 627.0,
+            "bar_close": 4.36,
+            "fill": 4.340000000000001,
+            "entry_fill_date": "2025-08-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-09-19",
+        "expiry": "2025-10-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 664.39,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-10-17",
+            "symbol": "SPY251017P00631000",
+            "strike": 631.0,
+            "bar_close": 2.25,
+            "fill": 2.27,
+            "entry_fill_date": "2025-09-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-10-17",
+            "symbol": "SPY251017P00647000",
+            "strike": 647.0,
+            "bar_close": 4.02,
+            "fill": 3.9999999999999996,
+            "entry_fill_date": "2025-09-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-10-17",
+        "expiry": "2025-11-21",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 659.03,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-11-21",
+            "symbol": "SPY251121P00631000",
+            "strike": 631.0,
+            "bar_close": 5.4,
+            "fill": 5.42,
+            "entry_fill_date": "2025-10-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-11-21",
+            "symbol": "SPY251121P00648000",
+            "strike": 648.0,
+            "bar_close": 8.24,
+            "fill": 8.22,
+            "entry_fill_date": "2025-10-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-11-21",
+        "expiry": "2025-12-19",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 680.59,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-12-19",
+            "symbol": "SPY251219P00626000",
+            "strike": 626.0,
+            "bar_close": 5.1,
+            "fill": 5.119999999999999,
+            "entry_fill_date": "2025-11-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-12-19",
+            "symbol": "SPY251219P00643000",
+            "strike": 643.0,
+            "bar_close": 8.82,
+            "fill": 8.8,
+            "entry_fill_date": "2025-11-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-12-19",
+        "expiry": "2026-01-16",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 691.66,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-01-16",
+            "symbol": "SPY260116P00647000",
+            "strike": 647.0,
+            "bar_close": 2.09,
+            "fill": 2.11,
+            "entry_fill_date": "2025-12-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-01-16",
+            "symbol": "SPY260116P00664000",
+            "strike": 664.0,
+            "bar_close": 3.92,
+            "fill": 3.9,
+            "entry_fill_date": "2025-12-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-01-16",
+        "expiry": "2026-02-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 689.43,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-02-20",
+            "symbol": "SPY260220P00657000",
+            "strike": 657.0,
+            "bar_close": 3.23,
+            "fill": 3.25,
+            "entry_fill_date": "2026-01-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-02-20",
+            "symbol": "SPY260220P00674000",
+            "strike": 674.0,
+            "bar_close": 5.23,
+            "fill": 5.210000000000001,
+            "entry_fill_date": "2026-01-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-02-20",
+        "expiry": "2026-03-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 648.57,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-03-20",
+            "symbol": "SPY260320P00655000",
+            "strike": 655.0,
+            "bar_close": 4.24,
+            "fill": 4.26,
+            "entry_fill_date": "2026-02-20",
+            "intrinsic": 6.42999999999995
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-03-20",
+            "symbol": "SPY260320P00672000",
+            "strike": 672.0,
+            "bar_close": 6.92,
+            "fill": 6.9,
+            "entry_fill_date": "2026-02-20",
+            "intrinsic": 23.42999999999995
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-03-20",
+        "expiry": "2026-04-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 2,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 710.14,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-04-17",
+            "symbol": "SPY260417P00616000",
+            "strike": 616.0,
+            "bar_close": 4.68,
+            "fill": 4.699999999999999,
+            "entry_fill_date": "2026-03-24",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-04-17",
+            "symbol": "SPY260417P00632000",
+            "strike": 632.0,
+            "bar_close": 10.5,
+            "fill": 10.48,
+            "entry_fill_date": "2026-03-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-04-17",
+        "expiry": "2026-05-15",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 739.17,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-05-15",
+            "symbol": "SPY260515P00675000",
+            "strike": 675.0,
+            "bar_close": 2.95,
+            "fill": 2.97,
+            "entry_fill_date": "2026-04-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-05-15",
+            "symbol": "SPY260515P00692000",
+            "strike": 692.0,
+            "bar_close": 5.26,
+            "fill": 5.24,
+            "entry_fill_date": "2026-04-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-05-15",
+        "expiry": "2026-06-18",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 746.74,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-06-18",
+            "symbol": "SPY260618P00702000",
+            "strike": 702.0,
+            "bar_close": 4.73,
+            "fill": 4.75,
+            "entry_fill_date": "2026-05-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-06-18",
+            "symbol": "SPY260618P00721000",
+            "strike": 721.0,
+            "bar_close": 8.4,
+            "fill": 8.38,
+            "entry_fill_date": "2026-05-15",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-06-18",
+        "expiry": "2026-07-17",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 743.29,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-07-17",
+            "symbol": "SPY260717P00709000",
+            "strike": 709.0,
+            "bar_close": 2.79,
+            "fill": 2.81,
+            "entry_fill_date": "2026-06-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-07-17",
+            "symbol": "SPY260717P00728000",
+            "strike": 728.0,
+            "bar_close": 5.27,
+            "fill": 5.25,
+            "entry_fill_date": "2026-06-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-07-17",
+        "expiry": "2026-08-21",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 765.72,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-08-21",
+            "symbol": "SPY260821P00706000",
+            "strike": 706.0,
+            "bar_close": 4.9,
+            "fill": 4.92,
+            "entry_fill_date": "2026-07-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-08-21",
+            "symbol": "SPY260821P00725000",
+            "strike": 725.0,
+            "bar_close": 8.01,
+            "fill": 7.99,
+            "entry_fill_date": "2026-07-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-08-21",
+        "expiry": "2026-09-18",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 761.69,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-09-18",
+            "symbol": "SPY260918P00727000",
+            "strike": 727.0,
+            "bar_close": 2.47,
+            "fill": 2.49,
+            "entry_fill_date": "2026-08-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-09-18",
+            "symbol": "SPY260918P00747000",
+            "strike": 747.0,
+            "bar_close": 4.86,
+            "fill": 4.840000000000001,
+            "entry_fill_date": "2026-08-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-09-18",
+        "expiry": "2026-10-16",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 763.25,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-10-16",
+            "symbol": "SPY261016P00724000",
+            "strike": 724.0,
+            "bar_close": 2.22,
+            "fill": 2.24,
+            "entry_fill_date": "2026-09-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-10-16",
+            "symbol": "SPY261016P00743000",
+            "strike": 743.0,
+            "bar_close": 4.37,
+            "fill": 4.3500000000000005,
+            "entry_fill_date": "2026-09-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-10-16",
+        "expiry": "2026-11-20",
+        "opened": true,
+        "fee": 2.6,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 689.81,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "put",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-11-20",
+            "symbol": "SPY261120P00725000",
+            "strike": 725.0,
+            "bar_close": 5.0,
+            "fill": 5.02,
+            "entry_fill_date": "2026-10-16",
+            "intrinsic": 35.190000000000055
+          },
+          {
+            "kind": "put",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-11-20",
+            "symbol": "SPY261120P00744000",
+            "strike": 744.0,
+            "bar_close": 8.01,
+            "fill": 7.99,
+            "entry_fill_date": "2026-10-16",
+            "intrinsic": 54.190000000000055
+          }
+        ]
+      }
+    ]
+  },
+  "half_spread_sensitivity": {
+    "0.0": 0.020135999999997933,
+    "0.05": 0.013335999999998016,
+    "0.1": 0.006535999999998099
+  }
+}
