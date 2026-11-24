@@ -79,17 +79,17 @@ Tested results are SPY 2016-2026 (2.2 and 2.4: SPY 2024-01 to 2026-11, option ba
 | 2.55 | [Bearish long seagull spread](2.55-bearish-long-seagull-spread/) | Options | not testable: options chains |  |
 | 2.56 | [Bearish short seagull spread](2.56-bearish-short-seagull-spread/) | Options | not testable: options chains |  |
 | 2.57 | [Bullish long seagull spread](2.57-bullish-long-seagull-spread/) | Options | not testable: options chains |  |
-| 3.1 | [Price-momentum](3.1-price-momentum/) | Stocks | not testable: cross-sectional universe |  |
-| 3.2 | [Earnings-momentum](3.2-earnings-momentum/) | Stocks | not testable: cross-sectional universe |  |
-| 3.3 | [Value](3.3-value/) | Stocks | not testable: cross-sectional universe |  |
-| 3.4 | [Low-volatility anomaly](3.4-low-volatility-anomaly/) | Stocks | not testable: cross-sectional universe |  |
+| 3.1 | [Price-momentum](3.1-price-momentum/) | Stocks | tested (xs) | survivorship-biased; mean 6-month -1.2% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
+| 3.2 | [Earnings-momentum](3.2-earnings-momentum/) | Stocks | not testable: cross-sectional universe | no earnings or analyst data in Alpaca |
+| 3.3 | [Value](3.3-value/) | Stocks | not testable: cross-sectional universe | no fundamentals in Alpaca |
+| 3.4 | [Low-volatility anomaly](3.4-low-volatility-anomaly/) | Stocks | tested (xs) | survivorship-biased; mean 6-month -2.7% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
 | 3.5 | [Implied volatility](3.5-implied-volatility/) | Stocks | not testable: options chains |  |
-| 3.6 | [Multifactor portfolio](3.6-multifactor-portfolio/) | Stocks | not testable: cross-sectional universe |  |
-| 3.7 | [Residual momentum](3.7-residual-momentum/) | Stocks | not testable: cross-sectional universe |  |
-| 3.8 | [Pairs trading](3.8-pairs-trading/) | Stocks | not testable: multiple instruments |  |
-| 3.9 | [Mean-reversion - single cluster](3.9-mean-reversion-single-cluster/) | Stocks | not testable: cross-sectional universe |  |
-| 3.9.1 | [Mean-reversion - multiple clusters](3.9.1-mean-reversion-multiple-clusters/) | Stocks | not testable: cross-sectional universe |  |
-| 3.10 | [Mean-reversion - weighted regression](3.10-mean-reversion-weighted-regression/) | Stocks | not testable: cross-sectional universe |  |
+| 3.6 | [Multifactor portfolio](3.6-multifactor-portfolio/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -2.0% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
+| 3.7 | [Residual momentum](3.7-residual-momentum/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.8% vs equal-weight +10.1%, SPY +10.6% over 7 folds |
+| 3.8 | [Pairs trading](3.8-pairs-trading/) | Stocks | not testable: multiple instruments | paper gives no pair-selection rule or pair count |
+| 3.9 | [Mean-reversion - single cluster](3.9-mean-reversion-single-cluster/) | Stocks | tested (xs) | survivorship-biased; mean 6-month -1.5% vs equal-weight +8.1%, SPY +8.7% over 10 folds |
+| 3.9.1 | [Mean-reversion - multiple clusters](3.9.1-mean-reversion-multiple-clusters/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.8% vs equal-weight +8.1%, SPY +8.7% over 10 folds |
+| 3.10 | [Mean-reversion - weighted regression](3.10-mean-reversion-weighted-regression/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.5% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
 | 3.11 | [Single moving average](3.11-single-moving-average/) | Stocks | tested | 21.7% vs B&H 46.8%, cash 0% |
 | 3.12 | [Two moving averages](3.12-two-moving-averages/) | Stocks | tested | 23.4% vs B&H 46.8%, cash 0%; long/short variant 2.8% |
 | 3.13 | [Three moving averages](3.13-three-moving-averages/) | Stocks | tested | 15.5% vs B&H 46.8%, cash 0% |
@@ -97,14 +97,14 @@ Tested results are SPY 2016-2026 (2.2 and 2.4: SPY 2024-01 to 2026-11, option ba
 | 3.15 | [Channel](3.15-channel/) | Stocks | tested | 15.9% vs B&H 46.8%, cash 0% |
 | 3.16 | [Event-driven - M&A](3.16-event-driven-manda/) | Stocks | not testable: other data not available |  |
 | 3.17 | [Machine learning - single-stock KNN](3.17-machine-learning-single-stock-knn/) | Stocks | not testable: needs high/low/volume |  |
-| 3.18 | [Statistical arbitrage - optimization](3.18-statistical-arbitrage-optimization/) | Stocks | not testable: cross-sectional universe |  |
+| 3.18 | [Statistical arbitrage - optimization](3.18-statistical-arbitrage-optimization/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.0% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
 | 3.19 | [Market-making](3.19-market-making/) | Stocks | not testable: other data not available |  |
-| 3.20 | [Alpha combos](3.20-alpha-combos/) | Stocks | not testable: cross-sectional universe |  |
-| 4.1 | [Sector momentum rotation](4.1-sector-momentum-rotation/) | Exchange-traded funds | not testable: cross-sectional universe |  |
-| 4.1.1 | [Sector momentum rotation with MA filter](4.1.1-sector-momentum-rotation-with-ma-filter/) | Exchange-traded funds | not testable: cross-sectional universe |  |
-| 4.1.2 | [Dual-momentum sector rotation](4.1.2-dual-momentum-sector-rotation/) | Exchange-traded funds | not testable: cross-sectional universe |  |
-| 4.2 | [Alpha rotation](4.2-alpha-rotation/) | Exchange-traded funds | not testable: cross-sectional universe |  |
-| 4.3 | [R-squared](4.3-r-squared/) | Exchange-traded funds | not testable: cross-sectional universe |  |
+| 3.20 | [Alpha combos](3.20-alpha-combos/) | Stocks | not testable: cross-sectional universe | paper does not specify the alphas to combine |
+| 4.1 | [Sector momentum rotation](4.1-sector-momentum-rotation/) | Exchange-traded funds | tested (xs) | survivorship-biased; mean 6-month +9.6% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
+| 4.1.1 | [Sector momentum rotation with MA filter](4.1.1-sector-momentum-rotation-with-ma-filter/) | Exchange-traded funds | tested (xs) | survivorship-biased; mean 6-month +7.1% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
+| 4.1.2 | [Dual-momentum sector rotation](4.1.2-dual-momentum-sector-rotation/) | Exchange-traded funds | tested (xs) | survivorship-biased; mean 6-month +6.2% vs equal-weight +7.4%, SPY +8.8% over 9 folds |
+| 4.2 | [Alpha rotation](4.2-alpha-rotation/) | Exchange-traded funds | tested (xs) | PROXY; survivorship-biased; mean 6-month +4.5% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
+| 4.3 | [R-squared](4.3-r-squared/) | Exchange-traded funds | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.7% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
 | 4.4 | [Mean-reversion](4.4-mean-reversion/) | Exchange-traded funds | not testable: needs high/low/volume |  |
 | 4.5 | [Leveraged ETFs (LETFs)](4.5-leveraged-etfs-letfs/) | Exchange-traded funds | not testable: multiple instruments |  |
 | 4.6 | [Multi-asset trend following](4.6-multi-asset-trend-following/) | Exchange-traded funds | not testable: multiple instruments |  |

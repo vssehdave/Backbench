@@ -2,7 +2,7 @@
 
 - Section: 3.8
 - Asset class: Stocks
-- Harness status: **not testable: multiple instruments** - trades a pair of stocks long/short; needs two series and short selling.
+- Harness status: **not testable: not specified by the paper** - The paper gives neither the pair-selection rule nor the number of pairs; any choice here would be invented, so it is not run.
 
 ## Description (paper)
 

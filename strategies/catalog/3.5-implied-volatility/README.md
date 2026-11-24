@@ -2,7 +2,7 @@
 
 - Section: 3.5
 - Asset class: Stocks
-- Harness status: **not testable: options chains** - needs implied volatilities of options across a stock universe.
+- Harness status: **not testable: data not available** - Alpaca option bars start 2024-01-18 and carry no implied volatility or bid/ask (docs/options.md); the strategy ranks stocks by IV level or its change across the chain.
 
 ## Description (paper)
 

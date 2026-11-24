@@ -1,0 +1,17 @@
+{
+ "id": "xs_3_9_1_mean_reversion_multiple_clusters",
+ "version": "1",
+ "entry": "strategy_xs:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "lookback": 21
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 0.0,
+  "name_cap": 0.05
+ },
+ "benchmark": "SPY"
+}
