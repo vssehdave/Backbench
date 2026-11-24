@@ -14,6 +14,8 @@ from spot import Spot, spot_fixture
 from stress import StressConfig
 
 FIELDS = {"id", "version", "entry", "data", "calendar", "warmup", "levels", "costs", "benchmark", "max_exposure"}
+OPTIONAL = {"allow_short", "borrow_bps_per_year"}
+BORROW_BPS = 50.  # annual, same general-collateral default as xsection.Costs
 KINDS = {"fixture": "xnys", "spot_fixture": "utc24", "alpaca": "xnys", "kraken": "utc24"}
 START_CASH = 10000.
 
@@ -36,7 +38,7 @@ def load_manifest(path):
     if not isinstance(m, dict):
         raise ManifestError(f"{path}: manifest must be a JSON object")
     errors = [f"missing field: {k}" for k in sorted(FIELDS - m.keys())]
-    errors += [f"unknown field: {k}" for k in sorted(m.keys() - FIELDS)]
+    errors += [f"unknown field: {k}" for k in sorted(m.keys() - FIELDS - OPTIONAL)]
     for key in ("id", "version", "benchmark"):
         if key in m and not (isinstance(m[key], str) and m[key].strip()):
             errors.append(f"{key} must be a non-empty string")
@@ -53,6 +55,15 @@ def load_manifest(path):
             errors.append("levels must be a non-empty list of finite numbers")
         elif len(set(levels)) != len(levels):
             errors.append("levels must be distinct")
+    if "allow_short" in m and type(m["allow_short"]) is not bool:
+        errors.append("allow_short must be true or false")
+    if "borrow_bps_per_year" in m:
+        if not (is_number(m["borrow_bps_per_year"]) and m["borrow_bps_per_year"] >= 0):
+            errors.append("borrow_bps_per_year must be a finite number >= 0")
+        if m.get("allow_short") is not True:
+            errors.append("borrow_bps_per_year needs allow_short true")
+    if m.get("allow_short") is True and m.get("costs") != "equity_ibkr":
+        errors.append("allow_short is modelled for costs 'equity_ibkr' only")
     exposure = m.get("max_exposure")
     if "max_exposure" in m and not (is_number(exposure) and 0 < exposure <= 1):
         errors.append("max_exposure must be a finite number in (0, 1]")
@@ -124,10 +135,15 @@ class Plugin:
         target = self.inner(history, parameter)
         if type(target) is int:
             # Cap is measured against starting cash at the last close, not live equity.
-            target = min(target, int(self.exposure * START_CASH / (self.lot * history[-1])))
+            cap = int(self.exposure * START_CASH / (self.lot * history[-1]))
+            target = max(min(target, cap), -cap)
         return target
 
     decide = __call__
+
+
+def short_rate(manifest):
+    return manifest.get("borrow_bps_per_year", BORROW_BPS) if manifest.get("allow_short") else None
 
 
 def spot_costs(manifest):
@@ -161,7 +177,7 @@ def run_test(manifest, start, end, paths, shock_bps, seed):
                   shock_bps=shock_bps, strategy=manifest["id"], levels=manifest["levels"],
                   calendar=manifest["calendar"])
     folds = harness.study(rows, Plugin(manifest), manifest["levels"], paths, shock_bps, seed, start, end,
-                          StressConfig(), spot)
+                          StressConfig(), spot, short_rate(manifest))
     return dict(config=config, manifest=manifest, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                 execution_contract=dict(engine_sha256=harness.engine_digest(),
                                         fee_profile=spot.profile if spot else harness.FEE_PROFILE,
@@ -184,7 +200,8 @@ def run_replay(manifest, start, end, level):
     parameter = fit(tuple(prior), level) if fit else level
     log = {"abstentions": 0}
     (_, shares), equity, fills = harness.replay(window, plugin, parameter, (START_CASH, 0),
-                                                [r[2] for r in prior], spot=spot, log=log)
+                                                [r[2] for r in prior], spot=spot, log=log,
+                                                short=short_rate(manifest))
     return dict(id=manifest["id"], start=start, end=end, level=level, ending_equity=equity[-1],
                 ending_shares=shares, sessions=len(window), fills=fills, abstentions=log["abstentions"])
 
