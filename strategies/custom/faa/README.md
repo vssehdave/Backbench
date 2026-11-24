@@ -31,17 +31,19 @@ on the borrowed half. Paper columns are R / V / D / Sharpe(S0) / T as printed. n
 | R, A, V, C 100/50/50, log loss (eq. 3) | 8.0% | 10.5% | 0.78 | -12.7% | 6.4x | 0.37% | n/r | n/r |
 | SPY buy and hold (no costs) | 14.9% | 17.5% | 0.88 | -33.8% | 0 | 0 | | |
 
-Here each factor the paper adds lowers return: R only is the best FAA row, and the full RAVC default returns less than R, R + A or RAV. Drawdown falls with A
-and V as in the paper, but C buys nothing extra. The authors' fitted 100/80/60 weights, tested out of sample, are worse
-than the default. Leverage at a fixed 3% roughly doubles volatility and drawdown for less return, because the unlevered
-model earns barely more than its financing.
+Here each factor the paper adds lowers return: R only is the best FAA row, and the full RAVC default returns less than
+R, R + A or RAV. Unlike the paper, A does not cut drawdown here (-19.5% to -19.6%); V does (to -10.9%). C lowers
+volatility (10.5% to 8.6%) but not drawdown, and costs return and Sharpe (0.71 to 0.61). The authors' fitted 100/80/60
+weights, tested out of sample, are worse than the default. Leverage at a fixed 3% roughly doubles volatility and
+drawdown for less return, because the unlevered model earns barely more than its financing. Its 4.32% cost/yr is about
+3.0% financing and 1.3% trading.
 
 Comparing with the paper: its Sharpe is S0 (0% hurdle, as ours); its D is a monthly-sampled drawdown (ours is daily, so
 deeper); its T looks one-sided (ours counts buys and sells, about 2x); its unlevered rows are before costs.
 
 The log form ranks differently from the rank form in practice: over 125 month-ends the top 3 differs in 84 and the final
 weights (after the cash rule) in 74. In eq. 3, ln(r/rmax) dominates the V and C terms, so it behaves close to R + A
-with a volatility tilt. r <= 0 scores worst there, since ln is undefined (the paper notes this but gives no rule).
+(same final weights in 93 of 125 months, against 51 for the rank form). r <= 0 scores worst there, since ln is undefined (the paper notes this but gives no rule).
 
 ## Sensitivity (RAVC 100/50/50), 2016-07-29 to 2026-10-30
 
@@ -60,6 +62,7 @@ The paper's choice (N=3, 4 months) is not the best cell here; no cell comes near
 
 - Lookback: the paper measures 4 calendar months, month-end to month-end. The previous run used 84 sessions; this run
   uses month-ends (18 of 125 decisions change, CAGR 5.6% -> 4.9%). The 84-session row is kept for comparison.
+- Absolute momentum: in the paper A cuts R's drawdown from -29.2% to -12.6%; here it changes nothing.
 - Fills: the paper trades at the next open, the engine at the next close.
 - Leverage: modelled as 2x weights with negative cash charged 3% a year (`Costs.margin_bps`) and tc as 10 bps slippage.
   The levered SHY sleeve follows the paper. A fixed 3% is harsher than real rates in 2016-21 and milder than in 2023-24.

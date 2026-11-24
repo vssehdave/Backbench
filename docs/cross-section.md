@@ -48,7 +48,8 @@ of an edge. Momentum and low-volatility are paper defaults and were not tuned.
   universe raise an error.
 - Costs: commission 0.0035 USD per share, 0.35 minimum, capped at 1% of trade value; sell-side regulatory estimate
   (0.00206% of sale value plus 0.000003 per share); 5 bps slippage per trade; short borrow 50 bps a year on short market
-  value (general collateral), accrued per calendar day. The fee profile name is `ibkr-tiered-like-2026-11-23`; the
+  value (general collateral), accrued per calendar day; optional `margin_bps` (default 0) on negative cash, booked as
+  borrow. The fee profile name is `ibkr-tiered-like-2026-11-23`; the
   numbers mirror `harness.py` and are an estimate, not a statement.
 - Dividends: handled through the adjusted-price return, which is equivalent to immediate reinvestment. Dividends owed
   on short positions, withholding and cash timing are not modelled.
