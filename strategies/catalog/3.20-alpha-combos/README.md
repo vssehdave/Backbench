@@ -2,7 +2,7 @@
 
 - Section: 3.20
 - Asset class: Stocks
-- Harness status: **not testable: cross-sectional universe** - combines alphas across a stock universe.
+- Harness status: **not testable: not specified by the paper** - The paper's alpha combos need a library of many alphas, which it does not specify; there is nothing to combine without inventing it.
 
 ## Description (paper)
 

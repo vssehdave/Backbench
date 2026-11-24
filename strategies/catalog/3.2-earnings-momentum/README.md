@@ -2,7 +2,7 @@
 
 - Section: 3.2
 - Asset class: Stocks
-- Harness status: **not testable: cross-sectional universe** - ranks a stock universe by earnings surprise; needs earnings data and short selling.
+- Harness status: **not testable: data not available** - Alpaca's market-data API has no earnings, EPS or analyst data (checked against its docs); the strategy ranks stocks by earnings surprise (SUE) or analyst revisions.
 
 ## Description (paper)
 

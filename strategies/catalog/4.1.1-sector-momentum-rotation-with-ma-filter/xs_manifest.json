@@ -1,0 +1,19 @@
+{
+ "id": "xs_4_1_1_sector_momentum_ma_filter",
+ "version": "1",
+ "entry": "strategy_xs:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "T": 12,
+   "ma": 200,
+   "share": 0.1
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

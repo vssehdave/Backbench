@@ -1,0 +1,18 @@
+{
+ "id": "xs_3_10_mean_reversion_weighted_regression",
+ "version": "1",
+ "entry": "strategy_xs:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "lookback": 21,
+   "window": 252
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 0.0,
+  "name_cap": 0.05
+ },
+ "benchmark": "SPY"
+}

@@ -2,7 +2,7 @@
 
 - Section: 3.1
 - Asset class: Stocks
-- Harness status: **not testable: cross-sectional universe** - ranks a stock universe by cumulative return, and is long/short (dollar-neutral), which needs short selling.
+- Harness status: **tested: cross-sectional harness** (`python money.py xs strategies/catalog/3.1-price-momentum/xs_manifest.json`; results in `xs_results.json`) - **survivorship-biased**; see labels below.
 
 ## Description (paper)
 
@@ -49,3 +49,34 @@ So, if the total investment level is I = I L + *I S, where I L is the total long
 ## Source
 
 Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Section 3.1. The text above is that section only, lightly cleaned (ligatures fixed, most footnotes dropped); formulas are as extracted and may be garbled, so check the paper.
+
+## xs harness result
+
+Construction: Long the top decile and short the bottom decile of the S&P 500 by cumulative return over 12 months skipping the latest month (R_cum, eq. 267), equal weights, dollar neutral.
+Parameters are the paper's defaults, no tuning. Monthly rebalance, walk-forward folds (July-December windows 2016-2025), costs and borrow from `xsection.py`. Reproduce all with `python strategies/xs/run_catalog.py`.
+
+Labels: survivorship-biased; survivorship-biased S&P 500 universe.
+
+Summary over the 9 of 10 folds that traded (the rest abstained for lack of history); benchmarks use the same folds. Six-month returns.
+
+| | mean | median | mean Sharpe |
+|---|---|---|---|
+| strategy | -1.2% | +0.1% | -0.02 |
+| equal-weight | +8.0% | +7.6% | 1.24 |
+| SPY | +8.8% | +10.9% | 1.52 |
+| cash | +0.0% | +0.0% | n/a |
+
+Mean cost drag per fold 0.37%, turnover 8.0x per year.
+
+| test window | strategy | equal-weight | SPY | cash | Sharpe | cost drag |
+|---|---|---|---|---|---|---|
+| 2016-07-01..2016-12-30 | +0.0% | +8.8% | +7.9% | +0.0% | n/a | 0.00% (no trades) |
+| 2017-07-03..2017-12-29 | +0.1% | +9.9% | +11.5% | +0.0% | 0.07 | 0.39% |
+| 2018-07-02..2018-12-31 | +1.7% | -9.1% | -6.9% | +0.0% | 0.45 | 0.37% |
+| 2019-07-01..2019-12-31 | -4.1% | +8.2% | +10.9% | +0.0% | -0.62 | 0.37% |
+| 2020-07-01..2020-12-31 | -13.1% | +26.7% | +22.1% | +0.0% | -0.84 | 0.37% |
+| 2021-07-01..2021-12-31 | -2.7% | +8.6% | +11.7% | +0.0% | -0.46 | 0.38% |
+| 2022-07-01..2022-12-30 | +3.5% | +6.3% | +2.3% | +0.0% | 0.53 | 0.34% |
+| 2023-07-03..2023-12-29 | -3.7% | +6.4% | +8.0% | +0.0% | -0.73 | 0.36% |
+| 2024-07-01..2024-12-31 | +1.8% | +7.6% | +8.4% | +0.0% | 0.45 | 0.37% |
+| 2025-07-01..2025-12-31 | +5.3% | +7.2% | +11.0% | +0.0% | 0.97 | 0.39% |

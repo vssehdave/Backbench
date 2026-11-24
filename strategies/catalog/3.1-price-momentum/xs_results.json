@@ -1,0 +1,1194 @@
+{
+ "manifest": {
+  "id": "xs_3_1_price_momentum",
+  "version": "1",
+  "entry": "strategy_xs:decide",
+  "cadence": "monthly",
+  "levels": [
+   {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   }
+  ],
+  "limits": {
+   "max_gross": 1.0,
+   "max_net": 0.0,
+   "name_cap": 0.05
+  },
+  "benchmark": "SPY"
+ },
+ "config": {
+  "start": "2016-01-01",
+  "end": "2026-11-01",
+  "start_cash": 1000000.0,
+  "costs": {
+   "commission_per_share": 0.0035,
+   "commission_min": 0.35,
+   "commission_max_pct": 0.01,
+   "slippage_bps": 5.0,
+   "borrow_bps": 50.0,
+   "sell_fee_pct": 2.06e-05,
+   "sell_fee_per_share": 3e-06
+  },
+  "fee_profile": "ibkr-tiered-like-2026-11-23"
+ },
+ "data": {
+  "quality": {
+   "symbols_requested": 726,
+   "symbols_with_bars": 726,
+   "bars_off_spy_calendar": 0,
+   "adj_raw_date_mismatch": [],
+   "adjusted_moves_over_50pct": [
+    [
+     "AA",
+     "2016-11-01",
+     -0.733
+    ],
+    [
+     "AAP",
+     "2025-05-22",
+     0.57
+    ],
+    [
+     "ADT",
+     "2018-01-19",
+     -0.705
+    ],
+    [
+     "ADT",
+     "2020-08-03",
+     0.566
+    ],
+    [
+     "AIV",
+     "2020-11-03",
+     0.513
+    ],
+    [
+     "AMD",
+     "2016-04-22",
+     0.523
+    ],
+    [
+     "APA",
+     "2020-03-09",
+     -0.539
+    ],
+    [
+     "APC",
+     "2026-02-12",
+     -0.759
+    ],
+    [
+     "APTV",
+     "2017-12-05",
+     -0.716
+    ],
+    [
+     "ARNC",
+     "2020-04-01",
+     -0.892
+    ],
+    [
+     "BBBY",
+     "2021-06-02",
+     0.621
+    ],
+    [
+     "BBBY",
+     "2023-01-11",
+     0.686
+    ],
+    [
+     "BBBY",
+     "2023-01-12",
+     0.501
+    ],
+    [
+     "BBBY",
+     "2023-02-06",
+     0.921
+    ],
+    [
+     "BBBY",
+     "2025-08-29",
+     118.973
+    ],
+    [
+     "BE",
+     "2024-11-15",
+     0.592
+    ],
+    [
+     "CAM",
+     "2025-10-06",
+     -0.621
+    ],
+    [
+     "CHK",
+     "2020-03-13",
+     0.96
+    ],
+    [
+     "CHK",
+     "2020-06-05",
+     0.765
+    ],
+    [
+     "CHK",
+     "2020-06-08",
+     1.82
+    ],
+    [
+     "CHK",
+     "2020-06-09",
+     -0.66
+    ],
+    [
+     "CHK",
+     "2021-02-10",
+     2.797
+    ],
+    [
+     "CNX",
+     "2017-11-29",
+     -0.896
+    ],
+    [
+     "CPRI",
+     "2023-08-10",
+     0.557
+    ],
+    [
+     "CTRA",
+     "2020-03-13",
+     0.646
+    ],
+    [
+     "CTRA",
+     "2021-10-04",
+     0.707
+    ],
+    [
+     "CVNA",
+     "2023-06-08",
+     0.56
+    ],
+    [
+     "DNB",
+     "2020-07-01",
+     -0.825
+    ],
+    [
+     "DO",
+     "2020-03-13",
+     1.648
+    ],
+    [
+     "DO",
+     "2022-03-30",
+     6.992
+    ],
+    [
+     "ECHO",
+     "2025-08-26",
+     0.702
+    ],
+    [
+     "ENDP",
+     "2022-06-28",
+     0.853
+    ],
+    [
+     "EQT",
+     "2018-11-13",
+     -0.571
+    ],
+    [
+     "EVHC",
+     "2016-12-02",
+     2.096
+    ],
+    [
+     "EXE",
+     "2020-03-13",
+     0.96
+    ],
+    [
+     "EXE",
+     "2020-06-05",
+     0.765
+    ],
+    [
+     "EXE",
+     "2020-06-08",
+     1.82
+    ],
+    [
+     "EXE",
+     "2020-06-09",
+     -0.66
+    ],
+    [
+     "EXE",
+     "2021-02-10",
+     2.797
+    ],
+    [
+     "FL",
+     "2025-05-15",
+     0.857
+    ],
+    [
+     "FLR",
+     "2020-03-19",
+     0.762
+    ],
+    [
+     "FOSL",
+     "2018-02-14",
+     0.877
+    ],
+    [
+     "FOSL",
+     "2020-06-08",
+     0.542
+    ],
+    [
+     "FOSL",
+     "2021-01-27",
+     0.87
+    ],
+    [
+     "FOSL",
+     "2024-12-02",
+     0.61
+    ],
+    [
+     "FRC",
+     "2023-03-13",
+     -0.618
+    ],
+    [
+     "FTR",
+     "2020-03-20",
+     2.789
+    ],
+    [
+     "FTR",
+     "2020-03-23",
+     -0.567
+    ],
+    [
+     "GL",
+     "2024-04-11",
+     -0.531
+    ],
+    [
+     "GME",
+     "2021-01-13",
+     0.574
+    ],
+    [
+     "GME",
+     "2021-01-22",
+     0.51
+    ],
+    [
+     "GME",
+     "2021-01-26",
+     0.927
+    ],
+    [
+     "GME",
+     "2021-01-27",
+     1.349
+    ],
+    [
+     "GME",
+     "2021-01-29",
+     0.679
+    ],
+    [
+     "GME",
+     "2021-02-02",
+     -0.6
+    ],
+    [
+     "GME",
+     "2021-02-24",
+     1.04
+    ],
+    [
+     "GME",
+     "2021-03-25",
+     0.527
+    ],
+    [
+     "GME",
+     "2024-05-13",
+     0.744
+    ],
+    [
+     "GME",
+     "2024-05-14",
+     0.601
+    ],
+    [
+     "HOOD",
+     "2021-08-04",
+     0.504
+    ],
+    [
+     "INFO",
+     "2024-10-10",
+     -0.815
+    ],
+    [
+     "LLL",
+     "2021-10-13",
+     -0.987
+    ],
+    [
+     "LLL",
+     "2022-03-22",
+     1.195
+    ],
+    [
+     "LUMN",
+     "2024-08-06",
+     0.931
+    ],
+    [
+     "MNK",
+     "2019-09-10",
+     0.848
+    ],
+    [
+     "MNK",
+     "2022-10-27",
+     20.2
+    ],
+    [
+     "MNK",
+     "2023-05-19",
+     4.575
+    ],
+    [
+     "MNK",
+     "2023-07-26",
+     1.864
+    ],
+    [
+     "MON",
+     "2021-03-16",
+     -0.924
+    ],
+    [
+     "MRNA",
+     "2026-08-19",
+     1.77
+    ],
+    [
+     "NKTR",
+     "2022-03-14",
+     -0.609
+    ],
+    [
+     "NKTR",
+     "2023-08-07",
+     0.915
+    ],
+    [
+     "NKTR",
+     "2025-06-24",
+     1.563
+    ],
+    [
+     "NKTR",
+     "2026-02-10",
+     0.511
+    ],
+    [
+     "OXY",
+     "2020-03-09",
+     -0.52
+    ],
+    [
+     "PBI",
+     "2021-01-26",
+     0.81
+    ],
+    [
+     "PCG",
+     "2019-01-14",
+     -0.524
+    ],
+    [
+     "POM",
+     "2025-10-08",
+     -0.822
+    ],
+    [
+     "POM",
+     "2025-12-10",
+     -0.908
+    ],
+    [
+     "POM",
+     "2026-03-09",
+     0.741
+    ],
+    [
+     "POM",
+     "2026-05-08",
+     -0.859
+    ],
+    [
+     "POM",
+     "2026-05-11",
+     0.975
+    ],
+    [
+     "POM",
+     "2026-10-20",
+     -0.625
+    ],
+    [
+     "POM",
+     "2026-10-21",
+     3.528
+    ],
+    [
+     "RIG",
+     "2020-06-05",
+     0.506
+    ],
+    [
+     "RRC",
+     "2020-03-13",
+     0.602
+    ],
+    [
+     "RTX",
+     "2020-04-03",
+     -0.71
+    ],
+    [
+     "SE",
+     "2017-10-20",
+     -0.6
+    ],
+    [
+     "SIVB",
+     "2023-03-09",
+     -0.604
+    ],
+    [
+     "SMCI",
+     "2020-01-14",
+     0.725
+    ],
+    [
+     "SPLS",
+     "2026-01-16",
+     3.877
+    ],
+    [
+     "STI",
+     "2024-03-11",
+     1.257
+    ],
+    [
+     "STI",
+     "2024-03-18",
+     0.563
+    ],
+    [
+     "STI",
+     "2024-06-18",
+     -0.644
+    ],
+    [
+     "STI",
+     "2024-12-27",
+     0.687
+    ],
+    [
+     "STI",
+     "2025-05-08",
+     0.675
+    ],
+    [
+     "STI",
+     "2025-09-03",
+     1.137
+    ],
+    [
+     "STI",
+     "2025-10-13",
+     2.939
+    ],
+    [
+     "STI",
+     "2026-06-04",
+     3.506
+    ],
+    [
+     "STI",
+     "2026-06-05",
+     0.573
+    ],
+    [
+     "SW",
+     "2016-05-16",
+     -0.845
+    ],
+    [
+     "TE",
+     "2024-11-06",
+     0.667
+    ],
+    [
+     "TGNA",
+     "2017-06-01",
+     -0.784
+    ],
+    [
+     "TRGP",
+     "2020-03-09",
+     -0.529
+    ],
+    [
+     "TRGP",
+     "2020-03-19",
+     0.555
+    ],
+    [
+     "XL",
+     "2020-12-22",
+     -0.696
+    ],
+    [
+     "XL",
+     "2020-12-23",
+     0.86
+    ]
+   ],
+   "membership_inconsistencies": 5,
+   "sessions": 2723,
+   "universe": {
+    "constituents": {
+     "url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+     "revision_id": 1384572480,
+     "sha256": "ac1aae2702cbe4bfb3829e3d8cd81a33e72ff4b7ecafaab7c0a753e9a1692733",
+     "fetched_at_utc": "2026-11-24T00:48:19.883678+00:00"
+    },
+    "changes": {
+     "url": "https://en.wikipedia.org/wiki/Historical_components_of_the_S%26P_500",
+     "revision_id": 1387311792,
+     "sha256": "82ffe7544e11a45889bcf0eed325660bb66b983452d662f4a1ea58dd0a758f10",
+     "fetched_at_utc": "2026-11-24T00:48:20.845517+00:00"
+    },
+    "malformed_change_rows": 0
+   }
+  },
+  "survivorship": {
+   "first": "2016-01-04",
+   "last": "2026-10-30",
+   "ever_members": 725,
+   "members_without_any_data": 0,
+   "missing_symbols": [],
+   "data_starts_after_membership": 17,
+   "data_ends_before_membership_ends": 0,
+   "member_days": 1377890,
+   "member_days_with_data": 1365024,
+   "member_day_coverage": 0.9906625347451539,
+   "survivorship_biased": true,
+   "late_symbols": [
+    "AA",
+    "ANDV",
+    "APTV",
+    "BBWI",
+    "CTRA",
+    "DAY",
+    "FTI",
+    "LIN",
+    "Q",
+    "SKYD",
+    "SNDK",
+    "STI",
+    "TE",
+    "TFCF",
+    "TFCFA",
+    "UAA",
+    "VTRS"
+   ],
+   "early_symbols": []
+  },
+  "panel_sha256": "e07ee5da97a78f0ff9485ee4ee81c553eac54b2572d91899198bf2e67dd62ead"
+ },
+ "folds": [
+  {
+   "selection_start": "2016-01-05",
+   "test_start": "2016-07-01",
+   "test_end": "2016-12-30",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": null
+   },
+   "strategy": {
+    "total_return": 0.0,
+    "volatility": 0.0,
+    "sharpe": null,
+    "max_drawdown": 0.0
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.08821166699939864,
+     "volatility": 0.10726598838446706,
+     "sharpe": 1.6175432198556055,
+     "max_drawdown": -0.0520444747166684
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.07875601297684298,
+     "volatility": 0.09045690872048621,
+     "sharpe": 1.708290284725319,
+     "max_drawdown": -0.04326434568693516
+    }
+   },
+   "turnover_per_year": 0.0,
+   "cost_drag": 0.0,
+   "costs_usd": {
+    "commission": 0.0,
+    "regulatory": 0.0,
+    "slippage": 0.0,
+    "borrow": 0.0
+   },
+   "long_leg_return": 0.0,
+   "short_leg_return": 0.0,
+   "decisions": 0,
+   "abstentions": 6,
+   "forced_closes": 0,
+   "names_held_avg": 0
+  },
+  {
+   "selection_start": "2017-01-03",
+   "test_start": "2017-07-03",
+   "test_end": "2017-12-29",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 0.5294692157752843
+   },
+   "strategy": {
+    "total_return": 0.0010310932979549214,
+    "volatility": 0.08676452644264956,
+    "sharpe": 0.06690696038185323,
+    "max_drawdown": -0.06940648967179808
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.09913234311750596,
+     "volatility": 0.06578187033927686,
+     "sharpe": 2.9075109820323655,
+     "max_drawdown": -0.03194086715151734
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.11512158054711263,
+     "volatility": 0.062362306929865045,
+     "sharpe": 3.526994425441251,
+     "max_drawdown": -0.02066536928922247
+    }
+   },
+   "turnover_per_year": 8.610329362980611,
+   "cost_drag": 0.003863418709647263,
+   "costs_usd": {
+    "commission": 412.7606046099935,
+    "regulatory": 44.905456416735475,
+    "slippage": 2146.684854880096,
+    "borrow": 1259.067793740438
+   },
+   "long_leg_return": 0.057246548067614714,
+   "short_leg_return": -0.052352036060014026,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 1,
+   "names_held_avg": 98.0
+  },
+  {
+   "selection_start": "2018-01-02",
+   "test_start": "2018-07-02",
+   "test_end": "2018-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 0.6305418465195533
+   },
+   "strategy": {
+    "total_return": 0.01698746238612059,
+    "volatility": 0.08191027675664972,
+    "sharpe": 0.4519865706031048,
+    "max_drawdown": -0.04859565545431854
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": -0.09057230442571018,
+     "volatility": 0.15969696635995248,
+     "sharpe": -1.1092392236785833,
+     "max_drawdown": -0.19658220734881682
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": -0.06877269123231644,
+     "volatility": 0.17472192340974518,
+     "sharpe": -0.7286669532190534,
+     "max_drawdown": -0.19326466844115264
+    }
+   },
+   "turnover_per_year": 8.065788517586268,
+   "cost_drag": 0.0036864796109786673,
+   "costs_usd": {
+    "commission": 378.6434618384044,
+    "regulatory": 42.38749702125507,
+    "slippage": 2044.0696928129544,
+    "borrow": 1221.3789593060533
+   },
+   "long_leg_return": -0.07473979635166232,
+   "short_leg_return": 0.09541373834876529,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 2,
+   "names_held_avg": 98.0
+  },
+  {
+   "selection_start": "2019-01-02",
+   "test_start": "2019-07-01",
+   "test_end": "2019-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 0.024361941414021707
+   },
+   "strategy": {
+    "total_return": -0.04088555827688811,
+    "volatility": 0.12145848530476606,
+    "sharpe": -0.6160496970674062,
+    "max_drawdown": -0.1206967380084154
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.08238342266870324,
+     "volatility": 0.1266767579059264,
+     "sharpe": 1.2939181540953848,
+     "max_drawdown": -0.06986080658207916
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.1085729438951395,
+     "volatility": 0.12269107476468102,
+     "sharpe": 1.7157960755129227,
+     "max_drawdown": -0.05942268799411665
+    }
+   },
+   "turnover_per_year": 7.793903856177747,
+   "cost_drag": 0.003670391446112154,
+   "costs_usd": {
+    "commission": 357.26807966310906,
+    "regulatory": 40.90388912736083,
+    "slippage": 1985.843996231596,
+    "borrow": 1286.3754810900882
+   },
+   "long_leg_return": 0.014259320185001832,
+   "short_leg_return": -0.05147448701577733,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 3,
+   "names_held_avg": 98.33333333333333
+  },
+  {
+   "selection_start": "2020-01-02",
+   "test_start": "2020-07-01",
+   "test_end": "2020-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 0.4521989204457508
+   },
+   "strategy": {
+    "total_return": -0.13091250454691805,
+    "volatility": 0.28004491543573207,
+    "sharpe": -0.8426969813373689,
+    "max_drawdown": -0.21023451667305104
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.2666994006668568,
+     "volatility": 0.18327474994906243,
+     "sharpe": 2.6326692817435777,
+     "max_drawdown": -0.07296166252444203
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.22143134007540755,
+     "volatility": 0.1621154980545507,
+     "sharpe": 2.5117581713711012,
+     "max_drawdown": -0.09487296516050492
+    }
+   },
+   "turnover_per_year": 7.532881849790876,
+   "cost_drag": 0.003741729905096344,
+   "costs_usd": {
+    "commission": 501.86160758481964,
+    "regulatory": 38.20271527777152,
+    "slippage": 1898.6989867966086,
+    "borrow": 1302.966595437144
+   },
+   "long_leg_return": 0.08346721097535646,
+   "short_leg_return": -0.2106379856171777,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 1,
+   "names_held_avg": 99.33333333333333
+  },
+  {
+   "selection_start": "2021-01-04",
+   "test_start": "2021-07-01",
+   "test_end": "2021-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": -1.656681070827092
+   },
+   "strategy": {
+    "total_return": -0.02669306866131027,
+    "volatility": 0.1036252573895536,
+    "sharpe": -0.46255395372425095,
+    "max_drawdown": -0.06582549127715098
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.0863908223727401,
+     "volatility": 0.13483416707170048,
+     "sharpe": 1.2772147487619485,
+     "max_drawdown": -0.0637605513313172
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.1170500676589985,
+     "volatility": 0.12531866453507648,
+     "sharpe": 1.8019206595695507,
+     "max_drawdown": -0.05112547042533544
+    }
+   },
+   "turnover_per_year": 8.428452986060192,
+   "cost_drag": 0.0038040570486624855,
+   "costs_usd": {
+    "commission": 364.23678682916545,
+    "regulatory": 44.09608847706683,
+    "slippage": 2124.4319855275066,
+    "borrow": 1271.2921878287466
+   },
+   "long_leg_return": 0.016505413871117265,
+   "short_leg_return": -0.039394425483765906,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 0,
+   "names_held_avg": 100.0
+  },
+  {
+   "selection_start": "2022-01-03",
+   "test_start": "2022-07-01",
+   "test_end": "2022-12-30",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 1.345253663966422
+   },
+   "strategy": {
+    "total_return": 0.0347236329874796,
+    "volatility": 0.14923060892373877,
+    "sharpe": 0.5283663564930354,
+    "max_drawdown": -0.07590823586460227
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.06315445279987197,
+     "volatility": 0.22792216656573233,
+     "sharpe": 0.645878152272878,
+     "max_drawdown": -0.162158488578085
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.02256798430053264,
+     "volatility": 0.23240671277491196,
+     "sharpe": 0.3054538019671914,
+     "max_drawdown": -0.16680203795318627
+    }
+   },
+   "turnover_per_year": 7.042058479575454,
+   "cost_drag": 0.0033934492721655945,
+   "costs_usd": {
+    "commission": 327.2731278561945,
+    "regulatory": 36.65781140611039,
+    "slippage": 1765.3379476196005,
+    "borrow": 1264.1803852836895
+   },
+   "long_leg_return": 0.06176077637902521,
+   "short_leg_return": -0.02364369411938543,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 2,
+   "names_held_avg": 98.66666666666667
+  },
+  {
+   "selection_start": "2023-01-03",
+   "test_start": "2023-07-03",
+   "test_end": "2023-12-29",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": -0.8317178597779209
+   },
+   "strategy": {
+    "total_return": -0.03661348460726721,
+    "volatility": 0.0960485643896672,
+    "sharpe": -0.7287736136974539,
+    "max_drawdown": -0.07299460518519851
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.06362290340201593,
+     "volatility": 0.12701135471805597,
+     "sharpe": 1.0343844836647191,
+     "max_drawdown": -0.13054569423726692
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.08040283581388796,
+     "volatility": 0.11556404166064861,
+     "sharpe": 1.3961150309400365,
+     "max_drawdown": -0.0997454082560465
+    }
+   },
+   "turnover_per_year": 8.098037716548085,
+   "cost_drag": 0.003649430702161454,
+   "costs_usd": {
+    "commission": 359.5152932151923,
+    "regulatory": 41.729093700816335,
+    "slippage": 2018.9628279612966,
+    "borrow": 1229.2234872841489
+   },
+   "long_leg_return": 0.03127313752253838,
+   "short_leg_return": -0.06423719142764385,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 0,
+   "names_held_avg": 99.33333333333333
+  },
+  {
+   "selection_start": "2024-01-02",
+   "test_start": "2024-07-01",
+   "test_end": "2024-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": 2.4125302629403294
+   },
+   "strategy": {
+    "total_return": 0.018322528438331487,
+    "volatility": 0.0889680864930433,
+    "sharpe": 0.4460356570371755,
+    "max_drawdown": -0.05556813731357724
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.07632463322283978,
+     "volatility": 0.12455463935764341,
+     "sharpe": 1.2247863644792054,
+     "max_drawdown": -0.07010971737293814
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.08385977484018192,
+     "volatility": 0.1418103409441087,
+     "sharpe": 1.1889153024652452,
+     "max_drawdown": -0.08406460638433166
+    }
+   },
+   "turnover_per_year": 7.98874645618413,
+   "cost_drag": 0.0036525424916283075,
+   "costs_usd": {
+    "commission": 335.3649496297466,
+    "regulatory": 42.27839000537642,
+    "slippage": 2035.4888230825345,
+    "borrow": 1239.41032891065
+   },
+   "long_leg_return": 0.04685798965076555,
+   "short_leg_return": -0.02488291872080688,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 0,
+   "names_held_avg": 98.0
+  },
+  {
+   "selection_start": "2025-01-02",
+   "test_start": "2025-07-01",
+   "test_end": "2025-12-31",
+   "selected_level": {
+    "lookback": 252,
+    "skip": 21,
+    "share": 0.1
+   },
+   "selection_sharpe": {
+    "0": -0.14070665726495907
+   },
+   "strategy": {
+    "total_return": 0.05253448759864954,
+    "volatility": 0.11044390414016451,
+    "sharpe": 0.967694457598744,
+    "max_drawdown": -0.045631923953186715
+   },
+   "benchmarks": {
+    "equal_weight_universe": {
+     "total_return": 0.07185559793105356,
+     "volatility": 0.11155221988338568,
+     "sharpe": 1.2802883688579665,
+     "max_drawdown": -0.048188416558699654
+    },
+    "cash": {
+     "total_return": 0.0,
+     "volatility": 0.0,
+     "sharpe": null,
+     "max_drawdown": 0.0
+    },
+    "spy": {
+     "total_return": 0.11001739016307388,
+     "volatility": 0.10814332509552047,
+     "sharpe": 1.9547029025051672,
+     "max_drawdown": -0.050719096497161775
+    }
+   },
+   "turnover_per_year": 8.538219344131743,
+   "cost_drag": 0.0038536650728936152,
+   "costs_usd": {
+    "commission": 349.8727115027351,
+    "regulatory": 44.97516896915875,
+    "slippage": 2152.099122356492,
+    "borrow": 1306.718070065229
+   },
+   "long_leg_return": 0.08940965422908576,
+   "short_leg_return": -0.03302150155753932,
+   "decisions": 6,
+   "abstentions": 0,
+   "forced_closes": 0,
+   "names_held_avg": 100.0
+  }
+ ],
+ "labels": [
+  "survivorship-biased",
+  "survivorship-biased S&P 500 universe"
+ ],
+ "summary": {
+  "folds_total": 10,
+  "folds_traded": 9,
+  "strategy": {
+   "mean_return": -0.012389490153760833,
+   "median_return": 0.0010310932979549214,
+   "mean_sharpe": -0.021009360412507443
+  },
+  "equal_weight": {
+   "mean_return": 0.07988791908398635,
+   "median_return": 0.07632463322283978,
+   "mean_sharpe": 1.2430457013588292
+  },
+  "spy": {
+   "mean_return": 0.08780569178466868,
+   "median_return": 0.1085729438951395,
+   "mean_sharpe": 1.5192210462837126
+  },
+  "cash": {
+   "mean_return": 0.0,
+   "median_return": 0.0,
+   "mean_sharpe": null
+  },
+  "mean_cost_drag": 0.0037016849177050983,
+  "mean_turnover_per_year": 8.010935396559455
+ }
+}
