@@ -22,63 +22,63 @@ Tested results are SPY 2016-2026 (2.2 and 2.4: SPY 2024-01 to 2026-11, option ba
 | Section | Strategy | Asset class | Status | Headline |
 |---|---|---|---|---|
 | 2.2 | [Covered call](2.2-covered-call/) | Options | tested | 33.7% vs B&H 41.5%, low confidence |
-| 2.3 | [Covered put](2.3-covered-put/) | Options | not testable: options chains |  |
+| 2.3 | [Covered put](2.3-covered-put/) | Options | tested | -30.7% vs B&H 41.5%, low confidence |
 | 2.4 | [Protective put](2.4-protective-put/) | Options | tested | 32.5% vs B&H 41.5%, low confidence |
-| 2.5 | [Protective call](2.5-protective-call/) | Options | not testable: options chains |  |
-| 2.6 | [Bull call spread](2.6-bull-call-spread/) | Options | not testable: options chains |  |
-| 2.7 | [Bull put spread](2.7-bull-put-spread/) | Options | not testable: options chains |  |
-| 2.8 | [Bear call spread](2.8-bear-call-spread/) | Options | not testable: options chains |  |
-| 2.9 | [Bear put spread](2.9-bear-put-spread/) | Options | not testable: options chains |  |
-| 2.10 | [Long synthetic forward](2.10-long-synthetic-forward/) | Options | not testable: options chains |  |
-| 2.11 | [Short synthetic forward](2.11-short-synthetic-forward/) | Options | not testable: options chains |  |
-| 2.12 | [Long combo](2.12-long-combo/) | Options | not testable: options chains |  |
-| 2.13 | [Short combo](2.13-short-combo/) | Options | not testable: options chains |  |
-| 2.14 | [Bull call ladder](2.14-bull-call-ladder/) | Options | not testable: options chains |  |
-| 2.15 | [Bull put ladder](2.15-bull-put-ladder/) | Options | not testable: options chains |  |
-| 2.16 | [Bear call ladder](2.16-bear-call-ladder/) | Options | not testable: options chains |  |
-| 2.17 | [Bear put ladder](2.17-bear-put-ladder/) | Options | not testable: options chains |  |
-| 2.18 | [Calendar call spread](2.18-calendar-call-spread/) | Options | not testable: options chains |  |
-| 2.19 | [Calendar put spread](2.19-calendar-put-spread/) | Options | not testable: options chains |  |
-| 2.20 | [Diagonal call spread](2.20-diagonal-call-spread/) | Options | not testable: options chains |  |
-| 2.21 | [Diagonal put spread](2.21-diagonal-put-spread/) | Options | not testable: options chains |  |
-| 2.22 | [Long straddle](2.22-long-straddle/) | Options | not testable: options chains |  |
-| 2.23 | [Long strangle](2.23-long-strangle/) | Options | not testable: options chains |  |
-| 2.24 | [Long guts](2.24-long-guts/) | Options | not testable: options chains |  |
-| 2.25 | [Short straddle](2.25-short-straddle/) | Options | not testable: options chains |  |
-| 2.26 | [Short strangle](2.26-short-strangle/) | Options | not testable: options chains |  |
-| 2.27 | [Short guts](2.27-short-guts/) | Options | not testable: options chains |  |
-| 2.28 | [Long call synthetic straddle](2.28-long-call-synthetic-straddle/) | Options | not testable: options chains |  |
-| 2.29 | [Long put synthetic straddle](2.29-long-put-synthetic-straddle/) | Options | not testable: options chains |  |
-| 2.30 | [Short call synthetic straddle](2.30-short-call-synthetic-straddle/) | Options | not testable: options chains |  |
-| 2.31 | [Short put synthetic straddle](2.31-short-put-synthetic-straddle/) | Options | not testable: options chains |  |
-| 2.32 | [Covered short straddle](2.32-covered-short-straddle/) | Options | not testable: options chains |  |
-| 2.33 | [Covered short strangle](2.33-covered-short-strangle/) | Options | not testable: options chains |  |
-| 2.34 | [Strap](2.34-strap/) | Options | not testable: options chains |  |
-| 2.35 | [Strip](2.35-strip/) | Options | not testable: options chains |  |
-| 2.36 | [Call ratio backspread](2.36-call-ratio-backspread/) | Options | not testable: options chains |  |
-| 2.37 | [Put ratio backspread](2.37-put-ratio-backspread/) | Options | not testable: options chains |  |
-| 2.38 | [Ratio call spread](2.38-ratio-call-spread/) | Options | not testable: options chains |  |
-| 2.39 | [Ratio put spread](2.39-ratio-put-spread/) | Options | not testable: options chains |  |
-| 2.40 | [Long call butterfly](2.40-long-call-butterfly/) | Options | not testable: options chains |  |
-| 2.40.1 | [Modified call butterfly](2.40.1-modified-call-butterfly/) | Options | not testable: options chains |  |
-| 2.41 | [Long put butterfly](2.41-long-put-butterfly/) | Options | not testable: options chains |  |
-| 2.41.1 | [Modified put butterfly](2.41.1-modified-put-butterfly/) | Options | not testable: options chains |  |
-| 2.42 | [Short call butterfly](2.42-short-call-butterfly/) | Options | not testable: options chains |  |
-| 2.43 | [Short put butterfly](2.43-short-put-butterfly/) | Options | not testable: options chains |  |
-| 2.44 | ["Long" iron butterfly](2.44-long-iron-butterfly/) | Options | not testable: options chains |  |
-| 2.45 | ["Short" iron butterfly](2.45-short-iron-butterfly/) | Options | not testable: options chains |  |
-| 2.46 | [Long call condor](2.46-long-call-condor/) | Options | not testable: options chains |  |
-| 2.47 | [Long put condor](2.47-long-put-condor/) | Options | not testable: options chains |  |
-| 2.48 | [Short call condor](2.48-short-call-condor/) | Options | not testable: options chains |  |
-| 2.49 | [Short put condor](2.49-short-put-condor/) | Options | not testable: options chains |  |
-| 2.50 | [Long iron condor](2.50-long-iron-condor/) | Options | not testable: options chains |  |
-| 2.51 | [Short iron condor](2.51-short-iron-condor/) | Options | not testable: options chains |  |
-| 2.52 | [Long box](2.52-long-box/) | Options | not testable: options chains |  |
-| 2.53 | [Collar](2.53-collar/) | Options | not testable: options chains |  |
-| 2.54 | [Bullish short seagull spread](2.54-bullish-short-seagull-spread/) | Options | not testable: options chains |  |
-| 2.55 | [Bearish long seagull spread](2.55-bearish-long-seagull-spread/) | Options | not testable: options chains |  |
-| 2.56 | [Bearish short seagull spread](2.56-bearish-short-seagull-spread/) | Options | not testable: options chains |  |
-| 2.57 | [Bullish long seagull spread](2.57-bullish-long-seagull-spread/) | Options | not testable: options chains |  |
+| 2.5 | [Protective call](2.5-protective-call/) | Options | tested | -33.8% vs B&H 41.5%, low confidence |
+| 2.6 | [Bull call spread](2.6-bull-call-spread/) | Options | tested | -2.0% vs B&H 41.5%, low confidence |
+| 2.7 | [Bull put spread](2.7-bull-put-spread/) | Options | tested | 1.7% vs B&H 41.5%, low confidence |
+| 2.8 | [Bear call spread](2.8-bear-call-spread/) | Options | tested | 2.6% vs B&H 41.5%, low confidence |
+| 2.9 | [Bear put spread](2.9-bear-put-spread/) | Options | tested | -10.5% vs B&H 41.5%, low confidence |
+| 2.10 | [Long synthetic forward](2.10-long-synthetic-forward/) | Options | tested | 26.8% vs B&H 41.5%, low confidence |
+| 2.11 | [Short synthetic forward](2.11-short-synthetic-forward/) | Options | tested | -27.6% vs B&H 41.5%, low confidence |
+| 2.12 | [Long combo](2.12-long-combo/) | Options | tested | 18.4% vs B&H 41.5%, low confidence |
+| 2.13 | [Short combo](2.13-short-combo/) | Options | tested | -19.1% vs B&H 41.5%, low confidence |
+| 2.14 | [Bull call ladder](2.14-bull-call-ladder/) | Options | tested | -13.1% vs B&H 41.5%, low confidence |
+| 2.15 | [Bull put ladder](2.15-bull-put-ladder/) | Options | tested | 0.7% vs B&H 41.5%, low confidence |
+| 2.16 | [Bear call ladder](2.16-bear-call-ladder/) | Options | tested | 12.0% vs B&H 41.5%, low confidence |
+| 2.17 | [Bear put ladder](2.17-bear-put-ladder/) | Options | tested | -1.8% vs B&H 41.5%, low confidence |
+| 2.18 | [Calendar call spread](2.18-calendar-call-spread/) | Options | tested | -9.1% vs B&H 56.2%, low confidence |
+| 2.19 | [Calendar put spread](2.19-calendar-put-spread/) | Options | tested | 22.4% vs B&H 56.2%, low confidence |
+| 2.20 | [Diagonal call spread](2.20-diagonal-call-spread/) | Options | tested | 10.7% vs B&H 56.2%, low confidence |
+| 2.21 | [Diagonal put spread](2.21-diagonal-put-spread/) | Options | tested | 3.8% vs B&H 56.2%, low confidence |
+| 2.22 | [Long straddle](2.22-long-straddle/) | Options | tested | -15.2% vs B&H 41.5%, low confidence |
+| 2.23 | [Long strangle](2.23-long-strangle/) | Options | tested | -3.4% vs B&H 41.5%, low confidence |
+| 2.24 | [Long guts](2.24-long-guts/) | Options | tested | -2.9% vs B&H 41.5%, low confidence |
+| 2.25 | [Short straddle](2.25-short-straddle/) | Options | tested | 14.5% vs B&H 41.5%, low confidence |
+| 2.26 | [Short strangle](2.26-short-strangle/) | Options | tested | 2.7% vs B&H 41.5%, low confidence |
+| 2.27 | [Short guts](2.27-short-guts/) | Options | tested | 2.2% vs B&H 41.5%, low confidence |
+| 2.28 | [Long call synthetic straddle](2.28-long-call-synthetic-straddle/) | Options | tested | -29.5% vs B&H 41.5%, low confidence |
+| 2.29 | [Long put synthetic straddle](2.29-long-put-synthetic-straddle/) | Options | tested | -0.9% vs B&H 41.5%, low confidence |
+| 2.30 | [Short call synthetic straddle](2.30-short-call-synthetic-straddle/) | Options | tested | 28.8% vs B&H 41.5%, low confidence |
+| 2.31 | [Short put synthetic straddle](2.31-short-put-synthetic-straddle/) | Options | tested | 0.2% vs B&H 41.5%, low confidence |
+| 2.32 | [Covered short straddle](2.32-covered-short-straddle/) | Options | tested | 56.0% vs B&H 41.5%, low confidence |
+| 2.33 | [Covered short strangle](2.33-covered-short-strangle/) | Options | tested | 44.2% vs B&H 41.5%, low confidence |
+| 2.34 | [Strap](2.34-strap/) | Options | tested | -9.2% vs B&H 41.5%, low confidence |
+| 2.35 | [Strip](2.35-strip/) | Options | tested | -36.4% vs B&H 41.5%, low confidence |
+| 2.36 | [Call ratio backspread](2.36-call-ratio-backspread/) | Options | tested | 9.0% vs B&H 41.5%, low confidence |
+| 2.37 | [Put ratio backspread](2.37-put-ratio-backspread/) | Options | tested | -1.4% vs B&H 41.5%, low confidence |
+| 2.38 | [Ratio call spread](2.38-ratio-call-spread/) | Options | tested | 3.9% vs B&H 41.5%, low confidence |
+| 2.39 | [Ratio put spread](2.39-ratio-put-spread/) | Options | tested | 22.2% vs B&H 41.5%, low confidence |
+| 2.40 | [Long call butterfly](2.40-long-call-butterfly/) | Options | tested | 11.6% vs B&H 41.5%, low confidence |
+| 2.40.1 | [Modified call butterfly](2.40.1-modified-call-butterfly/) | Options | tested | 13.1% vs B&H 41.5%, low confidence |
+| 2.41 | [Long put butterfly](2.41-long-put-butterfly/) | Options | tested | 11.1% vs B&H 41.5%, low confidence |
+| 2.41.1 | [Modified put butterfly](2.41.1-modified-put-butterfly/) | Options | tested | 13.2% vs B&H 41.5%, low confidence |
+| 2.42 | [Short call butterfly](2.42-short-call-butterfly/) | Options | tested | -13.0% vs B&H 41.5%, low confidence |
+| 2.43 | [Short put butterfly](2.43-short-put-butterfly/) | Options | tested | -12.5% vs B&H 41.5%, low confidence |
+| 2.44 | ["Long" iron butterfly](2.44-long-iron-butterfly/) | Options | tested | 11.1% vs B&H 41.5%, low confidence |
+| 2.45 | ["Short" iron butterfly](2.45-short-iron-butterfly/) | Options | tested | -12.5% vs B&H 41.5%, low confidence |
+| 2.46 | [Long call condor](2.46-long-call-condor/) | Options | tested | 0.1% vs B&H 41.5%, low confidence |
+| 2.47 | [Long put condor](2.47-long-put-condor/) | Options | tested | 12.4% vs B&H 41.5%, low confidence |
+| 2.48 | [Short call condor](2.48-short-call-condor/) | Options | tested | -1.6% vs B&H 41.5%, low confidence |
+| 2.49 | [Short put condor](2.49-short-put-condor/) | Options | tested | -13.9% vs B&H 41.5%, low confidence |
+| 2.50 | [Long iron condor](2.50-long-iron-condor/) | Options | tested | 8.2% vs B&H 41.5%, low confidence |
+| 2.51 | [Short iron condor](2.51-short-iron-condor/) | Options | tested | -9.7% vs B&H 41.5%, low confidence |
+| 2.52 | [Long box](2.52-long-box/) | Options | tested | -0.2% vs B&H 41.5%, low confidence |
+| 2.53 | [Collar](2.53-collar/) | Options | tested | 24.4% vs B&H 41.5%, low confidence |
+| 2.54 | [Bullish short seagull spread](2.54-bullish-short-seagull-spread/) | Options | tested | 8.7% vs B&H 41.5%, low confidence |
+| 2.55 | [Bearish long seagull spread](2.55-bearish-long-seagull-spread/) | Options | tested | -9.8% vs B&H 41.5%, low confidence |
+| 2.56 | [Bearish short seagull spread](2.56-bearish-short-seagull-spread/) | Options | tested | -18.5% vs B&H 41.5%, low confidence |
+| 2.57 | [Bullish long seagull spread](2.57-bullish-long-seagull-spread/) | Options | tested | 17.4% vs B&H 41.5%, low confidence |
 | 3.1 | [Price-momentum](3.1-price-momentum/) | Stocks | not testable: cross-sectional universe |  |
 | 3.2 | [Earnings-momentum](3.2-earnings-momentum/) | Stocks | not testable: cross-sectional universe |  |
 | 3.3 | [Value](3.3-value/) | Stocks | not testable: cross-sectional universe |  |

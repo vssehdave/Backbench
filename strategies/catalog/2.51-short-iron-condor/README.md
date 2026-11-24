@@ -2,7 +2,7 @@
 
 - Section: 2.51
 - Asset class: Options
-- Harness status: **not testable: options chains** - multi-leg option position; needs option chains and prices, while the harness holds shares of one instrument.
+- Harness status: **tested** (own runner `options_bt.py`, not the share harness). Rule as implemented: Each month from one monthly expiry to the next, held to expiry: short 1 x n put contracts at spot*0.9625; long 1 x n put contracts at spot*0.9875; long 1 x n call contracts at spot*1.0125; short 1 x n call contracts at spot*1.0375. Low confidence: about 2.8 years of data (2024-01-19 to 2026-11-20), option trade closes rather than quotes, half-spread 0.02 USD/share is an assumption. See `options_manifest.json`, `options_results.json` and docs/options.md.
 
 ## Description (paper)
 
@@ -13,3 +13,14 @@ $$ fT = (K2 −ST)+ + (ST −K3)+ −(K1 −ST)+ −(ST −K4)+ −D (231) $$ S�
 ## Source
 
 Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Section 2.51. The text above is that section only, lightly cleaned (ligatures fixed, most footnotes dropped); formulas are as extracted and may be garbled, so check the paper.
+
+## Results
+
+SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only. Strikes are fixed offsets from spot (the paper gives none), not tuned.
+
+| | Total return | Max drawdown |
+|---|---|---|
+| short iron condor | -9.7% | -15.8% |
+| SPY buy and hold | 41.5% | -18.5% |
+
+Opened 34/34 cycles, ITM leg expiries 29, assignments 9, fees USD 176.80, missing-bar days 50, mark gaps 6. Return at half-spreads 0 / 0.05 / 0.10: -9.1% / -10.5% / -11.8%.
