@@ -1,0 +1,2 @@
+{"id": "custom_mom60_QQQ", "version": "1", "entry": "mom60_rules:decide", "data": {"kind": "alpaca", "symbol": "QQQ"},
+ "calendar": "xnys", "warmup": 61, "levels": [60], "costs": "equity_ibkr", "benchmark": "cash", "max_exposure": 1.0}
