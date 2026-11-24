@@ -14,7 +14,7 @@ from spot import Spot, spot_fixture
 from stress import StressConfig
 
 FIELDS = {"id", "version", "entry", "data", "calendar", "warmup", "levels", "costs", "benchmark", "max_exposure"}
-KINDS = {"fixture": "xnys", "spot_fixture": "utc24", "alpaca": "xnys"}
+KINDS = {"fixture": "xnys", "spot_fixture": "utc24", "alpaca": "xnys", "kraken": "utc24"}
 START_CASH = 10000.
 
 
@@ -141,6 +141,10 @@ def load_rows(manifest, start, end):
         return harness.fixture(), kind, {}
     if kind == "spot_fixture":
         return spot_fixture(), kind, {}
+    if kind == "kraken":
+        from kraken_bars import daily_from_kraken
+        rows, quality = daily_from_kraken(manifest["data"]["symbol"])
+        return rows, "kraken_ohlc", quality
     from alpaca_bars import daily_from_alpaca
     rows, quality = daily_from_alpaca(manifest["data"]["symbol"], start, end, "sip", Path("data/alpaca"), False)
     return rows, "alpaca_sip_raw", quality
