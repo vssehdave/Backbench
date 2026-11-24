@@ -1,0 +1,1263 @@
+{
+  "manifest": {
+    "id": "cat-3.14-btc",
+    "version": "1",
+    "entry": "catalog_rules:pivot",
+    "data": {
+      "kind": "kraken",
+      "symbols": [
+        "XBTUSD"
+      ]
+    },
+    "calendar": "utc24",
+    "warmup": 2,
+    "levels": [
+      0
+    ],
+    "costs": {
+      "fee_bps": 26,
+      "lot": 0.0001,
+      "min_usd": 10
+    },
+    "benchmark": {
+      "XBTUSD": 1.0
+    },
+    "allow_short": true,
+    "borrow_bps_per_year": 50
+  },
+  "config": {
+    "start": "2024-12-05",
+    "end": "2026-11-23"
+  },
+  "data_sha256": "20b924f1f7f8766ec2f633ef3bc5ebfa3547999c43451869ab34819f53a3eed8",
+  "execution_contract": {
+    "engine_sha256": "2c3ef55dcb4a0ea67693a9f19083f411ea19c12fe05cf060eb6603e9f6b55e6c",
+    "fee_profile": "spot-26bps-lot0.0001-min10usd",
+    "starting_cash": 10000.0,
+    "unit_usd": 5000.0,
+    "price_adjustment": "split+dividend (all)"
+  },
+  "summary": {
+    "strategy": -0.13663085306057843,
+    "benchmark": -0.0694522551240001,
+    "cash": 0.0,
+    "beats_benchmark": 0,
+    "folds": 1
+  },
+  "folds": [
+    {
+      "forward_start": "2025-06-01",
+      "end_exclusive": "2025-12-01",
+      "selected": 0,
+      "train_scores": {
+        "0": -0.3358197462492496
+      },
+      "sensitivity": {
+        "0": -0.13663085306057843
+      },
+      "forward_return": -0.13663085306057843,
+      "benchmark_return": -0.0694522551240001,
+      "abstentions": 0,
+      "forced_closes": 0,
+      "rejected": 0,
+      "buys": 63,
+      "sells": 63,
+      "max_drawdown": 0.177516356237009,
+      "equity": [
+        9936.915738760003,
+        9923.736211823234,
+        9888.345980335234,
+        9855.277660335234,
+        9980.436670339233,
+        9967.772381264547,
+        10016.013544224546,
+        10020.789174224547,
+        10237.574994224546,
+        10223.840723024547,
+        10139.659218416546,
+        10126.851778634547,
+        10126.851778634547,
+        10144.136631776546,
+        10122.987087309699,
+        10180.7534673097,
+        10167.591422985699,
+        10167.591422985699,
+        10164.924921441698,
+        10072.94160641967,
+        10060.51194041967,
+        10104.49759799967,
+        9889.55845994063,
+        9876.084698242521,
+        9922.437692242522,
+        9909.29038664252,
+        9888.352102600522,
+        9878.490588091205,
+        9901.802561199343,
+        9888.703186629344,
+        9888.703186629344,
+        9888.703186629344,
+        9888.703186629344,
+        9802.193575269343,
+        9789.386854485343,
+        9731.524499415344,
+        9718.36403146444,
+        9675.429558958442,
+        9759.078653317481,
+        9745.793282959481,
+        9745.793282959481,
+        9729.762930659483,
+        9799.509680659481,
+        9786.353137559481,
+        9685.204658459481,
+        9672.439179239482,
+        9685.058538043482,
+        9629.94542804348,
+        9608.39733670748,
+        9633.286014037207,
+        9620.319519623645,
+        9500.388829123644,
+        9487.061465459261,
+        9488.73233952126,
+        9520.609544336465,
+        9507.515966760986,
+        9545.749533806713,
+        9532.616091908712,
+        9532.616091908712,
+        9523.695812852711,
+        9610.903540007781,
+        9598.070415750686,
+        9598.070415750686,
+        9509.649346662687,
+        9496.393843270469,
+        9441.00071070647,
+        9428.12397410647,
+        9523.12978570647,
+        9509.87130010247,
+        9487.959514822469,
+        9340.987348754468,
+        9327.611818257372,
+        9375.555984487371,
+        9509.53081448737,
+        9496.028452809373,
+        9496.028452809373,
+        9480.468802459372,
+        9482.363902202524,
+        9532.500778842936,
+        9519.590624276496,
+        9519.590624276496,
+        9427.453025120496,
+        9415.219865620496,
+        9415.219865620496,
+        9320.484026842496,
+        9307.711139104496,
+        9307.711139104496,
+        9269.651047858497,
+        9327.542017858495,
+        9314.459864644496,
+        9314.459864644496,
+        9324.431639644496,
+        9277.8439256034,
+        9264.965814916824,
+        9264.965814916824,
+        9206.077817674824,
+        9184.582345162824,
+        9202.23377604255,
+        9161.670369659125,
+        9148.567921217702,
+        9148.567921217702,
+        9027.526985537701,
+        9014.18383071644,
+        9014.18383071644,
+        8994.21074265644,
+        8970.19524265644,
+        8944.98370982844,
+        8884.758585127482,
+        8871.544012726277,
+        8887.150189312277,
+        8824.580539312276,
+        8811.677904424276,
+        8817.694728712278,
+        8804.67179335447,
+        8804.67179335447,
+        8733.77099941447,
+        8720.563509770633,
+        8720.563509770633,
+        8706.943692650633,
+        8790.447584915702,
+        8777.182866175703,
+        8777.182866175703,
+        8965.895735575703,
+        8952.393947575703,
+        8952.393947575703,
+        8952.393947575703,
+        8984.927515063704,
+        8971.822169095703,
+        8825.002515495704,
+        8812.374856295704,
+        8733.340828355704,
+        9064.207710255703,
+        9052.102544446114,
+        8842.923534494112,
+        8829.352816459537,
+        8726.487875063536,
+        8713.729300171537,
+        8817.980974577536,
+        8805.228682165427,
+        8805.228682165427,
+        8860.779731325427,
+        8847.613298357428,
+        8847.613298357428,
+        8869.747943211427,
+        8757.38497522499,
+        8744.121270151018,
+        8760.168270151018,
+        8889.079770151016,
+        8875.686600151017,
+        8808.589465123016,
+        8795.730363283015,
+        8795.730363283015,
+        8795.730363283015,
+        8803.959475171016,
+        8830.024435171015,
+        8816.912932195015,
+        8816.912932195015,
+        8816.912932195015,
+        8678.383008195015,
+        8554.635163271014,
+        8480.036733770685,
+        8598.505413770687,
+        8585.331043154685,
+        8432.852772836686,
+        8420.237984546686,
+        8504.801273624686,
+        8492.009066950328,
+        8492.009066950328,
+        8549.512979710325,
+        8536.637528511916,
+        8536.637528511916,
+        8606.269681629918,
+        8870.658815910876,
+        8858.517634022108,
+        8868.397992194108,
+        8966.168657276521,
+        8952.862888776519,
+        8886.175919776519,
+        8676.771484544519,
+        8663.2360749386,
+        8630.086144230601,
+        8608.522251238599,
+        8633.691469394216
+      ],
+      "fills": [
+        {
+          "date": "2025-06-01",
+          "symbol": "XBTUSD",
+          "lots": -477,
+          "price": 104662.0,
+          "commission": 12.98018124,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-02",
+          "symbol": "XBTUSD",
+          "lots": 477,
+          "price": 105712.4,
+          "commission": 13.110451848,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-03",
+          "symbol": "XBTUSD",
+          "lots": 472,
+          "price": 105920.4,
+          "commission": 12.998551487999999,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-05",
+          "symbol": "XBTUSD",
+          "lots": -949,
+          "price": 104745.4,
+          "commission": 25.844879995999996,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-06",
+          "symbol": "XBTUSD",
+          "lots": 477,
+          "price": 101579.7,
+          "commission": 12.597914393999998,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-07",
+          "symbol": "XBTUSD",
+          "lots": 479,
+          "price": 104376.0,
+          "commission": 12.998987040000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-10",
+          "symbol": "XBTUSD",
+          "lots": -479,
+          "price": 110280.0,
+          "commission": 13.7342712,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-11",
+          "symbol": "XBTUSD",
+          "lots": 453,
+          "price": 110273.6,
+          "commission": 12.988024608,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-12",
+          "symbol": "XBTUSD",
+          "lots": -453,
+          "price": 108701.9,
+          "commission": 12.802909782,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-14",
+          "symbol": "XBTUSD",
+          "lots": -471,
+          "price": 106122.3,
+          "commission": 12.995736858,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-15",
+          "symbol": "XBTUSD",
+          "lots": 945,
+          "price": 105479.4,
+          "commission": 25.91628858,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-17",
+          "symbol": "XBTUSD",
+          "lots": -474,
+          "price": 106800.1,
+          "commission": 13.162044324000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-19",
+          "symbol": "XBTUSD",
+          "lots": -476,
+          "price": 104891.9,
+          "commission": 12.981421544,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-20",
+          "symbol": "XBTUSD",
+          "lots": 953,
+          "price": 104675.2,
+          "commission": 25.936421056,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-21",
+          "symbol": "XBTUSD",
+          "lots": -477,
+          "price": 103300.0,
+          "commission": 12.811266,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-22",
+          "symbol": "XBTUSD",
+          "lots": -489,
+          "price": 102153.0,
+          "commission": 12.987732419999999,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-24",
+          "symbol": "XBTUSD",
+          "lots": 489,
+          "price": 105382.1,
+          "commission": 13.398280194,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-25",
+          "symbol": "XBTUSD",
+          "lots": 471,
+          "price": 106100.0,
+          "commission": 12.993006000000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-26",
+          "symbol": "XBTUSD",
+          "lots": -471,
+          "price": 107360.0,
+          "commission": 13.147305600000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-27",
+          "symbol": "XBTUSD",
+          "lots": -467,
+          "price": 106945.1,
+          "commission": 12.985274042000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-29",
+          "symbol": "XBTUSD",
+          "lots": 932,
+          "price": 107325.1,
+          "commission": 26.007018232000004,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-06-30",
+          "symbol": "XBTUSD",
+          "lots": -465,
+          "price": 108387.3,
+          "commission": 13.104024570000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-04",
+          "symbol": "XBTUSD",
+          "lots": 456,
+          "price": 109631.0,
+          "commission": 12.99785136,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-05",
+          "symbol": "XBTUSD",
+          "lots": -456,
+          "price": 108018.9,
+          "commission": 12.806720784,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-06",
+          "symbol": "XBTUSD",
+          "lots": -461,
+          "price": 108249.5,
+          "commission": 12.97478507,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-07",
+          "symbol": "XBTUSD",
+          "lots": 461,
+          "price": 109223.2,
+          "commission": 13.091492752,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-08",
+          "symbol": "XBTUSD",
+          "lots": -461,
+          "price": 108282.1,
+          "commission": 12.978692506000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-09",
+          "symbol": "XBTUSD",
+          "lots": 920,
+          "price": 108932.0,
+          "commission": 26.0565344,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-10",
+          "symbol": "XBTUSD",
+          "lots": -459,
+          "price": 111323.7,
+          "commission": 13.285370358,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-12",
+          "symbol": "XBTUSD",
+          "lots": 425,
+          "price": 117532.6,
+          "commission": 12.987352300000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-14",
+          "symbol": "XBTUSD",
+          "lots": -425,
+          "price": 119102.2,
+          "commission": 13.160793100000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-15",
+          "symbol": "XBTUSD",
+          "lots": 417,
+          "price": 119855.0,
+          "commission": 12.9946791,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-16",
+          "symbol": "XBTUSD",
+          "lots": -417,
+          "price": 117741.0,
+          "commission": 12.765479220000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-17",
+          "symbol": "XBTUSD",
+          "lots": 421,
+          "price": 118712.6,
+          "commission": 12.994281196000003,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-19",
+          "symbol": "XBTUSD",
+          "lots": -844,
+          "price": 118011.9,
+          "commission": 25.896531336,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-21",
+          "symbol": "XBTUSD",
+          "lots": 423,
+          "price": 117319.0,
+          "commission": 12.90274362,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-22",
+          "symbol": "XBTUSD",
+          "lots": -425,
+          "price": 117461.0,
+          "commission": 12.9794405,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-23",
+          "symbol": "XBTUSD",
+          "lots": 425,
+          "price": 119977.5,
+          "commission": 13.257513750000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-24",
+          "symbol": "XBTUSD",
+          "lots": -421,
+          "price": 118735.3,
+          "commission": 12.996765938000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-27",
+          "symbol": "XBTUSD",
+          "lots": 844,
+          "price": 117937.6,
+          "commission": 25.880226944,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-28",
+          "symbol": "XBTUSD",
+          "lots": -423,
+          "price": 119455.1,
+          "commission": 13.137671898,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-07-30",
+          "symbol": "XBTUSD",
+          "lots": -424,
+          "price": 117916.9,
+          "commission": 12.999159056,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-01",
+          "symbol": "XBTUSD",
+          "lots": 424,
+          "price": 115762.4,
+          "commission": 12.761646976,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-03",
+          "symbol": "XBTUSD",
+          "lots": -444,
+          "price": 112525.2,
+          "commission": 12.989909088000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-04",
+          "symbol": "XBTUSD",
+          "lots": 444,
+          "price": 114224.1,
+          "commission": 13.186030103999999,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-05",
+          "symbol": "XBTUSD",
+          "lots": 434,
+          "price": 115092.1,
+          "commission": 12.986992564000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-06",
+          "symbol": "XBTUSD",
+          "lots": -434,
+          "price": 114115.0,
+          "commission": 12.876736600000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-07",
+          "symbol": "XBTUSD",
+          "lots": 434,
+          "price": 115010.0,
+          "commission": 12.9777284,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-08",
+          "symbol": "XBTUSD",
+          "lots": -434,
+          "price": 117498.1,
+          "commission": 13.258485604,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-09",
+          "symbol": "XBTUSD",
+          "lots": 428,
+          "price": 116676.0,
+          "commission": 12.983705280000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-10",
+          "symbol": "XBTUSD",
+          "lots": -857,
+          "price": 116467.4,
+          "commission": 25.951266068,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-11",
+          "symbol": "XBTUSD",
+          "lots": 429,
+          "price": 119288.4,
+          "commission": 13.305428136,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-12",
+          "symbol": "XBTUSD",
+          "lots": 421,
+          "price": 118724.5,
+          "commission": 12.995583770000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-14",
+          "symbol": "XBTUSD",
+          "lots": -421,
+          "price": 123354.3,
+          "commission": 13.502361678000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-16",
+          "symbol": "XBTUSD",
+          "lots": -425,
+          "price": 117426.7,
+          "commission": 12.97565035,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-19",
+          "symbol": "XBTUSD",
+          "lots": 425,
+          "price": 116259.9,
+          "commission": 12.846718950000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-21",
+          "symbol": "XBTUSD",
+          "lots": 437,
+          "price": 114273.8,
+          "commission": 12.983789156000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-22",
+          "symbol": "XBTUSD",
+          "lots": -437,
+          "price": 112475.0,
+          "commission": 12.7794095,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-24",
+          "symbol": "XBTUSD",
+          "lots": 433,
+          "price": 115344.1,
+          "commission": 12.985438778000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-25",
+          "symbol": "XBTUSD",
+          "lots": -433,
+          "price": 113456.1,
+          "commission": 12.772887738000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-27",
+          "symbol": "XBTUSD",
+          "lots": 447,
+          "price": 111829.3,
+          "commission": 12.996801246,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-29",
+          "symbol": "XBTUSD",
+          "lots": -447,
+          "price": 112563.7,
+          "commission": 13.082153214,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-08-31",
+          "symbol": "XBTUSD",
+          "lots": -459,
+          "price": 108750.0,
+          "commission": 12.978225,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-02",
+          "symbol": "XBTUSD",
+          "lots": 459,
+          "price": 109258.5,
+          "commission": 13.03890939,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-04",
+          "symbol": "XBTUSD",
+          "lots": 447,
+          "price": 111771.1,
+          "commission": 12.990037242000003,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-05",
+          "symbol": "XBTUSD",
+          "lots": -898,
+          "price": 110744.4,
+          "commission": 25.856602512000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-08",
+          "symbol": "XBTUSD",
+          "lots": 451,
+          "price": 111152.8,
+          "commission": 13.033777328000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-10",
+          "symbol": "XBTUSD",
+          "lots": -448,
+          "price": 111541.0,
+          "commission": 12.99229568,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-11",
+          "symbol": "XBTUSD",
+          "lots": 448,
+          "price": 113952.8,
+          "commission": 13.273222144,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-13",
+          "symbol": "XBTUSD",
+          "lots": 430,
+          "price": 116111.7,
+          "commission": 12.98128806,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-15",
+          "symbol": "XBTUSD",
+          "lots": -863,
+          "price": 115390.6,
+          "commission": 25.891342828000003,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-17",
+          "symbol": "XBTUSD",
+          "lots": 433,
+          "price": 116764.2,
+          "commission": 13.145313636000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-18",
+          "symbol": "XBTUSD",
+          "lots": 429,
+          "price": 116469.1,
+          "commission": 12.990963414000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-20",
+          "symbol": "XBTUSD",
+          "lots": -429,
+          "price": 115677.2,
+          "commission": 12.902634888,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-21",
+          "symbol": "XBTUSD",
+          "lots": -432,
+          "price": 115739.1,
+          "commission": 12.999815712000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-22",
+          "symbol": "XBTUSD",
+          "lots": 432,
+          "price": 115299.0,
+          "commission": 12.95038368,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-24",
+          "symbol": "XBTUSD",
+          "lots": -446,
+          "price": 112001.5,
+          "commission": 12.987693940000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-25",
+          "symbol": "XBTUSD",
+          "lots": 446,
+          "price": 113300.0,
+          "commission": 13.138268,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-27",
+          "symbol": "XBTUSD",
+          "lots": -455,
+          "price": 109706.4,
+          "commission": 12.97826712,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-28",
+          "symbol": "XBTUSD",
+          "lots": 910,
+          "price": 109720.5,
+          "commission": 25.959870300000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-09-29",
+          "symbol": "XBTUSD",
+          "lots": -455,
+          "price": 112127.8,
+          "commission": 13.26471874,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-01",
+          "symbol": "XBTUSD",
+          "lots": 438,
+          "price": 113995.0,
+          "commission": 12.9817506,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-02",
+          "symbol": "XBTUSD",
+          "lots": -438,
+          "price": 118600.0,
+          "commission": 13.506167999999999,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-05",
+          "symbol": "XBTUSD",
+          "lots": 408,
+          "price": 122426.4,
+          "commission": 12.986992512,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-06",
+          "symbol": "XBTUSD",
+          "lots": -408,
+          "price": 123542.1,
+          "commission": 13.105345968000004,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-07",
+          "symbol": "XBTUSD",
+          "lots": 400,
+          "price": 124765.9,
+          "commission": 12.9756536,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-08",
+          "symbol": "XBTUSD",
+          "lots": -400,
+          "price": 121419.8,
+          "commission": 12.6276592,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-09",
+          "symbol": "XBTUSD",
+          "lots": 405,
+          "price": 123329.8,
+          "commission": 12.986627940000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-10",
+          "symbol": "XBTUSD",
+          "lots": -815,
+          "price": 121699.0,
+          "commission": 25.788018100000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-11",
+          "symbol": "XBTUSD",
+          "lots": 410,
+          "price": 113000.0,
+          "commission": 12.0458,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-12",
+          "symbol": "XBTUSD",
+          "lots": -451,
+          "price": 110775.2,
+          "commission": 12.989499952,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-13",
+          "symbol": "XBTUSD",
+          "lots": 451,
+          "price": 115125.3,
+          "commission": 13.499592678,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-14",
+          "symbol": "XBTUSD",
+          "lots": 434,
+          "price": 115176.9,
+          "commission": 12.996561396,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-15",
+          "symbol": "XBTUSD",
+          "lots": -434,
+          "price": 113106.3,
+          "commission": 12.762914892000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-16",
+          "symbol": "XBTUSD",
+          "lots": -451,
+          "price": 110781.9,
+          "commission": 12.990285594,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-17",
+          "symbol": "XBTUSD",
+          "lots": 451,
+          "price": 108182.3,
+          "commission": 12.685456498,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-19",
+          "symbol": "XBTUSD",
+          "lots": 466,
+          "price": 107199.0,
+          "commission": 12.98823084,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-20",
+          "symbol": "XBTUSD",
+          "lots": -466,
+          "price": 108669.8,
+          "commission": 13.166432968000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-22",
+          "symbol": "XBTUSD",
+          "lots": -461,
+          "price": 108406.1,
+          "commission": 12.993555146000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-24",
+          "symbol": "XBTUSD",
+          "lots": 461,
+          "price": 110080.0,
+          "commission": 13.194188800000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-25",
+          "symbol": "XBTUSD",
+          "lots": 450,
+          "price": 111000.0,
+          "commission": 12.987000000000004,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-27",
+          "symbol": "XBTUSD",
+          "lots": -450,
+          "price": 114510.0,
+          "commission": 13.397670000000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-28",
+          "symbol": "XBTUSD",
+          "lots": 438,
+          "price": 114153.1,
+          "commission": 12.999755028,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-10-29",
+          "symbol": "XBTUSD",
+          "lots": -438,
+          "price": 112918.0,
+          "commission": 12.85910184,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-01",
+          "symbol": "XBTUSD",
+          "lots": 456,
+          "price": 109552.7,
+          "commission": 12.988568112,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-03",
+          "symbol": "XBTUSD",
+          "lots": -456,
+          "price": 110589.6,
+          "commission": 13.111502976,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-06",
+          "symbol": "XBTUSD",
+          "lots": 481,
+          "price": 103900.0,
+          "commission": 12.993734,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-07",
+          "symbol": "XBTUSD",
+          "lots": -974,
+          "price": 101290.1,
+          "commission": 25.650704924,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-08",
+          "symbol": "XBTUSD",
+          "lots": 977,
+          "price": 103279.9,
+          "commission": 26.235160198,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-10",
+          "symbol": "XBTUSD",
+          "lots": -484,
+          "price": 104729.9,
+          "commission": 13.179210615999999,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-11",
+          "symbol": "XBTUSD",
+          "lots": 471,
+          "price": 105973.3,
+          "commission": 12.977490318000003,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-12",
+          "symbol": "XBTUSD",
+          "lots": -471,
+          "price": 103011.5,
+          "commission": 12.614788290000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-13",
+          "symbol": "XBTUSD",
+          "lots": -491,
+          "price": 101666.7,
+          "commission": 12.978770922000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-14",
+          "symbol": "XBTUSD",
+          "lots": 491,
+          "price": 99680.1,
+          "commission": 12.725161566000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-16",
+          "symbol": "XBTUSD",
+          "lots": -523,
+          "price": 95538.0,
+          "commission": 12.99125724,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-17",
+          "symbol": "XBTUSD",
+          "lots": 523,
+          "price": 94190.1,
+          "commission": 12.807969798000002,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-19",
+          "symbol": "XBTUSD",
+          "lots": -537,
+          "price": 92966.1,
+          "commission": 12.979926882,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-21",
+          "symbol": "XBTUSD",
+          "lots": 537,
+          "price": 86503.0,
+          "commission": 12.07754886,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-22",
+          "symbol": "XBTUSD",
+          "lots": -587,
+          "price": 85069.4,
+          "commission": 12.983291828,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-23",
+          "symbol": "XBTUSD",
+          "lots": 1177,
+          "price": 84679.9,
+          "commission": 25.913742997999996,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-24",
+          "symbol": "XBTUSD",
+          "lots": -590,
+          "price": 86777.5,
+          "commission": 13.3116685,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-25",
+          "symbol": "XBTUSD",
+          "lots": 566,
+          "price": 88275.0,
+          "commission": 12.990549000000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-26",
+          "symbol": "XBTUSD",
+          "lots": -1138,
+          "price": 87326.4,
+          "commission": 25.838135232,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-27",
+          "symbol": "XBTUSD",
+          "lots": 572,
+          "price": 90535.7,
+          "commission": 13.464469303999998,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-28",
+          "symbol": "XBTUSD",
+          "lots": 547,
+          "price": 91281.4,
+          "commission": 12.982040708000001,
+          "regulatory": 0.0
+        },
+        {
+          "date": "2025-11-29",
+          "symbol": "XBTUSD",
+          "lots": -1096,
+          "price": 90912.7,
+          "commission": 25.906482991999997,
+          "regulatory": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 - Section: 8.1
 - Asset class: Foreign exchange
-- Harness status: **not testable: FX** - needs FX spot or forward data; the alpaca and kraken data kinds do not provide it.
+- Harness status: **tested** (multi-asset runner, ETF proxies; see Results)
 
 ## Description (paper)
 
@@ -21,3 +21,26 @@ an annual basis (see, e.g., \[Baxter and King, 1999\] for more detail). So, for 
 ## Source
 
 Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Section 8.1. The text above is that section only, lightly cleaned (ligatures fixed, most footnotes dropped); formulas are as extracted and may be garbled, so check the paper.
+
+## Results (multi-asset runner)
+
+Rule as implemented: HP-filtered FX trend: Hodrick-Prescott filter (lambda=100*252^2) of the last 252 days of log price, MA(10) vs MA(30) of the trend; long if the short MA is above, short if below. Long/short.
+
+Proxies and assumptions: FXE (euro ETF) stands in for EUR/USD; benchmark FXE. ETF prices include distributions.
+
+Data: Alpaca daily SIP bars, split and dividend adjusted, via `catalog_data.py`. The runner `catalog_run.py` uses the same walk-forward, fee, fill and borrow rules as the single-instrument harness, over several symbols. Parameters are the paper's or the stated assumptions, no tuning. Run `python catalog_run.py strategies/catalog/8.1-moving-averages-with-hp-filter/multi.json --out strategies/catalog/8.1-moving-averages-with-hp-filter/multi.results.json`.
+
+Compounded over the forward windows: strategy 5.8%, buy-and-hold 0.5% (FXE), cash 0%; beat the benchmark in 5 of 10 windows.
+
+| Forward window | Selected | Strategy | Cash | Buy and hold (FXE) | Fills |
+|---|---|---|---|---|---|
+| 2016-07-01..2017-01-01 | 0 | 0.00% | 0.00% | -3.00% | 0+0 |
+| 2017-07-01..2018-01-01 | 0 | 2.53% | 0.00% | 2.53% | 1+0 |
+| 2018-07-01..2019-01-01 | 0 | 0.73% | 0.00% | -0.87% | 0+1 |
+| 2019-07-01..2020-01-01 | 0 | 0.64% | 0.00% | -0.78% | 0+1 |
+| 2020-07-01..2021-01-01 | 0 | 4.09% | 0.00% | 4.09% | 1+0 |
+| 2021-07-01..2022-01-01 | 0 | 2.18% | 0.00% | -2.32% | 0+1 |
+| 2022-07-01..2023-01-01 | 0 | -0.98% | 0.00% | 1.33% | 1+1 |
+| 2023-07-01..2024-01-01 | 0 | -3.66% | 0.00% | 1.12% | 2+1 |
+| 2024-07-01..2025-01-01 | 0 | 0.33% | 0.00% | -1.37% | 1+1 |
+| 2025-07-01..2026-01-01 | 0 | -0.06% | 0.00% | -0.06% | 1+0 |
