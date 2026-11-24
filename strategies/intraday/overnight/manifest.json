@@ -1,0 +1,15 @@
+{
+  "id": "intraday-overnight",
+  "version": "1",
+  "description": "Buy the official close, sell the next official open; versus the intraday mirror and buy and hold",
+  "runner": "python strategies/intraday/overnight/run.py",
+  "data": {
+    "kind": "alpaca_sip",
+    "symbols": ["SPY", "QQQ", "top-20 monthly universe"],
+    "bars": "1Day official open and close; minute bars only for the extended-hours variant"
+  },
+  "calendar": "xnys",
+  "costs": "equity_ibkr (harness.fees) plus per-side slippage 0, 2, 5 bps",
+  "benchmark": "buy_and_hold",
+  "results": "results.json"
+}

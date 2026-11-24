@@ -1,0 +1,15 @@
+{
+  "id": "intraday-orb",
+  "version": "1",
+  "description": "5-minute opening range breakout on a monthly top-20 liquid stock universe",
+  "runner": "python strategies/intraday/orb/run.py",
+  "data": {
+    "kind": "alpaca_sip",
+    "symbols": "top-20 monthly universe from 103 fixed candidates (intraday.CANDIDATES)",
+    "bars": "1Min, 09:30 to close"
+  },
+  "calendar": "xnys",
+  "costs": "equity_ibkr (harness.fees) plus per-side slippage 0, 2, 5 bps",
+  "benchmark": "buy_and_hold",
+  "results": "results.json"
+}
