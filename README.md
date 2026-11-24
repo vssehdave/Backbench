@@ -57,3 +57,4 @@ Local OHLCV data can enter via `--minute-csv PATH --symbol QQQ`. Daily simulatio
 - [Alpaca historical bars](docs/alpaca.md)
 - [Kraken daily bars (24/7 crypto)](docs/kraken.md)
 - [Strategy manifests and the money CLI](docs/strategies.md)
+- [Options backtest (covered call, protective put)](docs/options.md)

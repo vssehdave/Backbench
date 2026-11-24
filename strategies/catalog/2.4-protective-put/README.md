@@ -2,7 +2,7 @@
 
 - Section: 2.4
 - Asset class: Options
-- Harness status: **not testable: options chains** - multi-leg option position; needs option chains and prices, while the harness holds shares of one instrument.
+- Harness status: **tested** (own runner `options_bt.py`, not the share harness). Rule as implemented: Long 200 SPY shares, each month buy 2 put contracts about 5% OTM, ~30 DTE (next third-Friday expiry), held to expiry. Low confidence: about 2.8 years of data (2024-01-19 to 2026-11-20), option trade closes rather than quotes, half-spread 0.02 USD/share is an assumption. See `options_manifest.json`, `options_results.json` and docs/options.md.
 
 ## Description (paper)
 
@@ -13,3 +13,14 @@ fT = ST −S0 + (K −ST)+ −D = K −S0 + (ST −K)+ −D (9) $$ S∗= S0 + D 
 ## Source
 
 Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Section 2.4. The text above is that section only, lightly cleaned (ligatures fixed, most footnotes dropped); formulas are as extracted and may be garbled, so check the paper.
+
+## Results
+
+SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only.
+
+| | Total return | Max drawdown |
+|---|---|---|
+| protective put | 32.5% | -14.1% |
+| SPY buy and hold | 41.5% | -18.5% |
+
+Opened 34/34 cycles, ITM expiries 4, assignments 0, fees USD 44.20, missing-bar days 2 (entry slipped), mark gaps 1. Return at half-spreads 0 / 0.05 / 0.10: 32.6% / 32.3% / 31.9%.

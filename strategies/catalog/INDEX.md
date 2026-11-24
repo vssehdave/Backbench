@@ -2,11 +2,11 @@
 
 Source: Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865. One folder per strategy section. "Harness status" describes the current single-instrument, daily, long/flat harness.
 
-Folders: 174 (153 top-level sections plus 21 sub-variants). Tested: 5. Not testable: 169.
+Folders: 174 (153 top-level sections plus 21 sub-variants). Tested: 7. Not testable: 167.
 
 | Not testable reason | Count |
 |---|---|
-| options chains | 63 |
+| options chains | 61 |
 | bonds/rates | 21 |
 | futures | 21 |
 | other data not available | 19 |
@@ -17,13 +17,13 @@ Folders: 174 (153 top-level sections plus 21 sub-variants). Tested: 5. Not testa
 | needs high/low/volume | 3 |
 | intraday ML | 1 |
 
-Tested results are SPY 2016-2026, compounded over the ten July-December forward windows (see each README for caveats).
+Tested results are SPY 2016-2026 (2.2 and 2.4: SPY 2024-01 to 2026-11, option bars, see docs/options.md), compounded over the ten July-December forward windows (see each README for caveats).
 
 | Section | Strategy | Asset class | Status | Headline |
 |---|---|---|---|---|
-| 2.2 | [Covered call](2.2-covered-call/) | Options | not testable: options chains |  |
+| 2.2 | [Covered call](2.2-covered-call/) | Options | tested | 33.7% vs B&H 41.5%, low confidence |
 | 2.3 | [Covered put](2.3-covered-put/) | Options | not testable: options chains |  |
-| 2.4 | [Protective put](2.4-protective-put/) | Options | not testable: options chains |  |
+| 2.4 | [Protective put](2.4-protective-put/) | Options | tested | 32.5% vs B&H 41.5%, low confidence |
 | 2.5 | [Protective call](2.5-protective-call/) | Options | not testable: options chains |  |
 | 2.6 | [Bull call spread](2.6-bull-call-spread/) | Options | not testable: options chains |  |
 | 2.7 | [Bull put spread](2.7-bull-put-spread/) | Options | not testable: options chains |  |
