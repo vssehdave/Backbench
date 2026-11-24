@@ -1,4 +1,4 @@
-# Options backtest (covered call 2.2, protective put 2.4)
+# Options backtest (chapter 2 fixed-structure strategies, 2.2 to 2.57)
 
 `options_bt.py` rolls one option position per month on SPY against 200 shares bought at the first expiry's close (USD 100,000 start, same shares and dates for the buy-and-hold comparison). `options_data.py` fetches and caches the inputs under `data/alpaca_options/` as raw pages with a sha256 re-verified on load. Offline tests: `python -m unittest test_options_bt`. Real run (needs Alpaca keys): `python options_bt.py`; it writes `options_results.json` into the 2.2 and 2.4 catalog folders.
 
@@ -24,3 +24,7 @@
 - European-style settlement only: no early exercise or ex-dividend assignment (SPY options are American).
 - Whole-lot sizing (200 shares) leaves little cash and a fixed hedge ratio; margin and collateral are not modelled.
 - One strike rule per strategy; no parameter search, so nothing here is tuned, but nothing is robust across rules either.
+
+## Multi-leg catalog (all 58 chapter-2 folders)
+
+`STRATEGIES` in `options_bt.py` defines each strategy as legs of (kind, quantity, strike offset from spot, far expiry). Kinds are call, put and stock; negative quantity is short. Strike step S is 2.5% of spot (half step 1.25%) because the paper gives no strikes; nothing is tuned, and 2.2 and 2.4 keep their original 2% and 5% OTM strikes. Strikes snap to the listed strike nearest the target. Calendars and diagonals buy the following expiry as the far leg and close it at the near expiry at its trade close, so they lose the last cycle. One missing leg skips the whole cycle (reported as opened n/N). Each long or short ITM leg is cash-settled at expiry; short ITM legs count as assignments. Fees are 0.65 USD per contract per leg, and half-spread 0.02 USD per share is paid on every leg open and close. Mark-to-market uses the last trade close, so illiquid wings show mark gaps; treat results as low confidence. Real run writes `options_results.json` into every chapter-2 folder. Nothing in chapter 2 was left untestable.
