@@ -2,6 +2,8 @@
 
 ## Monte Carlo max drawdown
 
+B: block bootstrap of the strategy's own daily equity returns; 1000 paths, seed 0, mean block 20.0. 
+
 | series | historical max DD (pct rank) | DD p5 | p50 | p95 | p99 | P(DD>20/30/50%) | underwater sessions p50 / p95 | terminal return p5 / p50 / p95 |
 |---|---|---|---|---|---|---|---|---|
 | strategy | 16.3% (67th pct) | 7.0% | 14.1% | 24.5% | 29.1% | 14.7% / 0.8% / 0.0% | 192 / 510 | 0.9% / 34.5% / 76.6% |

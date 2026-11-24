@@ -81,6 +81,15 @@ class Bootstrap(unittest.TestCase):
         self.assertTrue(1 < d["historical_percentile_rank"] < 99, d["historical_percentile_rank"])
         self.assertGreater(d["prob_exceed"]["0.2"], d["prob_exceed"]["0.5"])
 
+    def test_drawdown_spans_fold_boundaries(self):
+        engine = mc.MonteCarlo(paths=1)
+        engine._stitch("x", [1, 1.5, 1.2], [[1, 1.5, 1.2]])
+        engine._stitch("x", [1, 1.0, 0.9], [[1, 1.0, 0.9]])
+        real, sims = engine.series["x"]
+        # peak 1.5 in fold one, trough 1.2 * 0.9 = 1.08 in fold two; each window alone shows at most 20%
+        self.assertAlmostEqual(mc.curve_stats(real)[0], 1 - 1.08 / 1.5)
+        self.assertAlmostEqual(mc.curve_stats(sims[0])[0], 1 - 1.08 / 1.5)
+
     def test_mode_b_rejects_bad_curves(self):
         with self.assertRaises(ValueError):
             mc.pnl_bootstrap({"a": [1, 2, 3], "b": [1, 2]}, 5, 0)

@@ -141,7 +141,10 @@ def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None):
     for key, d in picks.items():
         (out / f"trades_{key}_day.md").write_text(day_md(f"{key.capitalize()} day", d), encoding="utf-8")
         write_csv(out / f"trades_{key}_day.csv", d["fills"])
-    md = [f"# {name}", "", "## Monte Carlo max drawdown", ""] + MC_HEAD + [mc_table(k, v) for k, v in mc.items()]
+    c = (extra or {}).get("mc_config", {})
+    md = [f"# {name}", "", "## Monte Carlo max drawdown", "",
+          f"{c.get('mode', '')}; {c.get('paths', '')} paths, seed {c.get('seed', '')}, mean block {c.get('mean_block', '')}. "
+          f"{c.get('note', '')}", ""] + MC_HEAD + [mc_table(k, v) for k, v in mc.items()]
     md += ["", "## Walk-forward folds", "", "| fold | return | benchmark | max DD | fills |", "|---|---|---|---|---|"]
     for f in folds:
         e, b = f["equity"], f["bench"]

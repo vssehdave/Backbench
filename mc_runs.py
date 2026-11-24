@@ -46,8 +46,14 @@ def run_single(manifest_path, start, end, paths, seed, block, stress_paths):
                                  lambda *a, k=k: mcs[k].rows_fold(k, *a))
                for k, m in (("strategy", manifest), ("benchmark", bench))}
     runs = {k: mcs[k].summary()["mode_a"][k] for k in mcs}
+    # The walk-forward windows (July-December) skip Q1 2020, so also show the whole-period benchmark, bootstrapped as mode B.
+    full = [r[2] / mcs["benchmark"].rows[0][2] for r in mcs["benchmark"].rows if start <= r[0] < end]
+    runs["benchmark full history (mode B)"] = montecarlo.pnl_bootstrap(
+        {"b": full}, paths, seed, block)["b"]
     folds = report.folds_of("harness", results["strategy"], results["benchmark"])
-    config = dict(mode="A: path rerun on bootstrapped bars", paths=paths, seed=seed, mean_block=block, start=str(start),
+    config = dict(note="Max drawdown is on the forward windows chained into one equity curve per path; windows are the "
+                       "six months after each selection half, 12-month steps, so the gaps between them are not in the curve.",
+                  mode="A: path rerun on bootstrapped bars", paths=paths, seed=seed, mean_block=block, start=str(start),
                   end=str(end), stress_paths=stress_paths)
     return finish(out_dir(manifest_path, "harness"), "harness", manifest["id"], results["strategy"], folds, runs,
                   config, started, seed, dict(benchmark_result=results["benchmark"]))
@@ -65,7 +71,9 @@ def run_xs(manifest_path, start, end, paths, seed, block):
         else summary["mode_a"]
     runs.pop("spy", None)
     folds = report.folds_of("xsection", result)
-    config = dict(mode="A: path rerun on jointly bootstrapped dates", paths=paths, seed=seed, mean_block=block,
+    config = dict(note="Max drawdown is on the forward windows chained into one equity curve per path; the gaps between "
+                       "windows (12-month steps) are not in the curve.",
+                  mode="A: path rerun on jointly bootstrapped dates", paths=paths, seed=seed, mean_block=block,
                   start=str(start), end=str(end))
     return finish(out_dir(manifest_path, "xsection"), "xsection", result["manifest"]["id"], result, folds, runs, config,
                   started, seed)

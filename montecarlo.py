@@ -94,6 +94,7 @@ class MonteCarlo:
     def rows_fold(self, name, k, rows, train, forward, run):
         """Single instrument. rows are (date, open, close); run(rows) -> equity curve starting at the opening equity.
         Bootstraps whole bars (overnight gap and open-to-close move together) from every row loaded."""
+        self.rows = rows
         bars = [(rows[j][1] / rows[j - 1][2], rows[j][2] / rows[j][1]) for j in range(1, len(rows))]
         sims = []
         for i in range(self.paths):

@@ -71,7 +71,17 @@ Long/short ranks above long-only in 1 of 10 windows. Shorting the below-average 
 
 ## Monte Carlo risk
 
-A: path rerun on bootstrapped bars; 1000 paths, seed 0, mean block 20.0 sessions, 71s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results_long_short.json`; report and trade logs in the `results/` folder beside it.
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 70s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
+
+| series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
+|---|---|---|---|---|---|---|
+| strategy | 6.9% (rank 11) | 10.5% | 18.6% | 23.0% | 3.0% / 0.0% / 0.0% | 20.8% (hist 23.4%) |
+| benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) |
+<!-- mc:mc_results -->
+
+## Monte Carlo risk
+
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 71s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results_long_short.json`; report and trade logs in the `results/` folder beside it.
 
 | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
 |---|---|---|---|---|---|---|

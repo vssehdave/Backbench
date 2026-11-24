@@ -1,6 +1,7 @@
 {
   "name": "bench-buy-and-hold-spy",
   "config": {
+    "note": "Max drawdown is on the forward windows chained into one equity curve per path; windows are the six months after each selection half, 12-month steps, so the gaps between them are not in the curve.",
     "mode": "A: path rerun on bootstrapped bars",
     "paths": 1000,
     "seed": 0,
@@ -8,7 +9,7 @@
     "start": "2016-01-01",
     "end": "2026-01-01",
     "stress_paths": 20,
-    "runtime_seconds": 67.7
+    "runtime_seconds": 71.0
   },
   "series": {
     "strategy": {
@@ -89,6 +90,46 @@
         "p50": 0.8867924528301887,
         "p95": 0.9654481132075471,
         "p99": 0.985062893081761
+      }
+    },
+    "benchmark full history (mode B)": {
+      "paths": 1000,
+      "sessions": 2513,
+      "historical": {
+        "max_drawdown": 0.3418065736580752,
+        "longest_underwater_sessions": 512,
+        "terminal_return": 2.39231277410317,
+        "share_of_sessions_underwater": 0.8607242339832869
+      },
+      "max_drawdown": {
+        "p5": 0.18540747299510155,
+        "p50": 0.3172884946981551,
+        "p95": 0.46823842904871743,
+        "p99": 0.5360537847951439,
+        "historical_percentile_rank": 59.85,
+        "prob_exceed": {
+          "0.2": 0.916,
+          "0.3": 0.563,
+          "0.5": 0.028
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 231.8,
+        "p50": 508.0,
+        "p95": 1232.1499999999999,
+        "p99": 1766.03
+      },
+      "terminal_return": {
+        "p5": 0.6102811357603568,
+        "p50": 2.5047334770484815,
+        "p95": 6.016286724868327,
+        "p99": 8.692489023720617
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.835216872264226,
+        "p50": 0.889375248706725,
+        "p95": 0.9474731396736967,
+        "p99": 0.9689812972542777
       }
     }
   }

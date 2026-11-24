@@ -29,7 +29,7 @@ Opened 34/34 cycles, ITM expiries 13, assignments 13, fees USD 44.20, missing-ba
 
 ## Monte Carlo risk
 
-B: block bootstrap of the strategy's own daily equity returns; 1000 paths, seed 0, mean block 20.0 sessions, 15s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
+B: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 1s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
 
 | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
 |---|---|---|---|---|---|---|

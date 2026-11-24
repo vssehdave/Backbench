@@ -2,10 +2,12 @@
 
 ## Monte Carlo max drawdown
 
+A: path rerun on jointly bootstrapped dates; 200 paths, seed 0, mean block 20.0. Max drawdown is on the forward windows chained into one equity curve per path; the gaps between windows (12-month steps) are not in the curve.
+
 | series | historical max DD (pct rank) | DD p5 | p50 | p95 | p99 | P(DD>20/30/50%) | underwater sessions p50 / p95 | terminal return p5 / p50 / p95 |
 |---|---|---|---|---|---|---|---|---|
-| strategy | 14.2% (15th pct) | 11.4% | 19.2% | 36.8% | 45.2% | 40.0% / 20.0% / 0.0% | 403 / 777 | 19.6% / 63.0% / 153.8% |
-| benchmark (SPY) | 19.3% (18th pct) | 16.5% | 22.7% | 40.5% | 50.5% | 80.0% / 25.0% / 2.5% | 326 / 892 | 14.3% / 96.6% / 196.5% |
+| strategy | 14.2% (30th pct) | 10.6% | 18.1% | 36.7% | 43.3% | 40.0% / 22.5% / 0.5% | 281 / 824 | 11.5% / 67.4% / 152.3% |
+| benchmark (SPY) | 19.3% (29th pct) | 13.8% | 23.1% | 39.0% | 50.9% | 67.5% / 29.0% / 1.5% | 301 / 747 | 7.1% / 103.5% / 228.6% |
 
 ## Walk-forward folds
 

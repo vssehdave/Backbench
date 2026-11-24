@@ -22,30 +22,29 @@ The manifest picks the engine: a `cadence` field means a cross-section manifest 
 - Windows are the walk-forward out-of-sample windows, not the whole decade. The single-instrument harness trains for six months and trades the next six, once per year, so the reported historical drawdown (SPY 10.2%) is for those windows only and excludes, for example, February-March 2020. That is why it is far below SPY's full-history drawdown. The benchmark column uses the same windows, so comparisons are like for like.
 - Fold chaining: simulated folds are independent draws chained together; carry-over between folds is only through equity, which is the same as the real run.
 - Mode B ignores path-dependent gamma: a covered call or protective put is resampled as a return stream, so how the option payoff would respond to a different path is not modelled, and the bootstrapped stream still carries the historical sequence of strikes and assignments. Treat options results as a statement about the realized P&L stream (34 monthly cycles, about two years), not about the strategy in general.
-- Low-volatility cross-section ran 40 paths, not 200: 200 would take roughly an hour, so its percentile estimates (especially p99) are rough.
 - Daily log returns are resampled with no drift adjustment, so simulated terminal returns reflect the sample's own drift.
 
 ## Results
 
-SPY and catalog runs use 1000 paths, cross-section momentum 200, cross-section low-volatility 40. Seed 0, mean block 20. Rank is the percentile of the historical max drawdown inside the simulated distribution.
+SPY and catalog runs use 1000 paths, cross-section runs 200. Seed 0, mean block 20. Rank is the percentile of the historical max drawdown inside the simulated distribution.
 
 | strategy | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 | paths | runtime |
 |---|---|---|---|---|---|---|---|---|---|
-| cat-2.2-covered-call-options | strategy | 16.3% (rank 67) | 14.1% | 24.5% | 29.1% | 14.7% / 0.8% / 0.0% | 34.5% (hist 33.7%) | 1000 | 15s |
-| cat-2.2-covered-call-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 15s |
-| cat-2.4-protective-put-options | strategy | 14.1% (rank 55) | 13.9% | 23.4% | 29.0% | 12.4% / 0.6% / 0.0% | 32.5% (hist 32.5%) | 1000 | 19s |
-| cat-2.4-protective-put-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 19s |
-| cat-3.12-two-moving-averages | strategy | 6.9% (rank 11) | 10.5% | 18.6% | 23.0% | 3.0% / 0.0% / 0.0% | 20.8% (hist 23.4%) | 1000 | 72s |
-| cat-3.12-two-moving-averages | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 72s |
+| cat-2.2-covered-call-options | strategy | 16.3% (rank 67) | 14.1% | 24.5% | 29.1% | 14.7% / 0.8% / 0.0% | 34.5% (hist 33.7%) | 1000 | 1s |
+| cat-2.2-covered-call-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
+| cat-2.4-protective-put-options | strategy | 14.1% (rank 55) | 13.9% | 23.4% | 29.0% | 12.4% / 0.6% / 0.0% | 32.5% (hist 32.5%) | 1000 | 1s |
+| cat-2.4-protective-put-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
+| cat-3.12-two-moving-averages | strategy | 6.9% (rank 11) | 10.5% | 18.6% | 23.0% | 3.0% / 0.0% / 0.0% | 20.8% (hist 23.4%) | 1000 | 70s |
+| cat-3.12-two-moving-averages | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 70s |
 | cat-3.12-two-moving-averages-long-short | strategy | 12.0% (rank 11) | 18.5% | 33.8% | 40.8% | 41.1% / 10.5% / 0.0% | 3.4% (hist 2.8%) | 1000 | 71s |
 | cat-3.12-two-moving-averages-long-short | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 71s |
 | cat-6.5-index-volatility-targeting | strategy | 6.6% (rank 20) | 8.5% | 14.7% | 18.4% | 0.8% / 0.0% / 0.0% | 26.3% (hist 34.6%) | 1000 | 84s |
 | cat-6.5-index-volatility-targeting | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 84s |
-| bench-buy-and-hold-spy | strategy | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 68s |
-| bench-buy-and-hold-spy | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 68s |
-| xs_low_volatility | strategy | 14.2% (rank 15) | 19.2% | 36.8% | 45.2% | 40.0% / 20.0% / 0.0% | 63.0% (hist 65.6%) | 40 | 772s |
-| xs_low_volatility | benchmark (SPY) | 19.3% (rank 18) | 22.7% | 40.5% | 50.5% | 80.0% / 25.0% / 2.5% | 96.6% (hist 125.2%) | 40 | 772s |
-| xs_momentum_12_1 | strategy | 30.2% (rank 97) | 15.3% | 27.9% | 34.7% | 27.5% / 3.5% / 0.5% | 15.1% (hist -11.8%) | 200 | 637s |
-| xs_momentum_12_1 | benchmark (SPY) | 19.3% (rank 29) | 23.1% | 39.0% | 50.9% | 67.5% / 29.0% / 1.5% | 103.5% (hist 125.2%) | 200 | 637s |
+| bench-buy-and-hold-spy | strategy | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 71s |
+| bench-buy-and-hold-spy | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 71s |
+| xs_low_volatility | strategy | 14.2% (rank 30) | 18.1% | 36.7% | 43.3% | 40.0% / 22.5% / 0.5% | 67.4% (hist 65.6%) | 200 | 3489s |
+| xs_low_volatility | benchmark (SPY) | 19.3% (rank 29) | 23.1% | 39.0% | 50.9% | 67.5% / 29.0% / 1.5% | 103.5% (hist 125.2%) | 200 | 3489s |
+| xs_momentum_12_1 | strategy | 30.2% (rank 97) | 15.3% | 27.9% | 34.7% | 27.5% / 3.5% / 0.5% | 15.1% (hist -11.8%) | 200 | 591s |
+| xs_momentum_12_1 | benchmark (SPY) | 19.3% (rank 29) | 23.1% | 39.0% | 50.9% | 67.5% / 29.0% / 1.5% | 103.5% (hist 125.2%) | 200 | 591s |
 
 Per-strategy READMEs have the same numbers, `mc_results*.json` beside each manifest holds the full detail (all percentiles, underwater distribution, terminal return percentiles), and `results/` holds REPORT.md and trade logs.

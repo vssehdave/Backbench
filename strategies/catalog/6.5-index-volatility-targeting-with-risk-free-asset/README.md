@@ -41,7 +41,7 @@ Read with care:
 
 ## Monte Carlo risk
 
-A: path rerun on bootstrapped bars; 1000 paths, seed 0, mean block 20.0 sessions, 84s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 84s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
 
 | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
 |---|---|---|---|---|---|---|

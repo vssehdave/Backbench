@@ -2,6 +2,8 @@
 
 ## Monte Carlo max drawdown
 
+A: path rerun on jointly bootstrapped dates; 200 paths, seed 0, mean block 20.0. Max drawdown is on the forward windows chained into one equity curve per path; the gaps between windows (12-month steps) are not in the curve.
+
 | series | historical max DD (pct rank) | DD p5 | p50 | p95 | p99 | P(DD>20/30/50%) | underwater sessions p50 / p95 | terminal return p5 / p50 / p95 |
 |---|---|---|---|---|---|---|---|---|
 | strategy | 30.2% (97th pct) | 8.1% | 15.3% | 27.9% | 34.7% | 27.5% / 3.5% / 0.5% | 528 / 1044 | -12.7% / 15.1% / 61.4% |

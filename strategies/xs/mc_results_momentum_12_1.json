@@ -1,13 +1,14 @@
 {
   "name": "xs_momentum_12_1",
   "config": {
+    "note": "Max drawdown is on the forward windows chained into one equity curve per path; the gaps between windows (12-month steps) are not in the curve.",
     "mode": "A: path rerun on jointly bootstrapped dates",
     "paths": 200,
     "seed": 0,
     "mean_block": 20.0,
     "start": "2016-01-01",
     "end": "2026-11-01",
-    "runtime_seconds": 637.2
+    "runtime_seconds": 590.6
   },
   "series": {
     "strategy": {
