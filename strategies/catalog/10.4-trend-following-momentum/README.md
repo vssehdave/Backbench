@@ -2,7 +2,7 @@
 
 - Section: 10.4
 - Asset class: Futures
-- Harness status: **not testable: futures** - needs futures data and positions.
+- Harness status: **tested** (multi-asset runner, ETF proxies; see Results)
 
 ## Description (paper)
 
@@ -37,3 +37,26 @@ e *R i = R i − R m, and the "market index" return R m is defined by Eq. (469).
 ## Source
 
 Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Section 10.4. The text above is that section only, lightly cleaned (ligatures fixed, most footnotes dropped); formulas are as extracted and may be garbled, so check the paper.
+
+## Results (multi-asset runner)
+
+Rule as implemented: Trend following: monthly, weights sign(R)/sigma over the lookback (126 or 252 days), normalised to gross 1, long/short.
+
+Proxies and assumptions: The ETF basket from 4.6 stands in for futures.
+
+Data: Alpaca daily SIP bars, split and dividend adjusted, via `catalog_data.py`. The runner `catalog_run.py` uses the same walk-forward, fee, fill and borrow rules as the single-instrument harness, over several symbols. Parameters are the paper's or the stated assumptions, no tuning. Run `python catalog_run.py strategies/catalog/10.4-trend-following-momentum/multi.json --out strategies/catalog/10.4-trend-following-momentum/multi.results.json`.
+
+Compounded over the forward windows: strategy 0.0%, buy-and-hold 49.0% (SPY), cash 0%; beat the benchmark in 1 of 10 windows.
+
+| Forward window | Selected | Strategy | Cash | Buy and hold (SPY) | Fills |
+|---|---|---|---|---|---|
+| 2016-07-01..2017-01-01 | 126 | 0.00% | 0.00% | 3.82% | 0+0 |
+| 2017-07-01..2018-01-01 | 252 | 1.23% | 0.00% | 5.35% | 26+14 |
+| 2018-07-01..2019-01-01 | 126 | 0.02% | 0.00% | -2.98% | 17+24 |
+| 2019-07-01..2020-01-01 | 126 | 1.18% | 0.00% | 4.57% | 24+17 |
+| 2020-07-01..2021-01-01 | 126 | 0.88% | 0.00% | 10.57% | 19+13 |
+| 2021-07-01..2022-01-01 | 126 | -0.09% | 0.00% | 5.50% | 19+19 |
+| 2022-07-01..2023-01-01 | 126 | 0.18% | 0.00% | 1.21% | 11+23 |
+| 2023-07-01..2024-01-01 | 126 | -2.96% | 0.00% | 3.80% | 22+16 |
+| 2024-07-01..2025-01-01 | 126 | -1.69% | 0.00% | 3.87% | 23+14 |
+| 2025-07-01..2026-01-01 | 252 | 1.37% | 0.00% | 5.47% | 15+14 |

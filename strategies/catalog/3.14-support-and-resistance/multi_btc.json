@@ -1,0 +1,26 @@
+{
+  "id": "cat-3.14-btc",
+  "version": "1",
+  "entry": "catalog_rules:pivot",
+  "data": {
+    "kind": "kraken",
+    "symbols": [
+      "XBTUSD"
+    ]
+  },
+  "calendar": "utc24",
+  "warmup": 2,
+  "levels": [
+    0
+  ],
+  "costs": {
+    "fee_bps": 26,
+    "lot": 0.0001,
+    "min_usd": 10
+  },
+  "benchmark": {
+    "XBTUSD": 1.0
+  },
+  "allow_short": true,
+  "borrow_bps_per_year": 50
+}

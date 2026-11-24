@@ -1,0 +1,23 @@
+{
+  "id": "cat-8.1",
+  "version": "1",
+  "entry": "catalog_rules:fx_hp",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "FXE",
+      "SPY"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 252,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "FXE": 1.0
+  },
+  "allow_short": true,
+  "borrow_bps_per_year": 50
+}
