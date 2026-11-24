@@ -10,3 +10,4 @@ __pycache__/
 *.sqlite*
 *.db
 /.env
+/ssrn-3247865.pdf

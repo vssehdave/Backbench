@@ -1,0 +1,18 @@
+{
+  "id": "cat-6.5-index-volatility-targeting",
+  "version": "1",
+  "entry": "strategy:decide",
+  "data": {
+    "kind": "alpaca",
+    "symbol": "SPY"
+  },
+  "calendar": "xnys",
+  "warmup": 22,
+  "levels": [
+    0.1,
+    0.15
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": "buy_and_hold",
+  "max_exposure": 1.0
+}

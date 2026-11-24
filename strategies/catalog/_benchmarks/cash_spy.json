@@ -1,0 +1,17 @@
+{
+  "id": "bench-cash-spy",
+  "version": "1",
+  "entry": "controls:cash",
+  "data": {
+    "kind": "alpaca",
+    "symbol": "SPY"
+  },
+  "calendar": "xnys",
+  "warmup": 0,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": "cash",
+  "max_exposure": 1.0
+}

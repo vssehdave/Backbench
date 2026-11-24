@@ -1,0 +1,6472 @@
+{
+  "config": {
+    "start": "2016-01-01",
+    "end": "2026-01-01",
+    "symbol": "SPY",
+    "paths": 20,
+    "seed": 42,
+    "shock_bps": 10.0,
+    "strategy": "cat-3.11-single-moving-average",
+    "levels": [
+      10,
+      30
+    ],
+    "calendar": "xnys"
+  },
+  "manifest": {
+    "id": "cat-3.11-single-moving-average",
+    "version": "1",
+    "entry": "strategy:decide",
+    "data": {
+      "kind": "alpaca",
+      "symbol": "SPY"
+    },
+    "calendar": "xnys",
+    "warmup": 31,
+    "levels": [
+      10,
+      30
+    ],
+    "costs": "equity_ibkr",
+    "benchmark": "buy_and_hold",
+    "max_exposure": 1.0
+  },
+  "data_sha256": "7fe6d89a5d2099d1e66ce8ba1f8f53e20aca79e09d79f21d5be54d565fbe337a",
+  "execution_contract": {
+    "engine_sha256": "b17ef7e28a7cbbc0221f16e8469419c0879926d4ab882d924b27d640412d9e79",
+    "fee_profile": "ibkr-us-fixed-2026-11-22",
+    "starting_cash": 10000.0
+  },
+  "currency": "USD",
+  "source": "alpaca_sip_raw",
+  "data_quality": {
+    "resolution": "official daily open and close from SIP daily bars; minute bars checked for coverage only",
+    "symbol_source": "user supplied",
+    "feed": "sip",
+    "adjustment": "raw",
+    "pages_sha256": "639e8f9e53ce62ddedabe5f08700677cde033acd0fd3ba6bab31b4dd207651a2",
+    "fetched_at_utc": "2026-11-24T00:42:46.264804+00:00",
+    "session_count": 2514,
+    "early_closes": [
+      {
+        "date": "2016-11-25",
+        "close_minute": 780
+      },
+      {
+        "date": "2017-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2017-11-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2018-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2018-11-23",
+        "close_minute": 780
+      },
+      {
+        "date": "2018-12-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2019-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2019-11-29",
+        "close_minute": 780
+      },
+      {
+        "date": "2019-12-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2020-11-27",
+        "close_minute": 780
+      },
+      {
+        "date": "2020-12-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2021-11-26",
+        "close_minute": 780
+      },
+      {
+        "date": "2022-11-25",
+        "close_minute": 780
+      },
+      {
+        "date": "2023-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2023-11-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2024-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2024-11-29",
+        "close_minute": 780
+      },
+      {
+        "date": "2024-12-24",
+        "close_minute": 780
+      },
+      {
+        "date": "2025-07-03",
+        "close_minute": 780
+      },
+      {
+        "date": "2025-11-28",
+        "close_minute": 780
+      },
+      {
+        "date": "2025-12-24",
+        "close_minute": 780
+      }
+    ],
+    "sessions_short_of_calendar": [
+      {
+        "date": "2016-02-02",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 381,
+        "expected": 390
+      },
+      {
+        "date": "2019-08-12",
+        "first_minute": 570,
+        "last_minute": 931,
+        "observations": 360,
+        "expected": 390
+      },
+      {
+        "date": "2020-03-09",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 376,
+        "expected": 390
+      },
+      {
+        "date": "2020-03-12",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 376,
+        "expected": 390
+      },
+      {
+        "date": "2020-03-16",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 376,
+        "expected": 390
+      },
+      {
+        "date": "2020-03-18",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 376,
+        "expected": 390
+      },
+      {
+        "date": "2021-05-05",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 385,
+        "expected": 390
+      },
+      {
+        "date": "2023-06-05",
+        "first_minute": 570,
+        "last_minute": 959,
+        "observations": 386,
+        "expected": 390
+      }
+    ],
+    "splits": [],
+    "splits_allowed": false,
+    "cash_dividends": [
+      {
+        "cusip": "",
+        "ex_date": "2016-06-17",
+        "foreign": false,
+        "id": "c3b774ec-c4d6-4ef7-b262-c1ed32867b37",
+        "process_date": "2016-06-17",
+        "rate": 1.078442,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2016-09-16",
+        "foreign": false,
+        "id": "74a2365b-6208-40b1-916a-986de2305df8",
+        "process_date": "2016-09-16",
+        "rate": 1.082068,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2016-12-16",
+        "foreign": false,
+        "id": "623ffd40-1246-4262-8b22-f551b550697c",
+        "process_date": "2016-12-16",
+        "rate": 1.32893,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2017-03-17",
+        "foreign": false,
+        "id": "80059a76-66b9-4d92-b282-2660524b4479",
+        "process_date": "2017-03-17",
+        "rate": 1.033118,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2017-06-16",
+        "foreign": false,
+        "id": "74dd6dd6-d8b1-4bc3-8e74-668d5b68600f",
+        "process_date": "2017-06-16",
+        "rate": 1.183108,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2017-09-15",
+        "foreign": false,
+        "id": "6e241cab-e311-4a61-bb60-9b26ab595a7b",
+        "process_date": "2017-09-15",
+        "rate": 1.234574,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2017-12-15",
+        "foreign": false,
+        "id": "b4ef9c15-5209-4829-8c1c-74f73aec0cfa",
+        "process_date": "2017-12-15",
+        "rate": 1.351333,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2018-03-16",
+        "foreign": false,
+        "id": "4336bcd9-00b9-46e6-bba9-04cd20c44936",
+        "process_date": "2018-03-16",
+        "rate": 1.096775,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2018-09-21",
+        "foreign": false,
+        "id": "8fb7aaec-2195-4176-a89b-7942b7e69602",
+        "process_date": "2018-09-21",
+        "rate": 1.322611,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2018-12-21",
+        "foreign": false,
+        "id": "4eaa648c-5372-43a9-aac4-4a60b395a524",
+        "process_date": "2018-12-21",
+        "rate": 1.435429,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2019-03-15",
+        "foreign": false,
+        "id": "fadf42b1-1b5d-4765-9ac2-36dd86f125f5",
+        "process_date": "2019-03-15",
+        "rate": 1.233119,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2019-06-21",
+        "foreign": false,
+        "id": "cfb55a30-351a-4130-a4b2-1530dc86ccbb",
+        "process_date": "2019-06-21",
+        "rate": 1.43164,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2019-09-20",
+        "foreign": false,
+        "id": "7b229d73-8fbc-43bd-b260-07afae8831d2",
+        "process_date": "2019-09-20",
+        "rate": 1.383619,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "",
+        "ex_date": "2019-12-20",
+        "foreign": false,
+        "id": "761b1081-fe3c-4eb5-942c-724bbeb4d9f8",
+        "process_date": "2019-12-20",
+        "rate": 1.569992,
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2020-03-20",
+        "foreign": false,
+        "id": "e06f1a82-04b5-4b90-9c7b-06d22b720db1",
+        "payable_date": "2020-04-30",
+        "process_date": "2020-04-30",
+        "rate": 1.405559,
+        "record_date": "2020-03-23",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2020-06-19",
+        "foreign": false,
+        "id": "a6587d80-e08a-4b1a-aa94-857549880c59",
+        "payable_date": "2020-07-31",
+        "process_date": "2020-07-31",
+        "rate": 1.3662419,
+        "record_date": "2020-06-22",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2020-09-18",
+        "foreign": false,
+        "id": "ffb8940e-53fe-4b3e-a475-e15e39561d3d",
+        "payable_date": "2020-10-30",
+        "process_date": "2020-10-30",
+        "rate": 1.339224,
+        "record_date": "2020-09-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2020-12-18",
+        "foreign": false,
+        "id": "4d35e709-773b-46d4-b292-34d14c46f287",
+        "payable_date": "2021-01-29",
+        "process_date": "2021-01-29",
+        "rate": 1.58,
+        "record_date": "2020-12-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2021-03-19",
+        "foreign": false,
+        "id": "f1ddda1e-b10c-4576-8253-4d8d5a149de6",
+        "payable_date": "2021-04-30",
+        "process_date": "2021-04-30",
+        "rate": 1.277788,
+        "record_date": "2021-03-22",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2021-06-18",
+        "foreign": false,
+        "id": "a06ac608-4210-4e4f-94f0-4fa342a8e1fd",
+        "payable_date": "2021-07-30",
+        "process_date": "2021-07-30",
+        "rate": 1.375875,
+        "record_date": "2021-06-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2021-09-17",
+        "foreign": false,
+        "id": "d2b09118-e4c0-4b93-9f46-10b211400773",
+        "payable_date": "2021-10-29",
+        "process_date": "2021-10-29",
+        "rate": 1.428117,
+        "record_date": "2021-09-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2021-12-17",
+        "foreign": false,
+        "id": "7cdc9442-1a32-4f40-9d2a-b721edfef9e9",
+        "payable_date": "2022-01-31",
+        "process_date": "2022-01-31",
+        "rate": 1.636431,
+        "record_date": "2021-12-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2022-03-18",
+        "foreign": false,
+        "id": "f5ca31fd-da0d-4651-be6b-6ac78542259e",
+        "payable_date": "2022-04-29",
+        "process_date": "2022-04-29",
+        "rate": 1.366009,
+        "record_date": "2022-03-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2022-06-17",
+        "foreign": false,
+        "id": "1f5b9849-96be-4d48-8c3a-b383dc2c544c",
+        "payable_date": "2022-07-29",
+        "process_date": "2022-07-29",
+        "rate": 1.576871,
+        "record_date": "2022-06-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2022-09-16",
+        "foreign": false,
+        "id": "377f7022-91cc-44da-9a8e-8bb00083d5a5",
+        "payable_date": "2022-10-31",
+        "process_date": "2022-10-31",
+        "rate": 1.596398,
+        "record_date": "2022-09-19",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2022-12-16",
+        "foreign": false,
+        "id": "0451d145-f55a-482f-9e11-8dad5910a801",
+        "payable_date": "2023-01-31",
+        "process_date": "2023-01-31",
+        "rate": 1.7814,
+        "record_date": "2022-12-19",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2023-03-17",
+        "foreign": false,
+        "id": "4bedbc95-3ce2-40fb-9a38-7d08717a69fc",
+        "payable_date": "2023-04-28",
+        "process_date": "2023-04-28",
+        "rate": 1.506204,
+        "record_date": "2023-03-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2023-06-16",
+        "foreign": false,
+        "id": "bbbff9be-c5e0-467e-87e0-396b636388b7",
+        "payable_date": "2023-07-31",
+        "process_date": "2023-07-31",
+        "rate": 1.638367,
+        "record_date": "2023-06-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2023-09-15",
+        "foreign": false,
+        "id": "774bf420-19e4-4ac1-b8b6-39e170496bd1",
+        "payable_date": "2023-10-31",
+        "process_date": "2023-10-31",
+        "rate": 1.583169,
+        "record_date": "2023-09-18",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2023-12-15",
+        "foreign": false,
+        "id": "0b715f27-57cc-4e72-975f-800ac009ecbd",
+        "payable_date": "2024-01-31",
+        "process_date": "2024-01-31",
+        "rate": 1.906073,
+        "record_date": "2023-12-18",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2024-03-15",
+        "foreign": false,
+        "id": "1788732d-92bc-47ba-89c8-dc3435a09b2a",
+        "payable_date": "2024-04-30",
+        "process_date": "2024-04-30",
+        "rate": 1.594937,
+        "record_date": "2024-03-18",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2024-06-21",
+        "foreign": false,
+        "id": "1eedcf06-a75b-4559-8215-2874546d6b80",
+        "payable_date": "2024-07-31",
+        "process_date": "2024-07-31",
+        "rate": 1.759024,
+        "record_date": "2024-06-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2024-09-20",
+        "foreign": false,
+        "id": "0429797e-504e-4571-855d-55d29cdb63d9",
+        "payable_date": "2024-10-31",
+        "process_date": "2024-10-31",
+        "rate": 1.745531,
+        "record_date": "2024-09-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2024-12-20",
+        "foreign": false,
+        "id": "24d33e88-e83b-467b-9832-821d2a97d4a5",
+        "payable_date": "2025-01-31",
+        "process_date": "2025-01-31",
+        "rate": 1.965548,
+        "record_date": "2024-12-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2025-03-21",
+        "foreign": false,
+        "id": "ed10c000-8a0b-44ba-a9d7-15f455b61d7a",
+        "payable_date": "2025-04-30",
+        "process_date": "2025-04-30",
+        "rate": 1.695528,
+        "record_date": "2025-03-21",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2025-06-20",
+        "foreign": false,
+        "id": "35139828-107b-4ab0-ad9d-91e4328f5cfa",
+        "payable_date": "2025-07-31",
+        "process_date": "2025-07-31",
+        "rate": 1.761117,
+        "record_date": "2025-06-20",
+        "special": false,
+        "symbol": "SPY"
+      },
+      {
+        "cusip": "78462F103",
+        "ex_date": "2025-09-19",
+        "foreign": false,
+        "id": "d7a29b12-db5d-41e5-8083-40c91e2091ff",
+        "payable_date": "2025-10-31",
+        "process_date": "2025-10-31",
+        "rate": 1.831114,
+        "record_date": "2025-09-19",
+        "special": false,
+        "symbol": "SPY"
+      }
+    ],
+    "stock_dividends": []
+  },
+  "folds": [
+    {
+      "train_start": "2016-01-01",
+      "forward_start": "2016-07-01",
+      "end_exclusive": "2017-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 10084.547806736002,
+        "30": 10234.88401544
+      },
+      "sensitivity": {
+        "10": 10000.563606056,
+        "30": 10099.218862528
+      },
+      "train_return": 0.023488401544000004,
+      "forward_return": 0.009921886252799883,
+      "selection_start": "2016-01-04",
+      "selection_return": 0.023488401544000004,
+      "forward_minus_train": -0.01356651529120012,
+      "abstentions": 0,
+      "forward_buys": 8,
+      "forward_sells": 7,
+      "trend_regimes": {
+        "falling": {
+          "sessions": 42,
+          "net_pnl_usd": -116.66006451199974
+        },
+        "rising": {
+          "sessions": 85,
+          "net_pnl_usd": 215.87892703999933
+        }
+      },
+      "equity": [
+        10012.459128,
+        9976.199928,
+        9961.177104848,
+        9951.921032848,
+        10026.897032848,
+        10044.897032848,
+        10082.097032848,
+        10081.377032848,
+        10110.177032848002,
+        10103.217032848,
+        10117.117832848,
+        10111.857032848,
+        10133.337032848001,
+        10113.657032848001,
+        10137.057032848,
+        10122.897032848,
+        10125.297032848,
+        10119.777032848,
+        10125.777032848,
+        10134.177032848002,
+        10129.857032848,
+        10096.477832848,
+        10111.617032848,
+        10117.129832848,
+        10159.617032848,
+        10156.497032848001,
+        10159.617032848,
+        10146.657032848001,
+        10170.897032848,
+        10166.337032848001,
+        10181.457032848,
+        10154.337032848001,
+        10164.177032848002,
+        10175.937032848,
+        10168.257032848,
+        10168.017032848002,
+        10178.577032848,
+        10151.697032848,
+        10148.097032848,
+        10138.257032848,
+        10140.749458512,
+        10133.509386512,
+        10118.629386512,
+        10117.281846784,
+        10117.281846784,
+        10124.460974784,
+        10123.961774784002,
+        10111.961774784002,
+        9986.441774784002,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9963.976697168,
+        9946.176625168002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9921.790232448002,
+        9867.510160448,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9870.004489552,
+        9857.244417552,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9832.618934528,
+        9927.839662528,
+        9941.298862528,
+        9929.538862528,
+        9932.418862528,
+        9972.738862528,
+        9965.279662527999,
+        9989.298862528,
+        9978.258862528,
+        10017.618862528001,
+        10028.418862528,
+        10031.778862528,
+        10051.218862528,
+        10027.698862528,
+        10035.858862527999,
+        10024.098862528,
+        10004.198062528001,
+        10005.398062528,
+        10037.298862528,
+        10054.578862528,
+        10123.938862528,
+        10137.858862527999,
+        10171.458862528001,
+        10164.018862527999,
+        10199.298862528,
+        10155.858862527999,
+        10177.218862528,
+        10135.938862528,
+        10146.738862528,
+        10167.858862527999,
+        10153.706062528,
+        10145.298862528,
+        10151.538862528,
+        10164.738862528,
+        10121.058862528,
+        10118.658862528,
+        10099.218862528
+      ],
+      "fills": [
+        {
+          "date": "2016-07-01",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 209.36,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-07-06",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 207.83,
+          "commission": 1,
+          "regulatory": 0.102823152
+        },
+        {
+          "date": "2016-07-07",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 209.87,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-08-29",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 217.44,
+          "commission": 1,
+          "regulatory": 0.10757433599999999
+        },
+        {
+          "date": "2016-08-30",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 218.26,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-09-01",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 217.37,
+          "commission": 1,
+          "regulatory": 0.107539728
+        },
+        {
+          "date": "2016-09-06",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 218.69,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-09-12",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 212.39,
+          "commission": 1,
+          "regulatory": 0.105077616
+        },
+        {
+          "date": "2016-09-23",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 216.72,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-09-26",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 215.05,
+          "commission": 1,
+          "regulatory": 0.10639272000000001
+        },
+        {
+          "date": "2016-10-11",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 215.66,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-10-12",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 213.59,
+          "commission": 1,
+          "regulatory": 0.105670896
+        },
+        {
+          "date": "2016-10-25",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 214.68,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        },
+        {
+          "date": "2016-10-26",
+          "shares": -24,
+          "lots": -24,
+          "quantity": -24,
+          "price": 213.21,
+          "commission": 1,
+          "regulatory": 0.105483024
+        },
+        {
+          "date": "2016-11-09",
+          "shares": 24,
+          "lots": 24,
+          "quantity": 24,
+          "price": 212.37,
+          "commission": 1,
+          "regulatory": 7.2e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 42,
+          "ending_equity": 10067.277592873948,
+          "fills": 23,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04086104533102086,
+          "ending_delta_usd": -31.94126965405121,
+          "added_fills": 10,
+          "removed_fills": 2
+        },
+        {
+          "seed": 43,
+          "ending_equity": 10052.460897716559,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03094037293737694,
+          "ending_delta_usd": -46.757964811440615,
+          "added_fills": 8,
+          "removed_fills": 8
+        },
+        {
+          "seed": 44,
+          "ending_equity": 10273.313325108695,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.017061385233256298,
+          "ending_delta_usd": 174.0944625806951,
+          "added_fills": 6,
+          "removed_fills": 6
+        },
+        {
+          "seed": 45,
+          "ending_equity": 10119.971903318907,
+          "fills": 19,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03866261393484213,
+          "ending_delta_usd": 20.753040790907107,
+          "added_fills": 10,
+          "removed_fills": 6
+        },
+        {
+          "seed": 46,
+          "ending_equity": 10241.730097449261,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.023964869049960386,
+          "ending_delta_usd": 142.51123492126135,
+          "added_fills": 0,
+          "removed_fills": 6
+        },
+        {
+          "seed": 47,
+          "ending_equity": 10289.693214548457,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.012824567064294181,
+          "ending_delta_usd": 190.47435202045745,
+          "added_fills": 2,
+          "removed_fills": 8
+        },
+        {
+          "seed": 48,
+          "ending_equity": 10135.800650024108,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027354013943452223,
+          "ending_delta_usd": 36.58178749610852,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 49,
+          "ending_equity": 10211.881061714934,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02298197280868301,
+          "ending_delta_usd": 112.66219918693423,
+          "added_fills": 2,
+          "removed_fills": 10
+        },
+        {
+          "seed": 50,
+          "ending_equity": 10360.160807529232,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.011786484823934119,
+          "ending_delta_usd": 260.94194500123194,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 51,
+          "ending_equity": 10246.942652786893,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.026966009978459632,
+          "ending_delta_usd": 147.72379025889313,
+          "added_fills": 0,
+          "removed_fills": 6
+        },
+        {
+          "seed": 52,
+          "ending_equity": 10280.542314189455,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01944923457971937,
+          "ending_delta_usd": 181.3234516614557,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 53,
+          "ending_equity": 10049.07195219547,
+          "fills": 21,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03390947141022835,
+          "ending_delta_usd": -50.14691033252893,
+          "added_fills": 9,
+          "removed_fills": 3
+        },
+        {
+          "seed": 54,
+          "ending_equity": 10163.63584154702,
+          "fills": 17,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03464707273605853,
+          "ending_delta_usd": 64.4169790190208,
+          "added_fills": 5,
+          "removed_fills": 3
+        },
+        {
+          "seed": 55,
+          "ending_equity": 10044.85942103119,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03313239408758423,
+          "ending_delta_usd": -54.35944149681018,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 56,
+          "ending_equity": 10235.420804868689,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027982122716100247,
+          "ending_delta_usd": 136.20194234068913,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 57,
+          "ending_equity": 10083.681611212516,
+          "fills": 19,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03799052638337993,
+          "ending_delta_usd": -15.537251315483445,
+          "added_fills": 7,
+          "removed_fills": 3
+        },
+        {
+          "seed": 58,
+          "ending_equity": 10074.670479983768,
+          "fills": 19,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030014566356911306,
+          "ending_delta_usd": -24.548382544231572,
+          "added_fills": 11,
+          "removed_fills": 7
+        },
+        {
+          "seed": 59,
+          "ending_equity": 10389.161137146935,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.013152754496114605,
+          "ending_delta_usd": 289.9422746189357,
+          "added_fills": 3,
+          "removed_fills": 11
+        },
+        {
+          "seed": 60,
+          "ending_equity": 10214.339534091268,
+          "fills": 17,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.034562433505207366,
+          "ending_delta_usd": 115.12067156326884,
+          "added_fills": 9,
+          "removed_fills": 7
+        },
+        {
+          "seed": 61,
+          "ending_equity": 10192.068205571755,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022425748324955055,
+          "ending_delta_usd": 92.84934304375565,
+          "added_fills": 0,
+          "removed_fills": 6
+        }
+      ]
+    },
+    {
+      "train_start": "2017-01-01",
+      "forward_start": "2017-07-01",
+      "end_exclusive": "2018-01-01",
+      "selected": 10,
+      "train_scores": {
+        "10": 9975.397390120006,
+        "30": 9966.266992304001
+      },
+      "sensitivity": {
+        "10": 10354.291093188007,
+        "30": 10332.342157792002
+      },
+      "train_return": -0.002460260987999341,
+      "forward_return": 0.03542910931880061,
+      "selection_start": "2017-01-03",
+      "selection_return": -0.002460260987999341,
+      "forward_minus_train": 0.03788937030679995,
+      "abstentions": 0,
+      "forward_buys": 11,
+      "forward_sells": 10,
+      "trend_regimes": {
+        "falling": {
+          "sessions": 23,
+          "net_pnl_usd": 143.36064948400235
+        },
+        "rising": {
+          "sessions": 102,
+          "net_pnl_usd": 294.97044370400545
+        },
+        "flat": {
+          "sessions": 1,
+          "net_pnl_usd": -84.04000000000087
+        }
+      },
+      "equity": [
+        10000.0,
+        10000.0,
+        9970.179934,
+        9982.930551628,
+        9982.930551628,
+        9982.150485628,
+        10020.870485628002,
+        10031.430485628,
+        10055.410485628,
+        10055.630485628,
+        10058.923885628,
+        10087.310485628,
+        10089.070485628,
+        10084.450485628,
+        10083.570485628,
+        10096.330485628001,
+        10097.430485628,
+        10093.232885628,
+        10085.770485628,
+        10083.570485628,
+        10097.198270756002,
+        10094.658204756,
+        10084.978204756,
+        10095.745962692003,
+        10102.445896692003,
+        10089.905896692002,
+        10089.905896692002,
+        10012.683696692002,
+        10017.295240828003,
+        10017.295240828003,
+        10017.295240828003,
+        10012.995174828004,
+        9928.955174828003,
+        9922.565026548004,
+        9922.565026548004,
+        9922.565026548004,
+        9926.838360548005,
+        9935.193860548003,
+        9935.193860548003,
+        9935.193860548003,
+        9973.787194548004,
+        9999.093794548004,
+        10027.253794548003,
+        10038.693794548002,
+        10001.733794548003,
+        10018.453794548004,
+        10018.130394548003,
+        10010.753794548003,
+        10067.953794548004,
+        10088.853794548004,
+        10090.613794548004,
+        10088.633794548005,
+        10069.933794548004,
+        10080.493794548003,
+        10085.993794548003,
+        10088.413794548003,
+        10073.673794548004,
+        10064.860859088003,
+        10064.860859088003,
+        10064.860859088003,
+        10064.860859088003,
+        10077.060793088003,
+        10095.320793088003,
+        10119.960793088005,
+        10132.500793088004,
+        10139.320793088003,
+        10172.320793088003,
+        10167.260793088004,
+        10157.123193088004,
+        10170.340793088004,
+        10179.360793088003,
+        10171.220793088003,
+        10177.160793088004,
+        10186.400793088003,
+        10189.260793088004,
+        10194.980793088005,
+        10197.823193088003,
+        10225.340793088004,
+        10205.320793088005,
+        10213.900793088003,
+        10186.840793088004,
+        10200.464712420006,
+        10200.464712420006,
+        10193.524646420006,
+        10200.564646420007,
+        10208.924646420006,
+        10211.564646420007,
+        10229.824646420006,
+        10237.744646420006,
+        10235.324646420006,
+        10244.344646420006,
+        10224.122246420007,
+        10222.124646420007,
+        10227.404646420006,
+        10214.424646420006,
+        10188.448280236007,
+        10188.448280236007,
+        10179.748214236008,
+        10184.571159188006,
+        10200.071093188006,
+        10196.991093188008,
+        10209.751093188006,
+        10206.671093188008,
+        10263.871093188005,
+        10261.671093188008,
+        10308.751093188006,
+        10299.731093188006,
+        10292.031093188007,
+        10272.011093188006,
+        10272.671093188008,
+        10290.491093188008,
+        10322.171093188008,
+        10341.091093188006,
+        10351.211093188007,
+        10349.891093188007,
+        10326.791093188007,
+        10345.271093188006,
+        10382.671093188008,
+        10361.111093188007,
+        10357.811093188007,
+        10367.491093188008,
+        10366.391093188007,
+        10358.911093188006,
+        10363.311093188007,
+        10374.531093188007,
+        10354.291093188007
+      ],
+      "fills": [
+        {
+          "date": "2017-07-06",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 241.89,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-07-07",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 241.21,
+          "commission": 1,
+          "regulatory": 0.10938237199999999
+        },
+        {
+          "date": "2017-07-11",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 242.17,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-08-01",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 247.46,
+          "commission": 1,
+          "regulatory": 0.112214872
+        },
+        {
+          "date": "2017-08-02",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 247.49,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-08-04",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 247.52,
+          "commission": 1,
+          "regulatory": 0.112242064
+        },
+        {
+          "date": "2017-08-07",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 247.49,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-08-11",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 244.02,
+          "commission": 1,
+          "regulatory": 0.110655864
+        },
+        {
+          "date": "2017-08-16",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 247.11,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-08-18",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 242.9,
+          "commission": 1,
+          "regulatory": 0.11014828
+        },
+        {
+          "date": "2017-08-23",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 244.33,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-08-24",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 245.0,
+          "commission": 1,
+          "regulatory": 0.11109999999999999
+        },
+        {
+          "date": "2017-08-29",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 243.06,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-09-22",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 249.05,
+          "commission": 1,
+          "regulatory": 0.11293546
+        },
+        {
+          "date": "2017-09-28",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 249.73,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-10-26",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 255.99,
+          "commission": 1,
+          "regulatory": 0.11608066800000001
+        },
+        {
+          "date": "2017-10-30",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 257.07,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-11-15",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 256.62,
+          "commission": 1,
+          "regulatory": 0.116366184
+        },
+        {
+          "date": "2017-11-17",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 258.22,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        },
+        {
+          "date": "2017-11-20",
+          "shares": -22,
+          "lots": -22,
+          "quantity": -22,
+          "price": 258.14,
+          "commission": 1,
+          "regulatory": 0.117055048
+        },
+        {
+          "date": "2017-11-21",
+          "shares": 22,
+          "lots": 22,
+          "quantity": 22,
+          "price": 259.18,
+          "commission": 1,
+          "regulatory": 6.6e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 62,
+          "ending_equity": 10315.259490949622,
+          "fills": 23,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.013716329193063129,
+          "ending_delta_usd": -39.03160223838495,
+          "added_fills": 10,
+          "removed_fills": 8
+        },
+        {
+          "seed": 63,
+          "ending_equity": 10344.579306930058,
+          "fills": 15,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01635656386883721,
+          "ending_delta_usd": -9.711786257948916,
+          "added_fills": 4,
+          "removed_fills": 10
+        },
+        {
+          "seed": 64,
+          "ending_equity": 10447.909341463212,
+          "fills": 15,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0174538522315596,
+          "ending_delta_usd": 93.61824827520468,
+          "added_fills": 7,
+          "removed_fills": 13
+        },
+        {
+          "seed": 65,
+          "ending_equity": 10244.905054579096,
+          "fills": 27,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.012007289908708573,
+          "ending_delta_usd": -109.3860386089109,
+          "added_fills": 15,
+          "removed_fills": 9
+        },
+        {
+          "seed": 66,
+          "ending_equity": 10486.515275521673,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.014060078250370273,
+          "ending_delta_usd": 132.22418233366625,
+          "added_fills": 10,
+          "removed_fills": 12
+        },
+        {
+          "seed": 67,
+          "ending_equity": 10267.453721498798,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.016954165270354666,
+          "ending_delta_usd": -86.83737168920925,
+          "added_fills": 7,
+          "removed_fills": 9
+        },
+        {
+          "seed": 68,
+          "ending_equity": 10359.51047813852,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.005991563133441757,
+          "ending_delta_usd": 5.219384950512904,
+          "added_fills": 10,
+          "removed_fills": 14
+        },
+        {
+          "seed": 69,
+          "ending_equity": 10379.617527417318,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.013441374820899552,
+          "ending_delta_usd": 25.326434229311417,
+          "added_fills": 8,
+          "removed_fills": 8
+        },
+        {
+          "seed": 70,
+          "ending_equity": 10234.791471153301,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.015686789786195594,
+          "ending_delta_usd": -119.49962203470568,
+          "added_fills": 10,
+          "removed_fills": 10
+        },
+        {
+          "seed": 71,
+          "ending_equity": 10341.900315391435,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.019562968076449656,
+          "ending_delta_usd": -12.390777796572365,
+          "added_fills": 9,
+          "removed_fills": 12
+        },
+        {
+          "seed": 72,
+          "ending_equity": 10407.069127013408,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.017578205415732278,
+          "ending_delta_usd": 52.77803382540151,
+          "added_fills": 8,
+          "removed_fills": 10
+        },
+        {
+          "seed": 73,
+          "ending_equity": 10414.533861437816,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.013778257641675439,
+          "ending_delta_usd": 60.24276824980916,
+          "added_fills": 13,
+          "removed_fills": 15
+        },
+        {
+          "seed": 74,
+          "ending_equity": 10364.368697817044,
+          "fills": 15,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.009423890570754427,
+          "ending_delta_usd": 10.077604629037523,
+          "added_fills": 6,
+          "removed_fills": 12
+        },
+        {
+          "seed": 75,
+          "ending_equity": 10294.699786841193,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.016128562995293815,
+          "ending_delta_usd": -59.591306346814235,
+          "added_fills": 10,
+          "removed_fills": 12
+        },
+        {
+          "seed": 76,
+          "ending_equity": 10064.299742828778,
+          "fills": 25,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02528550453014246,
+          "ending_delta_usd": -289.9913503592288,
+          "added_fills": 11,
+          "removed_fills": 7
+        },
+        {
+          "seed": 77,
+          "ending_equity": 10411.60126930655,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01644771719650129,
+          "ending_delta_usd": 57.310176118542586,
+          "added_fills": 6,
+          "removed_fills": 10
+        },
+        {
+          "seed": 78,
+          "ending_equity": 10188.626256332554,
+          "fills": 25,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01416029235769911,
+          "ending_delta_usd": -165.66483685545245,
+          "added_fills": 13,
+          "removed_fills": 9
+        },
+        {
+          "seed": 79,
+          "ending_equity": 10316.43152638396,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.017450367594108805,
+          "ending_delta_usd": -37.85956680404706,
+          "added_fills": 8,
+          "removed_fills": 12
+        },
+        {
+          "seed": 80,
+          "ending_equity": 10228.895486914269,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01766726731700172,
+          "ending_delta_usd": -125.39560627373794,
+          "added_fills": 7,
+          "removed_fills": 11
+        },
+        {
+          "seed": 81,
+          "ending_equity": 10473.988214099292,
+          "fills": 15,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.008102708941432337,
+          "ending_delta_usd": 119.69712091128531,
+          "added_fills": 2,
+          "removed_fills": 8
+        }
+      ]
+    },
+    {
+      "train_start": "2018-01-01",
+      "forward_start": "2018-07-01",
+      "end_exclusive": "2019-01-01",
+      "selected": 10,
+      "train_scores": {
+        "10": 10068.457664443999,
+        "30": 9818.799418327997
+      },
+      "sensitivity": {
+        "10": 10126.441954884007,
+        "30": 9963.63239404
+      },
+      "train_return": 0.006845766444399937,
+      "forward_return": 0.012644195488400678,
+      "selection_start": "2018-01-02",
+      "selection_return": 0.006845766444399937,
+      "forward_minus_train": 0.005798429044000741,
+      "abstentions": 0,
+      "forward_buys": 8,
+      "forward_sells": 8,
+      "trend_regimes": {
+        "falling": {
+          "sessions": 57,
+          "net_pnl_usd": 304.14760646000286
+        },
+        "rising": {
+          "sessions": 69,
+          "net_pnl_usd": -177.70565157599594
+        }
+      },
+      "equity": [
+        10000.0,
+        10000.0,
+        10000.0,
+        10038.959946,
+        10084.679946,
+        10101.059946000001,
+        10066.859946,
+        10109.699946,
+        10114.559946000001,
+        10111.499946,
+        10130.219946000001,
+        10141.559946000001,
+        10121.759946,
+        10117.439946000002,
+        10126.799946,
+        10150.379946000001,
+        10196.999946,
+        10181.879946000001,
+        10148.759946,
+        10120.679946,
+        10135.955767652002,
+        10135.955767652002,
+        10135.955767652002,
+        10154.575713652002,
+        10173.295713652002,
+        10189.855713652003,
+        10187.335713652003,
+        10181.035713652003,
+        10146.295713652002,
+        10150.770548976005,
+        10150.770548976005,
+        10138.430494976004,
+        10166.305371088005,
+        10186.725317088005,
+        10198.605317088004,
+        10209.225317088005,
+        10208.145317088005,
+        10200.585317088005,
+        10231.725317088005,
+        10271.505317088006,
+        10273.476317088005,
+        10302.465317088005,
+        10282.125317088005,
+        10281.225317088005,
+        10273.485317088005,
+        10259.625317088005,
+        10243.245317088005,
+        10220.898850904006,
+        10220.898850904006,
+        10220.898850904006,
+        10220.898850904006,
+        10220.898850904006,
+        10217.378796904006,
+        10190.018796904005,
+        10217.378796904006,
+        10223.318796904006,
+        10264.358796904005,
+        10237.538796904006,
+        10220.258796904007,
+        10213.418796904007,
+        10216.090873476007,
+        10216.090873476007,
+        10216.090873476007,
+        10216.090873476007,
+        10215.990819476006,
+        10218.690819476007,
+        10178.550819476006,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10180.323348424008,
+        10211.183294424009,
+        10182.923294424008,
+        10212.983294424008,
+        10242.503294424008,
+        10348.523294424009,
+        10339.163294424008,
+        10291.283294424007,
+        10195.154294424006,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10205.041978652007,
+        10208.361924652007,
+        10239.591924652006,
+        10303.941924652008,
+        10144.281924652007,
+        10133.121924652007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007,
+        10126.441954884007
+      ],
+      "fills": [
+        {
+          "date": "2018-07-06",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 273.14,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-07-31",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 280.81,
+          "commission": 1,
+          "regulatory": 0.10417834799999999
+        },
+        {
+          "date": "2018-08-03",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 282.53,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-08-13",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 283.47,
+          "commission": 1,
+          "regulatory": 0.10516467600000001
+        },
+        {
+          "date": "2018-08-15",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 282.38,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-08-16",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 283.36,
+          "commission": 1,
+          "regulatory": 0.105123888
+        },
+        {
+          "date": "2018-08-17",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 283.83,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-09-07",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 286.98,
+          "commission": 1,
+          "regulatory": 0.106466184
+        },
+        {
+          "date": "2018-09-14",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 291.06,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-09-26",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 290.91,
+          "commission": 1,
+          "regulatory": 0.107923428
+        },
+        {
+          "date": "2018-10-02",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 291.56,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-10-05",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 289.69,
+          "commission": 1,
+          "regulatory": 0.107471052
+        },
+        {
+          "date": "2018-11-01",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 271.6,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-11-13",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 273.09,
+          "commission": 1,
+          "regulatory": 0.101315772
+        },
+        {
+          "date": "2018-11-29",
+          "shares": 18,
+          "lots": 18,
+          "quantity": 18,
+          "price": 273.71,
+          "commission": 1,
+          "regulatory": 5.4e-05
+        },
+        {
+          "date": "2018-12-07",
+          "shares": -18,
+          "lots": -18,
+          "quantity": -18,
+          "price": 269.46,
+          "commission": 1,
+          "regulatory": 0.09996976799999999
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 82,
+          "ending_equity": 10122.297907885764,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022102813175779078,
+          "ending_delta_usd": -4.144046998242629,
+          "added_fills": 4,
+          "removed_fills": 2
+        },
+        {
+          "seed": 83,
+          "ending_equity": 10276.628032525941,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02454998535522816,
+          "ending_delta_usd": 150.1860776419344,
+          "added_fills": 8,
+          "removed_fills": 8
+        },
+        {
+          "seed": 84,
+          "ending_equity": 10260.546550359133,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01554396281504986,
+          "ending_delta_usd": 134.1045954751262,
+          "added_fills": 8,
+          "removed_fills": 6
+        },
+        {
+          "seed": 85,
+          "ending_equity": 10166.727512655489,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.018566536358426457,
+          "ending_delta_usd": 40.28555777148176,
+          "added_fills": 8,
+          "removed_fills": 7
+        },
+        {
+          "seed": 86,
+          "ending_equity": 10325.451869000033,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01667019692982652,
+          "ending_delta_usd": 199.00991411602627,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 87,
+          "ending_equity": 10018.824224959568,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0263852751504345,
+          "ending_delta_usd": -107.61772992443912,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 88,
+          "ending_equity": 10101.769827949036,
+          "fills": 20,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.021061338284012004,
+          "ending_delta_usd": -24.672126934970947,
+          "added_fills": 6,
+          "removed_fills": 2
+        },
+        {
+          "seed": 89,
+          "ending_equity": 10141.223873700877,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.017346147823799913,
+          "ending_delta_usd": 14.78191881687053,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 90,
+          "ending_equity": 10112.322878953833,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022809224091206164,
+          "ending_delta_usd": -14.119075930173494,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 91,
+          "ending_equity": 9949.965828102624,
+          "fills": 20,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.020672965552914785,
+          "ending_delta_usd": -176.47612678138285,
+          "added_fills": 8,
+          "removed_fills": 4
+        },
+        {
+          "seed": 92,
+          "ending_equity": 9937.071956686905,
+          "fills": 24,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.021815427145799343,
+          "ending_delta_usd": -189.36999819710218,
+          "added_fills": 12,
+          "removed_fills": 4
+        },
+        {
+          "seed": 93,
+          "ending_equity": 10075.917208039133,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.029960561012131078,
+          "ending_delta_usd": -50.524746844874244,
+          "added_fills": 7,
+          "removed_fills": 5
+        },
+        {
+          "seed": 94,
+          "ending_equity": 10010.580820158346,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022397122082968134,
+          "ending_delta_usd": -115.86113472566103,
+          "added_fills": 11,
+          "removed_fills": 9
+        },
+        {
+          "seed": 95,
+          "ending_equity": 10047.629143040354,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02252566576796925,
+          "ending_delta_usd": -78.81281184365253,
+          "added_fills": 7,
+          "removed_fills": 7
+        },
+        {
+          "seed": 96,
+          "ending_equity": 10153.294393587275,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027134467644887066,
+          "ending_delta_usd": 26.85243870326849,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 97,
+          "ending_equity": 10174.503076366058,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0201489031853788,
+          "ending_delta_usd": 48.06112148205102,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 98,
+          "ending_equity": 10156.717735818565,
+          "fills": 16,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02425638860222114,
+          "ending_delta_usd": 30.275780934558497,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 99,
+          "ending_equity": 10051.238600897663,
+          "fills": 20,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022055876702223254,
+          "ending_delta_usd": -75.20335398634415,
+          "added_fills": 8,
+          "removed_fills": 4
+        },
+        {
+          "seed": 100,
+          "ending_equity": 10186.413110207242,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.015907909575012952,
+          "ending_delta_usd": 59.97115532323551,
+          "added_fills": 7,
+          "removed_fills": 5
+        },
+        {
+          "seed": 101,
+          "ending_equity": 10022.543118878744,
+          "fills": 18,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.025736999925130413,
+          "ending_delta_usd": -103.89883600526264,
+          "added_fills": 9,
+          "removed_fills": 7
+        }
+      ]
+    },
+    {
+      "train_start": "2019-01-01",
+      "forward_start": "2019-07-01",
+      "end_exclusive": "2020-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 10242.287662307997,
+        "30": 10279.987289757999
+      },
+      "sensitivity": {
+        "10": 10202.68865345,
+        "30": 10284.089361073999
+      },
+      "train_return": 0.027998728975799914,
+      "forward_return": 0.028408936107399807,
+      "selection_start": "2019-01-02",
+      "selection_return": 0.027998728975799914,
+      "forward_minus_train": 0.0004102071315998934,
+      "abstentions": 0,
+      "forward_buys": 5,
+      "forward_sells": 4,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 94,
+          "net_pnl_usd": 360.19094390400096
+        },
+        "falling": {
+          "sessions": 34,
+          "net_pnl_usd": -76.10158283000237
+        }
+      },
+      "equity": [
+        9978.099943,
+        9994.439943,
+        10039.279943,
+        10029.209942999998,
+        10002.419943,
+        10009.449943,
+        10035.669943,
+        10049.159942999999,
+        10074.429943,
+        10078.039943,
+        10057.899943,
+        10019.899943,
+        10040.609943,
+        10010.019943,
+        10020.469943,
+        10061.699943,
+        10088.679943,
+        10061.509943000001,
+        10099.319942999999,
+        10090.389943,
+        10077.089942999999,
+        10012.679943,
+        9967.079943,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9944.11487311,
+        9909.53611611,
+        9877.184816109999,
+        9921.480024114,
+        9938.719967114,
+        9944.419967114,
+        9947.269967114,
+        9945.179967114,
+        9987.359967114,
+        10007.309967114,
+        10000.279967114,
+        9985.459967113999,
+        9999.519967114,
+        10002.369967114,
+        10001.799967113999,
+        9944.989967114,
+        9949.169967114,
+        9903.949967114,
+        9936.059967114,
+        9924.469967114,
+        9894.259967114001,
+        9920.489467114,
+        9854.549967113999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9818.855817013999,
+        9819.755760013999,
+        9838.969418073999,
+        9839.679361073999,
+        9853.929361073999,
+        9832.649361073998,
+        9869.509361073999,
+        9849.749361073998,
+        9865.709361073998,
+        9876.919361074,
+        9899.149361073998,
+        9932.399361073998,
+        9928.599361073999,
+        9948.929361073999,
+        9932.209361073998,
+        9986.169361074,
+        10008.969361074,
+        10002.699361074,
+        10003.269361073999,
+        10024.929361073999,
+        10038.609361073999,
+        10027.779361074,
+        10039.179361073999,
+        10042.789361074,
+        10050.199361074,
+        10093.329361074,
+        10096.559361074,
+        10095.229361074,
+        10074.329361074,
+        10064.639361073998,
+        10078.319361073998,
+        10122.209361073998,
+        10134.749361073998,
+        10161.919361074,
+        10141.209361073998,
+        10090.479361074,
+        10049.629361074,
+        10087.439361073999,
+        10098.649361073998,
+        10150.709361073998,
+        10132.849361073999,
+        10126.959361073998,
+        10141.209361073998,
+        10193.459361073998,
+        10197.449361074,
+        10239.249361073998,
+        10240.379861074,
+        10240.579361074,
+        10265.469361074,
+        10265.279361074,
+        10273.069361073998,
+        10272.499361073998,
+        10304.799361073998,
+        10303.089361073999,
+        10270.409361073998,
+        10284.089361073999
+      ],
+      "fills": [
+        {
+          "date": "2019-07-01",
+          "shares": 19,
+          "lots": 19,
+          "quantity": 19,
+          "price": 296.68,
+          "commission": 1,
+          "regulatory": 5.7e-05
+        },
+        {
+          "date": "2019-08-02",
+          "shares": -19,
+          "lots": -19,
+          "quantity": -19,
+          "price": 293.85,
+          "commission": 1,
+          "regulatory": 0.11506989000000001
+        },
+        {
+          "date": "2019-08-30",
+          "shares": 19,
+          "lots": 19,
+          "quantity": 19,
+          "price": 294.22,
+          "commission": 1,
+          "regulatory": 5.7e-05
+        },
+        {
+          "date": "2019-09-04",
+          "shares": -19,
+          "lots": -19,
+          "quantity": -19,
+          "price": 293.14,
+          "commission": 1,
+          "regulatory": 0.114791996
+        },
+        {
+          "date": "2019-09-05",
+          "shares": 19,
+          "lots": 19,
+          "quantity": 19,
+          "price": 296.79,
+          "commission": 1,
+          "regulatory": 5.7e-05
+        },
+        {
+          "date": "2019-10-02",
+          "shares": -19,
+          "lots": -19,
+          "quantity": -19,
+          "price": 291.5,
+          "commission": 1,
+          "regulatory": 0.1141501
+        },
+        {
+          "date": "2019-10-14",
+          "shares": 19,
+          "lots": 19,
+          "quantity": 19,
+          "price": 295.93,
+          "commission": 1,
+          "regulatory": 5.7e-05
+        },
+        {
+          "date": "2019-10-15",
+          "shares": -19,
+          "lots": -19,
+          "quantity": -19,
+          "price": 297.1,
+          "commission": 1,
+          "regulatory": 0.11634194
+        },
+        {
+          "date": "2019-10-16",
+          "shares": 19,
+          "lots": 19,
+          "quantity": 19,
+          "price": 298.37,
+          "commission": 1,
+          "regulatory": 5.7e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 102,
+          "ending_equity": 10391.224518506795,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.020768784632218568,
+          "ending_delta_usd": 107.1351574327964,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 103,
+          "ending_equity": 10178.940956282066,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030760829474750742,
+          "ending_delta_usd": -105.14840479193299,
+          "added_fills": 2,
+          "removed_fills": 4
+        },
+        {
+          "seed": 104,
+          "ending_equity": 10133.448712989903,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0402725183709256,
+          "ending_delta_usd": -150.64064808409603,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 105,
+          "ending_equity": 10289.001069428761,
+          "fills": 5,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.025413315876739635,
+          "ending_delta_usd": 4.911708354762595,
+          "added_fills": 0,
+          "removed_fills": 4
+        },
+        {
+          "seed": 106,
+          "ending_equity": 10199.864689496644,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033164446471183065,
+          "ending_delta_usd": -84.22467157735446,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 107,
+          "ending_equity": 10410.04101131262,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02717240369928542,
+          "ending_delta_usd": 125.95165023862137,
+          "added_fills": 3,
+          "removed_fills": 5
+        },
+        {
+          "seed": 108,
+          "ending_equity": 10408.885342806749,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.025955285290982604,
+          "ending_delta_usd": 124.79598173275008,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 109,
+          "ending_equity": 10350.799342218266,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02503569844086148,
+          "ending_delta_usd": 66.70998114426766,
+          "added_fills": 3,
+          "removed_fills": 5
+        },
+        {
+          "seed": 110,
+          "ending_equity": 10426.33864402298,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.019479106718353918,
+          "ending_delta_usd": 142.249282948982,
+          "added_fills": 3,
+          "removed_fills": 5
+        },
+        {
+          "seed": 111,
+          "ending_equity": 10159.158016735957,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03659953159872814,
+          "ending_delta_usd": -124.93134433804153,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 112,
+          "ending_equity": 10237.18928238918,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.024628583247718095,
+          "ending_delta_usd": -46.900078684819164,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 113,
+          "ending_equity": 10327.781673427548,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.021864251450575276,
+          "ending_delta_usd": 43.692312353548914,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 114,
+          "ending_equity": 10455.60943548472,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.019759485503977433,
+          "ending_delta_usd": 171.52007441072055,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 115,
+          "ending_equity": 10379.885980924755,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022248160188591107,
+          "ending_delta_usd": 95.79661985075654,
+          "added_fills": 3,
+          "removed_fills": 5
+        },
+        {
+          "seed": 116,
+          "ending_equity": 10346.772334698855,
+          "fills": 5,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.018334378364900185,
+          "ending_delta_usd": 62.68297362485646,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 117,
+          "ending_equity": 10208.700565127918,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03486093062496502,
+          "ending_delta_usd": -75.38879594608079,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 118,
+          "ending_equity": 10364.850125070665,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.020957275577092028,
+          "ending_delta_usd": 80.76076399666636,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 119,
+          "ending_equity": 10453.913721397323,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.01883691307102049,
+          "ending_delta_usd": 169.82436032332407,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 120,
+          "ending_equity": 10345.00564685725,
+          "fills": 5,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.026137884635501193,
+          "ending_delta_usd": 60.916285783250714,
+          "added_fills": 0,
+          "removed_fills": 4
+        },
+        {
+          "seed": 121,
+          "ending_equity": 10201.739926762293,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02990090518876099,
+          "ending_delta_usd": -82.34943431170541,
+          "added_fills": 3,
+          "removed_fills": 3
+        }
+      ]
+    },
+    {
+      "train_start": "2020-01-01",
+      "forward_start": "2020-07-01",
+      "end_exclusive": "2021-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 9852.667983410003,
+        "30": 10122.26272462
+      },
+      "sensitivity": {
+        "10": 10926.849236770002,
+        "30": 10385.98126565
+      },
+      "train_return": 0.012226272462000143,
+      "forward_return": 0.038598126564999946,
+      "selection_start": "2020-01-02",
+      "selection_return": 0.012226272462000143,
+      "forward_minus_train": 0.026371854102999803,
+      "abstentions": 0,
+      "forward_buys": 6,
+      "forward_sells": 5,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 103,
+          "net_pnl_usd": 340.2894719800006
+        },
+        "falling": {
+          "sessions": 25,
+          "net_pnl_usd": 45.69179366999924
+        }
+      },
+      "equity": [
+        10013.999955,
+        10038.299955,
+        10110.599955,
+        10061.999955,
+        10097.849955000002,
+        10074.449955,
+        10120.049954999999,
+        10077.599955,
+        10139.399955,
+        10185.149955,
+        10168.349955000002,
+        10180.949955,
+        10219.499955,
+        10228.949955,
+        10257.749955,
+        10199.699955,
+        10169.099955000002,
+        10204.499955,
+        10174.949955,
+        10230.599955,
+        10215.149955,
+        10251.449955,
+        10285.499955,
+        10305.449955,
+        10335.899955,
+        10370.249955,
+        10373.999955,
+        10388.849955,
+        10347.749955,
+        10415.099955,
+        10407.599955,
+        10408.199955,
+        10424.249955,
+        10434.374955,
+        10412.399955,
+        10430.099955,
+        10447.199955,
+        10498.949955,
+        10517.699955,
+        10569.599955000002,
+        10580.549954999999,
+        10613.999955,
+        10602.758955000001,
+        10645.649955,
+        10722.149955,
+        10538.399955,
+        10490.699955,
+        10354.499955,
+        10417.59560705,
+        10301.24556205,
+        10325.49174867,
+        10325.49174867,
+        10325.49174867,
+        10285.04170367,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10204.13858863,
+        10128.73854363,
+        10175.184019549999,
+        10186.18397455,
+        10232.38397455,
+        10316.83397455,
+        10283.98397455,
+        10250.383974549999,
+        10244.533974549999,
+        10241.23397455,
+        10163.383974549999,
+        10180.93397455,
+        10171.18397455,
+        10201.033974549999,
+        10215.73397455,
+        10122.58397455,
+        10106.383974549999,
+        10011.831310649999,
+        10011.831310649999,
+        10011.831310649999,
+        10011.831310649999,
+        10011.831310649999,
+        10011.831310649999,
+        10025.081265649998,
+        10024.931265649999,
+        10091.53126565,
+        10083.431265649999,
+        10123.03126565,
+        10072.331265649998,
+        10143.73126565,
+        10210.931265649999,
+        10184.53126565,
+        10115.98126565,
+        10141.631265649998,
+        10102.48126565,
+        10135.181265649999,
+        10219.331265649998,
+        10209.581265649998,
+        10227.881265649998,
+        10205.381265649998,
+        10259.831265649998,
+        10274.53126565,
+        10272.28126565,
+        10318.931265649999,
+        10309.63126565,
+        10325.081265649998,
+        10273.78126565,
+        10275.28126565,
+        10264.331265649998,
+        10245.73126565,
+        10315.631265649998,
+        10323.131265649998,
+        10355.081265649998,
+        10309.48126565,
+        10286.98126565,
+        10281.73126565,
+        10284.581265649998,
+        10307.681265649999,
+        10355.53126565,
+        10346.53126565,
+        10352.681265649999,
+        10385.98126565
+      ],
+      "fills": [
+        {
+          "date": "2020-07-01",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 309.57,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        },
+        {
+          "date": "2020-09-09",
+          "shares": -15,
+          "lots": -15,
+          "quantity": -15,
+          "price": 337.55,
+          "commission": 1,
+          "regulatory": 0.10434795
+        },
+        {
+          "date": "2020-09-10",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 341.82,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        },
+        {
+          "date": "2020-09-11",
+          "shares": -15,
+          "lots": -15,
+          "quantity": -15,
+          "price": 335.82,
+          "commission": 1,
+          "regulatory": 0.10381338
+        },
+        {
+          "date": "2020-09-16",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 341.51,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        },
+        {
+          "date": "2020-09-17",
+          "shares": -15,
+          "lots": -15,
+          "quantity": -15,
+          "price": 333.56,
+          "commission": 1,
+          "regulatory": 0.10311503999999999
+        },
+        {
+          "date": "2020-10-06",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 339.91,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        },
+        {
+          "date": "2020-10-07",
+          "shares": -15,
+          "lots": -15,
+          "quantity": -15,
+          "price": 338.12,
+          "commission": 1,
+          "regulatory": 0.10452408
+        },
+        {
+          "date": "2020-10-08",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 342.85,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        },
+        {
+          "date": "2020-10-28",
+          "shares": -15,
+          "lots": -15,
+          "quantity": -15,
+          "price": 332.1,
+          "commission": 1,
+          "regulatory": 0.1026639
+        },
+        {
+          "date": "2020-11-05",
+          "shares": 15,
+          "lots": 15,
+          "quantity": 15,
+          "price": 349.24,
+          "commission": 1,
+          "regulatory": 4.5e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 122,
+          "ending_equity": 10617.640518054852,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04331090079557538,
+          "ending_delta_usd": 231.65925240485194,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 123,
+          "ending_equity": 10549.42384970338,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05144483643899141,
+          "ending_delta_usd": 163.44258405338041,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 124,
+          "ending_equity": 10471.806931836889,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05917829965170011,
+          "ending_delta_usd": 85.82566618688907,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 125,
+          "ending_equity": 10487.025845239608,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05563243469129743,
+          "ending_delta_usd": 101.04457958960847,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 126,
+          "ending_equity": 10566.541077947923,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04749338031394292,
+          "ending_delta_usd": 180.5598122979227,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 127,
+          "ending_equity": 10538.96276365895,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05596546160543559,
+          "ending_delta_usd": 152.98149800895044,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 128,
+          "ending_equity": 10446.820512400438,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.056421533691845195,
+          "ending_delta_usd": 60.83924675043818,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 129,
+          "ending_equity": 10467.645262174025,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.062085527672811024,
+          "ending_delta_usd": 81.6639965240247,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 130,
+          "ending_equity": 10298.38058915596,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.07418345445425456,
+          "ending_delta_usd": -87.60067649403936,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 131,
+          "ending_equity": 10341.03123622621,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.07059324015301126,
+          "ending_delta_usd": -44.9500294237896,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 132,
+          "ending_equity": 10474.158981481005,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05450303746471373,
+          "ending_delta_usd": 88.17771583100512,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 133,
+          "ending_equity": 10425.807293835394,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.055524204377761184,
+          "ending_delta_usd": 39.826028185394534,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 134,
+          "ending_equity": 10336.219239319551,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.07222886343150352,
+          "ending_delta_usd": -49.76202633044886,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 135,
+          "ending_equity": 10518.763120273708,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05643583153342039,
+          "ending_delta_usd": 132.78185462370857,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 136,
+          "ending_equity": 10440.227854695186,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.06762880841669784,
+          "ending_delta_usd": 54.24658904518583,
+          "added_fills": 3,
+          "removed_fills": 1
+        },
+        {
+          "seed": 137,
+          "ending_equity": 10542.302565112786,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05710392404615481,
+          "ending_delta_usd": 156.32129946278656,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 138,
+          "ending_equity": 10656.590329046208,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03819875393567117,
+          "ending_delta_usd": 270.6090633962085,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 139,
+          "ending_equity": 10567.246084658613,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04786051807497531,
+          "ending_delta_usd": 181.2648190086129,
+          "added_fills": 0,
+          "removed_fills": 4
+        },
+        {
+          "seed": 140,
+          "ending_equity": 10495.09849632686,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05585401141646833,
+          "ending_delta_usd": 109.11723067686034,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 141,
+          "ending_equity": 10549.717277264239,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05072002725488028,
+          "ending_delta_usd": 163.73601161423903,
+          "added_fills": 0,
+          "removed_fills": 4
+        }
+      ]
+    },
+    {
+      "train_start": "2021-01-01",
+      "forward_start": "2021-07-01",
+      "end_exclusive": "2022-01-01",
+      "selected": 10,
+      "train_scores": {
+        "10": 9927.999764896005,
+        "30": 9909.759660696007
+      },
+      "sensitivity": {
+        "10": 10025.908681456007,
+        "30": 9968.645945246
+      },
+      "train_return": -0.0072000235103995,
+      "forward_return": 0.002590868145600611,
+      "selection_start": "2021-01-04",
+      "selection_return": -0.0072000235103995,
+      "forward_minus_train": 0.009790891656000111,
+      "abstentions": 0,
+      "forward_buys": 11,
+      "forward_sells": 10,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 95,
+          "net_pnl_usd": 158.02366242000244
+        },
+        "falling": {
+          "sessions": 33,
+          "net_pnl_usd": -132.11498096399555
+        }
+      },
+      "equity": [
+        10019.279961,
+        10062.049961,
+        10051.779961,
+        10071.669961,
+        10025.649961,
+        10085.449961,
+        10105.729961000001,
+        10086.359961,
+        10094.809960999999,
+        10075.439961,
+        10031.109961,
+        9963.045788318,
+        9963.045788318,
+        9963.045788318,
+        9971.405749318,
+        10029.645749318002,
+        10043.685749318001,
+        10017.555749318002,
+        10015.215749318002,
+        10038.875749318002,
+        10011.055749318002,
+        9999.095749318001,
+        10009.028296086002,
+        9997.628257086002,
+        10012.630327170004,
+        10016.700288170003,
+        10012.020288170002,
+        10019.170288170004,
+        10033.470288170003,
+        10050.760288170004,
+        10061.290288170003,
+        10074.940288170004,
+        10036.850288170004,
+        9973.670288170004,
+        9934.723416064004,
+        9934.723416064004,
+        9961.023377064004,
+        9970.253377064004,
+        9982.473377064005,
+        9948.023377064004,
+        9999.893377064003,
+        10025.633377064005,
+        10016.923377064004,
+        10020.043377064005,
+        10038.113377064004,
+        10036.683377064004,
+        10015.623377064003,
+        10008.473377064005,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10004.622640604004,
+        10035.732601604004,
+        10019.222601604004,
+        9903.262601604005,
+        9921.256018722004,
+        9921.256018722004,
+        9921.256018722004,
+        9921.256018722004,
+        9921.256018722004,
+        9921.256018722004,
+        9921.256018722004,
+        9899.195979722004,
+        9857.985979722005,
+        9844.075979722005,
+        9857.129525384004,
+        9900.589486384004,
+        9944.399486384005,
+        9961.559486384005,
+        10006.409486384004,
+        10029.419486384004,
+        10044.759486384004,
+        10038.649486384005,
+        10070.239486384005,
+        10075.569486384004,
+        10049.309486384005,
+        10106.249486384004,
+        10118.339486384004,
+        10128.609486384004,
+        10152.789486384005,
+        10189.449486384005,
+        10217.919486384004,
+        10238.979486384003,
+        10244.179486384004,
+        10224.029486384003,
+        10175.149486384005,
+        10194.694864146004,
+        10194.694864146004,
+        10177.964825146006,
+        10202.014825146005,
+        10187.194825146005,
+        10207.864825146004,
+        10196.944825146005,
+        10179.784825146005,
+        10187.844825146005,
+        10204.094825146005,
+        10067.984825146006,
+        10133.160508200004,
+        10133.160508200004,
+        10133.160508200004,
+        10133.160508200004,
+        10133.160508200004,
+        10133.160508200004,
+        10133.160508200004,
+        10142.820469200005,
+        10101.610469200004,
+        10158.680469200004,
+        10104.730469200005,
+        10062.740469200005,
+        10156.860469200004,
+        10102.910469200004,
+        10017.370469200006,
+        9946.178720456006,
+        9946.178720456006,
+        9946.178720456006,
+        9969.228681456007,
+        10055.808681456007,
+        10050.738681456007,
+        10058.668681456005,
+        10041.508681456005,
+        10025.908681456007
+      ],
+      "fills": [
+        {
+          "date": "2021-07-01",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 428.87,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-07-19",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 426.19,
+          "commission": 1,
+          "regulatory": 0.114172682
+        },
+        {
+          "date": "2021-07-22",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 434.74,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-08-03",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 438.44,
+          "commission": 1,
+          "regulatory": 0.117453232
+        },
+        {
+          "date": "2021-08-04",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 439.78,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-08-05",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 440.22,
+          "commission": 1,
+          "regulatory": 0.11792991600000001
+        },
+        {
+          "date": "2021-08-06",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 442.1,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-08-19",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 436.27,
+          "commission": 1,
+          "regulatory": 0.116872106
+        },
+        {
+          "date": "2021-08-23",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 445.16,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-09-09",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 450.7,
+          "commission": 1,
+          "regulatory": 0.12073645999999998
+        },
+        {
+          "date": "2021-09-24",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 441.44,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-09-29",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 435.19,
+          "commission": 1,
+          "regulatory": 0.116582882
+        },
+        {
+          "date": "2021-10-08",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 439.48,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-10-13",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 434.71,
+          "commission": 1,
+          "regulatory": 0.11645433799999999
+        },
+        {
+          "date": "2021-10-14",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 439.08,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-11-11",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 465.21,
+          "commission": 1,
+          "regulatory": 0.12462223799999998
+        },
+        {
+          "date": "2021-11-15",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 468.64,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-11-29",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 464.07,
+          "commission": 1,
+          "regulatory": 0.12431694599999998
+        },
+        {
+          "date": "2021-12-08",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 468.7,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2021-12-20",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 454.48,
+          "commission": 1,
+          "regulatory": 0.12174874399999999
+        },
+        {
+          "date": "2021-12-23",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 468.75,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 142,
+          "ending_equity": 10052.590136472281,
+          "fills": 25,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02584607071276345,
+          "ending_delta_usd": 26.681455016274413,
+          "added_fills": 10,
+          "removed_fills": 6
+        },
+        {
+          "seed": 143,
+          "ending_equity": 10016.041671985367,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02835064587505031,
+          "ending_delta_usd": -9.86700947063946,
+          "added_fills": 5,
+          "removed_fills": 5
+        },
+        {
+          "seed": 144,
+          "ending_equity": 10170.204422384104,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.028006555699453595,
+          "ending_delta_usd": 144.29574092809708,
+          "added_fills": 2,
+          "removed_fills": 4
+        },
+        {
+          "seed": 145,
+          "ending_equity": 10117.055998158223,
+          "fills": 15,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.028299451606659472,
+          "ending_delta_usd": 91.1473167022159,
+          "added_fills": 2,
+          "removed_fills": 8
+        },
+        {
+          "seed": 146,
+          "ending_equity": 10139.527941498127,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.025278475104905808,
+          "ending_delta_usd": 113.61926004212,
+          "added_fills": 5,
+          "removed_fills": 7
+        },
+        {
+          "seed": 147,
+          "ending_equity": 10311.38753849353,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02931740864438153,
+          "ending_delta_usd": 285.478857037524,
+          "added_fills": 7,
+          "removed_fills": 7
+        },
+        {
+          "seed": 148,
+          "ending_equity": 10126.42302909508,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.028987303647678563,
+          "ending_delta_usd": 100.5143476390731,
+          "added_fills": 7,
+          "removed_fills": 7
+        },
+        {
+          "seed": 149,
+          "ending_equity": 10230.53564099475,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027657518325578882,
+          "ending_delta_usd": 204.6269595387439,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 150,
+          "ending_equity": 10027.660020501356,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027116158076891418,
+          "ending_delta_usd": 1.7513390453495958,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 151,
+          "ending_equity": 10088.357443180463,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02843303890255972,
+          "ending_delta_usd": 62.448761724455835,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 152,
+          "ending_equity": 10090.676123507767,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.028455566218562437,
+          "ending_delta_usd": 64.76744205175964,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 153,
+          "ending_equity": 10055.776180801076,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03186296373493329,
+          "ending_delta_usd": 29.86749934506952,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 154,
+          "ending_equity": 10119.319393357368,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030163480486619078,
+          "ending_delta_usd": 93.41071190136063,
+          "added_fills": 3,
+          "removed_fills": 5
+        },
+        {
+          "seed": 155,
+          "ending_equity": 10081.594489307852,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03770034651947697,
+          "ending_delta_usd": 55.68580785184531,
+          "added_fills": 5,
+          "removed_fills": 7
+        },
+        {
+          "seed": 156,
+          "ending_equity": 10128.374444507306,
+          "fills": 19,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.026744617416967716,
+          "ending_delta_usd": 102.46576305129929,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 157,
+          "ending_equity": 10102.88074094741,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.026876204053935798,
+          "ending_delta_usd": 76.97205949140334,
+          "added_fills": 4,
+          "removed_fills": 8
+        },
+        {
+          "seed": 158,
+          "ending_equity": 10026.144407415715,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02996340371790017,
+          "ending_delta_usd": 0.2357259597083612,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 159,
+          "ending_equity": 10104.53485341818,
+          "fills": 17,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.029118374761622202,
+          "ending_delta_usd": 78.62617196217252,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 160,
+          "ending_equity": 10052.79826650937,
+          "fills": 23,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04116709690586333,
+          "ending_delta_usd": 26.88958505336268,
+          "added_fills": 9,
+          "removed_fills": 7
+        },
+        {
+          "seed": 161,
+          "ending_equity": 9928.899689700975,
+          "fills": 21,
+          "perturbations": {
+            "level": 10,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033903647301161244,
+          "ending_delta_usd": -97.00899175503218,
+          "added_fills": 5,
+          "removed_fills": 5
+        }
+      ]
+    },
+    {
+      "train_start": "2022-01-01",
+      "forward_start": "2022-07-01",
+      "end_exclusive": "2023-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 9601.212556220002,
+        "30": 9656.362753399999
+      },
+      "sensitivity": {
+        "10": 9777.97569799,
+        "30": 10186.03767972
+      },
+      "train_return": -0.03436372466000015,
+      "forward_return": 0.01860376797200014,
+      "selection_start": "2022-01-03",
+      "selection_return": -0.03436372466000015,
+      "forward_minus_train": 0.05296749263200029,
+      "abstentions": 0,
+      "forward_buys": 2,
+      "forward_sells": 2,
+      "trend_regimes": {
+        "falling": {
+          "sessions": 60,
+          "net_pnl_usd": -6.26226028000201
+        },
+        "rising": {
+          "sessions": 67,
+          "net_pnl_usd": 192.2999400000026
+        }
+      },
+      "equity": [
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10000.0,
+        10021.99997,
+        10062.19997,
+        10025.19997,
+        10029.99997,
+        9983.19997,
+        10084.69997,
+        10134.69997,
+        10194.19997,
+        10181.99997,
+        10154.89997,
+        10218.79997,
+        10215.99997,
+        10208.99997,
+        10204.19997,
+        10187.79997,
+        10274.19997,
+        10274.19997,
+        10345.29997,
+        10362.89997,
+        10371.29997,
+        10340.79997,
+        10353.19997,
+        10295.69997,
+        10207.79997,
+        10197.79997,
+        10210.99997,
+        10269.39997,
+        10127.39997,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10095.2170868,
+        10124.0170568,
+        10184.5170568,
+        10155.5170568,
+        10135.1170568,
+        10225.5170568,
+        10197.417056799999,
+        10180.5170568,
+        10084.0170568,
+        10045.417056799999,
+        10098.817056799999,
+        10134.817056799999,
+        10155.317056799999,
+        10076.6170568,
+        10282.2170568,
+        10320.417056799999,
+        10286.5170568,
+        10320.2170568,
+        10289.817056799999,
+        10277.7170568,
+        10295.6170568,
+        10281.2170568,
+        10334.317056799999,
+        10359.5170568,
+        10358.6170568,
+        10294.4170568,
+        10287.6170568,
+        10412.1170568,
+        10409.1170568,
+        10404.4170568,
+        10331.2170568,
+        10273.6170568,
+        10266.9170568,
+        10297.7170568,
+        10268.1170568,
+        10324.817056799999,
+        10355.0170568,
+        10329.317056799999,
+        10231.6170568,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972,
+        10186.03767972
+      ],
+      "fills": [
+        {
+          "date": "2022-07-20",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 392.47,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2022-08-29",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 402.2,
+          "commission": 1,
+          "regulatory": 0.0828832
+        },
+        {
+          "date": "2022-10-24",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 375.89,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2022-12-16",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 385.18,
+          "commission": 1,
+          "regulatory": 0.07937708
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 162,
+          "ending_equity": 10215.082825190962,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03079546937058084,
+          "ending_delta_usd": 29.04514547096187,
+          "added_fills": 2,
+          "removed_fills": 0
+        },
+        {
+          "seed": 163,
+          "ending_equity": 10180.324800378152,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.031427382416223996,
+          "ending_delta_usd": -5.712879341848748,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 164,
+          "ending_equity": 9926.876816461518,
+          "fills": 10,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0428048906697672,
+          "ending_delta_usd": -259.160863258483,
+          "added_fills": 6,
+          "removed_fills": 0
+        },
+        {
+          "seed": 165,
+          "ending_equity": 10203.159770664517,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03133972373199699,
+          "ending_delta_usd": 17.122090944516458,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 166,
+          "ending_equity": 10214.302617365003,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03406785346929202,
+          "ending_delta_usd": 28.264937645002647,
+          "added_fills": 2,
+          "removed_fills": 0
+        },
+        {
+          "seed": 167,
+          "ending_equity": 10169.354796695712,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03257682706792337,
+          "ending_delta_usd": -16.682883024288458,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 168,
+          "ending_equity": 10235.646632960194,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03214083149994317,
+          "ending_delta_usd": 49.60895324019293,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 169,
+          "ending_equity": 10109.283336217895,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03973318771396688,
+          "ending_delta_usd": -76.75434350210526,
+          "added_fills": 2,
+          "removed_fills": 0
+        },
+        {
+          "seed": 170,
+          "ending_equity": 10221.363875313229,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030971351330548295,
+          "ending_delta_usd": 35.326195593228476,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 171,
+          "ending_equity": 10157.607477958783,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03331331565747928,
+          "ending_delta_usd": -28.430201761217177,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 172,
+          "ending_equity": 10183.560635454975,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03185344522298754,
+          "ending_delta_usd": -2.477044265026052,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 173,
+          "ending_equity": 10178.568060330706,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03240729345997982,
+          "ending_delta_usd": -7.4696193892941665,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 174,
+          "ending_equity": 10176.559744001815,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.038557521238552016,
+          "ending_delta_usd": -9.477935718185108,
+          "added_fills": 2,
+          "removed_fills": 0
+        },
+        {
+          "seed": 175,
+          "ending_equity": 9960.850208893604,
+          "fills": 8,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.038502486528885334,
+          "ending_delta_usd": -225.18747082639675,
+          "added_fills": 5,
+          "removed_fills": 1
+        },
+        {
+          "seed": 176,
+          "ending_equity": 10123.871698573745,
+          "fills": 8,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03802153966242705,
+          "ending_delta_usd": -62.165981146255945,
+          "added_fills": 4,
+          "removed_fills": 0
+        },
+        {
+          "seed": 177,
+          "ending_equity": 10222.498254222037,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03302091934110981,
+          "ending_delta_usd": 36.46057450203625,
+          "added_fills": 3,
+          "removed_fills": 1
+        },
+        {
+          "seed": 178,
+          "ending_equity": 10170.531327166635,
+          "fills": 6,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033842764371773595,
+          "ending_delta_usd": -15.506352553366014,
+          "added_fills": 3,
+          "removed_fills": 1
+        },
+        {
+          "seed": 179,
+          "ending_equity": 10211.661437909457,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.029436223905580088,
+          "ending_delta_usd": 25.623758189456566,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 180,
+          "ending_equity": 10191.936977468014,
+          "fills": 4,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03166295199743491,
+          "ending_delta_usd": 5.899297748013851,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 181,
+          "ending_equity": 10163.913477170268,
+          "fills": 8,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.035192610192758954,
+          "ending_delta_usd": -22.124202549732217,
+          "added_fills": 4,
+          "removed_fills": 0
+        }
+      ]
+    },
+    {
+      "train_start": "2023-01-01",
+      "forward_start": "2023-07-01",
+      "end_exclusive": "2024-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 10071.433438184009,
+        "30": 10225.442584144006
+      },
+      "sensitivity": {
+        "10": 10587.324729086002,
+        "30": 10455.236659122005
+      },
+      "train_return": 0.022544258414400664,
+      "forward_return": 0.04552366591220047,
+      "selection_start": "2023-01-03",
+      "selection_return": 0.022544258414400664,
+      "forward_minus_train": 0.02297940749779981,
+      "abstentions": 0,
+      "forward_buys": 6,
+      "forward_sells": 5,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 76,
+          "net_pnl_usd": 506.4809526720019
+        },
+        "falling": {
+          "sessions": 50,
+          "net_pnl_usd": -51.244293549996655
+        }
+      },
+      "equity": [
+        10010.309961,
+        10001.729961000001,
+        9956.619961,
+        9942.189961,
+        9956.619961,
+        9993.019961,
+        10039.299961,
+        10085.319961000001,
+        10081.679961,
+        10101.959961,
+        10145.509961,
+        10158.639961,
+        10119.379961,
+        10119.379961,
+        10145.639961,
+        10161.759961,
+        10162.669961,
+        10123.409961000001,
+        10180.999961000001,
+        10192.309961,
+        10175.279961,
+        10092.729961000001,
+        10075.959961,
+        10049.569961000001,
+        10073.149757462,
+        10080.859718462001,
+        10041.859718462001,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10072.459654180002,
+        10090.959615180003,
+        10082.379615180002,
+        10093.299615180003,
+        10067.949615180001,
+        10028.689615180003,
+        9987.140911322003,
+        9987.140911322003,
+        9987.140911322003,
+        9973.660872322005,
+        9980.420872322004,
+        10030.470872322005,
+        9939.600872322004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9934.322184532004,
+        9975.052145532005,
+        9899.522145532004,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9908.026698122005,
+        9927.176659122006,
+        9940.176659122006,
+        9956.296659122007,
+        9960.456659122006,
+        9916.126659122005,
+        10004.136659122007,
+        9998.676659122006,
+        10109.696659122004,
+        10122.046659122007,
+        10129.196659122004,
+        10136.476659122007,
+        10181.586659122006,
+        10168.716659122005,
+        10191.466659122005,
+        10195.106659122006,
+        10184.446659122004,
+        10190.296659122007,
+        10186.136659122007,
+        10209.406659122005,
+        10244.506659122006,
+        10213.176659122006,
+        10212.006659122006,
+        10188.086659122006,
+        10233.196659122004,
+        10258.806659122005,
+        10282.076659122005,
+        10309.506659122006,
+        10392.706659122006,
+        10412.336659122006,
+        10377.496659122005,
+        10411.816659122007,
+        10449.126659122005,
+        10363.586659122006,
+        10421.306659122005,
+        10433.656659122005,
+        10459.656659122005,
+        10470.836659122006,
+        10473.176659122006,
+        10455.236659122005
+      ],
+      "fills": [
+        {
+          "date": "2023-07-03",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 442.92,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2023-08-07",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 448.71,
+          "commission": 1,
+          "regulatory": 0.12020353799999998
+        },
+        {
+          "date": "2023-08-08",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 448.08,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2023-08-10",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 448.19,
+          "commission": 1,
+          "regulatory": 0.120064282
+        },
+        {
+          "date": "2023-08-30",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 449.51,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2023-09-07",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 443.11,
+          "commission": 1,
+          "regulatory": 0.118703858
+        },
+        {
+          "date": "2023-09-12",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 446.95,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2023-09-18",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 443.05,
+          "commission": 1,
+          "regulatory": 0.11868779
+        },
+        {
+          "date": "2023-10-17",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 432.81,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        },
+        {
+          "date": "2023-10-19",
+          "shares": -13,
+          "lots": -13,
+          "quantity": -13,
+          "price": 430.95,
+          "commission": 1,
+          "regulatory": 0.11544740999999999
+        },
+        {
+          "date": "2023-11-03",
+          "shares": 13,
+          "lots": 13,
+          "quantity": 13,
+          "price": 433.14,
+          "commission": 1,
+          "regulatory": 3.9e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 182,
+          "ending_equity": 10370.109533248533,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03312588554644304,
+          "ending_delta_usd": -85.12712587347232,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 183,
+          "ending_equity": 10400.115567323774,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.031775964094630633,
+          "ending_delta_usd": -55.121091798231646,
+          "added_fills": 5,
+          "removed_fills": 3
+        },
+        {
+          "seed": 184,
+          "ending_equity": 10400.752048927632,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03620197698657192,
+          "ending_delta_usd": -54.48461019437309,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 185,
+          "ending_equity": 10425.006942574497,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030997077963584422,
+          "ending_delta_usd": -30.22971654750836,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 186,
+          "ending_equity": 10374.64454352569,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.037365784257468004,
+          "ending_delta_usd": -80.59211559631513,
+          "added_fills": 4,
+          "removed_fills": 2
+        },
+        {
+          "seed": 187,
+          "ending_equity": 10456.99545485101,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.037414277281784744,
+          "ending_delta_usd": 1.7587957290052145,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 188,
+          "ending_equity": 10380.604384419745,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03316668642763777,
+          "ending_delta_usd": -74.63227470226047,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 189,
+          "ending_equity": 10372.402361487708,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03497660946907214,
+          "ending_delta_usd": -82.8342976342974,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 190,
+          "ending_equity": 10479.231233808478,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02864287455088857,
+          "ending_delta_usd": 23.994574686472333,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 191,
+          "ending_equity": 10356.716047378897,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02907963701784325,
+          "ending_delta_usd": -98.52061174310802,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 192,
+          "ending_equity": 10292.11061084515,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0319324980575833,
+          "ending_delta_usd": -163.12604827685573,
+          "added_fills": 4,
+          "removed_fills": 0
+        },
+        {
+          "seed": 193,
+          "ending_equity": 10436.836379298644,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033873561138680564,
+          "ending_delta_usd": -18.400279823361416,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 194,
+          "ending_equity": 10502.415529569404,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02366810479028663,
+          "ending_delta_usd": 47.17887044739837,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 195,
+          "ending_equity": 10440.588275911206,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.030667571393270917,
+          "ending_delta_usd": -14.648383210798784,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 196,
+          "ending_equity": 10501.68690403306,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.023712043487127098,
+          "ending_delta_usd": 46.45024491105505,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 197,
+          "ending_equity": 10412.397956930767,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03565159854820113,
+          "ending_delta_usd": -42.83870219123855,
+          "added_fills": 3,
+          "removed_fills": 1
+        },
+        {
+          "seed": 198,
+          "ending_equity": 10508.20655425268,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02166082257454613,
+          "ending_delta_usd": 52.96989513067456,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 199,
+          "ending_equity": 10545.944874173318,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.021258255756741375,
+          "ending_delta_usd": 90.70821505131244,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 200,
+          "ending_equity": 10516.315083668229,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03081617183351018,
+          "ending_delta_usd": 61.07842454622369,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 201,
+          "ending_equity": 10483.229913779829,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.024666498043770173,
+          "ending_delta_usd": 27.993254657823854,
+          "added_fills": 3,
+          "removed_fills": 3
+        }
+      ]
+    },
+    {
+      "train_start": "2024-01-01",
+      "forward_start": "2024-07-01",
+      "end_exclusive": "2025-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 10215.647591420002,
+        "30": 10421.981464380002
+      },
+      "sensitivity": {
+        "10": 10138.056545739997,
+        "30": 9840.304942080002
+      },
+      "train_return": 0.04219814643800013,
+      "forward_return": -0.01596950579199985,
+      "selection_start": "2024-01-02",
+      "selection_return": 0.04219814643800013,
+      "forward_minus_train": -0.05816765222999998,
+      "abstentions": 0,
+      "forward_buys": 6,
+      "forward_sells": 6,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 107,
+          "net_pnl_usd": -63.43012981999891
+        },
+        "falling": {
+          "sessions": 21,
+          "net_pnl_usd": -96.26492809999945
+        }
+      },
+      "equity": [
+        9996.09997,
+        10032.79997,
+        10057.29997,
+        10089.09997,
+        10095.499969999999,
+        10100.89997,
+        10155.89997,
+        10107.49997,
+        10142.59997,
+        10157.999969999999,
+        10191.29997,
+        10112.09997,
+        10069.29997,
+        10032.59997,
+        10089.19997,
+        10080.499969999999,
+        9954.99997,
+        9955.0884219,
+        9955.0884219,
+        9955.0884219,
+        9955.0884219,
+        9955.0884219,
+        9858.488391899999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9784.777997399999,
+        9812.677967399999,
+        9865.677967399999,
+        9856.577967399999,
+        9875.777967399998,
+        9831.7779674,
+        9890.8779674,
+        9877.477967399998,
+        9885.177967399999,
+        9852.577967399999,
+        9853.077967399999,
+        9906.377967399998,
+        9790.3779674,
+        9779.077967399999,
+        9765.677967399999,
+        9673.177967399999,
+        9714.9657395,
+        9714.9657395,
+        9771.1657095,
+        9817.8657095,
+        9847.065709499999,
+        9855.3657095,
+        9857.665709500001,
+        9840.9657095,
+        9936.7657095,
+        9909.4657095,
+        9923.6657095,
+        9939.9657095,
+        9927.365709499998,
+        9949.9657095,
+        9941.665709500001,
+        9964.565709499999,
+        9913.1657095,
+        9915.565709499999,
+        9905.165709500001,
+        9956.7657095,
+        9904.9657095,
+        9958.6657095,
+        9998.365709499998,
+        9988.2657095,
+        10022.7657095,
+        10070.165709500001,
+        10024.7657095,
+        10049.9657095,
+        10050.4657095,
+        10072.8657095,
+        10063.2657095,
+        10060.165709500001,
+        10006.865709499998,
+        10019.365709499998,
+        10017.365709499998,
+        10035.2657095,
+        10044.6657095,
+        10027.065709499999,
+        9913.365709499998,
+        9939.047987580001,
+        9939.047987580001,
+        9939.047987580001,
+        9956.44795758,
+        10002.14795758,
+        10027.947957580001,
+        10033.64795758,
+        10015.047957580002,
+        10017.947957580001,
+        9979.547957580002,
+        9903.547957580002,
+        9927.547957580002,
+        9949.047957580002,
+        9951.047957580002,
+        9982.74795758,
+        10001.14795758,
+        10021.347957580001,
+        10052.547957580002,
+        10034.347957580001,
+        10071.547957580002,
+        10082.347957580001,
+        10085.14795758,
+        10122.64795758,
+        10112.64795758,
+        10124.14795758,
+        10092.847957580001,
+        10074.047957580002,
+        10120.64795758,
+        10089.347957580001,
+        10088.14795758,
+        10113.94795758,
+        10088.94795758,
+        9908.847957580001,
+        9958.526107420003,
+        9958.526107420003,
+        9958.526107420003,
+        9958.526107420003,
+        9975.926077420003,
+        9912.626077420002,
+        9840.304942080002,
+        9840.304942080002
+      ],
+      "fills": [
+        {
+          "date": "2024-07-01",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 545.63,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-07-25",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 541.35,
+          "commission": 1,
+          "regulatory": 0.1115481
+        },
+        {
+          "date": "2024-08-01",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 552.57,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-08-02",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 535.75,
+          "commission": 1,
+          "regulatory": 0.11039449999999999
+        },
+        {
+          "date": "2024-08-16",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 551.42,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-09-09",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 544.65,
+          "commission": 1,
+          "regulatory": 0.11222789999999999
+        },
+        {
+          "date": "2024-09-11",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 548.7,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-11-01",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 571.32,
+          "commission": 1,
+          "regulatory": 0.11772192000000001
+        },
+        {
+          "date": "2024-11-06",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 589.2,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-12-19",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 591.36,
+          "commission": 1,
+          "regulatory": 0.12185016
+        },
+        {
+          "date": "2024-12-26",
+          "shares": 10,
+          "lots": 10,
+          "quantity": 10,
+          "price": 599.5,
+          "commission": 1,
+          "regulatory": 3e-05
+        },
+        {
+          "date": "2024-12-30",
+          "shares": -10,
+          "lots": -10,
+          "quantity": -10,
+          "price": 587.89,
+          "commission": 1,
+          "regulatory": 0.12113534
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 202,
+          "ending_equity": 9998.153150853088,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.0361125947511917,
+          "ending_delta_usd": 157.8482087730863,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 203,
+          "ending_equity": 10078.573965872989,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03297208188609,
+          "ending_delta_usd": 238.26902379298735,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 204,
+          "ending_equity": 9750.505772430575,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.049492711928287254,
+          "ending_delta_usd": -89.7991696494264,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 205,
+          "ending_equity": 9850.242986131794,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.048584446712593175,
+          "ending_delta_usd": 9.93804405179253,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 206,
+          "ending_equity": 9894.989073201115,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.049157465033927546,
+          "ending_delta_usd": 54.68413112111375,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 207,
+          "ending_equity": 9890.320804797851,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04803356638186066,
+          "ending_delta_usd": 50.015862717849814,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 208,
+          "ending_equity": 9841.962914697258,
+          "fills": 10,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05260581568879734,
+          "ending_delta_usd": 1.6579726172567462,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 209,
+          "ending_equity": 10038.803339070753,
+          "fills": 10,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03348107170424768,
+          "ending_delta_usd": 198.49839699075164,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 210,
+          "ending_equity": 9795.594331233391,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04980879223190734,
+          "ending_delta_usd": -44.71061084661051,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 211,
+          "ending_equity": 9962.808005776862,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03785501653439239,
+          "ending_delta_usd": 122.50306369686041,
+          "added_fills": 3,
+          "removed_fills": 3
+        },
+        {
+          "seed": 212,
+          "ending_equity": 10037.669694850567,
+          "fills": 10,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04645456735205119,
+          "ending_delta_usd": 197.36475277056525,
+          "added_fills": 0,
+          "removed_fills": 2
+        },
+        {
+          "seed": 213,
+          "ending_equity": 9843.707712949334,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.052443268780256874,
+          "ending_delta_usd": 3.4027708693320164,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 214,
+          "ending_equity": 9990.427273130774,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03631136343268349,
+          "ending_delta_usd": 150.12233105077212,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 215,
+          "ending_equity": 9886.176440730866,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04918112626379789,
+          "ending_delta_usd": 45.87149865086394,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 216,
+          "ending_equity": 9892.831276877781,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.036283194698564045,
+          "ending_delta_usd": 52.52633479777978,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 217,
+          "ending_equity": 9814.718987500251,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05112024508729684,
+          "ending_delta_usd": -25.58595457975025,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 218,
+          "ending_equity": 9912.910527917546,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05051881254036508,
+          "ending_delta_usd": 72.60558583754391,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 219,
+          "ending_equity": 9822.882900046703,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.04985063388174727,
+          "ending_delta_usd": -17.422042033298567,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 220,
+          "ending_equity": 9975.9955220091,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03936243716860853,
+          "ending_delta_usd": 135.69057992909802,
+          "added_fills": 2,
+          "removed_fills": 2
+        },
+        {
+          "seed": 221,
+          "ending_equity": 9928.839687285796,
+          "fills": 12,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.05083843552452591,
+          "ending_delta_usd": 88.53474520579402,
+          "added_fills": 1,
+          "removed_fills": 1
+        }
+      ]
+    },
+    {
+      "train_start": "2025-01-01",
+      "forward_start": "2025-07-01",
+      "end_exclusive": "2026-01-01",
+      "selected": 30,
+      "train_scores": {
+        "10": 10218.271138768,
+        "30": 10502.020715104001
+      },
+      "sensitivity": {
+        "10": 10154.751561535999,
+        "30": 10240.907622191997
+      },
+      "train_return": 0.050202071510400126,
+      "forward_return": 0.0240907622191997,
+      "selection_start": "2025-01-02",
+      "selection_return": 0.050202071510400126,
+      "forward_minus_train": -0.026111309291200424,
+      "abstentions": 0,
+      "forward_buys": 7,
+      "forward_sells": 6,
+      "trend_regimes": {
+        "rising": {
+          "sessions": 114,
+          "net_pnl_usd": 106.9784848959971
+        },
+        "falling": {
+          "sessions": 14,
+          "net_pnl_usd": 133.92913729599968
+        }
+      },
+      "equity": [
+        10009.319975999999,
+        10031.719976,
+        10070.839976,
+        10033.559976,
+        10030.839976,
+        10060.599976,
+        10074.679976,
+        10057.079976,
+        10066.599976,
+        10045.239976,
+        10061.879976,
+        10092.439976,
+        10088.759976000001,
+        10098.279976,
+        10098.999976,
+        10141.799976,
+        10143.479975999999,
+        10164.919976000001,
+        10163.639976,
+        10150.199976,
+        10143.799976,
+        10124.759976000001,
+        10041.879976,
+        10072.376841583999,
+        10040.816817584,
+        10079.296817584,
+        10075.056817583998,
+        10114.496817583999,
+        10104.416817583999,
+        10158.576817583998,
+        10176.176817583999,
+        10176.656817584,
+        10164.576817583998,
+        10163.456817584,
+        10135.536817583998,
+        10121.936817583999,
+        10101.456817584,
+        10179.536817583998,
+        10156.816817584,
+        10178.336817583999,
+        10190.096817583999,
+        10208.416817583999,
+        10177.456817584,
+        10139.216817583998,
+        10166.976817584,
+        10210.016817583999,
+        10194.976817584,
+        10207.696817584,
+        10219.696817584,
+        10234.736817583998,
+        10278.096817583999,
+        10276.336817583999,
+        10304.336817583999,
+        10297.056817583998,
+        10290.496817583999,
+        10315.136817584,
+        10326.656817584,
+        10351.776817584,
+        10322.736817583998,
+        10305.856817584,
+        10281.456817584,
+        10311.616817584,
+        10326.496817583999,
+        10346.496817583999,
+        10364.656817584,
+        10370.816817584,
+        10370.736817583998,
+        10389.936817583999,
+        10370.016817583999,
+        10401.936817583999,
+        10386.336817583999,
+        10241.216817583998,
+        10301.147918463997,
+        10340.627894463998,
+        10364.147894463997,
+        10327.907894463999,
+        10317.679184863999,
+        10348.519160863998,
+        10348.439160863998,
+        10320.519160863998,
+        10352.199160863998,
+        10396.119160863998,
+        10460.039160863998,
+        10474.599160863998,
+        10477.239160864,
+        10416.759160864,
+        10434.599160863998,
+        10444.839160863998,
+        10380.039160863998,
+        10398.759160864,
+        10340.599160863998,
+        10320.289065295998,
+        10320.289065295998,
+        10343.689041295998,
+        10346.729041295997,
+        10256.009041295998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10201.619362671998,
+        10217.019338671998,
+        10246.699338671999,
+        10221.739338671998,
+        10231.819338671998,
+        10250.699338671999,
+        10254.699338671999,
+        10265.099338671998,
+        10248.619338671997,
+        10243.899338671998,
+        10280.139338671997,
+        10292.939338671997,
+        10233.659338671998,
+        10225.419338671998,
+        10210.539338671999,
+        10150.779338671997,
+        10199.267646191998,
+        10230.267622191997,
+        10264.187622192,
+        10289.227622191998,
+        10308.587622191997,
+        10308.027622191998,
+        10288.347622192,
+        10281.627622191998,
+        10240.907622191997
+      ],
+      "fills": [
+        {
+          "date": "2025-07-01",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 616.36,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-08-04",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 625.67,
+          "commission": 1,
+          "regulatory": 0.10313441599999999
+        },
+        {
+          "date": "2025-08-05",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 631.79,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-10-13",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 660.65,
+          "commission": 1,
+          "regulatory": 0.10889911999999999
+        },
+        {
+          "date": "2025-10-14",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 657.17,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-10-17",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 659.5,
+          "commission": 1,
+          "regulatory": 0.10870959999999999
+        },
+        {
+          "date": "2025-10-20",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 667.32,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-11-07",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 667.91,
+          "commission": 1,
+          "regulatory": 0.11009556799999999
+        },
+        {
+          "date": "2025-11-11",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 679.95,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-11-14",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 665.38,
+          "commission": 1,
+          "regulatory": 0.10967862399999999
+        },
+        {
+          "date": "2025-11-26",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 677.63,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        },
+        {
+          "date": "2025-12-18",
+          "shares": -8,
+          "lots": -8,
+          "quantity": -8,
+          "price": 677.6,
+          "commission": 1,
+          "regulatory": 0.11169248
+        },
+        {
+          "date": "2025-12-19",
+          "shares": 8,
+          "lots": 8,
+          "quantity": 8,
+          "price": 676.59,
+          "commission": 1,
+          "regulatory": 2.4e-05
+        }
+      ],
+      "scenarios": [
+        {
+          "seed": 222,
+          "ending_equity": 10486.595203819692,
+          "fills": 7,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.021243872889297653,
+          "ending_delta_usd": 245.68758162769518,
+          "added_fills": 0,
+          "removed_fills": 6
+        },
+        {
+          "seed": 223,
+          "ending_equity": 10032.241575334296,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033073427704937736,
+          "ending_delta_usd": -208.66604685770108,
+          "added_fills": 7,
+          "removed_fills": 5
+        },
+        {
+          "seed": 224,
+          "ending_equity": 10193.137315291635,
+          "fills": 17,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03172863233316583,
+          "ending_delta_usd": -47.7703069003619,
+          "added_fills": 7,
+          "removed_fills": 3
+        },
+        {
+          "seed": 225,
+          "ending_equity": 10218.179015611171,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.026061485228557762,
+          "ending_delta_usd": -22.728606580825726,
+          "added_fills": 2,
+          "removed_fills": 4
+        },
+        {
+          "seed": 226,
+          "ending_equity": 10226.382286995798,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02970875824702103,
+          "ending_delta_usd": -14.525335196198284,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 227,
+          "ending_equity": 10267.860209745373,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03265265329182552,
+          "ending_delta_usd": 26.95258755337636,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 228,
+          "ending_equity": 10396.421510759064,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.019572626247959694,
+          "ending_delta_usd": 155.51388856706762,
+          "added_fills": 2,
+          "removed_fills": 6
+        },
+        {
+          "seed": 229,
+          "ending_equity": 10218.358645817081,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.024286996646128618,
+          "ending_delta_usd": -22.548976374915583,
+          "added_fills": 4,
+          "removed_fills": 6
+        },
+        {
+          "seed": 230,
+          "ending_equity": 10212.716987362903,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.02936842201231724,
+          "ending_delta_usd": -28.19063482909405,
+          "added_fills": 0,
+          "removed_fills": 0
+        },
+        {
+          "seed": 231,
+          "ending_equity": 10160.463427554729,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.036604433620983284,
+          "ending_delta_usd": -80.44419463726808,
+          "added_fills": 4,
+          "removed_fills": 4
+        },
+        {
+          "seed": 232,
+          "ending_equity": 10257.023575023448,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03627698583930054,
+          "ending_delta_usd": 16.115952831451068,
+          "added_fills": 1,
+          "removed_fills": 3
+        },
+        {
+          "seed": 233,
+          "ending_equity": 10148.093043688132,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.035680141952340816,
+          "ending_delta_usd": -92.81457850386505,
+          "added_fills": 4,
+          "removed_fills": 2
+        },
+        {
+          "seed": 234,
+          "ending_equity": 10178.107165361907,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.035563624295791234,
+          "ending_delta_usd": -62.80045683008939,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 235,
+          "ending_equity": 10303.304036460673,
+          "fills": 13,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.027618356262952615,
+          "ending_delta_usd": 62.39641426867638,
+          "added_fills": 1,
+          "removed_fills": 1
+        },
+        {
+          "seed": 236,
+          "ending_equity": 10179.644397018355,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.023682470019517583,
+          "ending_delta_usd": -61.26322517364133,
+          "added_fills": 4,
+          "removed_fills": 2
+        },
+        {
+          "seed": 237,
+          "ending_equity": 10150.877496310753,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.029664284204712645,
+          "ending_delta_usd": -90.0301258812433,
+          "added_fills": 5,
+          "removed_fills": 3
+        },
+        {
+          "seed": 238,
+          "ending_equity": 10364.605306227593,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.032840198943026234,
+          "ending_delta_usd": 123.69768403559647,
+          "added_fills": 1,
+          "removed_fills": 5
+        },
+        {
+          "seed": 239,
+          "ending_equity": 10205.703482182791,
+          "fills": 11,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.03775078150736737,
+          "ending_delta_usd": -35.20414000920573,
+          "added_fills": 2,
+          "removed_fills": 4
+        },
+        {
+          "seed": 240,
+          "ending_equity": 10036.028492883459,
+          "fills": 15,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.033052655807608224,
+          "ending_delta_usd": -204.8791293085378,
+          "added_fills": 4,
+          "removed_fills": 2
+        },
+        {
+          "seed": 241,
+          "ending_equity": 10273.61007073223,
+          "fills": 9,
+          "perturbations": {
+            "level": 30,
+            "delay_sessions": 0,
+            "half_spread_bps": 0.0,
+            "reject_probability": 0
+          },
+          "drawdown": 0.022665850889659847,
+          "ending_delta_usd": 32.70244854023258,
+          "added_fills": 2,
+          "removed_fills": 6
+        }
+      ]
+    }
+  ],
+  "abstentions": 0
+}
