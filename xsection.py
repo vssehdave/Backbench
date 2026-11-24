@@ -93,16 +93,20 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
     cash, units, last = cash0, {}, {}
     equity, long_pnl, short_pnl = [cash0], 0., 0.
     paid = dict(commission=0., regulatory=0., slippage=0., borrow=0.)
-    traded, forced, abstain, log, pending = 0., 0, 0, [], None
+    traded, forced, abstain, log, pending, fills = 0., 0, 0, [], None, []
+    borrow_daily = [0.] * (i1 - i0 + 1)
     decisions = set(decision_indexes(panel.dates, i0, i1, cadence))
 
-    def charge(symbol, value, k):
+    def charge(symbol, value, k, day, why):
         nonlocal cash, traded
         c, r, s = trade_costs(value, panel.raw[symbol][k], costs)
         for name, amount in zip(("commission", "regulatory", "slippage"), (c, r, s)):
             paid[name] += amount
         cash -= value + c + r + s
         traded += abs(value)
+        fills.append(dict(date=str(day), symbol=symbol, side="buy" if value > 0 else "sell", usd=value,
+                          quantity=value / panel.raw[symbol][k], price=panel.raw[symbol][k], commission=c,
+                          regulatory=r, slippage=s, reason=why))
 
     for k in range(i0, i1 + 1):
         if k > i0:
@@ -112,7 +116,8 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                 if price is None and panel.last[s] < k:
                     # Delisted: close at the last price seen, with trading costs.
                     price = last[s]
-                    charge(s, -units[s] * price, panel.last[s])
+                    charge(s, -units[s] * price, panel.last[s], panel.dates[k], "delisted: closed at the last price")
+                    fills[-1].update(position_before=units[s], position_after=0.)
                     del units[s]
                     forced += 1
                     continue
@@ -122,6 +127,7 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                 fee = 0 if units[s] > 0 else -units[s] * last[s] * costs.borrow_bps / 10000 * gap / 365
                 cash -= fee
                 paid["borrow"] += fee
+                borrow_daily[k - i0] += fee
                 last[s] = price
             if pending is not None:
                 value = cash + sum(units[s] * last[s] for s in units)
@@ -130,8 +136,11 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                         continue  # no bar on the fill day: leave the position as it is
                     delta = pending.get(s, 0.) * value - units.get(s, 0.) * panel.adj[s][k]
                     if delta:
-                        charge(s, delta, k)
+                        before = units.get(s, 0.)
+                        charge(s, delta, k, panel.dates[k], f"rebalance to target weight {pending.get(s, 0.):+.4f}")
+                        fills[-1]["position_before"] = before
                         units[s] = units.get(s, 0.) + delta / panel.adj[s][k]
+                        fills[-1]["position_after"] = units[s] if abs(units[s]) >= 1e-12 else 0.
                         last[s] = panel.adj[s][k]
                         if abs(units[s]) < 1e-12:
                             del units[s]
@@ -150,7 +159,8 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                 pending = enforce(target, limits)
                 log.append((str(panel.dates[k]), dict(sorted(pending.items()))))
     return dict(equity=equity, long_pnl=long_pnl, short_pnl=short_pnl, costs=paid, traded=traded,
-                forced_closes=forced, abstentions=abstain, decisions=log, cash=cash, units=units)
+                forced_closes=forced, abstentions=abstain, decisions=log, cash=cash, units=units, fills=fills,
+                borrow_daily=borrow_daily)
 
 
 def _benchmark(panel, symbols, i0, i1, cash0):
@@ -191,8 +201,10 @@ def _first(dates, day):
     raise ValueError(f"Panel ends before {day}")
 
 
-def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_000_000., benchmark="SPY"):
-    """strategy is a (decide, fit-or-None) pair. Each fold starts from cash0 on its own."""
+def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_000_000., benchmark="SPY", mc=None):
+    """strategy is a (decide, fit-or-None) pair. Each fold starts from cash0 on its own.
+
+    mc is an optional montecarlo hook: mc(fold, panel, i0, i1, {name: function(panel) -> equity curve})."""
     decide, fit = strategy
     results = []
     for train, split, stop in folds(start, end):
@@ -214,6 +226,12 @@ def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_0
                      cash=[cash0] * (i_stop - i_split + 1))
         if benchmark in panel.adj and panel.adj[benchmark][i_split - 1] is not None:
             bench["spy"] = _benchmark(panel, [benchmark], i_split - 1, i_stop - 1, cash0)
+        if mc:
+            runs = {"strategy": lambda p: run_window(p, decide, artifact, i_split - 1, i_stop - 1, limits, costs,
+                                                     cadence, cash0)["equity"]}
+            if "spy" in bench:
+                runs["spy"] = lambda p: _benchmark(p, [benchmark], i_split - 1, i_stop - 1, cash0)
+            mc(len(results), panel, i_split - 1, i_stop - 1, runs)
         results.append(dict(
             selection_start=str(panel.dates[i_inner]), test_start=str(panel.dates[i_split]),
             test_end=str(panel.dates[i_stop - 1]), selected_level=levels[best], selection_sharpe=scores,
@@ -222,7 +240,8 @@ def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_0
             costs_usd=run["costs"], long_leg_return=run["long_pnl"] / cash0, short_leg_return=run["short_pnl"] / cash0,
             decisions=len(run["decisions"]), abstentions=run["abstentions"], forced_closes=run["forced_closes"],
             names_held_avg=statistics.fmean(len(w) for _, w in run["decisions"]) if run["decisions"] else 0,
-            equity=run["equity"], bench_equity=bench, decision_log=run["decisions"]))
+            equity=run["equity"], bench_equity=bench, decision_log=run["decisions"], fills=run["fills"],
+            borrow_daily=run["borrow_daily"], dates=[str(d) for d in panel.dates[i_split - 1:i_stop]]))
     if not results:
         raise ValueError("Supply at least twelve complete calendar months")
     return results
@@ -264,10 +283,10 @@ def load_manifest(path):
     return m, strategy
 
 
-def run(manifest_path, start, end, panel, costs=Costs(), cash0=1_000_000.):
+def run(manifest_path, start, end, panel, costs=Costs(), cash0=1_000_000., mc=None):
     m, strategy = load_manifest(manifest_path)
     limits = Limits(**m["limits"])
-    fold_results = study(panel, strategy, m["levels"], limits, costs, m["cadence"], start, end, cash0, m["benchmark"])
+    fold_results = study(panel, strategy, m["levels"], limits, costs, m["cadence"], start, end, cash0, m["benchmark"], mc)
     first, last = _first(panel.dates, start), max(i for i, d in enumerate(panel.dates) if d < end)
     survivorship = None
     if panel.members:

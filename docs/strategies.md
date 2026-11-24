@@ -32,3 +32,5 @@ Single-instrument runs are long-only unless the manifest opts in with `"allow_sh
 - Borrow: each row after a short is held charges `short value at the previous close * borrow_bps / 10000 * calendar days / 365`, so weekends cost three days.
 - Margin guard: `max_exposure` caps the absolute target value (long or short). If equity at a close is zero or below, the position is closed at that close with fees, the fill is marked `forced`, the fold reports `forced_closes`, and the replay trades no more.
 - Not modelled: short-sale rejection or hard-to-borrow rates, buy-ins, margin interest on borrowed cash, rebates on short proceeds, dividends paid on shorts (prices are raw).
+
+Monte Carlo drawdown distributions: `python money.py mc <manifest>`, see docs/monte-carlo.md.

@@ -53,6 +53,8 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
     cash0 = capital - shares * closes[expiries[0]]
     n = shares // MULT
     cash, equity, cycles = cash0, {}, []
+    fills = [dict(date=str(expiries[0]), symbol="shares", side="buy", quantity=shares, price=closes[expiries[0]],
+                  fee=0.0, position_before=0, position_after=shares, reason="initial round-lot purchase")]
     for e0, e1 in zip(expiries, expiries[1:]):
         spot = closes[e0]
         strikes = get_contracts(e1, kind, spot * 0.8, spot * 1.2)
@@ -68,6 +70,9 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
             fill = max(bars[first] + side * half_spread, 0.0)  # long pays up, short receives less
             cash += -side * fill * MULT * n - fee * n
             cycle.update(entry_fill_date=str(first), bar_close=bars[first], fill=fill, fee=fee * n)
+            fills.append(dict(date=str(first), symbol=strikes[strike], side="sell" if side < 0 else "buy", quantity=n,
+                              price=fill, fee=fee * n, position_before=0, position_after=side * n,
+                              reason=f"monthly roll: {kind} strike {strike} expiring {e1}"))
         last = None
         for d in window:
             last = bars.get(d, last) if first is not None and d >= first else None
@@ -78,6 +83,9 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
                      itm=intrinsic > 0, assigned=side < 0 and first is not None and intrinsic > 0)
         if first is not None:
             cash += side * intrinsic * MULT * n
+            fills.append(dict(date=str(e1), symbol=strikes[strike], side="settle", quantity=n, price=intrinsic, fee=0.0,
+                              position_before=side * n, position_after=0, reason="expires in the money: " + ("assigned" if side < 0 else "exercised")
+                              if intrinsic > 0 else "expires worthless"))
         equity[e1] = cash + shares * final
         cycles.append(cycle)
     series = [equity[d] for d in days]
@@ -99,6 +107,8 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
         "buy_and_hold": {"end_equity": held[-1], "total_return": held[-1] / capital - 1,
                          "max_drawdown": max_drawdown(held)},
         "cycles": cycles,
+        "fills": fills,
+        "daily": {"dates": [str(d) for d in days], "equity": series, "buy_and_hold": held},
     }
 
 
