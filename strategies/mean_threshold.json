@@ -1,0 +1,19 @@
+{
+  "id": "mean_threshold",
+  "entry": "controls:MeanThreshold",
+  "levels": [
+    -1,
+    0,
+    1
+  ],
+  "version": "1",
+  "data": {
+    "kind": "fixture",
+    "symbol": "FIXTURE"
+  },
+  "calendar": "xnys",
+  "warmup": 0,
+  "costs": "equity_ibkr",
+  "benchmark": "cash",
+  "max_exposure": 1.0
+}
