@@ -1,0 +1,3 @@
+{"id": "xs_low_volatility", "version": "1", "entry": "low_volatility:decide", "cadence": "monthly",
+ "levels": [{"window": 252, "share": 0.2}],
+ "limits": {"max_gross": 1.0, "max_net": 1.0, "name_cap": 0.05}, "benchmark": "SPY"}

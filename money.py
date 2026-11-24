@@ -190,6 +190,10 @@ def run_replay(manifest, start, end, level):
 
 
 def main(argv=None):
+    argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] == ["xs"]:  # cross-sectional runs have their own manifest schema; see xsection.py
+        import xsection
+        return xsection.main(argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     for name in ("test", "replay"):
