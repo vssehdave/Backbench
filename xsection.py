@@ -72,7 +72,9 @@ def trade_costs(value, raw_price, costs):
 
 
 def decision_indexes(dates, i0, i1, cadence):
-    """Sessions whose close starts a decision: the baseline plus the last session of each month or ISO week."""
+    """Sessions whose close starts a decision: the baseline plus the last session of each month or ISO week (or every session)."""
+    if cadence == "daily":
+        return list(range(i0, i1))
     key = (lambda d: (d.year, d.month)) if cadence == "monthly" else (lambda d: d.isocalendar()[:2])
     return [i0] + [i for i in range(i0 + 1, i1) if key(dates[i + 1]) != key(dates[i])]
 
