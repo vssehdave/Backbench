@@ -101,9 +101,22 @@ class Leader(unittest.TestCase):
         self.assertEqual(self.leader(5, shares), "BBB")
         self.assertEqual(self.leader(20, shares), "BBB")
 
+    def test_count_restated_for_a_later_split_is_priced_on_the_filing_day(self):
+        # BBB splits 10:1 on session 10. On session 15 it files a post-split count (500) for an old period end.
+        # Priced at the old period end (raw 10) it would be 5000 and falsely lead; on the filing day (raw 1) it is 500.
+        self.raw["BBB"] = [10.] * 10 + [1.] * 20
+        self.adj["BBB"] = [1.] * 30
+        shares = self.shares([(str(self.dates[15]), "2015-12-31", "b1", 500)])
+        self.assertEqual(self.leader(20, shares), "AAA")
+
+    def test_stale_share_fact_is_ignored(self):
+        old = leader_rules.Shares([("2015-12-01", "2015-11-30", "x", 100)])
+        self.assertIsNotNone(old.at("2016-12-01"))
+        self.assertIsNone(old.at("2017-02-01"))
+
     def test_share_classes_summed_and_counted_once_per_company(self):
         both = leader_rules.Shares([("2015-12-01", "2015-11-30", "x", 60), ("2015-12-01", "2015-11-30", "x", 70)])
-        self.assertEqual(both.at("2016-01-01"), ("2015-11-30", 130))
+        self.assertEqual(both.at("2016-01-01"), ("2015-12-01", 130))
         shares = {"AAA": (1, leader_rules.Shares([("2015-12-01", "2015-11-30", "a", 100)])), "BBB": (1, both)}
         caps = leader_rules.market_caps(5, self.dates, self.adj, self.raw, shares, self.members)
         self.assertEqual(list(caps), ["AAA"])

@@ -1,7 +1,9 @@
 """Largest S&P 500 member by market cap, from EDGAR shares known on the date and Alpaca prices."""
-from bisect import bisect_left, bisect_right
+from bisect import bisect_right
+from datetime import date
 
 
+MAX_AGE_DAYS = 400  # a fact this old is stale (e.g. a company whose tag stopped being filed)
 MAX_JUMP = 100  # a share count changing more than 100x versus the median of its own series is treated as a unit error
 
 
@@ -30,16 +32,21 @@ class Shares:
         return [r for k, r in enumerate(rows) if sane(k)]
 
     def at(self, day):
-        """(period_end, shares) from the most recently filed report with filed <= day, else None."""
+        """(filed, shares) from the most recently filed report with filed <= day, else None (also None if over 400 days old)."""
         n = bisect_right(self.filed, str(day))
-        return None if n == 0 else (self.groups[n - 1][1], self.groups[n - 1][2])
+        if n == 0 or (date.fromisoformat(str(day)) - date.fromisoformat(self.filed[n - 1])).days > MAX_AGE_DAYS:
+            return None
+        return (self.filed[n - 1], self.groups[n - 1][2])
 
 
 def market_caps(i, dates, adj, raw, shares, members):
     """{symbol: cap} on session i, one entry per CIK, using only filings dated on or before dates[i].
 
-    cap = shares x raw close on the period end x adj[i] / adj[end]: the adjusted ratio carries the price forward
-    in the share count's own terms, so a split between the period end and i does not distort the cap.
+    cap = shares x raw close on the filing day x adj[i] / adj[filing day]. Priced on the filing day, because a count
+    restated for a later split (Alphabet's July 2022 10-Q restates 2021 counts after its 20:1 split) is in the
+    filing day's share terms; the adjusted ratio then carries it forward. Shares are totals over all classes of one
+    CIK and are priced with one listed class (the first symbol alphabetically; GOOG for Alphabet), because EDGAR
+    companyfacts does not label the per-class values.
     shares maps symbol -> (cik, Shares). The first symbol alphabetically with data represents a CIK.
     """
     out, seen = {}, set()

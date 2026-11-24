@@ -4,33 +4,32 @@
   "metrics": {
    "start": "2016-01-04",
    "end": "2026-10-30",
-   "total_return": 2.8919173752520884,
-   "cagr": 0.1338192883981073,
-   "volatility": 0.3028897710694919,
-   "sharpe": 0.5673853068691267,
-   "max_drawdown": -0.5236929997554198
+   "total_return": 3.521072050251729,
+   "cagr": 0.14963091533295736,
+   "volatility": 0.30261346218467744,
+   "sharpe": 0.6133699094260225,
+   "max_drawdown": -0.5070358937399311
   },
-  "turnover_per_year": 10.269717929492332,
+  "turnover_per_year": 9.88955215871285,
   "costs_usd": {
-   "commission": 695.8028928119528,
-   "regulatory": 400.7317038483807,
-   "slippage": 19464.415658199814,
+   "commission": 697.6578452195132,
+   "regulatory": 417.27074413405745,
+   "slippage": 20266.76509032096,
    "borrow": 0.0
   },
-  "costs_pct_of_avg_equity_per_year": 0.005424133022734319,
+  "costs_pct_of_avg_equity_per_year": 0.005216801348029374,
   "decisions": 2721,
   "abstentions": 1,
   "forced_closes": 0,
   "names_held_avg": 1.0,
-  "ending_equity": 389191.73752520885,
+  "ending_equity": 452107.2050251729,
   "start_cash": 100000.0
  },
- "switches": 56,
+ "switches": 54,
  "calendar_days_as_leader": {
-  "AAPL": 2740,
+  "AAPL": 2831,
   "MSFT": 589,
   "NVDA": 512,
-  "GOOG": 91,
   "AMZN": 19
  },
  "timeline": [
@@ -156,14 +155,6 @@
   ],
   [
    "2021-11-19",
-   "AAPL"
-  ],
-  [
-   "2022-07-28",
-   "GOOG"
-  ],
-  [
-   "2022-10-27",
    "AAPL"
   ],
   [
