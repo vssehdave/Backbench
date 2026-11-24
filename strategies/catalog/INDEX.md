@@ -91,7 +91,7 @@ Tested results are SPY 2016-2026, compounded over the ten July-December forward 
 | 3.9.1 | [Mean-reversion - multiple clusters](3.9.1-mean-reversion-multiple-clusters/) | Stocks | not testable: cross-sectional universe |  |
 | 3.10 | [Mean-reversion - weighted regression](3.10-mean-reversion-weighted-regression/) | Stocks | not testable: cross-sectional universe |  |
 | 3.11 | [Single moving average](3.11-single-moving-average/) | Stocks | tested | 21.7% vs B&H 46.8%, cash 0% |
-| 3.12 | [Two moving averages](3.12-two-moving-averages/) | Stocks | tested | 23.4% vs B&H 46.8%, cash 0% |
+| 3.12 | [Two moving averages](3.12-two-moving-averages/) | Stocks | tested | 23.4% vs B&H 46.8%, cash 0%; long/short variant 2.8% |
 | 3.13 | [Three moving averages](3.13-three-moving-averages/) | Stocks | tested | 15.5% vs B&H 46.8%, cash 0% |
 | 3.14 | [Support and resistance](3.14-support-and-resistance/) | Stocks | not testable: needs high/low/volume |  |
 | 3.15 | [Channel](3.15-channel/) | Stocks | tested | 15.9% vs B&H 46.8%, cash 0% |

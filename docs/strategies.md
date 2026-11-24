@@ -23,3 +23,12 @@ python money.py compare reports/threshold.json reports/cash.json
 ```
 
 Validation lists every manifest problem in one error before any data is loaded. Not built yet: experiment registry, portfolio state passed to `decide`, multi-asset.
+
+## Shorting
+
+Single-instrument runs are long-only unless the manifest opts in with `"allow_short": true` (requires `costs: "equity_ibkr"`). Without it a negative target is still an error. Optional `"borrow_bps_per_year"` (default 50, the same general-collateral rate as `xsection.py`) is only valid with `allow_short`.
+
+- Accounting: a short sale credits the proceeds to cash; equity is `cash + shares * price` with shares negative. A long-to-short flip is one order for the full difference. The sell-side regulatory fee applies to short sales as to any sell.
+- Borrow: each row after a short is held charges `short value at the previous close * borrow_bps / 10000 * calendar days / 365`, so weekends cost three days.
+- Margin guard: `max_exposure` caps the absolute target value (long or short). If equity at a close is zero or below, the position is closed at that close with fees, the fill is marked `forced`, the fold reports `forced_closes`, and the replay trades no more.
+- Not modelled: short-sale rejection or hard-to-borrow rates, buy-ins, margin interest on borrowed cash, rebates on short proceeds, dividends paid on shorts (prices are raw).

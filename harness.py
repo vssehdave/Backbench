@@ -62,7 +62,9 @@ def months_after(start, months):
     return date(start.year + (month > 12), (month - 1) % 12 + 1, 1)
 
 
-def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None, log=None):
+def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None, log=None,
+           short=None):
+    """short is None (long-only) or the annual borrow rate in bps; it also allows negative targets."""
     cash, shares = state
     history = list(history)
     rng = random.Random(seed)
@@ -70,16 +72,21 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress
     targets = deque()
     execution_rng = random.Random(f"{seed}:execution")
     fills, equity = [], []
+    previous, wiped = None, False
     for day, opening, closing in rows:
         # A return innovation scales both today's open and close and propagates forward.
         multiplier *= math.exp(rng.gauss(0, shock_bps / 10000)) if shock_bps else 1
         opening *= multiplier
         closing *= multiplier
+        if short is not None and shares < 0 and previous:
+            # Borrow accrues on the short value held since the last close, over calendar days (as in xsection).
+            cash -= -shares * previous[1] * short / 10000 * (day - previous[0]).days / 365
+        previous = day, closing
         target = strategy(tuple(history), level) if history else shares
         if target is None and log is not None:
             log["abstentions"] += 1
-        if target is not None and (type(target) is not int or target < 0):
-            raise ValueError("Expected nonnegative integer target position, or None to hold")
+        if target is not None and (type(target) is not int or (target < 0 and short is None)):
+            raise ValueError("Expected nonnegative integer target position (negative needs allow_short), or None to hold")
         if stress:
             # An abstention is queued as None so a delayed hold never reverts to a stale position.
             targets.append(target)
@@ -98,13 +105,22 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress
         commission, regulatory = (spot.commission(order_value), 0.) if spot else fees(delta, opening)
         debit = order_value + commission + regulatory
         meets_minimum = not spot or abs(order_value) >= spot.min_notional_usd
-        if delta and meets_minimum and cash >= debit:
+        if delta and meets_minimum and cash >= debit and not wiped:
             cash -= debit
             shares = target
             fills.append(dict(date=str(day), shares=quantity, lots=delta, quantity=quantity, price=opening,
                               commission=commission, regulatory=regulatory))
         history.append(closing)
         held_quantity = shares * spot.lot_size if spot else shares
+        if short is not None and shares and cash + held_quantity * closing <= 0:
+            # Margin call: flatten at the close and stop trading this replay.
+            commission, regulatory = fees(-shares, closing)
+            cash -= -shares * closing + commission + regulatory
+            fills.append(dict(date=str(day), shares=-shares, lots=-shares, quantity=-shares, price=closing,
+                              commission=commission, regulatory=regulatory, forced=True))
+            shares, held_quantity, wiped = 0, 0, True
+            if log is not None:
+                log["forced_closes"] = log.get("forced_closes", 0) + 1
         equity.append(cash + held_quantity * closing)
     return (cash, shares), equity, fills
 
@@ -127,7 +143,7 @@ def trend_attribution(train, forward, equity, starting_equity):
     return groups
 
 
-def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None):
+def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None, short=None):
     if not rows or any(not all(math.isfinite(x) and x > 0 for x in r[1:]) for r in rows):
         raise ValueError("Expected positive finite OHLC observations")
     dates = [r[0] for r in rows]
@@ -160,25 +176,26 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
         scores = {}
         for p in levels:
             parameter = fit(tuple(prefix), p) if fit else p
-            scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup, spot=spot)[1][-1]
+            scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup, spot=spot, short=short)[1][-1]
         best = max(levels, key=scores.get)
         # Fit using only this batch. Each artifact must be immutable and decisions pure.
         artifacts = {p: fit(tuple(train), p) if fit else p for p in levels}
         history = [r[2] for r in train]
         opening_state = (10000., 0)
-        log = {"abstentions": 0}
-        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history, spot=spot, log=log)
+        log = {"abstentions": 0, "forced_closes": 0}
+        _, equity, fills = replay(forward, decide, artifacts[best], opening_state, history, spot=spot, log=log,
+                                  short=short)
         selection_return = scores[best] / opening_state[0] - 1
         train_return = None if fit else selection_return
         forward_return = equity[-1] / opening_state[0] - 1
-        neighbours = {p: replay(forward, decide, artifacts[p], opening_state, history, spot=spot)[1][-1] for p in levels}
+        neighbours = {p: replay(forward, decide, artifacts[p], opening_state, history, spot=spot, short=short)[1][-1] for p in levels}
         scenarios = []
         original = {(t["date"], t["shares"]) for t in fills}
         for i in range(paths):
             path_seed = seed + len(results) * paths + i
             draw = stress_config.draw(path_seed, levels, best)
             _, curve, trades = replay(forward, decide, artifacts[draw.level], opening_state, history,
-                                      path_seed, shock_bps, draw, spot)
+                                      path_seed, shock_bps, draw, spot, short=short)
             simulated = {(t["date"], t["shares"]) for t in trades}
             scenarios.append(dict(seed=path_seed, ending_equity=curve[-1], fills=len(trades),
                                   perturbations=asdict(draw), drawdown=max_drawdown(curve, opening_state[0]),
@@ -189,7 +206,7 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
                             train_return=train_return, forward_return=forward_return,
                             selection_start=str(selection_rows[0][0]), selection_return=selection_return,
                             forward_minus_train=None if fit else forward_return - train_return,
-                            abstentions=log["abstentions"],
+                            abstentions=log["abstentions"], forced_closes=log["forced_closes"],
                             forward_buys=sum(t["shares"] > 0 for t in fills),
                             forward_sells=sum(t["shares"] < 0 for t in fills),
                             trend_regimes=trend_attribution(train, forward, equity, opening_state[0]),

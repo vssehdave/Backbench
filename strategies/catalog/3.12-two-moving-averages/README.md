@@ -2,7 +2,7 @@
 
 - Section: 3.12
 - Asset class: Stocks
-- Harness status: **tested**. Rule as implemented: Long when MA(10) > MA(T), flat when below, T = 30 (the paper's example values). Long-only; the optional stop-loss variant is not implemented.
+- Harness status: **tested**. Rule as implemented: Long when MA(10) > MA(T), flat when below, T = 30 (the paper's example values). Long-only here; a long/short variant (short when MA(10) < MA(T)) is under Results. The optional stop-loss variant is not implemented.
 
 ## Description (paper)
 
@@ -48,3 +48,23 @@ Read with care:
 - Prices are raw (no dividends), which understates buy-and-hold and the long legs equally.
 - Signals use the prior close and fill at the next open, with the repo's IBKR fee model; position is a fixed share count of about 5,000 USD at the window's first training close (half of the 10,000 USD of cash).
 - Parameters are the paper's examples where it gives them, otherwise the author's fixed choice (see Harness status), and were not changed after seeing results.
+
+### Long/short variant
+
+Same rule and sizing, but short (about 5,000 USD of shares) instead of flat when MA(10) < MA(T). Manifest `manifest_long_short.json` (`allow_short`, 50 bps a year borrow), rule `strategy_ls.py`, same command with that manifest, saved as `results_long_short.json`. Forced closes: 0 in every window.
+
+| Forward window | Long/short | Long-only | Buy and hold | Fills (buys+sells) |
+|---|---|---|---|---|
+| 2016-07-01..2017-01-01 | -2.10% | 0.67% | 3.39% | 2+2 |
+| 2017-07-01..2018-01-01 | 1.35% | 3.31% | 5.28% | 3+2 |
+| 2018-07-01..2019-01-01 | 2.42% | -0.52% | -3.51% | 2+3 |
+| 2019-07-01..2020-01-01 | -3.12% | 0.83% | 4.77% | 3+2 |
+| 2020-07-01..2021-01-01 | -3.17% | 3.24% | 9.69% | 4+3 |
+| 2021-07-01..2022-01-01 | 0.70% | 3.34% | 5.98% | 3+2 |
+| 2022-07-01..2023-01-01 | -1.71% | -0.55% | 0.58% | 2+3 |
+| 2023-07-01..2024-01-01 | 2.67% | 3.44% | 4.20% | 3+2 |
+| 2024-07-01..2025-01-01 | 3.01% | 3.52% | 4.03% | 2+2 |
+| 2025-07-01..2026-01-01 | 3.01% | 4.12% | 5.23% | 2+1 |
+| **Compounded** | **2.79%** | 23.39% | 46.79% | |
+
+Long/short ranks above long-only in 1 of 10 windows. Shorting the below-average periods lost money in this sample: SPY kept rising through most of them (2019 H2, 2020 H2), so the short leg paid more in losses than the avoided drawdowns saved. Same caveats as above; the borrow rate is an assumption, not a quote, and dividends owed on shorts are not charged.
