@@ -1,0 +1,3 @@
+{"id": "custom_faa", "version": "1", "entry": "faa_rules:decide", "cadence": "monthly",
+ "levels": [{"lookback_months": 4, "n": 3, "w_return": 1.0, "w_volatility": 0.5, "w_correlation": 0.5}],
+ "limits": {"max_gross": 1.0, "max_net": 1.0, "name_cap": 1.0}, "benchmark": "SPY"}

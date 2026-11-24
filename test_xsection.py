@@ -99,6 +99,17 @@ class Engine(unittest.TestCase):
         self.assertAlmostEqual(run["equity"][-1], 100000 - expected - sell_fee)
         self.assertAlmostEqual(run["short_pnl"], 0.)
 
+    def test_leverage_doubles_exposure_and_charges_margin_on_negative_cash(self):
+        dates = [date(2024, 1, 4), date(2024, 1, 5), date(2024, 1, 8), date(2024, 1, 9)]  # Thu Fri Mon Tue
+        costs = Costs(commission_min=0, commission_per_share=0, slippage_bps=0, sell_fee_per_share=0, margin_bps=300)
+        run = xs.run_window(panel_of(dates, {"A": [50.] * 4}), lambda s, p: {"A": 2.}, None, 0, 3,
+                            Limits(2., 2., 2.), costs, "monthly", 100000.)
+        self.assertAlmostEqual(run["units"]["A"] * 50, 200000.)  # 2x equity, half of it borrowed
+        monday = 100000 * 0.03 * 3 / 365
+        tuesday = (100000 + monday) * 0.03 / 365
+        self.assertAlmostEqual(run["costs"]["borrow"], monday + tuesday)
+        self.assertAlmostEqual(run["equity"][-1], 100000 - monday - tuesday)
+
     def test_leg_pnl_and_equity_reconcile(self):
         run = self.run_window(self.adj, momentum_pick)
         self.assertAlmostEqual(run["equity"][-1] - run["equity"][0], run["long_pnl"] + run["short_pnl"], places=6)

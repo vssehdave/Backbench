@@ -31,9 +31,9 @@ SPY and catalog runs use 1000 paths, cross-section runs 200. Seed 0, mean block 
 | strategy | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 | paths | runtime |
 |---|---|---|---|---|---|---|---|---|---|
 | cat-2.2-covered-call-options | strategy | 16.3% (rank 67) | 14.1% | 24.5% | 29.1% | 14.7% / 0.8% / 0.0% | 34.5% (hist 33.7%) | 1000 | 1s |
-| cat-2.2-covered-call-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
+| cat-2.2-covered-call-options | benchmark | 18.5% (rank 60) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
 | cat-2.4-protective-put-options | strategy | 14.1% (rank 55) | 13.9% | 23.4% | 29.0% | 12.4% / 0.6% / 0.0% | 32.5% (hist 32.5%) | 1000 | 1s |
-| cat-2.4-protective-put-options | benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
+| cat-2.4-protective-put-options | benchmark | 18.5% (rank 60) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) | 1000 | 1s |
 | cat-3.12-two-moving-averages | strategy | 6.9% (rank 11) | 10.5% | 18.6% | 23.0% | 3.0% / 0.0% / 0.0% | 20.8% (hist 23.4%) | 1000 | 70s |
 | cat-3.12-two-moving-averages | benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) | 1000 | 70s |
 | cat-3.12-two-moving-averages-long-short | strategy | 12.0% (rank 11) | 18.5% | 33.8% | 40.8% | 41.1% / 10.5% / 0.0% | 3.4% (hist 2.8%) | 1000 | 71s |

@@ -89,7 +89,7 @@ def run_options(manifest_path, paths, seed, block):
     expiries = ob.monthly_expiries(set(closes), start, today - timedelta(days=1))
     contracts = lambda e, k, lo, hi: od.contracts(m["data"]["underlying"], e, k, lo, hi, today)
     result = ob.run(m["strategy"], closes, expiries, contracts, od.option_closes, capital=m["capital"],
-                    half_spread=m["half_spread_per_share"]["value"], fee=m["fee_per_contract"], otm=m["otm_fraction"])
+                    half_spread=m["half_spread_per_share"]["value"], fee=m["fee_per_contract"])
     daily = result["daily"]
     both = montecarlo.pnl_bootstrap(dict(strategy=daily["equity"], benchmark=daily["buy_and_hold"]), paths, seed, block)
     runs = both

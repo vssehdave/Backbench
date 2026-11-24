@@ -1,0 +1,23 @@
+{
+  "id": "cat-5.3",
+  "version": "1",
+  "entry": "catalog_rules:barbell",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "SHY",
+      "IEF",
+      "TLT",
+      "SPY"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 0,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  }
+}

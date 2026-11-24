@@ -18,14 +18,14 @@ Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Se
 
 ## Results
 
-SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only.
+SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only. Strikes are fixed offsets from spot (the paper gives none), not tuned.
 
 | | Total return | Max drawdown |
 |---|---|---|
 | covered call | 33.7% | -16.3% |
 | SPY buy and hold | 41.5% | -18.5% |
 
-Opened 34/34 cycles, ITM expiries 13, assignments 13, fees USD 44.20, missing-bar days 3 (entry slipped), mark gaps 1. Return at half-spreads 0 / 0.05 / 0.10: 33.9% / 33.5% / 33.2%.
+Opened 34/34 cycles, ITM leg expiries 13, assignments 13, fees USD 44.20, missing-bar days 3, mark gaps 1. Return at half-spreads 0 / 0.05 / 0.10: 33.9% / 33.5% / 33.2%.
 
 ## Monte Carlo risk
 
@@ -34,5 +34,5 @@ B: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 1s. Method and limi
 | series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
 |---|---|---|---|---|---|---|
 | strategy | 16.3% (rank 67) | 14.1% | 24.5% | 29.1% | 14.7% / 0.8% / 0.0% | 34.5% (hist 33.7%) |
-| benchmark | 18.5% (rank 61) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) |
+| benchmark | 18.5% (rank 60) | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 41.9% (hist 41.5%) |
 <!-- mc:mc_results -->

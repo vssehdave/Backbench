@@ -7,7 +7,7 @@ B: block bootstrap of the strategy's own daily equity returns; 1000 paths, seed 
 | series | historical max DD (pct rank) | DD p5 | p50 | p95 | p99 | P(DD>20/30/50%) | underwater sessions p50 / p95 | terminal return p5 / p50 / p95 |
 |---|---|---|---|---|---|---|---|---|
 | strategy | 14.1% (55th pct) | 8.1% | 13.9% | 23.4% | 29.0% | 12.4% / 0.6% / 0.0% | 228 / 574 | -3.2% / 32.5% / 81.8% |
-| benchmark | 18.5% (61th pct) | 9.3% | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 208 / 530 | -0.4% / 41.9% / 102.6% |
+| benchmark | 18.5% (60th pct) | 9.3% | 16.6% | 28.2% | 33.3% | 27.4% / 2.8% / 0.0% | 208 / 530 | -0.4% / 41.9% / 102.6% |
 
 ## Walk-forward folds
 

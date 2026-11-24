@@ -33,4 +33,8 @@ Single-instrument runs are long-only unless the manifest opts in with `"allow_sh
 - Margin guard: `max_exposure` caps the absolute target value (long or short). If equity at a close is zero or below, the position is closed at that close with fees, the fill is marked `forced`, the fold reports `forced_closes`, and the replay trades no more.
 - Not modelled: short-sale rejection or hard-to-borrow rates, buy-ins, margin interest on borrowed cash, rebates on short proceeds, dividends paid on shorts (prices are raw).
 
+## Catalog multi-asset runs
+
+`catalog_run.py` runs a rule over several symbols (OHLCV from Alpaca or Kraken via `catalog_data.py`) with the same folds, fees, fills and borrow charge as `harness.py`, without changing it. Rules live in `catalog_rules.py`; each catalog folder's `multi*.json` and `multi*.results.json` hold the manifest and results. See `strategies/catalog/INDEX.md` for status and the proxies used.
+
 Monte Carlo drawdown distributions: `python money.py mc <manifest>`, see docs/monte-carlo.md.
