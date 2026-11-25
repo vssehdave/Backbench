@@ -63,7 +63,14 @@ def run_xs(manifest_path, start, end, paths, seed, block):
     import xs_data
     import xsection
     started = time.perf_counter()
-    panel = xs_data.build_panel(date(2015, 1, 1), end)
+    hook = json.loads(Path(manifest_path).read_text(encoding="utf-8")).get("panel")
+    if hook:  # "module:function" beside the manifest, for strategies on their own universe (FAA's ETFs)
+        import importlib, sys
+        sys.path.insert(0, str(Path(manifest_path).resolve().parent))
+        mod, fn = hook.split(":")
+        panel = getattr(importlib.import_module(mod), fn)(date(2015, 1, 1), end)
+    else:
+        panel = xs_data.build_panel(date(2015, 1, 1), end)
     mc = montecarlo.MonteCarlo(paths, seed, block)
     result = xsection.run(manifest_path, start, end, panel, mc=mc.panel_fold)
     summary = mc.summary()

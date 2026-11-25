@@ -261,7 +261,7 @@ def load_manifest(path):
     path = Path(path)
     m = json.loads(path.read_text(encoding="utf-8"))
     errors = [f"missing field: {k}" for k in sorted(MANIFEST_FIELDS - m.keys())]
-    errors += [f"unknown field: {k}" for k in sorted(m.keys() - MANIFEST_FIELDS)]
+    errors += [f"unknown field: {k}" for k in sorted(m.keys() - MANIFEST_FIELDS - {"panel"})]
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", str(m.get("id", ""))):
         errors.append("id may only contain letters, digits, '_', '.' and '-'")
     if m.get("cadence") not in ("monthly", "weekly"):
