@@ -48,7 +48,7 @@ class ManifestChecks(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             (Path(folder) / "unseenpkg.py").write_text(PACKAGE)
             manifest = money.load_manifest(write(folder, GOOD))
-            report = money.run_test(manifest, date(2022, 1, 1), date(2023, 1, 1), 2, 5., 42)
+            report = money.run_test(manifest, date(2022, 7, 1), date(2023, 1, 1), 2, 5., 42)
         self.assertEqual(report["config"]["strategy"], "pkg")
         self.assertEqual(len(report["folds"]), 1)
         self.assertGreater(len(report["folds"][0]["fills"]), 0)

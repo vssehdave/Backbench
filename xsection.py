@@ -11,7 +11,7 @@ from dataclasses import asdict, dataclass, field
 from datetime import date
 from pathlib import Path
 
-from harness import months_after
+from harness import check_walk_forward, months_after, windows
 
 FEE_PROFILE = "ibkr-tiered-like-2026-11-23"
 MANIFEST_FIELDS = {"id", "version", "entry", "cadence", "levels", "limits", "benchmark"}
@@ -194,15 +194,6 @@ def stats(equity):
                 sharpe=statistics.fmean(returns) / sd * math.sqrt(252) if sd else None, max_drawdown=drawdown)
 
 
-def folds(start, end):
-    """Same schedule as harness.study: 6-month selection, 6-month test, 12-month steps."""
-    while months_after(start, 12) <= end:
-        split = months_after(start, 6)
-        stop = months_after(split, 6)
-        yield start, split, stop
-        start = stop
-
-
 def _first(dates, day):
     for i, d in enumerate(dates):
         if d >= day:
@@ -210,22 +201,28 @@ def _first(dates, day):
     raise ValueError(f"Panel ends before {day}")
 
 
-def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_000_000., benchmark="SPY", mc=None):
-    """strategy is a (decide, fit-or-None) pair. Each fold starts from cash0 on its own.
+def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_000_000., benchmark="SPY", mc=None,
+          walk_forward=None):
+    """strategy is a (decide, fit-or-None) pair. Default: one continuous run over start..end with levels[0], warmed up
+    on the sessions before start. With walk_forward (for strategies that fit a model), tiled out-of-sample windows
+    that pick a level on their own training window; each window starts from cash0 on its own.
 
     mc is an optional montecarlo hook: mc(fold, panel, i0, i1, {name: function(panel) -> equity curve})."""
     decide, fit = strategy
     results = []
-    for train, split, stop in folds(start, end):
-        i_train, i_split, i_stop = _first(panel.dates, train), _first(panel.dates, split), _first(panel.dates, stop)
+    for train, split, stop in windows(start, end, walk_forward):
+        i_train, i_split = _first(panel.dates, train), _first(panel.dates, split)
+        i_stop = sum(d < stop for d in panel.dates)  # the panel may end before the last window does
+        if i_split < 1 or i_stop <= i_split:
+            raise ValueError(f"Need a session before {split} to start from and one inside {split}..{stop}")
         i_train = max(i_train, 1)  # the panel can start inside the first fold; the baseline needs one session before
-        i_inner = _first(panel.dates, months_after(train, 3)) if fit else i_train
+        i_inner = _first(panel.dates, months_after(train, 3)) if fit and walk_forward else i_train
         scores = {}
-        for n, level in enumerate(levels):
+        for n, level in enumerate(levels if walk_forward else []):  # nothing to select without walk-forward
             artifact = fit(view(panel, i_inner - 1), level) if fit else level
             run = run_window(panel, decide, artifact, i_inner - 1, i_split - 1, limits, costs, cadence, cash0)
             scores[n] = stats(run["equity"])["sharpe"]
-        best = max(scores, key=lambda n: (scores[n] is not None, scores[n] or 0, -n))
+        best = max(scores, key=lambda n: (scores[n] is not None, scores[n] or 0, -n)) if scores else 0
         artifact = fit(view(panel, i_split - 1), levels[best]) if fit else levels[best]
         run = run_window(panel, decide, artifact, i_split - 1, i_stop - 1, limits, costs, cadence, cash0)
         years = (panel.dates[i_stop - 1] - panel.dates[i_split - 1]).days / 365
@@ -252,7 +249,7 @@ def study(panel, strategy, levels, limits, costs, cadence, start, end, cash0=1_0
             equity=run["equity"], bench_equity=bench, decision_log=run["decisions"], fills=run["fills"],
             borrow_daily=run["borrow_daily"], dates=[str(d) for d in panel.dates[i_split - 1:i_stop]]))
     if not results:
-        raise ValueError("Supply at least twelve complete calendar months")
+        raise ValueError("Supply a start before end")
     return results
 
 
@@ -261,13 +258,15 @@ def load_manifest(path):
     path = Path(path)
     m = json.loads(path.read_text(encoding="utf-8"))
     errors = [f"missing field: {k}" for k in sorted(MANIFEST_FIELDS - m.keys())]
-    errors += [f"unknown field: {k}" for k in sorted(m.keys() - MANIFEST_FIELDS - {"panel"})]
+    errors += [f"unknown field: {k}" for k in sorted(m.keys() - MANIFEST_FIELDS - {"panel", "walk_forward"})]
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", str(m.get("id", ""))):
         errors.append("id may only contain letters, digits, '_', '.' and '-'")
     if m.get("cadence") not in ("monthly", "weekly"):
         errors.append("cadence must be 'monthly' or 'weekly'")
     if not (isinstance(m.get("levels"), list) and m["levels"] and all(isinstance(x, dict) for x in m["levels"])):
         errors.append("levels must be a non-empty list of parameter objects")
+    if "walk_forward" in m and check_walk_forward(m["walk_forward"]):
+        errors.append(check_walk_forward(m["walk_forward"]))
     limits = m.get("limits")
     if not (isinstance(limits, dict) and set(limits) == LIMIT_FIELDS
             and all(type(v) in (int, float) and math.isfinite(v) and v >= 0 for v in limits.values())
@@ -301,7 +300,8 @@ def load_manifest(path):
 def run(manifest_path, start, end, panel, costs=Costs(), cash0=1_000_000., mc=None):
     m, strategy = load_manifest(manifest_path)
     limits = Limits(**m["limits"])
-    fold_results = study(panel, strategy, m["levels"], limits, costs, m["cadence"], start, end, cash0, m["benchmark"], mc)
+    fold_results = study(panel, strategy, m["levels"], limits, costs, m["cadence"], start, end, cash0, m["benchmark"], mc,
+                         m.get("walk_forward"))
     first, last = _first(panel.dates, start), max(i for i, d in enumerate(panel.dates) if d < end)
     survivorship = None
     if panel.members:

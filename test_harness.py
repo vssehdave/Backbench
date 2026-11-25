@@ -22,11 +22,11 @@ class ResearchChecks(unittest.TestCase):
                 return MeanThreshold.fit(rows, offset)
         def evaluate(rows):
             return study(rows, Logged, [-1, 0, 1], 3, 5, 42,
-                         date(2022,1,1), date(2023,1,1))[0]
+                         date(2022, 7, 1), date(2023, 1, 1))[0]
         rows = fixture()
         baseline = evaluate(rows)
-        self.assertEqual(len(fits), 6)
-        self.assertEqual([last.month for _, last, _ in fits], [3]*3 + [6]*3)
+        self.assertEqual(len(fits), 4)  # one selection fit on the first quarter, three artifacts on the warm-up
+        self.assertEqual([last.month for _, last, _ in fits], [3] + [6]*3)
         self.assertTrue(all(first == date(2022,1,3) for first, _, _ in fits))
         self.assertGreater(min(baseline["forward_buys"], baseline["forward_sells"]), 0)
         cut = date(2022,9,1)
@@ -60,7 +60,7 @@ class ResearchChecks(unittest.TestCase):
         rows = fixture()
         def first_batch(bars):
             return study(bars, threshold, [98,100,102], 1, 0, 42,
-                         date(2022,1,1), date(2023,1,1))[0]
+                         date(2022, 7, 1), date(2023, 1, 1))[0]
         baseline = first_batch(rows)
         for i, (day, opening, close) in enumerate(rows):
             if not date(2022,7,1) <= day < date(2023,1,1):
@@ -74,25 +74,47 @@ class ResearchChecks(unittest.TestCase):
                 return [t for t in fold["fills"] if t["date"] <= day.isoformat()]
             self.assertEqual(through_open(baseline), through_open(replayed))
 
+    WF = {"train_months": 6, "test_months": 6}
+
+    def test_continuous_run_covers_every_session_from_one_level(self):
+        rows = fixture()
+        folds = study(rows, threshold, [98, 100, 102], 2, 0, 42, date(2022, 7, 1), date(2024, 1, 1))
+        self.assertEqual(len(folds), 1)
+        self.assertEqual(folds[0]["dates"], [str(r[0]) for r in rows if date(2022, 7, 1) <= r[0] < date(2024, 1, 1)])
+        self.assertEqual(folds[0]["selected"], 98)
+
+    def test_walk_forward_windows_tile_the_period_and_train_before_test(self):
+        rows = fixture()
+        folds = study(rows, threshold, [98, 100, 102], 2, 0, 42, date(2022, 7, 1), date(2024, 1, 1),
+                      walk_forward=self.WF)
+        self.assertEqual([(f["forward_start"], f["end_exclusive"]) for f in folds],
+                         [("2022-07-01", "2023-01-01"), ("2023-01-01", "2023-07-01"), ("2023-07-01", "2024-01-01")])
+        self.assertEqual([d for f in folds for d in f["dates"]],
+                         [str(r[0]) for r in rows if date(2022, 7, 1) <= r[0] < date(2024, 1, 1)])
+        for f in folds:
+            self.assertLess(f["selection_start"], f["forward_start"])
+
     def test_folds_and_future_isolation(self):
         rows = fixture()
         def evaluate(data, strategy):
-            return study(data,strategy,[98,100,102],2,0,42,date(2022,1,1),date(2024,1,1))
+            return study(data,strategy,[98,100,102],2,0,42,date(2022,7,1),date(2024,1,1), walk_forward=self.WF)
         folds = evaluate(rows,threshold)
         self.assertEqual([(f["train_start"], f["forward_start"], f["end_exclusive"])
                           for f in folds], [
-            ("2022-01-01", "2022-07-01", "2023-01-01"),
-            ("2023-01-01", "2023-07-01", "2024-01-01")])
-        for year, fold in zip((2022, 2023), folds):
-            train = [r for r in rows if r[0].year == year and r[0].month <= 6]
-            forward = [r for r in rows if r[0].year == year and r[0].month > 6]
+            ("2022-01-03", "2022-07-01", "2023-01-01"),
+            ("2022-07-01", "2023-01-01", "2023-07-01"),
+            ("2023-01-02", "2023-07-01", "2024-01-01")])
+        for fold in folds:
+            lo, hi = date.fromisoformat(fold["train_start"]), date.fromisoformat(fold["forward_start"])
+            train = [r for r in rows if lo <= r[0] < hi]
+            forward = [r for r in rows if str(r[0]) in fold["dates"]]
             _, expected, orders = replay(forward, threshold, fold["selected"],
                                          (10000., 0), [r[2] for r in train])
             self.assertEqual((fold["equity"], fold["fills"]), (expected, orders))
             self.assertGreater(fold["forward_buys"], 0)
             self.assertGreater(fold["forward_sells"], 0)
-        altered = [(d,o,c*2 if d.year == 2022 and d.month > 6 else c) for d,o,c in rows]
-        self.assertEqual(folds[1], evaluate(altered, threshold)[1])
+        altered = [(d,o*2 if d >= date(2023,7,1) else o,c*2 if d >= date(2023,7,1) else c) for d,o,c in rows]
+        self.assertEqual(folds[:2], evaluate(altered, threshold)[:2])
         changed = [(d,o,c*2 if d >= date(2022,7,1) else c) for d,o,c in rows]
         self.assertEqual(folds[0]["train_scores"],evaluate(changed,threshold)[0]["train_scores"])
         for fold in evaluate(rows,cash):

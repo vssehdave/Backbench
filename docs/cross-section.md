@@ -54,8 +54,11 @@ of an edge. Momentum and low-volatility are paper defaults and were not tuned.
 - Dividends: handled through the adjusted-price return, which is equivalent to immediate reinvestment. Dividends owed
   on short positions, withholding and cash timing are not modelled.
 - Accounting: one cash balance, daily mark-to-market on adjusted prices. Each fold starts from 1,000,000 USD of cash.
-- Folds: same schedule as `harness.py` (6 month selection, 6 month test, 12 month steps from 2016-01-01). Both
-  strategies have one parameter level, so selection runs but cannot change the choice.
+- Folds: by default one continuous run over every session from `--start` to `--end` with the first level, warmed up on
+  earlier data (one fold in the result). The old 6 month selection / 6 month test / 12 month step schedule left
+  January-June of every year untested and is gone. A manifest field `"walk_forward": {"train_months": 6,
+  "test_months": 6}` opts in for strategies that fit a model: test windows tile start..end with no gap, each picks a
+  level on the training months just before it, and nothing later is seen. No shipped strategy uses it.
 - Benchmarks: equal-weight buy-and-hold of the universe at the start of the test window (no costs, no rebalancing),
   SPY buy-and-hold, and cash.
 
@@ -97,7 +100,7 @@ do not rank strategies by it.
   recovery.
 - No fractional-share rounding, no borrow availability or hard-to-borrow rates, no market impact beyond a flat
   slippage, no intraday timing, no dividend cash on shorts.
-- Each fold restarts at cash, so folds are not chained into one equity curve.
+- Each fold restarts at cash, so walk-forward folds are not chained into one equity curve (a continuous run is one fold).
 - `money.py` only gained an `xs` subcommand that hands over to `xsection.py`; xs manifests have their own schema,
   validated in `xsection.py`, not the `money.py` manifest fields.
 

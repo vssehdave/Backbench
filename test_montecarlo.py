@@ -100,7 +100,7 @@ class Bootstrap(unittest.TestCase):
 class ModeA(unittest.TestCase):
     def harness_run(self, paths=6, seed=7):
         m = mc.MonteCarlo(paths, seed, 10)
-        study(fixture(), lambda h, p: 1, [0], 1, 0, 42, date(2022, 1, 1), date(2023, 1, 1),
+        study(fixture(), lambda h, p: 1, [0], 1, 0, 42, date(2022, 7, 1), date(2023, 1, 1),
               mc=lambda *a: m.rows_fold("s", *a))
         return m.series["s"]
 
@@ -112,7 +112,7 @@ class ModeA(unittest.TestCase):
 
     def test_harness_decisions_ignore_later_bars_of_the_synthetic_path(self):
         captured = {}
-        study(fixture(), threshold, [98, 100, 102], 1, 0, 42, date(2022, 1, 1), date(2023, 1, 1),
+        study(fixture(), threshold, [98, 100, 102], 1, 0, 42, date(2022, 7, 1), date(2023, 1, 1),
               mc=lambda fold, r, train, forward, run: captured.update(forward=forward, run=run))
         forward, run = captured["forward"], captured["run"]
         for j in range(5, len(forward), 15):
@@ -155,9 +155,9 @@ class ModeA(unittest.TestCase):
 class Output(unittest.TestCase):
     def test_a_run_writes_the_report_and_trade_logs(self):
         m = mc.MonteCarlo(5, 0, 10)
-        a = study(fixture(), threshold, [98, 100, 102], 1, 0, 42, date(2022, 1, 1), date(2023, 1, 1),
+        a = study(fixture(), threshold, [98, 100, 102], 1, 0, 42, date(2022, 7, 1), date(2023, 1, 1),
                   mc=lambda *x: m.rows_fold("strategy", *x))
-        b = study(fixture(), lambda h, p: 1, [0], 1, 0, 42, date(2022, 1, 1), date(2023, 1, 1))
+        b = study(fixture(), lambda h, p: 1, [0], 1, 0, 42, date(2022, 7, 1), date(2023, 1, 1))
         folds = report.folds_of("harness", dict(config=dict(symbol="SPY"), folds=a), dict(folds=b))
         with tempfile.TemporaryDirectory() as tmp:
             report.write_report(tmp, "harness", "t", dict(folds=a), m.summary()["mode_a"], folds, seed=3)
