@@ -94,3 +94,16 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   parameters fixed before the run, the engine works on the S&P too, so 05 is not just a Nasdaq bet. The edge lies in
   the structure (cheap 2x equity + gold, inverse-vol, fast vol cap), not in the choice of index. All the 03/05/08
   variants are one bet (pairwise corr 0.95-0.98); a second winner must come from a different return stream.
+
+## Round 1 summary
+
+1. Cheap leverage plus a real diversifier is what beats SPY here: 2x equity ETFs (financing near T-bill rates) mixed
+   inverse-vol with gold. Margin at 5% (02) ate the gain; one index without a diversifier (01, 07) never beat SPY.
+2. Brakes must key off volatility and act fast (20-day window, weekly): the 200-day price brake (04) whipsawed in the
+   V-shaped Apr-2025 drop, while the vol scaler (05) cut and re-added risk in time.
+3. Ranking or timing alone (06 momentum, 07 vol timing) did not beat SPY after costs; the edge came from portfolio
+   construction, not from signals.
+
+Round 2: test 05/08 on longer history (2008-2015, which neither period has seen); a second return stream uncorrelated
+with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possible; check the gold dependence
+(the 2024-2025 gold run flatters the holdout).
