@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2024-01-02,2025-12-15,close,SPY,buy,33.01463609684683,680.73,11.23712565901156,rebalance to target weight +1.2470,234.82204810221867,268.1945637760178

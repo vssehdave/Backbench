@@ -1,0 +1,94 @@
+{
+ "id": "lab02_riskparity_levered",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "assets": [
+    "SPY",
+    "QQQ",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD",
+    "IEF"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD",
+    "TLT",
+    "DBC"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 120,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "assets": [
+    "SPY",
+    "GLD"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 2.0
+  }
+ ],
+ "limits": {
+  "max_gross": 2.0,
+  "max_net": 2.0,
+  "name_cap": 2.0
+ },
+ "benchmark": "SPY"
+}

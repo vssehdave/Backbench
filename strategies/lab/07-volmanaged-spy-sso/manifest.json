@@ -1,0 +1,44 @@
+{
+ "id": "lab07_volmanaged_spy_sso",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "weekly",
+ "levels": [
+  {
+   "vol_days": 20,
+   "target": 0.15,
+   "cap": 1.5
+  },
+  {
+   "vol_days": 20,
+   "target": 0.15,
+   "cap": 2.0
+  },
+  {
+   "vol_days": 20,
+   "target": 0.12,
+   "cap": 2.0
+  },
+  {
+   "vol_days": 20,
+   "target": 0.18,
+   "cap": 2.0
+  },
+  {
+   "vol_days": 10,
+   "target": 0.15,
+   "cap": 2.0
+  },
+  {
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 2.0
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

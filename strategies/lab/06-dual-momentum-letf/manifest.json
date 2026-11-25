@@ -1,0 +1,133 @@
+{
+ "id": "lab06_dual_momentum_letf",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "top": 4
+  },
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "top": 3
+  },
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "top": 2
+  },
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    21,
+    63,
+    126,
+    252
+   ],
+   "top": 3
+  },
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    126
+   ],
+   "top": 3
+  },
+  {
+   "assets": [
+    "QLD",
+    "SSO",
+    "EFA",
+    "EEM",
+    "GLD",
+    "TLT",
+    "DBC",
+    "VNQ"
+   ],
+   "lookbacks": [
+    63
+   ],
+   "top": 3
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD",
+    "TLT",
+    "EFA"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "top": 2
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

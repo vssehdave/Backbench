@@ -1,0 +1,96 @@
+{
+ "id": "lab03_riskparity_letf",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "monthly",
+ "levels": [
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "GLD"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD"
+   ],
+   "vol_days": 60,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 60,
+   "target": 0.12,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 120,
+   "target": 0.15,
+   "cap": 1.0
+  },
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD",
+    "TLT"
+   ],
+   "vol_days": 20,
+   "target": 0.15,
+   "cap": 1.0
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

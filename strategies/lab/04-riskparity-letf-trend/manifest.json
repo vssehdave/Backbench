@@ -1,0 +1,91 @@
+{
+ "id": "lab04_riskparity_letf_trend",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "weekly",
+ "levels": [
+  {
+   "assets": [
+    "SSO",
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "SSO": "SPY",
+    "QLD": "QQQ"
+   },
+   "vol_days": 60,
+   "sma": 200
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "QLD": "QQQ"
+   },
+   "vol_days": 60,
+   "sma": 200
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "QLD": "QQQ"
+   },
+   "vol_days": 60,
+   "sma": 100
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "QLD": "QQQ"
+   },
+   "vol_days": 60,
+   "sma": 150
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "QLD": "QQQ"
+   },
+   "vol_days": 60,
+   "sma": 50
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {
+    "QLD": "QQQ"
+   },
+   "vol_days": 20,
+   "sma": 200
+  },
+  {
+   "assets": [
+    "QLD",
+    "GLD"
+   ],
+   "trend": {},
+   "vol_days": 60,
+   "sma": 200
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}
