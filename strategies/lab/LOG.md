@@ -1,0 +1,14 @@
+# Lab log
+
+Design and tuning on 2016-01-01..2023-12-31 only; one holdout run on 2024-01-01..2026-11-24 with levels[0] of the
+manifest frozen. Costs 5 bps a side, no commission, 5% a year on borrowed cash (labkit.COSTS). Run with
+`python strategies/lab/labkit.py <manifest> tune|insample|holdout`; reports are in each folder's
+results/insample/ and results/holdout/ (REPORT.md, report.json, equity.svg). Holdout SPY: CAGR 16.7%, Sharpe 1.04,
+Sortino 1.53, maxDD -18.8%, MC p95 DD 25.1% (this varies a little per run, since it is bootstrapped beside each strategy).
+
+WIN needs, on the holdout vs SPY: Sharpe and Sortino above, alpha > 0, MC p95 maxDD <= SPY's, CAGR >= SPY's (or >= 80% of
+it when the realised maxDD is under half of SPY's).
+
+| # | idea | hypothesis | in-sample Sharpe (SPY 0.78) | holdout CAGR / Sharpe / Sortino / alpha / maxDD / MC p95 | vs SPY | result | why |
+|---|---|---|---|---|---|---|---|
+| 01 | SPY vol-targeted to 15% (cap 1.5x), SHY below the 200-day MA, weekly | Vol targeting raises Sharpe; leverage in calm uptrends recovers the CAGR a trend filter gives up | 0.76 | 14.3% / 0.94 / 1.30 / +2.2% / -12.0% / 25.9% | 16.7% / 1.04 / 1.53 / 0 / -18.8% / 25.1% | LOSS | Levered only when vol is low, so it is de-levered in the fast rebounds (2020, Apr-2025) that carry the return; 5% margin ate 1.5%/yr in-sample |

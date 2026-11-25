@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2016-01-05,2020-03-02,close,SHY,buy,1699.4235298853537,85.57,72.7149339967345,rebalance to target weight +1.0000,0.0,1992.0502938669824
+2016-01-05,2020-03-02,close,SPY,sell,-503.95642499055407,308.9,81.04442778646543,rebalance to target weight +0.0000,554.26952816201,0.0
