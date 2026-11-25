@@ -1,0 +1,55 @@
+{
+ "name": "intraday-orb-old-5min-top20-capped",
+ "engine": "intraday.orb_day + intraday.size_trades",
+ "description": "The old strategies/intraday/orb setup (5-minute range, long-short, monthly top 20 by dollar volume from intraday.CANDIDATES) re-run with each position capped at equity / 20, so gross never exceeds equity. Compare with strategies/intraday/orb (uncapped, up to 4x).",
+ "result": {
+  "0bps": {
+   "final_equity": 55260.98580363965,
+   "total_return": -0.4473901419636035,
+   "cagr": -0.08256156433550932,
+   "sharpe": -0.9568786186407661,
+   "max_drawdown": -0.4975074576543297,
+   "sessions": 1732,
+   "trades": 34313,
+   "win_rate": 0.405210853029464,
+   "avg_trade_usd": -1.3038502665567402,
+   "avg_trade_bps": -3.4137867548480103,
+   "trades_per_day": 19.811200923787528,
+   "cost_usd": 71039.02712236143,
+   "cost_drag_pct_per_year": 14.629843920185706,
+   "max_notional_pct_of_equity": 4.999982702284799
+  },
+  "2bps": {
+   "final_equity": 11463.469304075135,
+   "total_return": -0.8853653069592486,
+   "cagr": -0.26998560794771076,
+   "sharpe": -3.7502212415956504,
+   "max_drawdown": -0.889981225713802,
+   "sessions": 1732,
+   "trades": 33541,
+   "win_rate": 0.37729942458483645,
+   "avg_trade_usd": -2.6396508957969087,
+   "avg_trade_bps": -14.46799185652985,
+   "trades_per_day": 19.365473441108545,
+   "cost_usd": 98375.84984374992,
+   "cost_drag_pct_per_year": 30.523211000381217,
+   "max_notional_pct_of_equity": 4.999998932987461
+  },
+  "5bps": {
+   "final_equity": 1984.551172243268,
+   "total_return": -0.9801544882775673,
+   "cagr": -0.43418625836085756,
+   "sharpe": -7.696185324058658,
+   "max_drawdown": -0.9805548418104673,
+   "sessions": 1732,
+   "trades": 25622,
+   "win_rate": 0.3265553040355944,
+   "avg_trade_usd": -3.8254409814907837,
+   "avg_trade_bps": -35.91060498711007,
+   "trades_per_day": 14.793302540415704,
+   "cost_usd": 97828.83836265573,
+   "cost_drag_pct_per_year": 47.13276023623024,
+   "max_notional_pct_of_equity": 4.999982156961445
+  }
+ }
+}

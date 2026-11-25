@@ -1,0 +1,55 @@
+{
+ "name": "intraday-orb-top50-15min-long-short",
+ "engine": "intraday.orb_day + intraday.size_trades",
+ "description": "15-minute opening range breakout, long-short, on the monthly point-in-time top 50 S&P 500 stocks by market cap, 2020-01-02 to 2026-11-20. Fixed 1% risk per trade, each position capped at equity / 50 so gross never exceeds equity. IBKR fees plus per-side slippage.",
+ "result": {
+  "0bps": {
+   "final_equity": 2593.4981239003023,
+   "total_return": -0.9740650187609969,
+   "cagr": -0.41175370023265234,
+   "sharpe": -11.218188137518426,
+   "max_drawdown": -0.974066839279007,
+   "sessions": 1732,
+   "trades": 46582,
+   "win_rate": 0.31295350135245376,
+   "avg_trade_usd": -2.091075992359707,
+   "avg_trade_bps": -47.321993233672224,
+   "trades_per_day": 26.894919168591223,
+   "cost_usd": 92013.69338709988,
+   "cost_drag_pct_per_year": 44.82443015298417,
+   "max_notional_pct_of_equity": 1.9999904355092109
+  },
+  "2bps": {
+   "final_equity": 2230.253863967963,
+   "total_return": -0.9776974613603203,
+   "cagr": -0.42450924861753947,
+   "sharpe": -11.468343018237007,
+   "max_drawdown": -0.9776974613603203,
+   "sessions": 1732,
+   "trades": 40599,
+   "win_rate": 0.2927658316707308,
+   "avg_trade_usd": -2.408181140817093,
+   "avg_trade_bps": -57.13451091058204,
+   "trades_per_day": 23.4405311778291,
+   "cost_usd": 92459.47128422969,
+   "cost_drag_pct_per_year": 54.23987855802699,
+   "max_notional_pct_of_equity": 1.9999940425398721
+  },
+  "5bps": {
+   "final_equity": 1904.775085383446,
+   "total_return": -0.9809522491461655,
+   "cagr": -0.4375490034851621,
+   "sharpe": -12.150935184523885,
+   "max_drawdown": -0.9809522491461655,
+   "sessions": 1732,
+   "trades": 34631,
+   "win_rate": 0.2639831364962028,
+   "avg_trade_usd": -2.8325842428638084,
+   "avg_trade_bps": -69.671540196692,
+   "trades_per_day": 19.994803695150114,
+   "cost_usd": 93200.89889005157,
+   "cost_drag_pct_per_year": 67.03566924878704,
+   "max_notional_pct_of_equity": 1.999991251069046
+  }
+ }
+}

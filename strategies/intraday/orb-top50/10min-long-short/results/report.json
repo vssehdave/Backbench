@@ -1,0 +1,55 @@
+{
+ "name": "intraday-orb-top50-10min-long-short",
+ "engine": "intraday.orb_day + intraday.size_trades",
+ "description": "10-minute opening range breakout, long-short, on the monthly point-in-time top 50 S&P 500 stocks by market cap, 2020-01-02 to 2026-11-20. Fixed 1% risk per trade, each position capped at equity / 50 so gross never exceeds equity. IBKR fees plus per-side slippage.",
+ "result": {
+  "0bps": {
+   "final_equity": 2471.2841899608306,
+   "total_return": -0.9752871581003917,
+   "cagr": -0.41586459591235314,
+   "sharpe": -11.454515555185779,
+   "max_drawdown": -0.9752927613197651,
+   "sessions": 1732,
+   "trades": 45764,
+   "win_rate": 0.30517437286950444,
+   "avg_trade_usd": -2.1311230620146717,
+   "avg_trade_bps": -49.071596804973154,
+   "trades_per_day": 26.422632794457275,
+   "cost_usd": 90133.63513803943,
+   "cost_drag_pct_per_year": 46.5676594521585,
+   "max_notional_pct_of_equity": 1.9999962107910858
+  },
+  "2bps": {
+   "final_equity": 2107.944128664997,
+   "total_return": -0.97892055871335,
+   "cagr": -0.4292058301771443,
+   "sharpe": -11.788898889644523,
+   "max_drawdown": -0.97892055871335,
+   "sessions": 1732,
+   "trades": 39988,
+   "win_rate": 0.28521056316895066,
+   "avg_trade_usd": -2.4480358075256565,
+   "avg_trade_bps": -58.923956671019745,
+   "trades_per_day": 23.087759815242496,
+   "cost_usd": 90536.2857594066,
+   "cost_drag_pct_per_year": 55.97859645146897,
+   "max_notional_pct_of_equity": 1.9999994411088253
+  },
+  "5bps": {
+   "final_equity": 1852.7487413383162,
+   "total_return": -0.9814725125866168,
+   "cagr": -0.4398074798940059,
+   "sharpe": -12.3282945445839,
+   "max_drawdown": -0.9814725125866168,
+   "sessions": 1732,
+   "trades": 34018,
+   "win_rate": 0.2579810688459051,
+   "avg_trade_usd": -2.885156424794572,
+   "avg_trade_bps": -71.33369138078695,
+   "trades_per_day": 19.640877598152425,
+   "cost_usd": 90595.39930269678,
+   "cost_drag_pct_per_year": 68.67858545345935,
+   "max_notional_pct_of_equity": 1.999991737088968
+  }
+ }
+}

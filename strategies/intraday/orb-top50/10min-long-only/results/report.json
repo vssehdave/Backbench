@@ -1,0 +1,55 @@
+{
+ "name": "intraday-orb-top50-10min-long-only",
+ "engine": "intraday.orb_day + intraday.size_trades",
+ "description": "10-minute opening range breakout, long-only, on the monthly point-in-time top 50 S&P 500 stocks by market cap, 2020-01-02 to 2026-11-20. Fixed 1% risk per trade, each position capped at equity / 50 so gross never exceeds equity. IBKR fees plus per-side slippage.",
+ "result": {
+  "0bps": {
+   "final_equity": 10496.428525764219,
+   "total_return": -0.8950357147423578,
+   "cagr": -0.27927322698875645,
+   "sharpe": -6.241475730229649,
+   "max_drawdown": -0.8953959286240443,
+   "sessions": 1732,
+   "trades": 49344,
+   "win_rate": 0.3462629701686122,
+   "avg_trade_usd": -1.8138693959597019,
+   "avg_trade_bps": -27.313147997747237,
+   "trades_per_day": 28.489607390300232,
+   "cost_usd": 99756.48077423553,
+   "cost_drag_pct_per_year": 27.209164323253905,
+   "max_notional_pct_of_equity": 1.9999906722120244
+  },
+  "2bps": {
+   "final_equity": 5342.682247776122,
+   "total_return": -0.9465731775222388,
+   "cagr": -0.3466276671759667,
+   "sharpe": -8.6812083496798,
+   "max_drawdown": -0.9467135540938947,
+   "sessions": 1732,
+   "trades": 43084,
+   "win_rate": 0.3038715068238789,
+   "avg_trade_usd": -2.1970410767854407,
+   "avg_trade_bps": -41.28059638043692,
+   "trades_per_day": 24.875288683602772,
+   "cost_usd": 103146.0506971276,
+   "cost_drag_pct_per_year": 34.92264057153462,
+   "max_notional_pct_of_equity": 1.9999968890536437
+  },
+  "5bps": {
+   "final_equity": 3607.2194682754316,
+   "total_return": -0.9639278053172456,
+   "cagr": -0.3828697969005388,
+   "sharpe": -10.413068090366023,
+   "max_drawdown": -0.963979348530516,
+   "sessions": 1732,
+   "trades": 36059,
+   "win_rate": 0.27191547186555365,
+   "avg_trade_usd": -2.6731961654989003,
+   "avg_trade_bps": -55.21731783686638,
+   "trades_per_day": 20.819284064665126,
+   "cost_usd": 103343.6307636057,
+   "cost_drag_pct_per_year": 44.621651441111965,
+   "max_notional_pct_of_equity": 1.9999848162259577
+  }
+ }
+}

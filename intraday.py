@@ -202,28 +202,28 @@ def metrics(curve, trades=(), cost=0., start_equity=100000., sessions=None):
 
 # ---- opening-range breakout ------------------------------------------------------------------------------------
 
-def opening_range(bars):
-    """(high, low) of the 09:30-09:34 bars, or None unless all five exist. bars are (minute, o, h, l, c)."""
-    rng = [b for b in bars if OPEN_MIN <= b[0] < OPEN_MIN + RANGE_MINUTES]
-    return (max(b[2] for b in rng), min(b[3] for b in rng)) if len(rng) == RANGE_MINUTES else None
+def opening_range(bars, minutes=RANGE_MINUTES):
+    """(high, low) of the first `minutes` bars from 09:30, or None unless all exist. bars are (minute, o, h, l, c)."""
+    rng = [b for b in bars if OPEN_MIN <= b[0] < OPEN_MIN + minutes]
+    return (max(b[2] for b in rng), min(b[3] for b in rng)) if len(rng) == minutes else None
 
 
-def orb_day(bars, close_minute, slip_bps, allow_short=True):
+def orb_day(bars, close_minute, slip_bps, allow_short=True, minutes=RANGE_MINUTES):
     """One day for one stock: None, or a trade dict with entry/exit prices per share. No fees, no sizing.
 
-    The trigger is a bar CLOSE through the range, first seen on the 09:35 bar. The fill is the next bar's open
-    worsened by slippage. The stop is the opposite side of the range and is checked from the fill bar itself; a bar
+    The trigger is a bar CLOSE through the range, first seen on the bar right after the range (09:35 for 5 minutes).
+    The fill is the next bar's open worsened by slippage. The stop is the opposite side of the range and is checked from the fill bar itself; a bar
     that opens through the stop fills at its open. Exit is the open of the bar at close_minute - 5 (or the last
     bar's close if none). Long-only mode ignores downside breaks and keeps waiting for an upside one.
     """
-    rng = opening_range(bars)
+    rng = opening_range(bars, minutes)
     if not rng or rng[0] <= rng[1]:
         return None
     high, low = rng
     s, exit_minute = slip_bps / 10000, close_minute - EXIT_BEFORE_CLOSE
     session = [b for b in bars if OPEN_MIN <= b[0] < close_minute]
     for i, bar in enumerate(session):
-        if bar[0] < OPEN_MIN + RANGE_MINUTES or bar[0] >= exit_minute:
+        if bar[0] < OPEN_MIN + minutes or bar[0] >= exit_minute:
             continue
         side = 1 if bar[4] > high else -1 if bar[4] < low and allow_short else 0
         if not side:
@@ -248,14 +248,21 @@ def orb_day(bars, close_minute, slip_bps, allow_short=True):
     return None
 
 
-def size_trades(trades, equity, risk=0.01, leverage=4.):
+def size_trades(trades, equity, risk=0.01, leverage=4., max_positions=None):
     """Fixed-risk shares per trade: risk x start-of-day equity / stop distance, capped so that concurrent gross
-    notional stays within leverage x equity. trades are (symbol, trade dict); sized in entry order."""
+    notional stays within leverage x equity. trades are (symbol, trade dict); sized in entry order.
+
+    With max_positions, each position's notional is also capped at equity / max_positions and leverage at 1, so
+    gross never exceeds equity. Pass a number known before the session, not the day's realised trade count."""
+    if max_positions:
+        leverage = min(leverage, 1.)
     out, open_ = [], []
     for symbol, t in sorted(trades, key=lambda x: x[1]["minute"]):
         used = sum(n for m, n in open_ if m > t["minute"])
         distance = abs(t["entry"] - t["stop"])
         shares = min(math.floor(risk * equity / distance), math.floor((leverage * equity - used) / t["entry"]))
+        if max_positions:
+            shares = min(shares, math.floor(equity / max_positions / t["entry"]))
         if shares < 1:
             continue
         open_.append((t["exit_minute"], shares * t["entry"]))
@@ -329,3 +336,26 @@ def prefetch(pairs, end, sessions, workers=4, log=print):
             if done % 50 == 0:
                 log(f"orb fetch {done}/{len(todo)}")
     return len(todo)
+
+
+def month_trades(year, month, symbols, minutes, slips, end, sessions):
+    """{(minutes, short, slip): [(iso day, symbol, trade dict, range as a fraction of its midpoint)]} for one month.
+
+    Worker for a process pool: reads the cached minute files and runs orb_day for every range length, side mode and
+    slippage. The trade dict is orb_day's.
+    """
+    out = {(m, short, slip): [] for m in minutes for short in (True, False) for slip in slips}
+    for symbol in symbols:
+        for iso, bars in month_bars(symbol, year, month, end, sessions).items():
+            close = sessions[date.fromisoformat(iso)][1]
+            for m in minutes:
+                rng = opening_range(bars, m)
+                if not rng or rng[0] <= rng[1]:
+                    continue
+                width = (rng[0] - rng[1]) / ((rng[0] + rng[1]) / 2)
+                for short in (True, False):
+                    for slip in slips:
+                        t = orb_day(bars, close, slip, short, m)
+                        if t:
+                            out[(m, short, slip)].append((iso, symbol, t, width))
+    return out
