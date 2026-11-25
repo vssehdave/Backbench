@@ -107,3 +107,14 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
 Round 2: test 05/08 on longer history (2008-2015, which neither period has seen); a second return stream uncorrelated
 with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possible; check the gold dependence
 (the 2024-2025 gold run flatters the holdout).
+
+## Round 2
+
+- **2008-2015 check of 05/08: not run.** Alpaca, the repo's only daily source (docs/alpaca.md, catalog_data.py),
+  returns no bars before 2016-01-04 for QLD, SSO, GLD or SHY, so the 2008 crash cannot be replayed without adding a new
+  data source. Until then 05 has only 2016-2026 evidence, part of which shaped its design.
+
+- **09 (05 with TLT in place of GLD), diagnostic, fails all five.** In-sample Sharpe 0.76 (05: 1.10); holdout CAGR
+  2.8%, Sharpe 0.28, alpha -6.0% (05: 21.2%, 1.48, +10.6%), same QLD sleeve (~22% average weight). Swapping one asset
+  moved holdout CAGR by 18 points, so most of 05's 2024-26 result is gold's run, not the engine. Long Treasuries are no
+  longer a diversifier: stock-bond correlation was positive, so inverse-vol put ~2/3 in TLT, which lost money.

@@ -25,3 +25,29 @@ def vol(seen, symbol, n):
     """Annualized stdev of the last n daily returns, or None."""
     p = closes(seen, symbol, n + 1)
     return p and statistics.stdev([b / a - 1 for a, b in zip(p, p[1:])]) * math.sqrt(252)
+
+
+def inverse_vol(seen, assets, n):
+    """Weights proportional to 1 / n-day vol, summing to 1, or None if any asset lacks history."""
+    inv = {}
+    for s in assets:
+        v = vol(seen, s, n)
+        if not v:
+            return None
+        inv[s] = 1 / v
+    return {s: x / sum(inv.values()) for s, x in inv.items()}
+
+
+def vol_cap(seen, w, n, target):
+    """Scale weights w down so the mix's realised vol over the last n sessions is at most target; the rest goes to SHY."""
+    if not w:
+        return {"SHY": 1.0}
+    rets = {}
+    for s in w:
+        c = closes(seen, s, n + 1)
+        rets[s] = [b / a - 1 for a, b in zip(c, c[1:])]
+    pv = statistics.stdev([sum(w[s] * rets[s][i] for s in w) for i in range(n)]) * math.sqrt(252)
+    k = min(1.0, target / pv) if pv else 1.0
+    out = {s: x * k for s, x in w.items()}
+    out["SHY"] = out.get("SHY", 0) + 1 - k
+    return out

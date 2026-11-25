@@ -26,7 +26,10 @@ PHASES = {"insample": (date(2015, 1, 1), date(2016, 1, 1), date(2024, 1, 1), 200
 # 5 bps a side, no commission; 5% a year on any borrowed cash so leverage is not free.
 COSTS = xsection.Costs(commission_per_share=0., commission_min=0., slippage_bps=5., margin_bps=500.)
 UNIVERSE = ("SPY", "QQQ", "IWM", "EFA", "EEM", "TLT", "IEF", "SHY", "GLD", "DBC", "VNQ", "LQD", "HYG",
-            "XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY", "SSO", "QLD")
+            "XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY", "SSO", "QLD",
+            # Round 2: commodity, FX, bond, 2x and factor ETFs (all with bars from 2016-01-04).
+            "SLV", "USO", "DBA", "DBB", "CPER", "UUP", "FXE", "FXY", "FXA", "FXB", "FXF", "FXC", "TIP", "EMB",
+            "UBT", "UGL", "EFO", "EET", "UGE", "RXL", "UPW", "SPLV", "USMV", "QUAL", "MTUM", "VLUE", "SIZE")
 
 
 def panel(lo, hi):
