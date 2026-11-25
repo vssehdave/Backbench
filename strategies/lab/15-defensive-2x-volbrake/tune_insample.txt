@@ -1,0 +1,5 @@
+{"assets": ["UGE", "RXL", "UPW"], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=7.4% sharpe=0.50 sortino=0.67 dd=-32.6% turn=6.7x cost=0.34%
+{"assets": ["UGE", "RXL", "UPW"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=7.0% sharpe=0.54 sortino=0.73 dd=-27.1% turn=6.6x cost=0.34%
+{"assets": ["UGE", "RXL", "UPW"], "vol_days": 60, "fast_days": 20, "target": 0.18} cagr=8.2% sharpe=0.51 sortino=0.68 dd=-37.9% turn=6.3x cost=0.32%
+{"assets": ["SPLV", "USMV"], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=8.7% sharpe=0.78 sortino=1.07 dd=-19.3% turn=2.4x cost=0.12%
+{"assets": ["UGE", "RXL", "UPW", "SPLV"], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=7.9% sharpe=0.57 sortino=0.77 dd=-30.4% turn=5.6x cost=0.28%
