@@ -1,0 +1,208 @@
+{
+ "id": "lab11_trend_multiasset",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "weekly",
+ "levels": [
+  {
+   "assets": [
+    "DBC",
+    "GLD",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.1
+  },
+  {
+   "assets": [
+    "DBC",
+    "GLD",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.1
+  },
+  {
+   "assets": [
+    "DBC",
+    "GLD",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    21,
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.1
+  },
+  {
+   "assets": [
+    "DBC",
+    "GLD",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    126
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.1
+  },
+  {
+   "assets": [
+    "DBC",
+    "GLD",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.06
+  },
+  {
+   "assets": [
+    "DBC",
+    "SLV",
+    "USO",
+    "DBA",
+    "DBB",
+    "UUP",
+    "FXE",
+    "FXY",
+    "FXA",
+    "FXB",
+    "FXF",
+    "FXC",
+    "TLT",
+    "IEF",
+    "TIP",
+    "EMB",
+    "LQD",
+    "HYG",
+    "EFA",
+    "EEM"
+   ],
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.1
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

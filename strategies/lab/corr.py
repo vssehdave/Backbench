@@ -1,4 +1,6 @@
-"""Daily-return correlation of lab strategies over the holdout: python strategies/lab/corr.py 05-x 08-y ...
+"""Daily-return correlation of lab strategies: python strategies/lab/corr.py [insample|holdout] 05-x 08-y ...
+
+Default holdout; use insample while designing, so the holdout is not seen before the one frozen run.
 
 Reruns each frozen manifest (first level) through customlib.run_panel without Monte Carlo; the win rule counts a new
 winner as separate only if its correlation with every earlier winner is at most 0.8."""
@@ -22,8 +24,8 @@ def returns(folder, p, start):
     return [b / a - 1 for a, b in zip(e, e[1:])]
 
 
-def main(folders):
-    lo, start, end, _ = labkit.PHASES["holdout"]
+def main(folders, phase="holdout"):
+    lo, start, end, _ = labkit.PHASES[phase]
     p = labkit.panel(lo, end)
     rets = {f: returns(f, p, start) for f in folders}
     for i, a in enumerate(folders):
@@ -32,4 +34,5 @@ def main(folders):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    args = sys.argv[1:]
+    main(*((args[1:], args[0]) if args and args[0] in labkit.PHASES else (args,)))

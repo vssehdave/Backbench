@@ -107,3 +107,32 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
 Round 2: test 05/08 on longer history (2008-2015, which neither period has seen); a second return stream uncorrelated
 with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possible; check the gold dependence
 (the 2024-2025 gold run flatters the holdout).
+
+## Round 2
+
+- **2008-2015 check of 05/08: not run.** Alpaca, the repo's only daily source (docs/alpaca.md, catalog_data.py),
+  returns no bars before 2016-01-04 for QLD, SSO, GLD or SHY, so the 2008 crash cannot be replayed without adding a new
+  data source. Until then 05 has only 2016-2026 evidence, part of which shaped its design.
+
+- **09 (05 with TLT in place of GLD), diagnostic, fails all five.** In-sample Sharpe 0.76 (05: 1.10); holdout CAGR
+  2.8%, Sharpe 0.28, alpha -6.0% (05: 21.2%, 1.48, +10.6%), same QLD sleeve (~22% average weight). Swapping one asset
+  moved holdout CAGR by 18 points, so most of 05's 2024-26 result is gold's run, not the engine. Long Treasuries are no
+  longer a diversifier: stock-bond correlation was positive, so inverse-vol put ~2/3 in TLT, which lost money.
+
+- **10 (05 with IEF in place of GLD), diagnostic.** In-sample Sharpe 0.63; holdout CAGR 5.7%, Sharpe 0.76, maxDD -6.2%.
+  Safer than TLT but it earns little: the vol cap is barely binding and IEF's low vol pulls most of the weight. Taken
+  with 09, the answer to "how much of 05's holdout is gold": with a bond in gold's place the same engine makes 3-6% a
+  year instead of 21%, so roughly 15-18 of 05's 21 points of holdout CAGR came from holding gold through its
+  2024-2026 run. 05 is a "2x equity + gold" bet with a good risk engine, not an engine that wins with any diversifier.
+
+- **11 (multi-asset trend), LOSS, corr with 05 0.70.** In-sample Sharpe 0.46 (CAGR 1.4%); holdout CAGR 4.0%, Sharpe 1.05, maxDD -3.4%. Unlevered trend on ETF proxies is a smooth but tiny return; the holdout Sharpe came mostly from gold trending, which is why it correlates 0.70 with 05. It would need ~3x leverage to match SPY's CAGR, which the no-margin rule does not allow.
+
+- **12 (credit carry, HYG/EMB with 05's brake), LOSS, corr with 05 0.56.** In-sample Sharpe 0.39 (maxDD -20%, the 2020 credit crash got through the 20-day brake); holdout CAGR 5.6%, Sharpe 1.07, Sortino 1.56, passes four of five but not CAGR. Credit carry is a modest, partly equity-like premium (beta 0.23-0.32); without leverage it cannot reach SPY's CAGR.
+
+- **13 (sector momentum with 05's brake), LOSS, corr with 05 0.55.** In-sample Sharpe 0.65 (CAGR 7.7%); holdout CAGR 11.7%, Sharpe 0.94, Sortino 1.29, beta 0.60. Same answer as the catalog's sector momentum: ranking sectors adds nothing over SPY, and weekly re-ranking turns over ~16x a year. The brake keeps drawdown below SPY's but, unlevered, leaves the return short.
+
+- **14 (factor-ETF momentum, top 1, with 05's brake), LOSS by MC p95 DD only, corr with 05 0.66.** In-sample Sharpe 0.62 (below SPY's 0.78, alpha -0.2%); holdout CAGR 18.2%, Sharpe 1.13, alpha +5.2%. The holdout beat looks like luck of the period, not a stable edge: in-sample it lost to SPY, and top 1 was picked as the best of six tuned levels. Holding one equity factor at a time keeps beta 0.77, so the bootstrap tail is SPY-like (25.9% vs 25.1%). Not a second return stream.
+
+- **15 (05's engine on defensive equity), LOSS, corr with 05 0.30.** The 2x defensive sector ETFs (UGE/RXL/UPW) were worse in-sample than the plain SPLV/USMV pair (Sharpe 0.51-0.57 vs 0.78; 2x decay and 30-38% drawdowns), so the frozen level is unlevered. Holdout: low risk (DD -8.9%, beta 0.34) but CAGR 9.2%. The lowest correlation with 05 so far, but without leverage it cannot clear the CAGR bar, and the levered version was the loser.
+
+- **16 (05's engine with non-gold diversifiers), LOSS, corr with 05 0.38.** The best in-sample pair (SSO/UBT/UUP, Sharpe 0.85) held up on the holdout as a calm mix (Sharpe 0.82, DD -11.2%) but made 5.5% a year. No swap for GLD (TLT, IEF, UBT, UUP, FXY) comes close to 05, so 05 is a 2x-Nasdaq-plus-gold bet rather than a general engine. Weigh its 2021-2025 result with that in mind.

@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2024-01-02,2025-11-17,close,EMB,buy,7.426985452751053,95.99,0.356480447761145,rebalance to target weight +0.4347,548.9937891867386,556.816000439861
+2024-01-02,2025-11-17,close,HYG,sell,-8.904511989665346,80.09,0.3712990408863151,rebalance to target weight +0.5653,883.2978200340274,873.8532118330965

@@ -1,0 +1,7 @@
+{"assets": ["SSO", "UBT"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=9.5% sharpe=0.76 sortino=1.05 dd=-30.9% turn=5.6x cost=0.29%
+{"assets": ["EFO", "UBT"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.4% sharpe=0.24 sortino=0.33 dd=-37.5% turn=6.3x cost=0.32%
+{"assets": ["EET", "UBT"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.6% sharpe=0.25 sortino=0.34 dd=-42.0% turn=7.0x cost=0.36%
+{"assets": ["SSO", "FXY"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.5% sharpe=0.33 sortino=0.47 dd=-27.7% turn=2.2x cost=0.11%
+{"assets": ["SSO", "UUP"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=6.6% sharpe=0.85 sortino=1.22 dd=-11.1% turn=1.4x cost=0.07%
+{"assets": ["SSO", "UBT", "UUP"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=5.6% sharpe=0.85 sortino=1.23 dd=-8.6% turn=1.6x cost=0.08%
+{"assets": ["UPW", "UBT"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=4.1% sharpe=0.36 sortino=0.51 dd=-35.5% turn=6.6x cost=0.34%

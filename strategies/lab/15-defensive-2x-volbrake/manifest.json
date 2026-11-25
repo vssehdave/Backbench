@@ -1,0 +1,64 @@
+{
+ "id": "lab15_defensive_2x_volbrake",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "weekly",
+ "levels": [
+  {
+   "assets": [
+    "SPLV",
+    "USMV"
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "UGE",
+    "RXL",
+    "UPW"
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "UGE",
+    "RXL",
+    "UPW"
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.12
+  },
+  {
+   "assets": [
+    "UGE",
+    "RXL",
+    "UPW"
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.18
+  },
+  {
+   "assets": [
+    "UGE",
+    "RXL",
+    "UPW",
+    "SPLV"
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}
