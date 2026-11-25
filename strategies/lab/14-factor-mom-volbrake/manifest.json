@@ -1,0 +1,120 @@
+{
+ "id": "lab14_factor_mom_volbrake",
+ "version": "1",
+ "entry": "strategy:decide",
+ "cadence": "weekly",
+ "levels": [
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 1,
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 2,
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 3,
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 2,
+   "lookbacks": [
+    126
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.15
+  },
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 2,
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.12
+  },
+  {
+   "assets": [
+    "MTUM",
+    "QUAL",
+    "VLUE",
+    "USMV",
+    "SIZE"
+   ],
+   "top": 2,
+   "lookbacks": [
+    63,
+    126,
+    252
+   ],
+   "vol_days": 60,
+   "fast_days": 20,
+   "target": 0.18
+  }
+ ],
+ "limits": {
+  "max_gross": 1.0,
+  "max_net": 1.0,
+  "name_cap": 1.0
+ },
+ "benchmark": "SPY"
+}

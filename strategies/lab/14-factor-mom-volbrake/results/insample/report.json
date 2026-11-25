@@ -1,0 +1,148 @@
+{
+  "name": "insample",
+  "engine": "xsection",
+  "fills": 456,
+  "metrics": {
+    "strategy": {
+      "total_return": 0.790189225531311,
+      "cagr": 0.07569949810569598,
+      "volatility": 0.13237303232225872,
+      "sharpe": 0.6177539716246425,
+      "sortino": 0.8363168132284294,
+      "max_drawdown": -0.2074158913636298,
+      "beta": 0.5919593346341128,
+      "alpha": -0.0015335930025038747
+    },
+    "SPY": {
+      "total_return": 1.696449496133135,
+      "cagr": 0.13235583547938434,
+      "volatility": 0.1807031931760339,
+      "sharpe": 0.778801378222046,
+      "sortino": 1.081011839983101,
+      "max_drawdown": -0.33793888166449937,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "start_cash": 100000.0,
+    "cadence": "weekly",
+    "limits": {
+      "max_gross": 1.0,
+      "max_net": 1.0,
+      "name_cap": 1.0
+    },
+    "costs": {
+      "commission_per_share": 0.0,
+      "commission_min": 0.0,
+      "commission_max_pct": 0.01,
+      "slippage_bps": 5.0,
+      "borrow_bps": 50.0,
+      "sell_fee_pct": 2.06e-05,
+      "sell_fee_per_share": 3e-06,
+      "margin_bps": 500.0
+    },
+    "costs_usd": {
+      "commission": 0.0,
+      "regulatory": 112.82440157981102,
+      "slippage": 5507.522107515841,
+      "borrow": 5.4033895257409785
+    },
+    "decisions": 417,
+    "abstentions": 0,
+    "forced_closes": 0,
+    "fills": 456
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 200,
+      "sessions": 2011,
+      "historical": {
+        "max_drawdown": 0.2074158913636292,
+        "longest_underwater_sessions": 520,
+        "terminal_return": 0.790189225531311,
+        "share_of_sessions_underwater": 0.9070114370959722
+      },
+      "max_drawdown": {
+        "p5": 0.1532897431063592,
+        "p50": 0.23513285271306011,
+        "p95": 0.39065080464562046,
+        "p99": 0.5359517432519965,
+        "historical_percentile_rank": 31.0,
+        "prob_exceed": {
+          "0.2": 0.745,
+          "0.3": 0.185,
+          "0.5": 0.02
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 234.75,
+        "p50": 504.0,
+        "p95": 1389.1000000000004,
+        "p99": 1736.3099999999997
+      },
+      "terminal_return": {
+        "p5": -0.05875097700760548,
+        "p50": 0.761490070106052,
+        "p95": 2.157084205873199,
+        "p99": 3.1101807113589586
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8814271506713078,
+        "p50": 0.922923918448533,
+        "p95": 0.9731476877175534,
+        "p99": 0.9871059174540029
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 200,
+      "sessions": 2011,
+      "historical": {
+        "max_drawdown": 0.33793888166449937,
+        "longest_underwater_sessions": 488,
+        "terminal_return": 1.6964494961331145,
+        "share_of_sessions_underwater": 0.8547986076578816
+      },
+      "max_drawdown": {
+        "p5": 0.1660000899108157,
+        "p50": 0.3089815465280842,
+        "p95": 0.5080269577193669,
+        "p99": 0.5793279169852649,
+        "historical_percentile_rank": 58.5,
+        "prob_exceed": {
+          "0.2": 0.89,
+          "0.3": 0.535,
+          "0.5": 0.055
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 187.85,
+        "p50": 468.0,
+        "p95": 1158.5000000000005,
+        "p99": 1681.4499999999996
+      },
+      "terminal_return": {
+        "p5": 0.140745714429894,
+        "p50": 1.669135466885458,
+        "p95": 4.110072108067372,
+        "p99": 4.747769055125756
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8229487817006464,
+        "p50": 0.8906016907011437,
+        "p95": 0.9572600696171059,
+        "p99": 0.9791248135256091
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on jointly bootstrapped dates",
+    "paths": 200,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-01-05",
+    "end": "2023-12-29",
+    "runtime_seconds": 225.3
+  }
+}

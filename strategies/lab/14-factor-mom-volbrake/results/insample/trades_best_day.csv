@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2016-01-05,2020-03-02,close,MTUM,sell,-392.4255606332534,126.73,25.891704006968478,rebalance to target weight +0.6573,4917.010970958774,3231.748642966493
+2016-01-05,2020-03-02,close,SHY,buy,581.1860616925372,85.57,24.86778920770028,rebalance to target weight +0.3427,0.0,681.2615246442522
