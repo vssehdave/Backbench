@@ -1,24 +1,17 @@
 """Shared helpers for strategies/custom/*: long-window metrics and a one-pass xsection run. See strategies/custom/INDEX.md."""
-import math
 import statistics
 from datetime import date
 
+import report
 import xsection
 
 
 def metrics(dates, equity, periods=252):
-    """CAGR from calendar days; volatility and Sharpe (risk-free rate 0) from per-period returns."""
+    """CAGR from calendar days; the rest is report.perf_metrics (risk-free rate 0, sample volatility, Sortino)."""
     returns = [b / a - 1 for a, b in zip(equity, equity[1:])]
-    years = (dates[-1] - dates[0]).days / 365.25
-    sd = statistics.stdev(returns) if len(returns) > 1 else 0.
-    peak, drawdown = equity[0], 0.
-    for e in equity:
-        peak = max(peak, e)
-        drawdown = min(drawdown, e / peak - 1)
-    return dict(start=str(dates[0]), end=str(dates[-1]), total_return=equity[-1] / equity[0] - 1,
-                cagr=(equity[-1] / equity[0]) ** (1 / years) - 1 if equity[-1] > 0 else -1.,
-                volatility=sd * math.sqrt(periods), sharpe=statistics.fmean(returns) / sd * math.sqrt(periods) if sd else None,
-                max_drawdown=drawdown)
+    m = report.perf_metrics(returns, periods=periods, years=(dates[-1] - dates[0]).days / 365.25)
+    m["cagr"] = m["cagr"] if equity[-1] > 0 else -1.
+    return dict(m, start=str(dates[0]), end=str(dates[-1]))
 
 
 def first_index(panel, day):
