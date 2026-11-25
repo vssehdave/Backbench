@@ -1,50 +1,99 @@
-day,symbol,side,notional_usd,entry,exit,fees,pnl,entry_minute,exit_minute
-2020-03-26,PFE,long,1639.77,30.3661,31.8536,2.04,78.29,576.0,955.0
-2020-03-26,CVX,short,1632.63,68.0264,70.5541,2.03,-62.7,576.0,606.0
-2020-03-26,NFLX,long,1410.2,352.5505,361.6776,2.03,34.48,576.0,955.0
-2020-03-26,BMY,long,1600.39,51.6253,52.7295,2.03,32.19,576.0,955.0
-2020-03-26,PM,long,1641.23,68.3847,71.8856,2.04,81.99,576.0,955.0
-2020-03-26,ABBV,long,1626.43,70.7141,74.0552,2.04,74.81,576.0,955.0
-2020-03-26,T,long,1637.21,29.2358,30.7738,2.04,84.09,577.0,955.0
-2020-03-26,ADBE,long,1571.31,314.2628,323.7902,2.03,45.6,577.0,955.0
-2020-03-26,ORCL,long,1643.93,46.9694,50.6399,2.04,126.43,577.0,955.0
-2020-03-26,CRM,long,1512.3,151.2301,148.1704,2.03,-32.63,577.0,586.0
-2020-03-26,ABT,long,1599.5,72.7045,75.6449,2.03,62.65,577.0,955.0
-2020-03-26,C,long,1637.58,44.2589,46.1308,2.04,67.23,577.0,955.0
-2020-03-26,PYPL,long,1572.79,98.2997,95.9808,2.03,-39.13,577.0,591.0
-2020-03-26,COST,long,1426.14,285.227,292.5115,2.03,34.39,577.0,955.0
-2020-03-26,AMGN,long,1575.68,196.9594,192.2715,2.03,-39.53,577.0,590.0
-2020-03-26,AVGO,long,1643.58,234.7969,243.4913,2.04,58.83,577.0,955.0
-2020-03-26,WMT,long,1552.21,110.8722,108.9782,2.03,-28.55,578.0,608.0
-2020-03-26,INTC,long,1616.42,53.8808,55.6589,2.03,51.31,578.0,955.0
-2020-03-26,DIS,long,1549.28,103.2857,105.159,2.03,26.07,578.0,955.0
-2020-03-26,HON,long,1618.64,134.887,137.8824,2.03,33.91,578.0,955.0
-2020-03-26,LMT,long,1337.59,334.3969,350.9456,2.03,64.17,578.0,955.0
-2020-03-26,HD,long,1494.7,186.8373,193.9912,2.03,55.2,579.0,955.0
-2020-03-26,RTX,long,1614.24,100.8902,104.2591,2.03,51.87,579.0,955.0
-2020-03-26,GOOG,short,1106.49,1106.4887,1117.7235,2.02,-13.26,580.0,600.0
-2020-03-26,MSFT,long,1525.25,152.5255,156.2188,2.03,34.9,581.0,955.0
-2020-03-26,UNH,short,1629.27,232.7534,239.968,2.03,-52.54,582.0,598.0
-2020-03-26,WFC,short,1633.75,29.1742,29.8059,2.03,-37.41,582.0,597.0
-2020-03-26,TMO,short,1632.15,272.0256,276.3853,2.03,-28.19,582.0,604.0
-2020-03-26,TXN,long,1623.44,101.4653,107.5885,2.04,95.94,582.0,955.0
-2020-03-26,PEP,long,1610.18,115.013,120.5359,2.03,75.29,583.0,955.0
-2020-03-26,UNP,short,1610.5,134.2082,140.028,2.03,-71.87,585.0,614.0
-2020-03-26,BA,short,1525.28,169.4761,181.0262,2.03,-105.98,586.0,624.0
-2020-03-26,NEE,long,1521.93,217.4185,232.7434,2.03,105.24,590.0,955.0
-2020-03-26,JPM,short,1591.56,93.6213,96.3392,2.03,-48.24,591.0,605.0
-2020-03-26,IBM,short,1584.73,105.6489,108.4265,2.03,-43.7,591.0,607.0
-2020-03-26,KO,long,1647.25,43.3487,44.5211,2.04,42.52,592.0,955.0
-2020-03-26,MCD,long,1498.3,166.4783,166.3117,2.03,-3.53,596.0,955.0
-2020-03-26,VZ,long,1605.19,51.7804,53.5993,2.03,54.35,597.0,955.0
-2020-03-26,PG,long,1578.62,105.241,106.9486,2.03,23.58,598.0,955.0
-2020-03-26,BAC,long,1649.04,21.6978,22.8454,2.04,85.18,598.0,955.0
-2020-03-26,LLY,long,1629.49,125.3451,133.9832,2.04,110.26,598.0,955.0
-2020-03-26,LIN,long,1543.0,171.4443,169.2361,2.03,-21.9,598.0,647.0
-2020-03-26,MRK,long,1614.35,70.189,73.4553,2.03,73.09,599.0,955.0
-2020-03-26,JNJ,long,1609.59,123.8148,126.4147,2.03,31.77,600.0,955.0
-2020-03-26,CSCO,long,1648.95,38.3477,40.7918,2.04,103.06,600.0,955.0
-2020-03-26,NVDA,long,1541.71,256.9514,256.2087,2.03,-6.49,607.0,955.0
-2020-03-26,MDT,long,1570.9,92.4059,91.8716,2.03,-11.11,607.0,955.0
-2020-03-26,DHR,long,1604.06,133.6717,137.9324,2.03,49.09,607.0,955.0
-2020-03-26,AAPL,long,1513.43,252.2386,257.9184,2.03,32.05,634.0,955.0
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2020-03-26,close,PFE,buy,54,30.366072,1.000162,"09:36 breakout entry, stop 29.88",0,54
+full period,2020-03-26,close,PFE,sell,54,31.853628,1.0355959757871998,15:55 exit before close,54,0
+full period,2020-03-26,close,CVX,sell,24,68.026392,1.0337042482048,"09:36 breakout entry, stop 70.54",0,-24
+full period,2020-03-26,close,CVX,buy,24,70.554108,1.0000720000000003,10:06 stop,-24,0
+full period,2020-03-26,close,NFLX,buy,4,352.550496,1.000012,"09:36 breakout entry, stop 341.73",0,4
+full period,2020-03-26,close,NFLX,sell,4,361.67755002,1.029814230121648,15:55 exit before close,4,0
+full period,2020-03-26,close,BMY,buy,31,51.625323,1.000093,"09:36 breakout entry, stop 50.31",0,31
+full period,2020-03-26,close,BMY,sell,31,52.729452,1.0337660280471999,15:55 exit before close,31,0
+full period,2020-03-26,close,PM,buy,24,68.38467419999999,1.000072,"09:36 breakout entry, stop 65.98",0,24
+full period,2020-03-26,close,PM,sell,24,71.88562,1.0356122505279999,15:55 exit before close,24,0
+full period,2020-03-26,close,ABBV,buy,23,70.71414,1.000069,"09:36 breakout entry, stop 68.76",0,23
+full period,2020-03-26,close,ABBV,sell,23,74.05518599999999,1.0351563471267997,15:55 exit before close,23,0
+full period,2020-03-26,close,T,buy,56,29.235846,1.000168,"09:37 breakout entry, stop 28.68",0,56
+full period,2020-03-26,close,T,sell,56,30.773844,1.0356687064384,15:55 exit before close,56,0
+full period,2020-03-26,close,ADBE,buy,5,314.26284,1.000015,"09:37 breakout entry, stop 305.69",0,5
+full period,2020-03-26,close,ADBE,sell,5,323.790229,1.033365393587,15:55 exit before close,5,0
+full period,2020-03-26,close,ORCL,buy,35,46.969392,1.000105,"09:37 breakout entry, stop 46.19",0,35
+full period,2020-03-26,close,ORCL,sell,35,50.63987,1.0366163462700002,15:55 exit before close,35,0
+full period,2020-03-26,close,CRM,buy,10,151.23013998000002,1.00003,"09:37 breakout entry, stop 148.20",0,10
+full period,2020-03-26,close,CRM,sell,10,148.17036,1.0305530941599998,09:46 stop,10,0
+full period,2020-03-26,close,ABT,buy,22,72.704538,1.000066,"09:37 breakout entry, stop 71.00",0,22
+full period,2020-03-26,close,ABT,sell,22,75.644868,1.0343482541776,15:55 exit before close,22,0
+full period,2020-03-26,close,C,buy,37,44.25885,1.000111,"09:37 breakout entry, stop 43.00",0,37
+full period,2020-03-26,close,C,sell,37,46.130772,1.0352718744184002,15:55 exit before close,37,0
+full period,2020-03-26,close,PYPL,buy,16,98.299656,1.000048,"09:37 breakout entry, stop 96.00",0,16
+full period,2020-03-26,close,PYPL,sell,16,95.9808,1.03168327168,09:51 stop,16,0
+full period,2020-03-26,close,COST,buy,5,285.227034,1.000015,"09:37 breakout entry, stop 280.86",0,5
+full period,2020-03-26,close,COST,sell,5,292.511486,1.030143683058,15:55 exit before close,5,0
+full period,2020-03-26,close,AMGN,buy,8,196.95938399999997,1.000024,"09:37 breakout entry, stop 192.31",0,8
+full period,2020-03-26,close,AMGN,sell,8,192.271538,1.0317103494624,09:50 stop,8,0
+full period,2020-03-26,close,AVGO,buy,7,234.79694999999998,1.000021,"09:37 breakout entry, stop 225.49",0,7
+full period,2020-03-26,close,AVGO,sell,7,243.491292,1.0351324443063998,15:55 exit before close,7,0
+full period,2020-03-26,close,WMT,buy,14,110.87217,1.000042,"09:38 breakout entry, stop 109.00",0,14
+full period,2020-03-26,close,WMT,sell,14,108.9782,1.03147131288,10:08 stop,14,0
+full period,2020-03-26,close,INTC,buy,30,53.880773999999995,1.00009,"09:38 breakout entry, stop 51.66",0,30
+full period,2020-03-26,close,INTC,sell,30,55.658866,1.0344871791880001,15:55 exit before close,30,0
+full period,2020-03-26,close,DIS,buy,15,103.285653,1.000045,"09:38 breakout entry, stop 100.80",0,15
+full period,2020-03-26,close,DIS,sell,15,105.15896400000001,1.032539119876,15:55 exit before close,15,0
+full period,2020-03-26,close,HON,buy,12,134.88697200000001,1.000036,"09:38 breakout entry, stop 131.16",0,12
+full period,2020-03-26,close,HON,sell,12,137.882418,1.0341205337296,15:55 exit before close,12,0
+full period,2020-03-26,close,LMT,buy,4,334.396866,1.000012,"09:38 breakout entry, stop 324.01",0,4
+full period,2020-03-26,close,LMT,sell,4,350.94559684,1.028929917179616,15:55 exit before close,4,0
+full period,2020-03-26,close,HD,buy,8,186.83725998,1.000024,"09:39 breakout entry, stop 182.56",0,8
+full period,2020-03-26,close,HD,sell,8,193.991194,1.0319937487712003,15:55 exit before close,8,0
+full period,2020-03-26,close,RTX,buy,16,100.890174,1.000048,"09:39 breakout entry, stop 97.00",0,16
+full period,2020-03-26,close,RTX,sell,16,104.259144,1.0344118138624,15:55 exit before close,16,0
+full period,2020-03-26,close,GOOG,sell,1,1106.488658,1.0227966663548,"09:40 breakout entry, stop 1117.50",0,-1
+full period,2020-03-26,close,GOOG,buy,1,1117.7235,1.0000029999999998,10:00 stop,-1,0
+full period,2020-03-26,close,MSFT,buy,10,152.525499,1.00003,"09:41 breakout entry, stop 148.10",0,10
+full period,2020-03-26,close,MSFT,sell,10,156.21875,1.0322110624999998,15:55 exit before close,10,0
+full period,2020-03-26,close,UNH,sell,7,232.75344,1.033584046048,"09:42 breakout entry, stop 239.92",0,-7
+full period,2020-03-26,close,UNH,buy,7,239.96798399999997,1.0000209999999998,09:58 stop,-7,0
+full period,2020-03-26,close,WFC,sell,56,29.174164,1.0338233155904,"09:42 breakout entry, stop 29.80",0,-56
+full period,2020-03-26,close,WFC,buy,56,29.80585998,1.000168,09:57 stop,-56,0
+full period,2020-03-26,close,TMO,sell,6,272.025584,1.0336403621824,"09:42 breakout entry, stop 276.33",0,-6
+full period,2020-03-26,close,TMO,buy,6,276.385266,1.000018,10:04 stop,-6,0
+full period,2020-03-26,close,TXN,buy,16,101.46528899999998,1.000048,"09:42 breakout entry, stop 99.01",0,16
+full period,2020-03-26,close,TXN,sell,16,107.588478,1.0355091623488,15:55 exit before close,16,0
+full period,2020-03-26,close,PEP,buy,14,115.012998,1.000042,"09:43 breakout entry, stop 112.58",0,14
+full period,2020-03-26,close,PEP,sell,14,120.535888,1.0348045500991998,15:55 exit before close,14,0
+full period,2020-03-26,close,UNP,sell,12,134.208153,1.0332122554216001,"09:45 breakout entry, stop 140.00",0,-12
+full period,2020-03-26,close,UNP,buy,12,140.028,1.0000359999999997,10:14 stop,-12,0
+full period,2020-03-26,close,BA,sell,9,169.476098,1.0314478685692,"09:46 breakout entry, stop 180.99",0,-9
+full period,2020-03-26,close,BA,buy,9,181.026198,1.000027,10:24 stop,-9,0
+full period,2020-03-26,close,NEE,buy,7,217.418475,1.000021,"09:50 breakout entry, stop 210.60",0,7
+full period,2020-03-26,close,NEE,sell,7,232.743442,1.0335826043363998,15:55 exit before close,7,0
+full period,2020-03-26,close,JPM,sell,17,93.621272,1.0328371694544,"09:51 breakout entry, stop 96.32",0,-17
+full period,2020-03-26,close,JPM,buy,17,96.33916398,1.000051,10:05 stop,-17,0
+full period,2020-03-26,close,IBM,sell,15,105.648866,1.032690499594,"09:51 breakout entry, stop 108.35",0,-15
+full period,2020-03-26,close,IBM,buy,15,108.42648095999999,1.000045,10:07 stop,-15,0
+full period,2020-03-26,close,KO,buy,38,43.348668,1.000114,"09:52 breakout entry, stop 42.45",0,38
+full period,2020-03-26,close,KO,sell,38,44.521094000000005,1.0349651123832002,15:55 exit before close,38,0
+full period,2020-03-26,close,MCD,buy,9,166.478289,1.000027,"09:56 breakout entry, stop 161.00",0,9
+full period,2020-03-26,close,MCD,sell,9,166.311731,1.0308611949274,15:55 exit before close,9,0
+full period,2020-03-26,close,VZ,buy,31,51.780354,1.000093,"09:57 breakout entry, stop 49.51",0,31
+full period,2020-03-26,close,VZ,sell,31,53.599278,1.0343214989307998,15:55 exit before close,31,0
+full period,2020-03-26,close,PG,buy,15,105.241044,1.000045,"09:58 breakout entry, stop 102.53",0,15
+full period,2020-03-26,close,PG,sell,15,106.948606,1.033092119254,15:55 exit before close,15,0
+full period,2020-03-26,close,BAC,buy,76,21.6978387,1.000228,"09:58 breakout entry, stop 21.17",0,76
+full period,2020-03-26,close,BAC,sell,76,22.84543,1.035994805208,15:55 exit before close,76,0
+full period,2020-03-26,close,LLY,buy,13,125.345064,1.000039,"09:58 breakout entry, stop 121.94",0,13
+full period,2020-03-26,close,LLY,sell,13,133.983198,1.0359197004244003,15:55 exit before close,13,0
+full period,2020-03-26,close,LIN,buy,9,171.444282,1.000027,"09:58 breakout entry, stop 169.27",0,9
+full period,2020-03-26,close,LIN,sell,9,169.23614600000002,1.0314033814684003,10:47 stop,9,0
+full period,2020-03-26,close,MRK,buy,23,70.18903499999999,1.000069,"09:59 breakout entry, stop 68.10",0,23
+full period,2020-03-26,close,MRK,sell,23,73.45530600000001,1.0348721239827998,15:55 exit before close,23,0
+full period,2020-03-26,close,JNJ,buy,13,123.814758,1.000039,"10:00 breakout entry, stop 120.38",0,13
+full period,2020-03-26,close,JNJ,sell,13,126.414712,1.0338928598736,15:55 exit before close,13,0
+full period,2020-03-26,close,CSCO,buy,43,38.347668000000006,1.000129,"10:00 breakout entry, stop 37.37",0,43
+full period,2020-03-26,close,CSCO,sell,43,40.79184,1.036262411872,15:55 exit before close,43,0
+full period,2020-03-26,close,NVDA,buy,6,256.95138,1.000018,"10:07 breakout entry, stop 250.00",0,6
+full period,2020-03-26,close,NVDA,sell,6,256.208748,1.0316854012528,15:55 exit before close,6,0
+full period,2020-03-26,close,MDT,buy,17,92.40587748,1.000051,"10:07 breakout entry, stop 89.04",0,17
+full period,2020-03-26,close,MDT,sell,17,91.871622,1.0322244420244,15:55 exit before close,17,0
+full period,2020-03-26,close,DHR,buy,12,133.671729,1.000036,"10:07 breakout entry, stop 130.49",0,12
+full period,2020-03-26,close,DHR,sell,12,137.932408,1.0341328912576,15:55 exit before close,12,0
+full period,2020-03-26,close,AAPL,buy,6,252.23863763999998,1.000018,"10:34 breakout entry, stop 246.36",0,6
+full period,2020-03-26,close,AAPL,sell,6,257.91840600000006,1.0318967149816,15:55 exit before close,6,0

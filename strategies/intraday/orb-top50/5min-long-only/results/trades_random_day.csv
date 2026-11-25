@@ -1,23 +1,53 @@
-day,symbol,side,notional_usd,entry,exit,fees,pnl,entry_minute,exit_minute
-2021-02-05,PFE,long,1538.11,34.957,34.898,2.03,-4.63,576.0,955.0
-2021-02-05,PEP,long,1410.13,141.0132,140.8318,2.03,-3.84,576.0,955.0
-2021-02-05,ORCL,long,1535.83,63.9928,63.4473,2.03,-15.12,576.0,955.0
-2021-02-05,HON,long,1424.26,203.4657,201.6597,2.03,-14.67,576.0,600.0
-2021-02-05,ABT,long,1460.45,121.7043,123.8752,2.03,24.02,577.0,955.0
-2021-02-05,MRK,long,1535.71,76.7854,76.2348,2.03,-13.04,577.0,608.0
-2021-02-05,MCD,long,1498.89,214.1278,212.2475,2.03,-15.19,577.0,583.0
-2021-02-05,TMO,long,1477.47,492.4885,487.7624,2.03,-16.21,581.0,614.0
-2021-02-05,TSLA,long,849.27,849.2698,840.5019,2.02,-10.79,583.0,610.0
-2021-02-05,KO,long,1538.84,49.6399,49.5801,2.03,-3.89,587.0,955.0
-2021-02-05,WMT,long,1436.79,143.6787,142.8164,2.03,-10.65,588.0,612.0
-2021-02-05,CVX,long,1534.39,90.258,89.3821,2.03,-16.92,590.0,615.0
-2021-02-05,LLY,long,1418.06,202.5805,201.5697,2.03,-9.1,597.0,955.0
-2021-02-05,LIN,long,1534.09,255.6811,257.4785,2.03,8.75,600.0,955.0
-2021-02-05,VZ,long,1498.26,55.4911,55.3189,2.03,-6.68,601.0,955.0
-2021-02-05,NEE,long,1505.91,83.6617,83.5833,2.03,-3.44,622.0,955.0
-2021-02-05,CSCO,long,1538.23,48.0696,48.0304,2.03,-3.29,636.0,955.0
-2021-02-05,PG,long,1425.56,129.5959,129.4841,2.03,-3.26,641.0,955.0
-2021-02-05,MS,long,1543.81,73.5147,72.9954,2.03,-12.94,644.0,666.0
-2021-02-05,DHR,long,1430.21,238.3677,235.7728,2.03,-17.6,664.0,857.0
-2021-02-05,ADBE,long,1481.91,493.9688,491.4017,2.03,-9.73,772.0,955.0
-2021-02-05,NFLX,long,1107.96,553.9808,550.2499,2.02,-9.48,787.0,955.0
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2023-02-21,close,TSLA,buy,3,207.251442,1.000009,"09:36 breakout entry, stop 203.71",0,3
+full period,2023-02-21,close,TSLA,sell,3,203.669258,1.0125957601444,10:12 stop,3,0
+full period,2023-02-21,close,WMT,buy,4,144.71263674,1.000012,"09:36 breakout entry, stop 142.15",0,4
+full period,2023-02-21,close,WMT,sell,4,147.350524,1.0121536831776,15:55 exit before close,4,0
+full period,2023-02-21,close,ABBV,buy,4,151.54880369999998,1.000012,"09:36 breakout entry, stop 149.82",0,4
+full period,2023-02-21,close,ABBV,sell,4,152.17955800000001,1.0125515955792,15:55 exit before close,4,0
+full period,2023-02-21,close,QCOM,buy,5,126.79535399999999,1.000015,"09:36 breakout entry, stop 124.94",0,5
+full period,2023-02-21,close,QCOM,sell,5,124.915012,1.012881246236,12:00 stop,5,0
+full period,2023-02-21,close,AMZN,buy,7,95.49909600000001,1.000021,"09:37 breakout entry, stop 94.86",0,7
+full period,2023-02-21,close,AMZN,sell,7,94.84102800000001,1.0136970762376,09:51 stop,7,0
+full period,2023-02-21,close,NFLX,buy,2,344.078802,1.000006,"09:37 breakout entry, stop 341.29",0,2
+full period,2023-02-21,close,NFLX,sell,2,341.221742,1.0140643357704002,09:51 stop,2,0
+full period,2023-02-21,close,NVDA,buy,3,214.402872,1.000009,"09:39 breakout entry, stop 209.41",0,3
+full period,2023-02-21,close,NVDA,sell,3,209.368118,1.0129479496924003,10:27 stop,3,0
+full period,2023-02-21,close,MSFT,buy,2,254.75184018,1.000006,"09:40 breakout entry, stop 253.85",0,2
+full period,2023-02-21,close,MSFT,sell,2,253.79923,1.0104625282760002,10:11 stop,2,0
+full period,2023-02-21,close,CVX,buy,4,163.762746,1.000012,"09:41 breakout entry, stop 162.18",0,4
+full period,2023-02-21,close,CVX,sell,4,162.14756400000002,1.0133729592736,10:22 stop,4,0
+full period,2023-02-21,close,AVGO,buy,1,592.558488,1.000003,"09:41 breakout entry, stop 589.03",0,1
+full period,2023-02-21,close,AVGO,sell,1,588.912194,1.0121345911964,10:11 stop,1,0
+full period,2023-02-21,close,CAT,buy,2,247.789548,1.000006,"09:41 breakout entry, stop 243.16",0,2
+full period,2023-02-21,close,CAT,sell,2,243.081374,1.0100209526087998,11:05 stop,2,0
+full period,2023-02-21,close,AXP,buy,4,176.505294,1.000012,"09:41 breakout entry, stop 175.12",0,4
+full period,2023-02-21,close,AXP,sell,4,175.084976,1.0144390020224,10:12 stop,4,0
+full period,2023-02-21,close,LLY,buy,2,330.696126,1.000006,"09:42 breakout entry, stop 326.33",0,2
+full period,2023-02-21,close,LLY,sell,2,328.244338,1.0135296667256002,15:55 exit before close,2,0
+full period,2023-02-21,close,TXN,buy,4,174.499893,1.000012,"09:42 breakout entry, stop 173.22",0,4
+full period,2023-02-21,close,TXN,sell,4,173.185356,1.0142824733343998,12:02 stop,4,0
+full period,2023-02-21,close,CRM,buy,4,164.492892,1.000012,"09:43 breakout entry, stop 163.05",0,4
+full period,2023-02-21,close,CRM,sell,4,163.01739,1.0134446329360003,09:51 stop,4,0
+full period,2023-02-21,close,AAPL,buy,4,150.87006798,1.000012,"09:44 breakout entry, stop 150.08",0,4
+full period,2023-02-21,close,AAPL,sell,4,150.04998400000002,1.0123761186816003,10:11 stop,4,0
+full period,2023-02-21,close,ADBE,buy,2,352.17042000000004,1.000006,"09:46 breakout entry, stop 350.25",0,2
+full period,2023-02-21,close,ADBE,sell,2,350.17995,1.01443341394,10:12 stop,2,0
+full period,2023-02-21,close,BMY,buy,10,71.44468608000001,1.00003,"09:46 breakout entry, stop 71.21",0,10
+full period,2023-02-21,close,BMY,sell,10,71.19765762,1.0146967174697197,10:57 stop,10,0
+full period,2023-02-21,close,COP,buy,6,105.196035,1.000018,"09:54 breakout entry, stop 103.51",0,6
+full period,2023-02-21,close,COP,sell,6,105.26894200000001,1.0130292412312,15:55 exit before close,6,0
+full period,2023-02-21,close,T,buy,37,19.348868999999997,1.000111,"09:58 breakout entry, stop 19.22",0,37
+full period,2023-02-21,close,T,sell,37,19.216155999999998,1.0147575541031997,10:48 stop,37,0
+full period,2023-02-21,close,PG,buy,5,140.007996,1.000015,"10:06 breakout entry, stop 138.87",0,5
+full period,2023-02-21,close,PG,sell,5,139.962002,1.014431086206,15:55 exit before close,5,0
+full period,2023-02-21,close,MRK,buy,6,109.561908,1.000018,"10:06 breakout entry, stop 108.63",0,6
+full period,2023-02-21,close,MRK,sell,6,109.118172,1.0135050060592,15:55 exit before close,6,0
+full period,2023-02-21,close,LIN,buy,2,324.544896,1.000006,"10:10 breakout entry, stop 322.94",0,2
+full period,2023-02-21,close,LIN,sell,2,324.86501400000003,1.0133904385768,15:55 exit before close,2,0
+full period,2023-02-21,close,ORCL,buy,8,86.932383,1.000024,"10:11 breakout entry, stop 86.60",0,8
+full period,2023-02-21,close,ORCL,sell,8,86.58268,1.0142928256640003,10:21 stop,8,0
+full period,2023-02-21,close,COST,buy,1,502.11040199999997,1.000003,"11:58 breakout entry, stop 498.55",0,1
+full period,2023-02-21,close,COST,sell,1,501.889602,1.0103419258012,15:55 exit before close,1,0
+full period,2023-02-21,close,PEP,buy,4,176.88537,1.000012,"12:01 breakout entry, stop 175.57",0,4
+full period,2023-02-21,close,PEP,sell,4,176.224748,1.0145329192352,15:55 exit before close,4,0

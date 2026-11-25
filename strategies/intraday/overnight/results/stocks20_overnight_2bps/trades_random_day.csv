@@ -1,0 +1,41 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2022-05-06,close,TSLA,buy,3,873.454656,1.000009,buy at the prior official close,0,3
+full period,2022-05-06,close,TSLA,sell,3,886.8427533081866,1.054815882154446,sell at the official open,3,0
+full period,2022-05-06,close,AAPL,buy,21,156.801354,1.000063,buy at the prior official close,0,21
+full period,2022-05-06,close,AAPL,sell,21,156.20666965433065,1.0676380052924634,sell at the official open,21,0
+full period,2022-05-06,close,NVDA,buy,18,188.477688,1.000054,buy at the prior official close,0,18
+full period,2022-05-06,close,NVDA,sell,18,187.29819615982953,1.069504171136065,sell at the official open,18,0
+full period,2022-05-06,close,AMZN,buy,1,2328.605628,1.000003,buy at the prior official close,0,1
+full period,2022-05-06,close,AMZN,sell,1,2296.4814158938234,1.0473105171674129,sell at the official open,1,0
+full period,2022-05-06,close,MSFT,buy,12,277.40547000000004,1.000036,buy at the prior official close,0,12
+full period,2022-05-06,close,MSFT,sell,12,274.7576021664792,1.0679560792555536,sell at the official open,12,0
+full period,2022-05-06,close,AMD,buy,36,93.888774,1.000108,buy at the prior official close,0,36
+full period,2022-05-06,close,AMD,sell,36,94.321132,1.0700565514912,sell at the official open,36,0
+full period,2022-05-06,close,GOOGL,buy,1,2330.576022,1.000003,buy at the prior official close,0,1
+full period,2022-05-06,close,GOOGL,sell,1,2303.2005709193313,1.0474489317609383,sell at the official open,1,0
+full period,2022-05-06,close,NFLX,buy,18,188.357664,1.000054,buy at the prior official close,0,18
+full period,2022-05-06,close,NFLX,sell,18,186.7824767116304,1.0693129423646726,sell at the official open,18,0
+full period,2022-05-06,close,XOM,buy,38,90.328062,1.000114,buy at the prior official close,0,38
+full period,2022-05-06,close,XOM,sell,38,90.97056083322535,1.0713257550202488,sell at the official open,38,0
+full period,2022-05-06,close,BAC,buy,91,37.547508,1.000273,buy at the prior official close,0,91
+full period,2022-05-06,close,BAC,sell,91,37.364636490161004,1.0703167475644557,sell at the official open,91,0
+full period,2022-05-06,close,JPM,buy,27,123.944784,1.000081,buy at the prior official close,0,27
+full period,2022-05-06,close,JPM,sell,27,123.78352825457495,1.0689293984151946,sell at the official open,27,0
+full period,2022-05-06,close,QCOM,buy,24,141.66832799999997,1.000072,buy at the prior official close,0,24
+full period,2022-05-06,close,QCOM,sell,24,141.22463400843353,1.0698934590537699,sell at the official open,24,0
+full period,2022-05-06,close,PYPL,buy,40,85.447086,1.00012,buy at the prior official close,0,40
+full period,2022-05-06,close,PYPL,sell,40,85.30171243129365,1.0704086110433861,sell at the official open,40,0
+full period,2022-05-06,close,V,buy,16,205.281048,1.000048,buy at the prior official close,0,16
+full period,2022-05-06,close,V,sell,16,203.71628562962962,1.0671928877435257,sell at the official open,16,0
+full period,2022-05-06,close,DIS,buy,30,112.632522,1.00009,buy at the prior official close,0,30
+full period,2022-05-06,close,DIS,sell,30,111.75219812108445,1.0691528584388303,sell at the official open,30,0
+full period,2022-05-06,close,UNH,buy,6,494.81894400000004,1.000018,buy at the prior official close,0,6
+full period,2022-05-06,close,UNH,sell,6,484.9089558437081,1.059952746942282,sell at the official open,6,0
+full period,2022-05-06,close,CVX,buy,20,166.293252,1.00006,buy at the prior official close,0,20
+full period,2022-05-06,close,CVX,sell,20,168.23935344595085,1.0693746136197317,sell at the official open,20,0
+full period,2022-05-06,close,JNJ,buy,19,176.79535199999998,1.000057,buy at the prior official close,0,19
+full period,2022-05-06,close,JNJ,sell,19,175.11310805548422,1.0685962704929164,sell at the official open,19,0
+full period,2022-05-06,close,INTC,buy,77,44.60892,1.000231,buy at the prior official close,0,77
+full period,2022-05-06,close,INTC,sell,77,44.48493603427756,1.0707930055375707,sell at the official open,77,0
+full period,2022-05-06,close,BA,buy,22,150.500094,1.000066,buy at the prior official close,0,22
+full period,2022-05-06,close,BA,sell,22,149.93000800000002,1.0680142796256002,sell at the official open,22,0

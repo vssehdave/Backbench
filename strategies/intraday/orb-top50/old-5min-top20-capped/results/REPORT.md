@@ -1,11 +1,29 @@
 # intraday-orb-old-5min-top20-capped
 
-The old strategies/intraday/orb setup (5-minute range, long-short, monthly top 20 by dollar volume from intraday.CANDIDATES) re-run with each position capped at equity / 20, so gross never exceeds equity. Compare with strategies/intraday/orb (uncapped, up to 4x).
+![Growth of 10,000 and drawdown](equity.svg)
 
-| slippage per side | CAGR | Sharpe | max DD | trades | win rate | avg trade bps | max position % equity |
+## Performance
+
+2020-01-02 to 2026-11-20, 1732 sessions chained, zero risk-free rate, 252 sessions a year (CAGR from the session count). Sortino uses downside deviation below 0. Beta and annualized alpha are a CAPM regression of daily returns on SPY, whatever the headline benchmark.
+
+| series | CAGR | Sharpe | Sortino | volatility | max DD | beta vs SPY | alpha vs SPY (annual) |
 |---|---|---|---|---|---|---|---|
-| 0 bps | -8.3% | -0.96 | -49.8% | 34313 | 40.5% | -3.4 | 5.0 |
-| 2 bps | -27.0% | -3.75 | -89.0% | 33541 | 37.7% | -14.5 | 5.0 |
-| 5 bps | -43.4% | -7.70 | -98.1% | 25622 | 32.7% | -35.9 | 5.0 |
+| strategy | -27.0% | -3.75 | -4.99 | 8.3% | -89.0% | 0.01 | -31.3% |
+| SPY | 13.1% | 0.72 | 1.02 | 19.8% | -33.8% | 1.00 | +0.0% |
 
-Trade logs (2 bps run): trades_best_day.md, trades_worst_day.md, trades_random_day.md (and .csv), trades_all.csv.
+## Monte Carlo max drawdown
+
+B: block bootstrap of the daily returns; 1000 paths, seed 0, mean block 20.0. Max drawdown is on the one continuous backtest.
+
+| series | historical max DD (pct rank) | DD p5 | p50 | p95 | p99 | P(DD>20/30/50%) | underwater sessions p50 / p95 | terminal return p5 / p50 / p95 |
+|---|---|---|---|---|---|---|---|---|
+| strategy | 89.0% (52th pct) | 83.0% | 88.8% | 93.0% | 94.1% | 100.0% / 100.0% / 100.0% | 1730 / 1732 | -92.8% / -88.6% / -82.7% |
+| benchmark (SPY) | 33.8% (51th pct) | 17.9% | 33.8% | 50.5% | 61.7% | 90.9% / 61.6% / 5.3% | 458 / 1211 | 7.0% / 127.9% / 375.5% |
+
+## Walk-forward folds
+
+| fold | return | benchmark | max DD | fills |
+|---|---|---|---|---|
+| full period | -88.54% | 133.53% | -89.0% | 67082 |
+
+Trade logs: trades_best_day.md, trades_worst_day.md, trades_random_day.md, trades_all.csv. Full detail (Sharpe, volatility, turnover, cost drag, abstentions, forced closes, execution stress) is in report.json.

@@ -1,55 +1,128 @@
 {
- "name": "intraday-orb-top50-5min-long-short",
- "engine": "intraday.orb_day + intraday.size_trades",
- "description": "5-minute opening range breakout, long-short, on the monthly point-in-time top 50 S&P 500 stocks by market cap, 2020-01-02 to 2026-11-20. Fixed 1% risk per trade, each position capped at equity / 50 so gross never exceeds equity. IBKR fees plus per-side slippage.",
- "result": {
-  "0bps": {
-   "final_equity": 2423.8482601266705,
-   "total_return": -0.9757615173987333,
-   "cagr": -0.41750712749246865,
-   "sharpe": -11.758144724696395,
-   "max_drawdown": -0.975774704924425,
-   "sessions": 1732,
-   "trades": 45785,
-   "win_rate": 0.2904663099268319,
-   "avg_trade_usd": -2.1311816476984444,
-   "avg_trade_bps": -49.21246921839158,
-   "trades_per_day": 26.43475750577367,
-   "cost_usd": 90113.1296678733,
-   "cost_drag_pct_per_year": 47.13205381023732,
-   "max_notional_pct_of_equity": 1.999996308234556
+  "name": "intraday-orb-top50-5min-long-short",
+  "engine": "intraday",
+  "metrics": {
+    "strategy": {
+      "total_return": -0.9794311254810036,
+      "cagr": -0.4316995822143114,
+      "volatility": 0.046422204026417016,
+      "sharpe": -12.13626049533768,
+      "sortino": -10.083765103589137,
+      "max_drawdown": -0.979434544919835,
+      "beta": 0.0026600352718267836,
+      "alpha": -0.5637723155027328
+    },
+    "SPY": {
+      "total_return": 1.3353307603764568,
+      "cagr": 0.13134071296387972,
+      "volatility": 0.19751324608921528,
+      "sharpe": 0.7239442639557201,
+      "sortino": 1.0159982429706527,
+      "max_drawdown": -0.33793888166449926,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
   },
-  "2bps": {
-   "final_equity": 2056.88745189963,
-   "total_return": -0.9794311254810038,
-   "cagr": -0.43123555898594856,
-   "sharpe": -12.13626049533768,
-   "max_drawdown": -0.979434544919835,
-   "sessions": 1732,
-   "trades": 40094,
-   "win_rate": 0.27390632014765304,
-   "avg_trade_usd": -2.4428371464084577,
-   "avg_trade_bps": -58.96036761550317,
-   "trades_per_day": 23.148960739030024,
-   "cost_usd": 90713.7733838024,
-   "cost_drag_pct_per_year": 56.83320456794463,
-   "max_notional_pct_of_equity": 1.9999854911084112
+  "result": {
+    "final_equity": 2056.88745189963,
+    "total_return": -0.9794311254810038,
+    "cagr": -0.43123555898594856,
+    "sharpe": -12.13626049533768,
+    "sortino": -10.083765103589137,
+    "volatility": 0.046422204026417016,
+    "max_drawdown": -0.979434544919835,
+    "sessions": 1732
   },
-  "5bps": {
-   "final_equity": 1842.7973533401716,
-   "total_return": -0.9815720264665982,
-   "cagr": -0.4402456355685517,
-   "sharpe": -12.585506451856055,
-   "max_drawdown": -0.9815720264665982,
-   "sessions": 1732,
-   "trades": 34115,
-   "win_rate": 0.24912794958229517,
-   "avg_trade_usd": -2.877244691386783,
-   "avg_trade_bps": -71.39795306246783,
-   "trades_per_day": 19.69688221709007,
-   "cost_usd": 90769.8555069265,
-   "cost_drag_pct_per_year": 69.71111028974657,
-   "max_notional_pct_of_equity": 1.999987093977213
+  "monte_carlo": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 1732,
+      "historical": {
+        "max_drawdown": 0.979434544919835,
+        "longest_underwater_sessions": 1731,
+        "terminal_return": -0.9794311254810038,
+        "share_of_sessions_underwater": 0.9994226327944573
+      },
+      "max_drawdown": {
+        "p5": 0.9560832372409436,
+        "p50": 0.9792773872175993,
+        "p95": 0.9908048593783554,
+        "p99": 0.9937527633327328,
+        "historical_percentile_rank": 50.2,
+        "prob_exceed": {
+          "0.2": 1.0,
+          "0.3": 1.0,
+          "0.5": 1.0
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 1715.0,
+        "p50": 1732.0,
+        "p95": 1732.0,
+        "p99": 1732.0
+      },
+      "terminal_return": {
+        "p5": -0.9908019537794933,
+        "p50": -0.9792773872175993,
+        "p95": -0.9560832372409436,
+        "p99": -0.9392205902886267
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.9907621247113164,
+        "p50": 1.0,
+        "p95": 1.0,
+        "p99": 1.0
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 1000,
+      "sessions": 1732,
+      "historical": {
+        "max_drawdown": 0.33793888166449937,
+        "longest_underwater_sessions": 488,
+        "terminal_return": 1.3353307603764586,
+        "share_of_sessions_underwater": 0.8545034642032333
+      },
+      "max_drawdown": {
+        "p5": 0.17895112124182164,
+        "p50": 0.33793888166449926,
+        "p95": 0.504510871349069,
+        "p99": 0.6169153869631288,
+        "historical_percentile_rank": 51.4,
+        "prob_exceed": {
+          "0.2": 0.909,
+          "0.3": 0.616,
+          "0.5": 0.053
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 189.95,
+        "p50": 458.0,
+        "p95": 1211.049999999999,
+        "p99": 1586.6899999999994
+      },
+      "terminal_return": {
+        "p5": 0.06985696144294229,
+        "p50": 1.2786579930059752,
+        "p95": 3.755047320097254,
+        "p99": 5.1193493729860515
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8302251732101616,
+        "p50": 0.9001154734411085,
+        "p95": 0.9665127020785219,
+        "p99": 0.9884642032332563
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "B: block bootstrap of the daily returns",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2020-01-02",
+    "end": "2026-11-20",
+    "runtime_seconds": 4.2
   }
- }
 }

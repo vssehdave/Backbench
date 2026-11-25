@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2025-04-09,close,SPY,buy,99,493.538688,1.000297,buy at the official open,0,99
+full period,2025-04-09,close,SPY,sell,99,548.5025972097163,2.118913196749496,sell at the official close,99,0

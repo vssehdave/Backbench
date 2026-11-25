@@ -1,0 +1,131 @@
+{
+  "name": "custom_mom60_BTC",
+  "engine": "harness",
+  "metrics": {
+    "strategy": {
+      "total_return": 0.0810379532304022,
+      "cagr": 0.04034967892621921,
+      "volatility": 0.22869709098402055,
+      "sharpe": 0.2864061134968702,
+      "sortino": 0.44292822279333166,
+      "max_drawdown": -0.28707060810535956,
+      "beta": 0.15905466006724384,
+      "alpha": 0.05449407467117632
+    },
+    "BTC buy and hold": {
+      "total_return": -0.38189516085800057,
+      "cagr": -0.21669157272097472,
+      "volatility": 0.4258151392459004,
+      "sharpe": -0.36052627738329035,
+      "sortino": -0.508239665201213,
+      "max_drawdown": -0.5244873710651997,
+      "beta": 0.7974408339346604,
+      "alpha": -0.20869838634213916
+    },
+    "SPY": {
+      "total_return": 0.12405630831108017,
+      "cagr": 0.0611640720984199,
+      "volatility": 0.14103854894084106,
+      "sharpe": 0.4906276281587643,
+      "sortino": 0.7299587409309686,
+      "max_drawdown": -0.18998906889856904,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "fills": 33
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 719,
+      "historical": {
+        "max_drawdown": 0.2870706081053603,
+        "longest_underwater_sessions": 468,
+        "terminal_return": 0.08103795323040042,
+        "share_of_sessions_underwater": 0.874826147426982
+      },
+      "max_drawdown": {
+        "p5": 0.2035302679042426,
+        "p50": 0.3493143103129356,
+        "p95": 0.5281786114874957,
+        "p99": 0.6011815508916155,
+        "historical_percentile_rank": 28.9,
+        "prob_exceed": {
+          "0.2": 0.959,
+          "0.3": 0.678,
+          "0.5": 0.081
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 232.0,
+        "p50": 515.0,
+        "p95": 655.0,
+        "p99": 658.0
+      },
+      "terminal_return": {
+        "p5": -0.46288830094259426,
+        "p50": -0.1775489693270102,
+        "p95": 0.42046146255536043,
+        "p99": 0.8801937134200765
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.7426981919332406,
+        "p50": 0.8817802503477051,
+        "p95": 0.9124478442280946,
+        "p99": 0.9151599443671766
+      }
+    },
+    "benchmark (BTC buy and hold)": {
+      "paths": 1000,
+      "sessions": 719,
+      "historical": {
+        "max_drawdown": 0.5244873710651994,
+        "longest_underwater_sessions": 414,
+        "terminal_return": -0.3818951608579999,
+        "share_of_sessions_underwater": 0.9680111265646731
+      },
+      "max_drawdown": {
+        "p5": 0.33009773793902814,
+        "p50": 0.5793115481374178,
+        "p95": 0.7960083475400924,
+        "p99": 0.8507948638422881,
+        "historical_percentile_rank": 37.3,
+        "prob_exceed": {
+          "0.2": 0.996,
+          "0.3": 0.971,
+          "0.5": 0.688
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 224.95,
+        "p50": 589.5,
+        "p95": 718.0,
+        "p99": 718.0
+      },
+      "terminal_return": {
+        "p5": -0.7522043485387967,
+        "p50": -0.37487617434721027,
+        "p95": 0.5486855790738241,
+        "p99": 1.3878287239484453
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.920653685674548,
+        "p50": 0.9791376912378303,
+        "p95": 0.9986091794158554,
+        "p99": 0.9986091794158554
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on bootstrapped bars",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2024-12-06",
+    "end": "2026-11-24",
+    "runtime_seconds": 14.5
+  }
+}

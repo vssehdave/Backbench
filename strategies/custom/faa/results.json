@@ -49,7 +49,7 @@
    "cagr": 0.07654065023042445,
    "volatility": 0.10663807257264259,
    "sharpe": 0.7464522996071932,
-   "max_drawdown": -0.2452891306075755,
+   "max_drawdown": -0.24528913060757618,
    "turnover_per_year": 0.34183475520872886,
    "costs_pct_of_avg_equity_per_year": 0.000377907109331068,
    "costs_usd": {
@@ -1575,10 +1575,10 @@
     "w_correlation": 0.0,
     "abs_filter": false
    },
-   "cagr": 0.09407628155482817,
+   "cagr": 0.09407628155482883,
    "volatility": 0.12088549215420055,
    "sharpe": 0.8057514998346116,
-   "max_drawdown": -0.19455015656573005,
+   "max_drawdown": -0.19455015656572827,
    "turnover_per_year": 5.780046240876328,
    "costs_pct_of_avg_equity_per_year": 0.003356951840705782,
    "costs_usd": {
@@ -2603,10 +2603,10 @@
     "w_volatility": 0.0,
     "w_correlation": 0.0
    },
-   "cagr": 0.08645250943954519,
+   "cagr": 0.08645250943954585,
    "volatility": 0.11207251454843435,
    "sharpe": 0.7974059075100765,
-   "max_drawdown": -0.19570317512464286,
+   "max_drawdown": -0.19570317512464241,
    "turnover_per_year": 5.80452756982156,
    "costs_pct_of_avg_equity_per_year": 0.003380057590369953,
    "costs_usd": {
@@ -3607,10 +3607,10 @@
     "w_volatility": 0.5,
     "w_correlation": 0.0
    },
-   "cagr": 0.07157242626780813,
+   "cagr": 0.07157242626780791,
    "volatility": 0.10460718444519133,
    "sharpe": 0.7144776159541598,
-   "max_drawdown": -0.10874721447932068,
+   "max_drawdown": -0.1087472144793209,
    "turnover_per_year": 7.0508706041633955,
    "costs_pct_of_avg_equity_per_year": 0.004077817332681776,
    "costs_usd": {
@@ -4611,10 +4611,10 @@
     "w_volatility": 0.5,
     "w_correlation": 0.5
    },
-   "cagr": 0.04947658999711524,
+   "cagr": 0.04947658999711546,
    "volatility": 0.08587734691063251,
    "sharpe": 0.6063621172441671,
-   "max_drawdown": -0.10875222382265826,
+   "max_drawdown": -0.10875222382265759,
    "turnover_per_year": 7.553126127792355,
    "costs_pct_of_avg_equity_per_year": 0.004329182916511533,
    "costs_usd": {
@@ -5613,10 +5613,10 @@
     "w_correlation": 0.5,
     "lookback": 84
    },
-   "cagr": 0.05556404540470039,
+   "cagr": 0.055564045404699725,
    "volatility": 0.08449705570935198,
    "sharpe": 0.6834436143276202,
-   "max_drawdown": -0.11648769704372741,
+   "max_drawdown": -0.1164876970437273,
    "turnover_per_year": 7.43793450428484,
    "costs_pct_of_avg_equity_per_year": 0.004272486037307292,
    "costs_usd": {
@@ -6619,7 +6619,7 @@
    "cagr": 0.033998136851630445,
    "volatility": 0.06662007988854565,
    "sharpe": 0.5360903166696095,
-   "max_drawdown": -0.1189184424809906,
+   "max_drawdown": -0.11891844248098937,
    "turnover_per_year": 6.405638525023899,
    "costs_pct_of_avg_equity_per_year": 0.0036997850320116057,
    "costs_usd": {
@@ -7611,7 +7611,7 @@
    "cagr": 0.027443698440602793,
    "volatility": 0.13357597942995067,
    "sharpe": 0.2700081907061439,
-   "max_drawdown": -0.2726000132663199,
+   "max_drawdown": -0.272600013266322,
    "turnover_per_year": 12.990584690103432,
    "costs_pct_of_avg_equity_per_year": 0.04315581714185079,
    "costs_usd": {
@@ -8600,10 +8600,10 @@
     "w_correlation": 0.5,
     "form": "log"
    },
-   "cagr": 0.07955253650485195,
+   "cagr": 0.07955253650485217,
    "volatility": 0.1047563370421429,
    "sharpe": 0.78458312329427,
-   "max_drawdown": -0.12667687729170263,
+   "max_drawdown": -0.12667687729170207,
    "turnover_per_year": 6.3665420357210225,
    "costs_pct_of_avg_equity_per_year": 0.003682300023748916,
    "costs_usd": {
@@ -9617,7 +9617,7 @@
     "cagr": 0.06633108301054724,
     "volatility": 0.0989723955559362,
     "sharpe": 0.7000083176091496,
-    "max_drawdown": -0.17917216723131013,
+    "max_drawdown": -0.17917216723131035,
     "turnover_per_year": 10.654003857294226,
     "costs_pct_of_avg_equity_per_year": 0.006073567326515668
    },
@@ -9628,10 +9628,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.031505824091262236,
+    "cagr": 0.031505824091262014,
     "volatility": 0.09803981719920017,
     "sharpe": 0.3662445064222196,
-    "max_drawdown": -0.18936546955488198,
+    "max_drawdown": -0.1893654695548822,
     "turnover_per_year": 9.728328877292656,
     "costs_pct_of_avg_equity_per_year": 0.005604056962839111
    },
@@ -9642,10 +9642,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.0503502099731612,
+    "cagr": 0.050350209973160975,
     "volatility": 0.0994126449861818,
     "sharpe": 0.5450998219011193,
-    "max_drawdown": -0.14939144362835755,
+    "max_drawdown": -0.14939144362835677,
     "turnover_per_year": 7.815658600069481,
     "costs_pct_of_avg_equity_per_year": 0.004513047466733474
    },
@@ -9656,10 +9656,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.05782791908924345,
+    "cagr": 0.05782791908924323,
     "volatility": 0.08609410834809,
     "sharpe": 0.6976466364001168,
-    "max_drawdown": -0.11918078932849796,
+    "max_drawdown": -0.11918078932849718,
     "turnover_per_year": 8.391786303307939,
     "costs_pct_of_avg_equity_per_year": 0.0048370847879087965
    },
@@ -9673,7 +9673,7 @@
     "cagr": 0.04828526578203607,
     "volatility": 0.085410987558809,
     "sharpe": 0.5961747709034824,
-    "max_drawdown": -0.10875267082133222,
+    "max_drawdown": -0.108752670821332,
     "turnover_per_year": 7.539624612099184,
     "costs_pct_of_avg_equity_per_year": 0.00432507888310053
    },
@@ -9687,7 +9687,7 @@
     "cagr": 0.04886572234855824,
     "volatility": 0.08498758503074616,
     "sharpe": 0.6052978108165731,
-    "max_drawdown": -0.15728019501869583,
+    "max_drawdown": -0.15728019501869617,
     "turnover_per_year": 5.7886367332248465,
     "costs_pct_of_avg_equity_per_year": 0.0033393452900973663
    },
@@ -9698,10 +9698,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.06742710283319298,
+    "cagr": 0.06742710283319342,
     "volatility": 0.07568108576264092,
     "sharpe": 0.9021243858256743,
-    "max_drawdown": -0.08492492556999442,
+    "max_drawdown": -0.08492492556999487,
     "turnover_per_year": 6.896833403280483,
     "costs_pct_of_avg_equity_per_year": 0.003993617370538652
    },
@@ -9712,10 +9712,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.06406557635970223,
+    "cagr": 0.06406557635970245,
     "volatility": 0.07553516228955477,
     "sharpe": 0.8618468794899852,
-    "max_drawdown": -0.13530198557976492,
+    "max_drawdown": -0.1353019855797638,
     "turnover_per_year": 5.796086509244039,
     "costs_pct_of_avg_equity_per_year": 0.0033536017916039134
    },
@@ -9726,10 +9726,10 @@
      "2016-07-29",
      "2026-10-30"
     ],
-    "cagr": 0.054646568312822774,
+    "cagr": 0.05464656831282233,
     "volatility": 0.08515206492605759,
     "sharpe": 0.669066639956826,
-    "max_drawdown": -0.17843066819720932,
+    "max_drawdown": -0.17843066819720887,
     "turnover_per_year": 4.789504259740525,
     "costs_pct_of_avg_equity_per_year": 0.002790642297836333
    }
@@ -9737,22 +9737,28 @@
  },
  "benchmarks": {
   "SPY_buy_hold_total_return": {
-   "start": "2016-05-31",
-   "end": "2026-10-30",
-   "total_return": 3.241567042712017,
-   "cagr": 0.14882377811401337,
+   "total_return": 3.241567042712079,
+   "cagr": 0.14882377811401493,
    "volatility": 0.17487168163005334,
    "sharpe": 0.8826199960086546,
-   "max_drawdown": -0.33793888166449937
+   "sortino": 1.2408869108929281,
+   "max_drawdown": -0.33793888166449926,
+   "beta": null,
+   "alpha": null,
+   "start": "2016-05-31",
+   "end": "2026-10-30"
   },
   "equal_weight_7_buy_hold_no_rebalance": {
-   "start": "2016-05-31",
-   "end": "2026-10-30",
-   "total_return": 1.2327044584370506,
-   "cagr": 0.080174327717909,
+   "total_return": 1.232704458437016,
+   "cagr": 0.08017432771790745,
    "volatility": 0.1162540402847889,
    "sharpe": 0.723007217621858,
-   "max_drawdown": -0.2584810851020183
+   "sortino": 0.993182381555846,
+   "max_drawdown": -0.2584810851020187,
+   "beta": null,
+   "alpha": null,
+   "start": "2016-05-31",
+   "end": "2026-10-30"
   }
  },
  "equity_every_21_sessions": [

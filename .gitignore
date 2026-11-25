@@ -12,3 +12,4 @@ __pycache__/
 /.env
 /ssrn-3247865.pdf
 docs/ssrn/
+trades_all.csv

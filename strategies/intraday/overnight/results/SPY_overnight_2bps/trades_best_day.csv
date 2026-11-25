@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2020-11-09,close,SPY,buy,246,350.250036,1.2307379999999999,buy at the prior official close,0,246
+full period,2020-11-09,close,SPY,sell,246,363.8884432000248,3.0747790747604453,sell at the official open,246,0

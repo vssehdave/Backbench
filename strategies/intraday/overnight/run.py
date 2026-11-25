@@ -1,6 +1,7 @@
 """Overnight (official close to next official open) versus its intraday mirror and buy-and-hold.
 
-Run from the repo root: python strategies/intraday/overnight/run.py. Writes results.json next to this file.
+Run from the repo root: python strategies/intraday/overnight/run.py. Writes results.json next to this file and the
+standard report for each 2 bps overnight and intraday-mirror run under results/.
 """
 import json
 import sys
@@ -19,8 +20,13 @@ BASE_SLIP = 2
 HERE = Path(__file__).parent
 
 
-def summarise(daily, picks, sessions, label):
-    """Overnight, intraday mirror and buy-and-hold over `sessions`, for each slippage in SLIPS."""
+REASONS = dict(overnight=("buy at the prior official close", "sell at the official open"),
+               intraday_mirror=("buy at the official open", "sell at the official close"))
+
+
+def summarise(daily, picks, sessions, label, reports=None):
+    """Overnight, intraday mirror and buy-and-hold over `sessions`, for each slippage in SLIPS. With reports (a
+    folder name), also write the standard report of each BASE_SLIP run against SPY buy and hold."""
     out = dict(label=label, first_session=str(sessions[0]), last_session=str(sessions[-1]), runs={})
     hold = I.buy_hold(daily, picks, sessions)
     out["buy_hold"] = I.metrics(hold)
@@ -32,6 +38,11 @@ def summarise(daily, picks, sessions, label):
             run = I.metrics(curve, trades, cost)
             if slip == BASE_SLIP:
                 run["yearly"] = I.yearly(curve)
+            if slip == BASE_SLIP and reports:
+                key = f"{reports}_{name}_{slip}bps"
+                I.write_standard_report(HERE / "results" / key, HERE / f"mc_results_{key}.json", f"intraday-overnight {key}",
+                                        curve, I.buy_hold(daily, lambda d: ["SPY"], sessions),
+                                        I.leg_fills(trades, *REASONS[name]))
             out["runs"][f"{name}_{slip}bps"] = run
     return out
 
@@ -80,9 +91,13 @@ def main():
     first = next(d for d in sessions if picks(d))
     report = dict(period=dict(start=str(START), end_exclusive=str(END)), start_equity=100000., slippage_bps=SLIPS,
                   sets={})
-    report["sets"]["SPY"] = summarise(daily, lambda d: ["SPY"], sessions, "SPY")
-    report["sets"]["QQQ"] = summarise(daily, lambda d: ["QQQ"], sessions, "QQQ")
-    report["sets"]["stocks20"] = summarise(daily, picks, [d for d in sessions if d >= first], "top-20 monthly universe")
+    report["sets"]["SPY"] = summarise(daily, lambda d: ["SPY"], sessions, "SPY", "SPY")
+    spy_dd = report["sets"]["SPY"]["buy_hold"]["max_drawdown"]
+    if abs(spy_dd + 0.338) > 0.005:
+        raise ValueError(f"SPY buy-and-hold max drawdown {spy_dd:.1%} over 2016-2026, expected about -33.8%: check the data")
+    report["sets"]["QQQ"] = summarise(daily, lambda d: ["QQQ"], sessions, "QQQ", "QQQ")
+    report["sets"]["stocks20"] = summarise(daily, picks, [d for d in sessions if d >= first], "top-20 monthly universe",
+                                           "stocks20")
     report["universe"] = dict(first_month_with_universe=str(first),
                               distinct_symbols=len({s for m in universe.values() for s in m}),
                               candidates_without_data=[s for s in I.CANDIDATES if s not in daily])
