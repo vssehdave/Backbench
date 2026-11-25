@@ -53,3 +53,9 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   interest was ~3% of equity a year, more than the whole Sharpe gain. IEF or TLT as the diversifier was worse in-sample
   (TLT -0.3%/yr): bonds were a cost, gold was the useful diversifier. Next: get the leverage cheaper (SSO/QLD carry
   their own financing at roughly T-bill rates, not 5%), or raise return without leverage (higher-return equity sleeve).
+
+- **03 (inverse-vol QLD/GLD, no margin), LOSS by MC p95 DD only (26.2% vs 25.1%).** Moving the leverage from 5%
+  margin into 2x ETFs cut financing cost from ~3%/yr to ~0.06%/yr of equity and lifted in-sample Sharpe from 0.79 to
+  0.93. Holdout CAGR 22.5%, Sharpe 1.29, alpha +9.2%. Cheap leverage was the missing piece. The remaining failure is
+  tail risk: the bootstrap can string together bad equity blocks and a monthly inverse-vol rule has no brake inside
+  the month, so the 2x sleeve drives a deeper p95 drawdown than SPY. Next: add a trend brake on the 2x sleeve.

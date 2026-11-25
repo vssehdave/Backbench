@@ -1,0 +1,148 @@
+{
+  "name": "insample",
+  "engine": "xsection",
+  "fills": 192,
+  "metrics": {
+    "strategy": {
+      "total_return": 1.6158203026641011,
+      "cagr": 0.12805630410995783,
+      "volatility": 0.14020771833926882,
+      "sharpe": 0.9298432154595903,
+      "sortino": 1.3148629358258355,
+      "max_drawdown": -0.23460697915823092,
+      "beta": 0.506008832827512,
+      "alpha": 0.05915961326959878
+    },
+    "SPY": {
+      "total_return": 1.696449496133135,
+      "cagr": 0.13235583547938434,
+      "volatility": 0.1807031931760339,
+      "sharpe": 0.778801378222046,
+      "sortino": 1.081011839983101,
+      "max_drawdown": -0.33793888166449937,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "start_cash": 100000.0,
+    "cadence": "monthly",
+    "limits": {
+      "max_gross": 1.0,
+      "max_net": 1.0,
+      "name_cap": 1.0
+    },
+    "costs": {
+      "commission_per_share": 0.0,
+      "commission_min": 0.0,
+      "commission_max_pct": 0.01,
+      "slippage_bps": 5.0,
+      "borrow_bps": 50.0,
+      "sell_fee_pct": 2.06e-05,
+      "sell_fee_per_share": 3e-06,
+      "margin_bps": 500.0
+    },
+    "costs_usd": {
+      "commission": 0.0,
+      "regulatory": 13.701987700059926,
+      "slippage": 712.8576999286885,
+      "borrow": 1.6710687057365594
+    },
+    "decisions": 96,
+    "abstentions": 0,
+    "forced_closes": 0,
+    "fills": 192
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 200,
+      "sessions": 2011,
+      "historical": {
+        "max_drawdown": 0.2346069791582298,
+        "longest_underwater_sessions": 410,
+        "terminal_return": 1.6158203026640954,
+        "share_of_sessions_underwater": 0.8995524614619592
+      },
+      "max_drawdown": {
+        "p5": 0.15852460047623204,
+        "p50": 0.22522134111544867,
+        "p95": 0.35606665207731353,
+        "p99": 0.4060662132244173,
+        "historical_percentile_rank": 55.0,
+        "prob_exceed": {
+          "0.2": 0.775,
+          "0.3": 0.16,
+          "0.5": 0.005
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 202.75,
+        "p50": 421.5,
+        "p95": 1128.0000000000002,
+        "p99": 1762.049999999999
+      },
+      "terminal_return": {
+        "p5": 0.4422486688554612,
+        "p50": 1.706153731482989,
+        "p95": 4.052191796851595,
+        "p99": 5.930340159111013
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8512928891098955,
+        "p50": 0.9099950273495774,
+        "p95": 0.9582794629537543,
+        "p99": 0.9900845350571854
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 200,
+      "sessions": 2011,
+      "historical": {
+        "max_drawdown": 0.33793888166449937,
+        "longest_underwater_sessions": 488,
+        "terminal_return": 1.6964494961331145,
+        "share_of_sessions_underwater": 0.8547986076578816
+      },
+      "max_drawdown": {
+        "p5": 0.1660000899108157,
+        "p50": 0.3089815465280842,
+        "p95": 0.5080269577193669,
+        "p99": 0.5793279169852649,
+        "historical_percentile_rank": 58.5,
+        "prob_exceed": {
+          "0.2": 0.89,
+          "0.3": 0.535,
+          "0.5": 0.055
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 187.85,
+        "p50": 468.0,
+        "p95": 1158.5000000000005,
+        "p99": 1681.4499999999996
+      },
+      "terminal_return": {
+        "p5": 0.140745714429894,
+        "p50": 1.669135466885458,
+        "p95": 4.110072108067372,
+        "p99": 4.747769055125756
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8229487817006464,
+        "p50": 0.8906016907011437,
+        "p95": 0.9572600696171059,
+        "p99": 0.9791248135256091
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on jointly bootstrapped dates",
+    "paths": 200,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-01-05",
+    "end": "2023-12-29",
+    "runtime_seconds": 44.3
+  }
+}
