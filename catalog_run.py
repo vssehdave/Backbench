@@ -212,4 +212,7 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    # Run the importable copy: catalog_rules imports Rebalance from "catalog_run", and under __main__ that is a second class,
+    # so isinstance(weights, Rebalance) was False for every rule and monthly re-sizing never happened.
+    import catalog_run
+    catalog_run.main()
