@@ -16,11 +16,11 @@ Kakushadze, Z. and Serur, J.A. (2018) *151 Trading Strategies*, SSRN 3247865, Se
 
 ## Results
 
-SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only.
+SPY 2024-01-19 to 2026-11-20, 34 monthly cycles, USD 100,000 start, price return only. Strikes are fixed offsets from spot (the paper gives none), not tuned.
 
 | | Total return | Max drawdown |
 |---|---|---|
 | protective put | 32.5% | -14.1% |
 | SPY buy and hold | 41.5% | -18.5% |
 
-Opened 34/34 cycles, ITM expiries 4, assignments 0, fees USD 44.20, missing-bar days 2 (entry slipped), mark gaps 1. Return at half-spreads 0 / 0.05 / 0.10: 32.6% / 32.3% / 31.9%.
+Opened 34/34 cycles, ITM leg expiries 4, assignments 0, fees USD 44.20, missing-bar days 2, mark gaps 1. Return at half-spreads 0 / 0.05 / 0.10: 32.6% / 32.3% / 31.9%.

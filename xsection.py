@@ -7,7 +7,7 @@ import math
 import re
 import statistics
 import sys
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from datetime import date
 from pathlib import Path
 
@@ -27,6 +27,7 @@ class Costs:
     borrow_bps: float = 50.  # annual, general collateral
     sell_fee_pct: float = 0.0000206  # sell-side regulatory estimate, as in harness.fees
     sell_fee_per_share: float = 0.000003
+    margin_bps: float = 0.  # annual interest on negative cash (leverage), booked under "borrow"; 0 keeps old runs unchanged
 
 
 @dataclass(frozen=True)
@@ -42,6 +43,7 @@ class AsOf:
     date: date
     dates: tuple
     prices: dict  # symbol -> tuple of adjusted closes aligned to dates, None before a bar exists
+    aux: dict = field(default_factory=dict)  # reference series (factor ETFs): visible, truncated, never tradable
 
 
 def enforce(weights, limits):
@@ -83,7 +85,8 @@ def view(panel, i):
     """The as-of panel: members on dates[i] that have a bar that day, history truncated at i."""
     members = panel.members[i] if panel.members else panel.adj.keys()
     prices = {s: tuple(panel.adj[s][:i + 1]) for s in sorted(members) if s in panel.adj and panel.adj[s][i] is not None}
-    return AsOf(panel.dates[i], tuple(panel.dates[:i + 1]), prices)
+    aux = {s: tuple(v[:i + 1]) for s, v in sorted(getattr(panel, "aux", {}).items())}
+    return AsOf(panel.dates[i], tuple(panel.dates[:i + 1]), prices, aux)
 
 
 def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
@@ -125,6 +128,10 @@ def run_window(panel, decide, params, i0, i1, limits, costs, cadence, cash0):
                 cash -= fee
                 paid["borrow"] += fee
                 last[s] = price
+            if cash < 0 and costs.margin_bps:
+                fee = -cash * costs.margin_bps / 10000 * gap / 365
+                cash -= fee
+                paid["borrow"] += fee
             if pending is not None:
                 value = cash + sum(units[s] * last[s] for s in units)
                 for s in sorted(set(units) | set(pending)):
@@ -250,10 +257,16 @@ def load_manifest(path):
     strategy = None
     if isinstance(m.get("entry"), str) and re.fullmatch(r"[\w.]+:\w+", m["entry"]):
         folder = str(path.resolve().parent)
-        if folder not in sys.path:
-            sys.path.insert(0, folder)
+        name = m["entry"].split(":")[0]
+        # Folders may reuse one module name (strategy_xs): put this one first and drop another folder's cached copy.
+        if folder in sys.path:
+            sys.path.remove(folder)
+        sys.path.insert(0, folder)
+        cached = getattr(sys.modules.get(name), "__file__", None)
+        if cached and Path(cached).resolve().parent != Path(folder):
+            del sys.modules[name]
         try:
-            module = importlib.import_module(m["entry"].split(":")[0])
+            module = importlib.import_module(name)
             decide = getattr(module, m["entry"].split(":")[1])
             fit = getattr(module, "fit", None)
             strategy = (decide, fit)

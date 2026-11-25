@@ -1,0 +1,31 @@
+{
+  "id": "cat-4.4",
+  "version": "1",
+  "entry": "catalog_rules:ibs",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "XLB",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLU",
+      "XLV",
+      "XLY",
+      "SPY"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 2,
+  "levels": [
+    0
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  },
+  "allow_short": true,
+  "borrow_bps_per_year": 50
+}

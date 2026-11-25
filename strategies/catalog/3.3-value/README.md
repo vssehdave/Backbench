@@ -2,7 +2,7 @@
 
 - Section: 3.3
 - Asset class: Stocks
-- Harness status: **not testable: cross-sectional universe** - needs fundamentals (book value etc.) across a stock universe.
+- Harness status: **not testable: data not available** - Alpaca has no fundamentals (book value, earnings), only prices; the strategy ranks stocks by book-to-price. A price-only stand-in would be a different strategy, so none is run.
 
 ## Description (paper)
 

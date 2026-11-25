@@ -1,0 +1,31 @@
+{
+  "id": "cat-4.1.2",
+  "version": "1",
+  "entry": "catalog_rules:sector_rotation_absolute",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "XLB",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLU",
+      "XLV",
+      "XLY",
+      "SPY",
+      "GLD"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 253,
+  "levels": [
+    126,
+    252
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  }
+}

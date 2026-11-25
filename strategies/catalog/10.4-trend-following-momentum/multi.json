@@ -1,0 +1,33 @@
+{
+  "id": "cat-10.4",
+  "version": "1",
+  "entry": "catalog_rules:trend_futures",
+  "data": {
+    "kind": "alpaca",
+    "symbols": [
+      "SPY",
+      "EFA",
+      "EEM",
+      "TLT",
+      "IEF",
+      "GLD",
+      "DBC",
+      "UUP",
+      "FXE",
+      "USO",
+      "VNQ"
+    ]
+  },
+  "calendar": "xnys",
+  "warmup": 253,
+  "levels": [
+    126,
+    252
+  ],
+  "costs": "equity_ibkr",
+  "benchmark": {
+    "SPY": 1.0
+  },
+  "allow_short": true,
+  "borrow_bps_per_year": 50
+}

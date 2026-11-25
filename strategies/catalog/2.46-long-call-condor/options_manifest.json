@@ -1,0 +1,24 @@
+{
+  "id": "cat-2.46-long-call-condor-options",
+  "version": "1",
+  "runner": "options_bt.py",
+  "strategy": "long_call_condor",
+  "data": {
+    "kind": "alpaca_options",
+    "underlying": "SPY",
+    "bars": "1Day option trade closes",
+    "history_from": "2024-01-18"
+  },
+  "rule": "Each month from one monthly expiry to the next, held to expiry: long 1 x n call contracts at spot*0.9625; short 1 x n call contracts at spot*0.9875; short 1 x n call contracts at spot*1.0125; long 1 x n call contracts at spot*1.0375.",
+  "strike_rule": "nearest listed strike to spot*(1+offset), spot = underlying close on the roll date; offsets are fixed (step 2.5% of spot, half step 1.25%), not tuned",
+  "capital": 100000.0,
+  "half_spread_per_share": {
+    "value": 0.02,
+    "status": "ASSUMPTION: bars are trade prices, no historical quotes exist; entry pays/receives this per share"
+  },
+  "fee_per_contract": 0.65,
+  "settlement": "intrinsic value vs underlying close at expiry; far legs closed at the last bar at the near expiry",
+  "benchmark": "buy_and_hold SPY, same lots, same dates",
+  "start": "2024-01-19",
+  "end": "2026-11-20"
+}

@@ -55,6 +55,37 @@ class FAA(unittest.TestCase):
     def test_abstains_without_four_months(self):
         self.assertIsNone(faa_rules.decide(Seen(sessions(50), {s: self.series(0)[:50] for s in faa_rules.UNIVERSE})))
 
+    def test_lookback_starts_at_month_end_four_months_back(self):
+        dates = sessions(100)  # 2016-01-04 .. 2016-05-20
+        self.assertEqual(dates[faa_rules.start_index(dates, 4)], date(2016, 1, 29))
+        self.assertIsNone(faa_rules.start_index(dates, 5))
+
+    def test_r_only_holds_top_three_even_when_negative_and_a_sends_it_to_cash(self):
+        growth = dict(VTI=.003, EFA=.002, EEM=-.001, SHY=-.002, AGG=-.003, DBC=-.004, VNQ=-.005)
+        seen = Seen(sessions(100), {s: self.series(g) for s, g in growth.items()})
+        r_only = dict(w_volatility=0., w_correlation=0., abs_filter=False)
+        self.assertEqual(faa_rules.decide(seen, r_only), {"VTI": 1 / 3, "EFA": 1 / 3, "EEM": 1 / 3})
+        self.assertEqual(faa_rules.decide(seen, dict(r_only, abs_filter=True)), {"VTI": 1 / 3, "EFA": 1 / 3, "SHY": 1 / 3})
+
+    def test_low_volatility_and_low_correlation_rank_best(self):
+        r, rising = [.01] * 7, [.7, .6, .5, .4, .3, .2, .1]  # the best values sit last, against the index tie-break
+        p = dict(faa_rules.DEFAULTS, w_return=0.)
+        self.assertEqual(set(faa_rules.picks(r, rising, [0.] * 7, dict(p, w_correlation=0.))), {4, 5, 6})
+        self.assertEqual(set(faa_rules.picks(r, [.1] * 7, rising, dict(p, w_volatility=0.))), {4, 5, 6})
+
+    def test_log_form_never_prefers_negative_momentum(self):
+        r, v, c = [.10, -.01, .05, .04, .03, .02, .01], [.02, .001, .02, .02, .02, .02, .02], [.5, -.5, .5, .5, .5, .5, .5]
+        self.assertIn(1, faa_rules.picks(r, v, c, dict(faa_rules.DEFAULTS, n=4)))  # rank form: best V and C lift it
+        self.assertNotIn(1, faa_rules.picks(r, v, c, dict(faa_rules.DEFAULTS, n=4, form="log")))
+
+    def test_leverage_multiplies_every_weight(self):
+        growth = dict(VTI=.003, EFA=-.002, EEM=-.002, SHY=-.0001, AGG=-.002, DBC=-.003, VNQ=-.004)
+        seen = Seen(sessions(100), {s: self.series(g, .0005 * (i + 1)) for i, (s, g) in enumerate(growth.items())})
+        base, lev = faa_rules.decide(seen), faa_rules.decide(seen, dict(leverage=2.))
+        self.assertEqual(set(base), set(lev))
+        for s in base:
+            self.assertAlmostEqual(lev[s], 2 * base[s])
+
 
 class Momentum(unittest.TestCase):
     def test_signal_uses_close_sixty_sessions_back(self):

@@ -1,0 +1,1726 @@
+{
+  "source": "Alpaca historical option bars (trade closes), SPY daily closes",
+  "main": {
+    "strategy": "bear_call_ladder",
+    "parameters": {
+      "section": "2.16",
+      "legs": [
+        [
+          "call",
+          -1,
+          0.0,
+          false
+        ],
+        [
+          "call",
+          1,
+          0.025,
+          false
+        ],
+        [
+          "call",
+          1,
+          0.05,
+          false
+        ]
+      ],
+      "half_spread_per_share": 0.02,
+      "fee_per_contract": 0.65,
+      "capital": 100000.0,
+      "shares": 0,
+      "contracts_per_unit": 2
+    },
+    "summary": {
+      "start": "2024-01-19",
+      "end": "2026-11-20",
+      "cycles": 34,
+      "cycles_opened": 34,
+      "no_bar_days": 172,
+      "mark_gap_days": 10,
+      "itm_expiries": 42,
+      "assignments": 25,
+      "fees": 132.60000000000002,
+      "end_equity": 112015.39999999973,
+      "total_return": 0.12015399999999743,
+      "max_drawdown": -0.06552204167046183
+    },
+    "buy_and_hold": {
+      "end_equity": 141476.0,
+      "total_return": 0.41476,
+      "max_drawdown": -0.18469468675654244
+    },
+    "cycles": [
+      {
+        "entry_date": "2024-01-19",
+        "expiry": "2024-02-16",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 14,
+        "mark_gap_days": 2,
+        "underlying_at_expiry": 499.51,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-02-16",
+            "symbol": "SPY240216C00482000",
+            "strike": 482.0,
+            "bar_close": 7.45,
+            "fill": 7.430000000000001,
+            "entry_fill_date": "2024-01-19",
+            "intrinsic": 17.50999999999999
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-02-16",
+            "symbol": "SPY240216C00494000",
+            "strike": 494.0,
+            "bar_close": 2.14,
+            "fill": 2.16,
+            "entry_fill_date": "2024-01-19",
+            "intrinsic": 5.509999999999991
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-02-16",
+            "symbol": "SPY240216C00507000",
+            "strike": 507.0,
+            "bar_close": 0.58,
+            "fill": 0.6,
+            "entry_fill_date": "2024-02-08",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-02-16",
+        "expiry": "2024-03-15",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 509.83,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-03-15",
+            "symbol": "SPY240315C00500000",
+            "strike": 500.0,
+            "bar_close": 6.71,
+            "fill": 6.69,
+            "entry_fill_date": "2024-02-16",
+            "intrinsic": 9.829999999999984
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-03-15",
+            "symbol": "SPY240315C00512000",
+            "strike": 512.0,
+            "bar_close": 1.97,
+            "fill": 1.99,
+            "entry_fill_date": "2024-02-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-03-15",
+            "symbol": "SPY240315C00524000",
+            "strike": 524.0,
+            "bar_close": 0.39,
+            "fill": 0.41000000000000003,
+            "entry_fill_date": "2024-02-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-03-15",
+        "expiry": "2024-04-19",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 495.16,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-04-19",
+            "symbol": "SPY240419C00510000",
+            "strike": 510.0,
+            "bar_close": 9.31,
+            "fill": 9.290000000000001,
+            "entry_fill_date": "2024-03-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-04-19",
+            "symbol": "SPY240419C00523000",
+            "strike": 523.0,
+            "bar_close": 3.3,
+            "fill": 3.32,
+            "entry_fill_date": "2024-03-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-04-19",
+            "symbol": "SPY240419C00535000",
+            "strike": 535.0,
+            "bar_close": 0.85,
+            "fill": 0.87,
+            "entry_fill_date": "2024-03-15",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-04-19",
+        "expiry": "2024-05-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 529.45,
+        "itm": 3,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-05-17",
+            "symbol": "SPY240517C00495000",
+            "strike": 495.0,
+            "bar_close": 10.29,
+            "fill": 10.27,
+            "entry_fill_date": "2024-04-19",
+            "intrinsic": 34.450000000000045
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-05-17",
+            "symbol": "SPY240517C00508000",
+            "strike": 508.0,
+            "bar_close": 4.03,
+            "fill": 4.05,
+            "entry_fill_date": "2024-04-19",
+            "intrinsic": 21.450000000000045
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-05-17",
+            "symbol": "SPY240517C00520000",
+            "strike": 520.0,
+            "bar_close": 1.17,
+            "fill": 1.19,
+            "entry_fill_date": "2024-04-19",
+            "intrinsic": 9.450000000000045
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-05-17",
+        "expiry": "2024-06-21",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 20,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 544.51,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-06-21",
+            "symbol": "SPY240621C00529000",
+            "strike": 529.0,
+            "bar_close": 8.09,
+            "fill": 8.07,
+            "entry_fill_date": "2024-05-17",
+            "intrinsic": 15.509999999999991
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-06-21",
+            "symbol": "SPY240621C00543000",
+            "strike": 543.0,
+            "bar_close": 2.05,
+            "fill": 2.07,
+            "entry_fill_date": "2024-05-17",
+            "intrinsic": 1.509999999999991
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-06-21",
+            "symbol": "SPY240621C00556000",
+            "strike": 556.0,
+            "bar_close": 0.1,
+            "fill": 0.12000000000000001,
+            "entry_fill_date": "2024-06-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-06-21",
+        "expiry": "2024-07-19",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 13,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 548.99,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-07-19",
+            "symbol": "SPY240719C00545000",
+            "strike": 545.0,
+            "bar_close": 7.91,
+            "fill": 7.890000000000001,
+            "entry_fill_date": "2024-06-21",
+            "intrinsic": 3.990000000000009
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-07-19",
+            "symbol": "SPY240719C00558000",
+            "strike": 558.0,
+            "bar_close": 1.45,
+            "fill": 1.47,
+            "entry_fill_date": "2024-06-24",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-07-19",
+            "symbol": "SPY240719C00572000",
+            "strike": 572.0,
+            "bar_close": 0.46,
+            "fill": 0.48000000000000004,
+            "entry_fill_date": "2024-07-10",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-07-19",
+        "expiry": "2024-08-16",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 1,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 554.31,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-08-16",
+            "symbol": "SPY240816C00549000",
+            "strike": 549.0,
+            "bar_close": 9.41,
+            "fill": 9.39,
+            "entry_fill_date": "2024-07-19",
+            "intrinsic": 5.309999999999945
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-08-16",
+            "symbol": "SPY240816C00563000",
+            "strike": 563.0,
+            "bar_close": 2.9,
+            "fill": 2.92,
+            "entry_fill_date": "2024-07-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-08-16",
+            "symbol": "SPY240816C00576000",
+            "strike": 576.0,
+            "bar_close": 1.01,
+            "fill": 1.03,
+            "entry_fill_date": "2024-07-22",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-08-16",
+        "expiry": "2024-09-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 568.25,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-09-20",
+            "symbol": "SPY240920C00554000",
+            "strike": 554.0,
+            "bar_close": 10.25,
+            "fill": 10.23,
+            "entry_fill_date": "2024-08-16",
+            "intrinsic": 14.25
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-09-20",
+            "symbol": "SPY240920C00568000",
+            "strike": 568.0,
+            "bar_close": 3.24,
+            "fill": 3.2600000000000002,
+            "entry_fill_date": "2024-08-16",
+            "intrinsic": 0.25
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-09-20",
+            "symbol": "SPY240920C00582000",
+            "strike": 582.0,
+            "bar_close": 0.71,
+            "fill": 0.73,
+            "entry_fill_date": "2024-08-16",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-09-20",
+        "expiry": "2024-10-18",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 12,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 584.59,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-10-18",
+            "symbol": "SPY241018C00568000",
+            "strike": 568.0,
+            "bar_close": 8.91,
+            "fill": 8.89,
+            "entry_fill_date": "2024-09-20",
+            "intrinsic": 16.590000000000032
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-10-18",
+            "symbol": "SPY241018C00582000",
+            "strike": 582.0,
+            "bar_close": 2.65,
+            "fill": 2.67,
+            "entry_fill_date": "2024-09-20",
+            "intrinsic": 2.590000000000032
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-10-18",
+            "symbol": "SPY241018C00597000",
+            "strike": 597.0,
+            "bar_close": 0.08,
+            "fill": 0.1,
+            "entry_fill_date": "2024-10-08",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-10-18",
+        "expiry": "2024-11-15",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 3,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 585.75,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-11-15",
+            "symbol": "SPY241115C00585000",
+            "strike": 585.0,
+            "bar_close": 10.35,
+            "fill": 10.33,
+            "entry_fill_date": "2024-10-18",
+            "intrinsic": 0.75
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-11-15",
+            "symbol": "SPY241115C00599000",
+            "strike": 599.0,
+            "bar_close": 3.62,
+            "fill": 3.64,
+            "entry_fill_date": "2024-10-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-11-15",
+            "symbol": "SPY241115C00614000",
+            "strike": 614.0,
+            "bar_close": 0.33,
+            "fill": 0.35000000000000003,
+            "entry_fill_date": "2024-10-23",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-11-15",
+        "expiry": "2024-12-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 591.15,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2024-12-20",
+            "symbol": "SPY241220C00586000",
+            "strike": 586.0,
+            "bar_close": 10.9,
+            "fill": 10.88,
+            "entry_fill_date": "2024-11-15",
+            "intrinsic": 5.149999999999977
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-12-20",
+            "symbol": "SPY241220C00600000",
+            "strike": 600.0,
+            "bar_close": 3.93,
+            "fill": 3.95,
+            "entry_fill_date": "2024-11-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2024-12-20",
+            "symbol": "SPY241220C00615000",
+            "strike": 615.0,
+            "bar_close": 0.93,
+            "fill": 0.9500000000000001,
+            "entry_fill_date": "2024-11-15",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2024-12-20",
+        "expiry": "2025-01-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 597.58,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-01-17",
+            "symbol": "SPY250117C00591000",
+            "strike": 591.0,
+            "bar_close": 10.91,
+            "fill": 10.89,
+            "entry_fill_date": "2024-12-20",
+            "intrinsic": 6.580000000000041
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-01-17",
+            "symbol": "SPY250117C00606000",
+            "strike": 606.0,
+            "bar_close": 3.12,
+            "fill": 3.14,
+            "entry_fill_date": "2024-12-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-01-17",
+            "symbol": "SPY250117C00621000",
+            "strike": 621.0,
+            "bar_close": 0.48,
+            "fill": 0.5,
+            "entry_fill_date": "2024-12-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-01-17",
+        "expiry": "2025-02-21",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 21,
+        "mark_gap_days": 1,
+        "underlying_at_expiry": 599.94,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-02-21",
+            "symbol": "SPY250221C00598000",
+            "strike": 598.0,
+            "bar_close": 10.47,
+            "fill": 10.450000000000001,
+            "entry_fill_date": "2025-01-17",
+            "intrinsic": 1.9400000000000546
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-02-21",
+            "symbol": "SPY250221C00613000",
+            "strike": 613.0,
+            "bar_close": 3.5,
+            "fill": 3.52,
+            "entry_fill_date": "2025-01-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-02-21",
+            "symbol": "SPY250221C00627000",
+            "strike": 627.0,
+            "bar_close": 0.01,
+            "fill": 0.03,
+            "entry_fill_date": "2025-02-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-02-21",
+        "expiry": "2025-03-21",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 563.98,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-03-21",
+            "symbol": "SPY250321C00600000",
+            "strike": 600.0,
+            "bar_close": 10.55,
+            "fill": 10.530000000000001,
+            "entry_fill_date": "2025-02-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-03-21",
+            "symbol": "SPY250321C00615000",
+            "strike": 615.0,
+            "bar_close": 2.9,
+            "fill": 2.92,
+            "entry_fill_date": "2025-02-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-03-21",
+            "symbol": "SPY250321C00630000",
+            "strike": 630.0,
+            "bar_close": 0.39,
+            "fill": 0.41000000000000003,
+            "entry_fill_date": "2025-02-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-03-21",
+        "expiry": "2025-04-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 526.41,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-04-17",
+            "symbol": "SPY250417C00564000",
+            "strike": 564.0,
+            "bar_close": 11.83,
+            "fill": 11.81,
+            "entry_fill_date": "2025-03-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-04-17",
+            "symbol": "SPY250417C00578000",
+            "strike": 578.0,
+            "bar_close": 4.86,
+            "fill": 4.88,
+            "entry_fill_date": "2025-03-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-04-17",
+            "symbol": "SPY250417C00592000",
+            "strike": 592.0,
+            "bar_close": 1.17,
+            "fill": 1.19,
+            "entry_fill_date": "2025-03-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-04-17",
+        "expiry": "2025-05-16",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 594.2,
+        "itm": 3,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-05-16",
+            "symbol": "SPY250516C00526000",
+            "strike": 526.0,
+            "bar_close": 17.34,
+            "fill": 17.32,
+            "entry_fill_date": "2025-04-17",
+            "intrinsic": 68.20000000000005
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-05-16",
+            "symbol": "SPY250516C00540000",
+            "strike": 540.0,
+            "bar_close": 9.59,
+            "fill": 9.61,
+            "entry_fill_date": "2025-04-17",
+            "intrinsic": 54.200000000000045
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-05-16",
+            "symbol": "SPY250516C00553000",
+            "strike": 553.0,
+            "bar_close": 4.41,
+            "fill": 4.43,
+            "entry_fill_date": "2025-04-17",
+            "intrinsic": 41.200000000000045
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-05-16",
+        "expiry": "2025-06-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 32,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 594.28,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-06-20",
+            "symbol": "SPY250620C00594000",
+            "strike": 594.0,
+            "bar_close": 11.57,
+            "fill": 11.55,
+            "entry_fill_date": "2025-05-16",
+            "intrinsic": 0.2799999999999727
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-06-20",
+            "symbol": "SPY250620C00609000",
+            "strike": 609.0,
+            "bar_close": 2.41,
+            "fill": 2.43,
+            "entry_fill_date": "2025-06-10",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-06-20",
+            "symbol": "SPY250620C00624000",
+            "strike": 624.0,
+            "bar_close": 0.15,
+            "fill": 0.16999999999999998,
+            "entry_fill_date": "2025-06-10",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-06-20",
+        "expiry": "2025-07-18",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 627.58,
+        "itm": 3,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-07-18",
+            "symbol": "SPY250718C00594000",
+            "strike": 594.0,
+            "bar_close": 12.39,
+            "fill": 12.370000000000001,
+            "entry_fill_date": "2025-06-20",
+            "intrinsic": 33.58000000000004
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-07-18",
+            "symbol": "SPY250718C00609000",
+            "strike": 609.0,
+            "bar_close": 4.65,
+            "fill": 4.67,
+            "entry_fill_date": "2025-06-20",
+            "intrinsic": 18.58000000000004
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-07-18",
+            "symbol": "SPY250718C00624000",
+            "strike": 624.0,
+            "bar_close": 0.95,
+            "fill": 0.97,
+            "entry_fill_date": "2025-06-20",
+            "intrinsic": 3.580000000000041
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-07-18",
+        "expiry": "2025-08-15",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 20,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 643.44,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-08-15",
+            "symbol": "SPY250815C00628000",
+            "strike": 628.0,
+            "bar_close": 10.6,
+            "fill": 10.58,
+            "entry_fill_date": "2025-07-21",
+            "intrinsic": 15.440000000000055
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-08-15",
+            "symbol": "SPY250815C00643000",
+            "strike": 643.0,
+            "bar_close": 3.35,
+            "fill": 3.37,
+            "entry_fill_date": "2025-07-21",
+            "intrinsic": 0.44000000000005457
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-08-15",
+            "symbol": "SPY250815C00659000",
+            "strike": 659.0,
+            "bar_close": 0.03,
+            "fill": 0.05,
+            "entry_fill_date": "2025-08-13",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-08-15",
+        "expiry": "2025-09-19",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 17,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 663.7,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-09-19",
+            "symbol": "SPY250919C00643000",
+            "strike": 643.0,
+            "bar_close": 10.44,
+            "fill": 10.42,
+            "entry_fill_date": "2025-08-18",
+            "intrinsic": 20.700000000000045
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-09-19",
+            "symbol": "SPY250919C00660000",
+            "strike": 660.0,
+            "bar_close": 3.01,
+            "fill": 3.03,
+            "entry_fill_date": "2025-08-15",
+            "intrinsic": 3.7000000000000455
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-09-19",
+            "symbol": "SPY250919C00676000",
+            "strike": 676.0,
+            "bar_close": 0.04,
+            "fill": 0.06,
+            "entry_fill_date": "2025-09-09",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-09-19",
+        "expiry": "2025-10-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 664.39,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-10-17",
+            "symbol": "SPY251017C00664000",
+            "strike": 664.0,
+            "bar_close": 10.22,
+            "fill": 10.200000000000001,
+            "entry_fill_date": "2025-09-19",
+            "intrinsic": 0.38999999999998636
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-10-17",
+            "symbol": "SPY251017C00680000",
+            "strike": 680.0,
+            "bar_close": 2.87,
+            "fill": 2.89,
+            "entry_fill_date": "2025-09-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-10-17",
+            "symbol": "SPY251017C00697000",
+            "strike": 697.0,
+            "bar_close": 0.48,
+            "fill": 0.5,
+            "entry_fill_date": "2025-09-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-10-17",
+        "expiry": "2025-11-21",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 659.03,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-11-21",
+            "symbol": "SPY251121C00664000",
+            "strike": 664.0,
+            "bar_close": 15.84,
+            "fill": 15.82,
+            "entry_fill_date": "2025-10-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-11-21",
+            "symbol": "SPY251121C00681000",
+            "strike": 681.0,
+            "bar_close": 6.48,
+            "fill": 6.5,
+            "entry_fill_date": "2025-10-17",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-11-21",
+            "symbol": "SPY251121C00698000",
+            "strike": 698.0,
+            "bar_close": 1.61,
+            "fill": 1.6300000000000001,
+            "entry_fill_date": "2025-10-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-11-21",
+        "expiry": "2025-12-19",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 1,
+        "underlying_at_expiry": 680.59,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2025-12-19",
+            "symbol": "SPY251219C00659000",
+            "strike": 659.0,
+            "bar_close": 15.3,
+            "fill": 15.280000000000001,
+            "entry_fill_date": "2025-11-21",
+            "intrinsic": 21.590000000000032
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-12-19",
+            "symbol": "SPY251219C00676000",
+            "strike": 676.0,
+            "bar_close": 6.46,
+            "fill": 6.4799999999999995,
+            "entry_fill_date": "2025-11-21",
+            "intrinsic": 4.590000000000032
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2025-12-19",
+            "symbol": "SPY251219C00692000",
+            "strike": 692.0,
+            "bar_close": 1.68,
+            "fill": 1.7,
+            "entry_fill_date": "2025-11-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2025-12-19",
+        "expiry": "2026-01-16",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 691.66,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-01-16",
+            "symbol": "SPY260116C00681000",
+            "strike": 681.0,
+            "bar_close": 10.11,
+            "fill": 10.09,
+            "entry_fill_date": "2025-12-19",
+            "intrinsic": 10.659999999999968
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-01-16",
+            "symbol": "SPY260116C00698000",
+            "strike": 698.0,
+            "bar_close": 2.45,
+            "fill": 2.47,
+            "entry_fill_date": "2025-12-19",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-01-16",
+            "symbol": "SPY260116C00715000",
+            "strike": 715.0,
+            "bar_close": 0.38,
+            "fill": 0.4,
+            "entry_fill_date": "2025-12-19",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-01-16",
+        "expiry": "2026-02-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 16,
+        "mark_gap_days": 5,
+        "underlying_at_expiry": 689.43,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-02-20",
+            "symbol": "SPY260220C00692000",
+            "strike": 692.0,
+            "bar_close": 12.11,
+            "fill": 12.09,
+            "entry_fill_date": "2026-01-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-02-20",
+            "symbol": "SPY260220C00709000",
+            "strike": 709.0,
+            "bar_close": 3.7,
+            "fill": 3.72,
+            "entry_fill_date": "2026-01-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-02-20",
+            "symbol": "SPY260220C00726000",
+            "strike": 726.0,
+            "bar_close": 0.04,
+            "fill": 0.06,
+            "entry_fill_date": "2026-02-10",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-02-20",
+        "expiry": "2026-03-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 1,
+        "underlying_at_expiry": 648.57,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-03-20",
+            "symbol": "SPY260320C00689000",
+            "strike": 689.0,
+            "bar_close": 13.09,
+            "fill": 13.07,
+            "entry_fill_date": "2026-02-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-03-20",
+            "symbol": "SPY260320C00707000",
+            "strike": 707.0,
+            "bar_close": 3.54,
+            "fill": 3.56,
+            "entry_fill_date": "2026-02-20",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-03-20",
+            "symbol": "SPY260320C00724000",
+            "strike": 724.0,
+            "bar_close": 0.43,
+            "fill": 0.45,
+            "entry_fill_date": "2026-02-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-03-20",
+        "expiry": "2026-04-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 710.14,
+        "itm": 3,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-04-17",
+            "symbol": "SPY260417C00649000",
+            "strike": 649.0,
+            "bar_close": 17.95,
+            "fill": 17.93,
+            "entry_fill_date": "2026-03-20",
+            "intrinsic": 61.139999999999986
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-04-17",
+            "symbol": "SPY260417C00665000",
+            "strike": 665.0,
+            "bar_close": 9.42,
+            "fill": 9.44,
+            "entry_fill_date": "2026-03-20",
+            "intrinsic": 45.139999999999986
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-04-17",
+            "symbol": "SPY260417C00681000",
+            "strike": 681.0,
+            "bar_close": 3.26,
+            "fill": 3.28,
+            "entry_fill_date": "2026-03-20",
+            "intrinsic": 29.139999999999986
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-04-17",
+        "expiry": "2026-05-15",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 2,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 739.17,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-05-15",
+            "symbol": "SPY260515C00710000",
+            "strike": 710.0,
+            "bar_close": 12.71,
+            "fill": 12.690000000000001,
+            "entry_fill_date": "2026-04-17",
+            "intrinsic": 29.16999999999996
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-05-15",
+            "symbol": "SPY260515C00728000",
+            "strike": 728.0,
+            "bar_close": 3.77,
+            "fill": 3.79,
+            "entry_fill_date": "2026-04-20",
+            "intrinsic": 11.169999999999959
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-05-15",
+            "symbol": "SPY260515C00746000",
+            "strike": 746.0,
+            "bar_close": 0.77,
+            "fill": 0.79,
+            "entry_fill_date": "2026-04-20",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-05-15",
+        "expiry": "2026-06-18",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 746.74,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-06-18",
+            "symbol": "SPY260618C00739000",
+            "strike": 739.0,
+            "bar_close": 14.27,
+            "fill": 14.25,
+            "entry_fill_date": "2026-05-15",
+            "intrinsic": 7.740000000000009
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-06-18",
+            "symbol": "SPY260618C00758000",
+            "strike": 758.0,
+            "bar_close": 5.26,
+            "fill": 5.279999999999999,
+            "entry_fill_date": "2026-05-15",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-06-18",
+            "symbol": "SPY260618C00776000",
+            "strike": 776.0,
+            "bar_close": 1.77,
+            "fill": 1.79,
+            "entry_fill_date": "2026-05-15",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-06-18",
+        "expiry": "2026-07-17",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 743.29,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-07-17",
+            "symbol": "SPY260717C00747000",
+            "strike": 747.0,
+            "bar_close": 13.47,
+            "fill": 13.450000000000001,
+            "entry_fill_date": "2026-06-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-07-17",
+            "symbol": "SPY260717C00765000",
+            "strike": 765.0,
+            "bar_close": 4.53,
+            "fill": 4.55,
+            "entry_fill_date": "2026-06-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-07-17",
+            "symbol": "SPY260717C00784000",
+            "strike": 784.0,
+            "bar_close": 0.77,
+            "fill": 0.79,
+            "entry_fill_date": "2026-06-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-07-17",
+        "expiry": "2026-08-21",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 765.72,
+        "itm": 2,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-08-21",
+            "symbol": "SPY260821C00743000",
+            "strike": 743.0,
+            "bar_close": 14.99,
+            "fill": 14.97,
+            "entry_fill_date": "2026-07-17",
+            "intrinsic": 22.720000000000027
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-08-21",
+            "symbol": "SPY260821C00762000",
+            "strike": 762.0,
+            "bar_close": 5.31,
+            "fill": 5.329999999999999,
+            "entry_fill_date": "2026-07-17",
+            "intrinsic": 3.7200000000000273
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-08-21",
+            "symbol": "SPY260821C00780000",
+            "strike": 780.0,
+            "bar_close": 1.15,
+            "fill": 1.17,
+            "entry_fill_date": "2026-07-17",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-08-21",
+        "expiry": "2026-09-18",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 761.69,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-09-18",
+            "symbol": "SPY260918C00766000",
+            "strike": 766.0,
+            "bar_close": 11.14,
+            "fill": 11.120000000000001,
+            "entry_fill_date": "2026-08-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-09-18",
+            "symbol": "SPY260918C00785000",
+            "strike": 785.0,
+            "bar_close": 2.87,
+            "fill": 2.89,
+            "entry_fill_date": "2026-08-21",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-09-18",
+            "symbol": "SPY260918C00804000",
+            "strike": 804.0,
+            "bar_close": 0.45,
+            "fill": 0.47000000000000003,
+            "entry_fill_date": "2026-08-21",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-09-18",
+        "expiry": "2026-10-16",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 0,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 763.25,
+        "itm": 1,
+        "assigned": 1,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-10-16",
+            "symbol": "SPY261016C00762000",
+            "strike": 762.0,
+            "bar_close": 11.7,
+            "fill": 11.68,
+            "entry_fill_date": "2026-09-18",
+            "intrinsic": 1.25
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-10-16",
+            "symbol": "SPY261016C00781000",
+            "strike": 781.0,
+            "bar_close": 2.71,
+            "fill": 2.73,
+            "entry_fill_date": "2026-09-18",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-10-16",
+            "symbol": "SPY261016C00800000",
+            "strike": 800.0,
+            "bar_close": 0.51,
+            "fill": 0.53,
+            "entry_fill_date": "2026-09-18",
+            "intrinsic": 0.0
+          }
+        ]
+      },
+      {
+        "entry_date": "2026-10-16",
+        "expiry": "2026-11-20",
+        "opened": true,
+        "fee": 3.9000000000000004,
+        "no_bar_days": 1,
+        "mark_gap_days": 0,
+        "underlying_at_expiry": 689.81,
+        "itm": 0,
+        "assigned": 0,
+        "legs": [
+          {
+            "kind": "call",
+            "qty": -1,
+            "far": false,
+            "expiry": "2026-11-20",
+            "symbol": "SPY261120C00763000",
+            "strike": 763.0,
+            "bar_close": 15.28,
+            "fill": 15.26,
+            "entry_fill_date": "2026-10-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-11-20",
+            "symbol": "SPY261120C00782000",
+            "strike": 782.0,
+            "bar_close": 5.51,
+            "fill": 5.529999999999999,
+            "entry_fill_date": "2026-10-16",
+            "intrinsic": 0.0
+          },
+          {
+            "kind": "call",
+            "qty": 1,
+            "far": false,
+            "expiry": "2026-11-20",
+            "symbol": "SPY261120C00801000",
+            "strike": 801.0,
+            "bar_close": 1.49,
+            "fill": 1.51,
+            "entry_fill_date": "2026-10-19",
+            "intrinsic": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "half_spread_sensitivity": {
+    "0.0": 0.12423399999999729,
+    "0.05": 0.1140339999999973,
+    "0.1": 0.10383399999999732
+  }
+}
