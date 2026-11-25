@@ -75,3 +75,10 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   5.5x a year (0.28%/yr in costs), which is affordable. Honest caveat: the 03 -> 04 -> 05 sequence was shaped by
   seeing the 03 and 04 holdouts, so this is a weaker out-of-sample test than a single-shot design. Round 2 should
   confirm it on data neither period has seen (e.g. 2008-2015 with longer history) before trusting it.
+
+- **06 (dual momentum across 8 ETFs incl. 2x, monthly), LOSS.** In-sample Sharpe 0.77 (below SPY); holdout CAGR 20.2%
+  but beta 0.99 and Sharpe 1.03. Equal weights with two 2x sleeves in the pool mean the picks are mostly 2x equity
+  whenever equities trend, so risk is concentrated, not diversified; monthly absolute momentum also lags the fast
+  shocks (2018 Q4, 2020, Apr-2025). Same verdict as the catalog's momentum family: momentum ranking alone adds little
+  over SPY after costs; it is the risk weighting (inverse vol, fast vol target) that carried 05. Next: keep 05's risk
+  engine and test whether a different diversifier set holds up, or whether it is just "QLD + gold".
