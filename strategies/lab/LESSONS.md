@@ -82,3 +82,9 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   shocks (2018 Q4, 2020, Apr-2025). Same verdict as the catalog's momentum family: momentum ranking alone adds little
   over SPY after costs; it is the risk weighting (inverse vol, fast vol target) that carried 05. Next: keep 05's risk
   engine and test whether a different diversifier set holds up, or whether it is just "QLD + gold".
+
+- **07 (vol-managed SPY/SSO, no diversifier), LOSS on every check.** In-sample Sharpe 0.77, holdout 0.89, alpha -1.1%.
+  Equity vol clusters, but the best rebound days come right after the spikes when exposure is cut, so on a single
+  index the vol scaler gives back about what it saves, and at 8x turnover it pays 0.4%/yr in costs. This isolates
+  05's edge: the fast vol scaler is a risk limiter, not a return source; the return came from the QLD + GLD
+  inverse-vol mix (two low-correlated return streams). Vol timing without a diversifier is not worth it.
