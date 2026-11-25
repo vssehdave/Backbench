@@ -118,3 +118,9 @@ with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possi
   2.8%, Sharpe 0.28, alpha -6.0% (05: 21.2%, 1.48, +10.6%), same QLD sleeve (~22% average weight). Swapping one asset
   moved holdout CAGR by 18 points, so most of 05's 2024-26 result is gold's run, not the engine. Long Treasuries are no
   longer a diversifier: stock-bond correlation was positive, so inverse-vol put ~2/3 in TLT, which lost money.
+
+- **10 (05 with IEF in place of GLD), diagnostic.** In-sample Sharpe 0.63; holdout CAGR 5.7%, Sharpe 0.76, maxDD -6.2%.
+  Safer than TLT but it earns little: the vol cap is barely binding and IEF's low vol pulls most of the weight. Taken
+  with 09, the answer to "how much of 05's holdout is gold": with a bond in gold's place the same engine makes 3-6% a
+  year instead of 21%, so roughly 15-18 of 05's 21 points of holdout CAGR came from holding gold through its
+  2024-2026 run. 05 is a "2x equity + gold" bet with a good risk engine, not an engine that wins with any diversifier.
