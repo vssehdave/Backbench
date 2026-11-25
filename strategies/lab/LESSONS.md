@@ -124,3 +124,5 @@ with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possi
   with 09, the answer to "how much of 05's holdout is gold": with a bond in gold's place the same engine makes 3-6% a
   year instead of 21%, so roughly 15-18 of 05's 21 points of holdout CAGR came from holding gold through its
   2024-2026 run. 05 is a "2x equity + gold" bet with a good risk engine, not an engine that wins with any diversifier.
+
+- **11 (multi-asset trend), LOSS, corr with 05 0.70.** In-sample Sharpe 0.46 (CAGR 1.4%); holdout CAGR 4.0%, Sharpe 1.05, maxDD -3.4%. Unlevered trend on ETF proxies is a smooth but tiny return; the holdout Sharpe came mostly from gold trending, which is why it correlates 0.70 with 05. It would need ~3x leverage to match SPY's CAGR, which the no-margin rule does not allow.
