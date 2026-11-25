@@ -265,6 +265,15 @@ def metric_row(name, m):
             f"{m['volatility']:.1%} | {m['max_drawdown']:.1%} | {_num(m['beta'], '.2f')} | {_num(m['alpha'], '+.1%')} |")
 
 
+def without_fills(x):
+    """Copy of x with every list under a "fills" key replaced by its length (the fills are in trades_all.csv)."""
+    if isinstance(x, dict):
+        return {k: len(v) if k == "fills" and isinstance(v, list) else without_fills(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [without_fills(v) for v in x]
+    return x
+
+
 def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, spy=None, periods=252):
     """Write the whole result folder. mc maps series name -> montecarlo summary dict (strategy first).
 
@@ -277,7 +286,7 @@ def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, s
     picks = pick_days(days, seed)
     metrics = standard_metrics(days, spy, periods)
     (out / "equity.svg").write_text(equity_svg(*curves(days)), encoding="utf-8")
-    report = dict(name=name, engine=engine, fills=len(fills), metrics=metrics, result=result, monte_carlo=mc,
+    report = dict(name=name, engine=engine, fills=len(fills), metrics=metrics, result=without_fills(result), monte_carlo=mc,
                   **(extra or {}))
     (out / "report.json").write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
     write_csv(out / "trades_all.csv", fills)

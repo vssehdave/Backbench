@@ -105,8 +105,14 @@ def load_manifest(path):
             module, name = entry.split(":")
             # The manifest's folder is importable so an unseen package runs without editing the runner.
             folder = str(path.resolve().parent)
-            if folder not in sys.path:
-                sys.path.insert(0, folder)
+            if folder in sys.path:
+                sys.path.remove(folder)
+            sys.path.insert(0, folder)
+            own = Path(folder) / f"{module.split('.')[0]}.py"
+            cached = sys.modules.get(module)
+            # Catalog folders all name their file strategy.py: drop another folder's cached module of that name.
+            if own.exists() and cached is not None and Path(getattr(cached, "__file__", None) or "").resolve() != own.resolve():
+                del sys.modules[module]
             try:
                 target = getattr(importlib.import_module(module), name)
                 if not callable(getattr(target, "decide", target)) or not callable(getattr(target, "fit", print)):

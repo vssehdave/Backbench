@@ -6,6 +6,11 @@ import catalog_report as cr
 
 
 class CatalogReportTests(unittest.TestCase):
+    def test_report_json_keeps_fill_counts_not_fills(self):
+        import report
+        result = {"folds": [{"fills": [{"q": 1}, {"q": 2}], "equity": [1, 2]}], "fills": 3}
+        self.assertEqual(report.without_fills(result), {"folds": [{"fills": 2, "equity": [1, 2]}], "fills": 3})
+
     def test_discover_uses_folders_and_manifests(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

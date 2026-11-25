@@ -54,6 +54,15 @@ class ManifestChecks(unittest.TestCase):
         self.assertGreater(len(report["folds"][0]["fills"]), 0)
 
 
+    def test_same_module_name_in_two_folders_loads_each_folders_own(self):
+        with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
+            (Path(a) / "samename.py").write_text("def decide(history, level):\n    return 1\n")
+            (Path(b) / "samename.py").write_text("def decide(history, level):\n    return 2\n")
+            got = [money.Plugin(money.load_manifest(write(f, dict(GOOD, entry="samename:decide")))).inner((1.,), 0)
+                   for f in (a, b)]
+        self.assertEqual(got, [1, 2])
+
+
 class FittedReplayChecks(unittest.TestCase):
     def test_fit_sees_only_pre_start_rows(self):
         fitted = []
