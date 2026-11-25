@@ -1,0 +1,136 @@
+{
+  "name": "cat-6.5-index-volatility-targeting",
+  "config": {
+    "note": "Max drawdown is on the forward windows chained into one equity curve per path; windows are the six months after each selection half, 12-month steps, so the gaps between them are not in the curve.",
+    "mode": "A: path rerun on bootstrapped bars",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-01-01",
+    "end": "2026-01-01",
+    "stress_paths": 20,
+    "runtime_seconds": 84.4
+  },
+  "series": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 1272,
+      "historical": {
+        "max_drawdown": 0.06643483994357571,
+        "longest_underwater_sessions": 209,
+        "terminal_return": 0.3460639072616898,
+        "share_of_sessions_underwater": 0.860062893081761
+      },
+      "max_drawdown": {
+        "p5": 0.054101067275667825,
+        "p50": 0.08497638029230661,
+        "p95": 0.14670182228945247,
+        "p99": 0.18418552162901589,
+        "historical_percentile_rank": 19.6,
+        "prob_exceed": {
+          "0.2": 0.008,
+          "0.3": 0.0,
+          "0.5": 0.0
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 158.0,
+        "p50": 350.5,
+        "p95": 925.0999999999999,
+        "p99": 1214.04
+      },
+      "terminal_return": {
+        "p5": 0.017210436929329345,
+        "p50": 0.26328304881410214,
+        "p95": 0.5401186085614358,
+        "p99": 0.6866484159321955
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8364779874213837,
+        "p50": 0.9056603773584906,
+        "p95": 0.9701650943396226,
+        "p99": 0.9913600628930818
+      }
+    },
+    "benchmark": {
+      "paths": 1000,
+      "sessions": 1272,
+      "historical": {
+        "max_drawdown": 0.10208448423911774,
+        "longest_underwater_sessions": 223,
+        "terminal_return": 0.46786244814964584,
+        "share_of_sessions_underwater": 0.8419811320754716
+      },
+      "max_drawdown": {
+        "p5": 0.07314606985361004,
+        "p50": 0.13296465249754025,
+        "p95": 0.24340446194625293,
+        "p99": 0.29312033394559484,
+        "historical_percentile_rank": 27.3,
+        "prob_exceed": {
+          "0.2": 0.151,
+          "0.3": 0.009,
+          "0.5": 0.0
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 135.0,
+        "p50": 324.5,
+        "p95": 900.05,
+        "p99": 1144.05
+      },
+      "terminal_return": {
+        "p5": 0.029620048920349747,
+        "p50": 0.4111704069225669,
+        "p95": 0.8740509069183955,
+        "p99": 1.0456633636014365
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8104952830188679,
+        "p50": 0.8867924528301887,
+        "p95": 0.9654481132075471,
+        "p99": 0.985062893081761
+      }
+    },
+    "benchmark full history (mode B)": {
+      "paths": 1000,
+      "sessions": 2513,
+      "historical": {
+        "max_drawdown": 0.3418065736580752,
+        "longest_underwater_sessions": 512,
+        "terminal_return": 2.39231277410317,
+        "share_of_sessions_underwater": 0.8607242339832869
+      },
+      "max_drawdown": {
+        "p5": 0.18540747299510155,
+        "p50": 0.3172884946981551,
+        "p95": 0.46823842904871743,
+        "p99": 0.5360537847951439,
+        "historical_percentile_rank": 59.85,
+        "prob_exceed": {
+          "0.2": 0.916,
+          "0.3": 0.563,
+          "0.5": 0.028
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 231.8,
+        "p50": 508.0,
+        "p95": 1232.1499999999999,
+        "p99": 1766.03
+      },
+      "terminal_return": {
+        "p5": 0.6102811357603568,
+        "p50": 2.5047334770484815,
+        "p95": 6.016286724868327,
+        "p99": 8.692489023720617
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.835216872264226,
+        "p50": 0.889375248706725,
+        "p95": 0.9474731396736967,
+        "p99": 0.9689812972542777
+      }
+    }
+  }
+}

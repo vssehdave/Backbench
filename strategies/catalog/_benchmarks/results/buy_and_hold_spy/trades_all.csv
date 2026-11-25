@@ -1,0 +1,11 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2016-07-01,2016-07-01,open,SPY,buy,24,209.36,1.000072,target position 24 shares,0,24
+2017-07-01,2017-07-03,open,SPY,buy,22,242.88,1.000066,target position 22 shares,0,22
+2018-07-01,2018-07-02,open,SPY,buy,18,269.51,1.000054,target position 18 shares,0,18
+2019-07-01,2019-07-01,open,SPY,buy,19,296.68,1.000057,target position 19 shares,0,19
+2020-07-01,2020-07-01,open,SPY,buy,15,309.57,1.000045,target position 15 shares,0,15
+2021-07-01,2021-07-01,open,SPY,buy,13,428.87,1.000039,target position 13 shares,0,13
+2022-07-01,2022-07-01,open,SPY,buy,10,376.56,1.00003,target position 10 shares,0,10
+2023-07-01,2023-07-03,open,SPY,buy,13,442.92,1.000039,target position 13 shares,0,13
+2024-07-01,2024-07-01,open,SPY,buy,10,545.63,1.00003,target position 10 shares,0,10
+2025-07-01,2025-07-01,open,SPY,buy,8,616.36,1.000024,target position 8 shares,0,8

@@ -1,4 +1,4 @@
-"""Manifest-driven research CLI: money.py test|replay|compare. See docs/strategies.md."""
+"""Manifest-driven research CLI: money.py test|replay|compare|mc. See docs/strategies.md."""
 import argparse
 import hashlib
 import importlib
@@ -166,7 +166,7 @@ def load_rows(manifest, start, end):
     return rows, "alpaca_sip_raw", quality
 
 
-def run_test(manifest, start, end, paths, shock_bps, seed):
+def run_test(manifest, start, end, paths, shock_bps, seed, mc=None):
     if start.day != 1 or paths < 1 or not math.isfinite(shock_bps) or shock_bps < 0:
         raise ValueError("Use a month-start date, positive path count and finite shock")
     spot = spot_costs(manifest)
@@ -177,7 +177,7 @@ def run_test(manifest, start, end, paths, shock_bps, seed):
                   shock_bps=shock_bps, strategy=manifest["id"], levels=manifest["levels"],
                   calendar=manifest["calendar"])
     folds = harness.study(rows, Plugin(manifest), manifest["levels"], paths, shock_bps, seed, start, end,
-                          StressConfig(), spot, short_rate(manifest))
+                          StressConfig(), spot, short_rate(manifest), mc)
     return dict(config=config, manifest=manifest, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                 execution_contract=dict(engine_sha256=harness.engine_digest(),
                                         fee_profile=spot.profile if spot else harness.FEE_PROFILE,
@@ -208,6 +208,9 @@ def run_replay(manifest, start, end, level):
 
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] == ["mc"]:  # Monte Carlo risk run for any engine; see mc_runs.py
+        import mc_runs
+        return mc_runs.main(argv[1:])
     if argv[:1] == ["xs"]:  # cross-sectional runs have their own manifest schema; see xsection.py
         import xsection
         return xsection.main(argv[1:])

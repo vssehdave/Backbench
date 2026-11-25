@@ -38,3 +38,13 @@ Read with care:
 - Prices are raw (no dividends), which understates buy-and-hold and the long legs equally.
 - Signals use the prior close and fill at the next open, with the repo's IBKR fee model; position is a fixed share count of about 5,000 USD at the window's first training close (half of the 10,000 USD of cash).
 - Parameters are the paper's examples where it gives them, otherwise the author's fixed choice (see Harness status), and were not changed after seeing results.
+
+## Monte Carlo risk
+
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 84s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
+
+| series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
+|---|---|---|---|---|---|---|
+| strategy | 6.6% (rank 20) | 8.5% | 14.7% | 18.4% | 0.8% / 0.0% / 0.0% | 26.3% (hist 34.6%) |
+| benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) |
+<!-- mc:mc_results -->

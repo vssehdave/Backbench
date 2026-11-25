@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2025-07-01,2025-11-20,open,SPY,sell,-16,672.91,1.221839136,target position -8 shares,8,-8

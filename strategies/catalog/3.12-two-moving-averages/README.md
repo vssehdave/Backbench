@@ -68,3 +68,23 @@ Same rule and sizing, but short (about 5,000 USD of shares) instead of flat when
 | **Compounded** | **2.79%** | 23.39% | 46.79% | |
 
 Long/short ranks above long-only in 1 of 10 windows. Shorting the below-average periods lost money in this sample: SPY kept rising through most of them (2019 H2, 2020 H2), so the short leg paid more in losses than the avoided drawdowns saved. Same caveats as above; the borrow rate is an assumption, not a quote, and dividends owed on shorts are not charged.
+
+## Monte Carlo risk
+
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 70s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results.json`; report and trade logs in the `results/` folder beside it.
+
+| series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
+|---|---|---|---|---|---|---|
+| strategy | 6.9% (rank 11) | 10.5% | 18.6% | 23.0% | 3.0% / 0.0% / 0.0% | 20.8% (hist 23.4%) |
+| benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) |
+<!-- mc:mc_results -->
+
+## Monte Carlo risk
+
+A: path rerun; 1000 paths, seed 0, mean block 20.0 sessions, 71s. Method and limits: docs/monte-carlo.md. Raw numbers: `mc_results_long_short.json`; report and trade logs in the `results/` folder beside it.
+
+| series | historical max DD (pct rank) | MC p50 | p95 | p99 | P(DD>20/30/50%) | terminal return p50 |
+|---|---|---|---|---|---|---|
+| strategy | 12.0% (rank 11) | 18.5% | 33.8% | 40.8% | 41.1% / 10.5% / 0.0% | 3.4% (hist 2.8%) |
+| benchmark | 10.2% (rank 27) | 13.3% | 24.3% | 29.3% | 15.1% / 0.9% / 0.0% | 41.1% (hist 46.8%) |
+<!-- mc:mc_results_long_short -->

@@ -1,0 +1,68 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2024-02-16,close,SPY240216P00458000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-02-16,close,SPY240315P00475000,buy,2,1.32,1.3,monthly roll: put strike 475.0 expiring 2024-03-15,0,2
+full period,2024-03-15,close,SPY240315P00475000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-03-15,close,SPY240419P00484000,buy,2,1.59,1.3,monthly roll: put strike 484.0 expiring 2024-04-19,0,2
+full period,2024-04-19,close,SPY240419P00484000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-04-19,close,SPY240517P00470000,buy,2,2.32,1.3,monthly roll: put strike 470.0 expiring 2024-05-17,0,2
+full period,2024-05-17,close,SPY240517P00470000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-05-17,close,SPY240621P00503000,buy,2,1.17,1.3,monthly roll: put strike 503.0 expiring 2024-06-21,0,2
+full period,2024-06-21,close,SPY240621P00503000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-06-21,close,SPY240719P00517000,buy,2,0.98,1.3,monthly roll: put strike 517.0 expiring 2024-07-19,0,2
+full period,2024-07-19,close,SPY240719P00517000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-07-19,close,SPY240816P00522000,buy,2,2.0,1.3,monthly roll: put strike 522.0 expiring 2024-08-16,0,2
+full period,2024-08-16,close,SPY240816P00522000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-08-16,close,SPY240920P00527000,buy,2,2.29,1.3,monthly roll: put strike 527.0 expiring 2024-09-20,0,2
+full period,2024-09-20,close,SPY240920P00527000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-09-20,close,SPY241018P00540000,buy,2,2.0,1.3,monthly roll: put strike 540.0 expiring 2024-10-18,0,2
+full period,2024-10-18,close,SPY241018P00540000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-10-18,close,SPY241115P00555000,buy,2,2.39,1.3,monthly roll: put strike 555.0 expiring 2024-11-15,0,2
+full period,2024-11-15,close,SPY241115P00555000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-11-15,close,SPY241220P00556000,buy,2,2.83,1.3,monthly roll: put strike 556.0 expiring 2024-12-20,0,2
+full period,2024-12-20,close,SPY241220P00556000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2024-12-20,close,SPY250117P00562000,buy,2,2.85,1.3,monthly roll: put strike 562.0 expiring 2025-01-17,0,2
+full period,2025-01-17,close,SPY250117P00562000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-01-17,close,SPY250221P00568000,buy,2,2.4,1.3,monthly roll: put strike 568.0 expiring 2025-02-21,0,2
+full period,2025-02-21,close,SPY250221P00568000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-02-21,close,SPY250321P00570000,buy,2,2.83,1.3,monthly roll: put strike 570.0 expiring 2025-03-21,0,2
+full period,2025-03-21,close,SPY250321P00570000,settle,2,6.019999999999982,0.0,expires in the money: exercised,2,0
+full period,2025-03-21,close,SPY250417P00536000,buy,2,2.86,1.3,monthly roll: put strike 536.0 expiring 2025-04-17,0,2
+full period,2025-04-17,close,SPY250417P00536000,settle,2,9.590000000000032,0.0,expires in the money: exercised,2,0
+full period,2025-04-17,close,SPY250516P00500000,buy,2,6.699999999999999,1.3,monthly roll: put strike 500.0 expiring 2025-05-16,0,2
+full period,2025-05-16,close,SPY250516P00500000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-05-16,close,SPY250620P00564000,buy,2,3.44,1.3,monthly roll: put strike 564.0 expiring 2025-06-20,0,2
+full period,2025-06-20,close,SPY250620P00564000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-06-20,close,SPY250718P00565000,buy,2,3.65,1.3,monthly roll: put strike 565.0 expiring 2025-07-18,0,2
+full period,2025-07-18,close,SPY250718P00565000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-07-18,close,SPY250815P00596000,buy,2,2.31,1.3,monthly roll: put strike 596.0 expiring 2025-08-15,0,2
+full period,2025-08-15,close,SPY250815P00596000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-08-15,close,SPY250919P00611000,buy,2,2.79,1.3,monthly roll: put strike 611.0 expiring 2025-09-19,0,2
+full period,2025-09-19,close,SPY250919P00611000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-09-19,close,SPY251017P00631000,buy,2,2.27,1.3,monthly roll: put strike 631.0 expiring 2025-10-17,0,2
+full period,2025-10-17,close,SPY251017P00631000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-10-17,close,SPY251121P00631000,buy,2,5.42,1.3,monthly roll: put strike 631.0 expiring 2025-11-21,0,2
+full period,2025-11-21,close,SPY251121P00631000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-11-21,close,SPY251219P00626000,buy,2,5.119999999999999,1.3,monthly roll: put strike 626.0 expiring 2025-12-19,0,2
+full period,2025-12-19,close,SPY251219P00626000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2025-12-19,close,SPY260116P00647000,buy,2,2.11,1.3,monthly roll: put strike 647.0 expiring 2026-01-16,0,2
+full period,2026-01-16,close,SPY260116P00647000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-01-16,close,SPY260220P00657000,buy,2,3.25,1.3,monthly roll: put strike 657.0 expiring 2026-02-20,0,2
+full period,2026-02-20,close,SPY260220P00657000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-02-20,close,SPY260320P00655000,buy,2,4.26,1.3,monthly roll: put strike 655.0 expiring 2026-03-20,0,2
+full period,2026-03-20,close,SPY260320P00655000,settle,2,6.42999999999995,0.0,expires in the money: exercised,2,0
+full period,2026-03-24,close,SPY260417P00616000,buy,2,4.699999999999999,1.3,monthly roll: put strike 616.0 expiring 2026-04-17,0,2
+full period,2026-04-17,close,SPY260417P00616000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-04-17,close,SPY260515P00675000,buy,2,2.97,1.3,monthly roll: put strike 675.0 expiring 2026-05-15,0,2
+full period,2026-05-15,close,SPY260515P00675000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-05-15,close,SPY260618P00702000,buy,2,4.75,1.3,monthly roll: put strike 702.0 expiring 2026-06-18,0,2
+full period,2026-06-18,close,SPY260618P00702000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-06-18,close,SPY260717P00709000,buy,2,2.81,1.3,monthly roll: put strike 709.0 expiring 2026-07-17,0,2
+full period,2026-07-17,close,SPY260717P00709000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-07-17,close,SPY260821P00706000,buy,2,4.92,1.3,monthly roll: put strike 706.0 expiring 2026-08-21,0,2
+full period,2026-08-21,close,SPY260821P00706000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-08-21,close,SPY260918P00727000,buy,2,2.49,1.3,monthly roll: put strike 727.0 expiring 2026-09-18,0,2
+full period,2026-09-18,close,SPY260918P00727000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-09-18,close,SPY261016P00724000,buy,2,2.24,1.3,monthly roll: put strike 724.0 expiring 2026-10-16,0,2
+full period,2026-10-16,close,SPY261016P00724000,settle,2,0.0,0.0,expires worthless,2,0
+full period,2026-10-16,close,SPY261120P00725000,buy,2,5.02,1.3,monthly roll: put strike 725.0 expiring 2026-11-20,0,2
+full period,2026-11-20,close,SPY261120P00725000,settle,2,35.190000000000055,0.0,expires in the money: exercised,2,0

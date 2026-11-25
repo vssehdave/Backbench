@@ -1,0 +1,112 @@
+# Random day: 2025-10-01 (fold 2025-07-01)
+
+- Strategy P&L: -7,555.55 USD (-0.749%)
+- Benchmark move that day: +0.340%
+- Borrow charged: 0.0000 USD
+- Position before: ABT +78.27, ADP +34.49, AEE +103.8, AEP +94.31, AFL +97.07, AME +54.5, AON +27.11, ATO +62.21, AVB +54.98, AVY +60.72, AZO +2.391, BR +40.73, BRK.B +19.94, BSX +93.7, CAH +67.68, CB +36.68, CBOE +43.54, CHD +108.9, CL +122.1, CLX +88.45, CME +39.3, CMS +146, CNP +271.1, COR +34.22, COST +10.72, CPT +96.84, CSCO +151, DGX +57.12, DTE +76.83, DUK +85.6, ECL +36.86, ED +107, EVRG +146.4, EXC +238.9, FDS +27.58, FE +241.5, GD +31.51, GIS +219.5, HD +25.44, HIG +77.12, ICE +58, INVH +348, ITW +39.33, JKHY +63.34, JNJ +57.39, K +127.5, KMB +82.35, KO +149.7, L +104.1, LH +36.87, LHX +37.09, LIN +21.43, LNT +160.6, MA +17.02, MAA +74.57, MCD +32.47, MDLZ +168.9, MDT +110.6, MKC +151.6, MO +161.5, MRSH +49.94, MSI +21.16, NDAQ +108.5, NI +245.3, NWS +303.9, NWSA +350.2, O +184.3, ORLY +96.86, PEG +127.4, PEP +69.88, PG +65.55, PNW +117.9, PPL +285.5, REG +145.3, ROL +179.9, ROP +19.48, RSG +43.51, SO +113, SPGI +19.76, STE +41.8, SYK +25.97, SYY +128.5, T +364, TDY +18.58, TJX +73.26, TSN +183, UDR +275.1, V +28.83, VICI +325.2, VLTO +95.56, VRSK +38.16, VTR +151.8, VZ +247.7, WEC +98.29, WELL +60.67, WM +45.19, WRB +142.9, WTW +31.07, XEL +144, YUM +70.05
+- Position after: ABT +77.21, ADP +35.33, AEE +99.55, AEP +92.25, AFL +92.73, AIG +128.8, AJG +33.12, AME +53.74, AON +28.05, ATO +60.87, AVB +53.9, AVY +63.02, AZO +2.357, BR +43.65, BRK.B +20.1, BSX +104.5, CB +36.02, CBOE +41.86, CHD +115.7, CL +130.6, CLX +86.65, CME +39.12, CMS +143.8, CNP +269.9, COR +32.42, COST +10.99, CPT +98.77, CSCO +149.2, DGX +56.16, DTE +73.89, DUK +85.39, ECL +37.52, ED +106.2, EVRG +137.1, EXC +230.4, FE +228.8, GD +30.04, GIS +213.9, HD +25.93, HIG +76.68, ICE +62.38, INVH +360.8, ITW +39.5, JKHY +69.48, JNJ +55.02, K +122.3, KMB +85.4, KO +153.9, L +100.2, LH +36.24, LHX +33.87, LIN +21.74, LNT +155, MA +17.58, MAA +77.02, MCD +34.17, MDLZ +164.1, MDT +108.4, MKC +154.2, MO +161.3, MRSH +51.05, MSI +22.16, NDAQ +116.7, NI +240.3, NWS +310.5, NWSA +348.5, O +175.5, ORLY +94.73, PEG +125.4, PEP +72.77, PG +67.72, PNW +119, PPL +282.5, REG +144.6, ROL +175.6, ROP +20.33, RSG +44.7, SO +110, SPGI +22.17, STE +41.92, SYK +27.8, SYY +125.2, T +384.9, TDY +17.41, TJX +70.46, TSN +190.3, UDR +286.8, V +29.07, VICI +325.6, VLTO +94.94, VRSK +40.52, VTR +145.9, VZ +247.9, WEC +92.38, WELL +56.83, WM +46.29, WRB +136.5, WTW +29.38, XEL +128.5, YUM +66.62
+
+| when | symbol | side | quantity | price | fees USD | position before | position after | reason |
+|---|---|---|---|---|---|---|---|---|
+| 2025-10-01 close | ABT | sell | -1.022 | 133.4700 | 0.4210 | 78.27 | 77.21 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ADP | buy | 0.8177 | 291.6100 | 0.4692 | 34.49 | 35.33 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AEE | sell | -4.151 | 103.4300 | 0.5736 | 103.8 | 99.55 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AEP | sell | -1.99 | 112.7500 | 0.4668 | 94.31 | 92.25 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AFL | sell | -4.229 | 110.7500 | 0.5938 | 97.07 | 92.73 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AIG | buy | 125.7 | 79.6400 | 5.4462 | 0 | 128.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AJG | buy | 32.73 | 305.8400 | 5.3559 | 0 | 33.12 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AME | sell | -0.7552 | 187.4400 | 0.4237 | 54.5 | 53.74 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AON | buy | 0.9303 | 360.1300 | 0.5175 | 27.11 | 28.05 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ATO | sell | -1.299 | 169.3800 | 0.4645 | 62.21 | 60.87 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AVB | sell | -1.043 | 191.3700 | 0.4539 | 54.98 | 53.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AVY | buy | 2.253 | 162.4900 | 0.5331 | 60.72 | 63.02 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | AZO | sell | -0.03433 | 4,247.9600 | 0.4259 | 2.391 | 2.357 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | BR | buy | 2.852 | 234.6000 | 0.6846 | 40.73 | 43.65 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | BRK.B | buy | 0.1519 | 498.2000 | 0.3878 | 19.94 | 20.1 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | BSX | buy | 10.75 | 95.8500 | 0.8650 | 93.7 | 104.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CAH | sell | -67.05 | 157.9300 | 5.8627 | 67.68 | 0 | rebalance to target weight +0.0000 |
+| 2025-10-01 close | CB | sell | -0.6537 | 281.4100 | 0.4458 | 36.68 | 36.02 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CBOE | sell | -1.66 | 241.5700 | 0.5587 | 43.54 | 41.86 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CHD | buy | 6.694 | 87.9200 | 0.6443 | 108.9 | 115.7 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CL | buy | 8.282 | 79.0100 | 0.6772 | 122.1 | 130.6 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CLX | sell | -1.692 | 122.6800 | 0.4581 | 88.45 | 86.65 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CME | sell | -0.1784 | 265.8400 | 0.3747 | 39.3 | 39.12 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CMS | sell | -2.105 | 72.3700 | 0.4293 | 146 | 143.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CNP | sell | -1.187 | 38.1700 | 0.3736 | 271.1 | 269.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | COR | sell | -1.785 | 311.7700 | 0.6397 | 34.22 | 32.42 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | COST | buy | 0.2679 | 917.3400 | 0.4729 | 10.72 | 10.99 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CPT | buy | 1.858 | 105.5900 | 0.4481 | 96.84 | 98.77 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | CSCO | sell | -1.795 | 68.7500 | 0.4143 | 151 | 149.2 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | DGX | sell | -0.9418 | 182.0700 | 0.4393 | 57.12 | 56.16 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | DTE | sell | -2.838 | 140.1600 | 0.5571 | 76.83 | 73.89 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | DUK | sell | -0.1965 | 122.3900 | 0.2531 | 85.6 | 85.39 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ECL | buy | 0.6603 | 269.7100 | 0.4391 | 36.86 | 37.52 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ED | sell | -0.8404 | 98.1700 | 0.3930 | 107 | 106.2 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | EVRG | sell | -8.915 | 76.2300 | 0.7038 | 146.4 | 137.1 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | EXC | sell | -8.265 | 45.0600 | 0.5439 | 238.9 | 230.4 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | FDS | sell | -27.09 | 286.7300 | 4.3946 | 27.58 | 0 | rebalance to target weight +0.0000 |
+| 2025-10-01 close | FE | sell | -12.13 | 45.9700 | 0.6404 | 241.5 | 228.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | GD | sell | -1.429 | 340.7500 | 0.6036 | 31.51 | 30.04 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | GIS | sell | -5.162 | 50.7000 | 0.4863 | 219.5 | 213.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | HD | buy | 0.4786 | 397.0200 | 0.4450 | 25.44 | 25.93 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | HIG | sell | -0.4348 | 132.9000 | 0.3801 | 77.12 | 76.68 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ICE | buy | 4.317 | 162.6400 | 0.7010 | 58 | 62.38 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | INVH | buy | 12.22 | 29.0100 | 0.5273 | 348 | 360.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ITW | buy | 0.1729 | 259.9200 | 0.3725 | 39.33 | 39.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | JKHY | buy | 6.048 | 146.2900 | 0.7924 | 63.34 | 69.48 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | JNJ | sell | -2.318 | 186.0500 | 0.5745 | 57.39 | 55.02 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | K | sell | -5.205 | 82.4600 | 0.5735 | 127.5 | 122.3 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | KMB | buy | 2.905 | 123.2300 | 0.5290 | 82.35 | 85.4 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | KO | buy | 4.089 | 66.7800 | 0.4865 | 149.7 | 153.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | L | sell | -3.905 | 100.1500 | 0.5536 | 104.1 | 100.2 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | LH | sell | -0.6301 | 279.0600 | 0.4415 | 36.87 | 36.24 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | LHX | sell | -3.169 | 300.4700 | 0.8457 | 37.09 | 33.87 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | LIN | buy | 0.3005 | 466.8100 | 0.4201 | 21.43 | 21.74 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | LNT | sell | -5.394 | 67.1100 | 0.5385 | 160.6 | 155 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MA | buy | 0.5624 | 573.7700 | 0.5113 | 17.02 | 17.58 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MAA | buy | 2.312 | 138.0000 | 0.5095 | 74.57 | 77.02 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MCD | buy | 1.662 | 300.5200 | 0.5997 | 32.47 | 34.17 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MDLZ | sell | -4.569 | 63.1700 | 0.5003 | 168.9 | 164.1 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MDT | sell | -2.095 | 94.8100 | 0.4534 | 110.6 | 108.4 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MKC | buy | 2.489 | 67.7600 | 0.4343 | 151.6 | 154.2 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MO | sell | -0.2548 | 66.2900 | 0.1777 | 161.5 | 161.3 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MRSH | buy | 1.087 | 201.2900 | 0.4594 | 49.94 | 51.05 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | MSI | buy | 0.9975 | 456.9300 | 0.5779 | 21.16 | 22.16 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | NDAQ | buy | 8.099 | 86.9100 | 0.7020 | 108.5 | 116.7 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | NI | sell | -4.902 | 43.0700 | 0.4599 | 245.3 | 240.3 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | NWS | buy | 6.61 | 32.4600 | 0.4573 | 303.9 | 310.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | NWSA | sell | -1.71 | 28.9500 | 0.3758 | 350.2 | 348.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | O | sell | -8.253 | 60.4600 | 0.6098 | 184.3 | 175.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ORLY | sell | -2.121 | 105.6800 | 0.4667 | 96.86 | 94.73 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | PEG | sell | -1.845 | 82.5500 | 0.4293 | 127.4 | 125.4 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | PEP | buy | 2.784 | 143.1400 | 0.5493 | 69.88 | 72.77 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | PG | buy | 2.097 | 153.1800 | 0.5106 | 65.55 | 67.72 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | PNW | buy | 0.9956 | 88.1800 | 0.3939 | 117.9 | 119 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | PPL | sell | -2.889 | 36.5900 | 0.4050 | 285.5 | 282.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | REG | sell | -0.6707 | 72.0900 | 0.3752 | 145.3 | 144.6 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ROL | sell | -4.131 | 58.1300 | 0.4750 | 179.9 | 175.6 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | ROP | buy | 0.8469 | 497.9700 | 0.5609 | 19.48 | 20.33 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | RSG | buy | 1.176 | 227.2900 | 0.4836 | 43.51 | 44.7 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | SO | sell | -2.92 | 94.8000 | 0.4941 | 113 | 110 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | SPGI | buy | 2.264 | 481.6700 | 0.8953 | 19.76 | 22.17 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | STE | buy | 0.1139 | 241.3000 | 0.2886 | 41.8 | 41.92 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | SYK | buy | 1.804 | 364.1500 | 0.6784 | 25.97 | 27.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | SYY | sell | -3.193 | 82.8200 | 0.4877 | 128.5 | 125.2 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | T | buy | 19.77 | 27.5500 | 0.6225 | 364 | 384.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | TDY | sell | -1.171 | 575.0700 | 0.7006 | 18.58 | 17.41 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | TJX | sell | -2.755 | 144.3200 | 0.5570 | 73.26 | 70.46 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | TSN | buy | 7.031 | 54.4700 | 0.5415 | 183 | 190.3 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | UDR | buy | 11.04 | 36.9200 | 0.5539 | 275.1 | 286.8 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | V | buy | 0.233 | 347.8300 | 0.3905 | 28.83 | 29.07 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | VICI | buy | 0.3199 | 32.9100 | 0.1105 | 325.2 | 325.6 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | VLTO | sell | -0.6144 | 106.0400 | 0.3839 | 95.56 | 94.94 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | VRSK | buy | 2.338 | 249.5500 | 0.6417 | 38.16 | 40.52 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | VTR | sell | -5.803 | 70.3200 | 0.5625 | 151.8 | 145.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | VZ | buy | 0.2191 | 43.8300 | 0.1008 | 247.7 | 247.9 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | WEC | sell | -5.669 | 112.9900 | 0.6835 | 98.29 | 92.38 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | WELL | sell | -3.771 | 179.3800 | 0.7022 | 60.67 | 56.83 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | WM | buy | 1.091 | 219.8700 | 0.4699 | 45.19 | 46.29 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | WRB | sell | -6.255 | 75.4100 | 0.5956 | 142.9 | 136.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | WTW | sell | -1.676 | 344.1000 | 0.6503 | 31.07 | 29.38 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | XEL | sell | -14.97 | 80.3100 | 0.9760 | 144 | 128.5 | rebalance to target weight +0.0100 |
+| 2025-10-01 close | YUM | sell | -3.364 | 153.1900 | 0.6183 | 70.05 | 66.62 | rebalance to target weight +0.0100 |

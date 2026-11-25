@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+2022-07-01,2022-07-01,open,SPY,buy,10,376.56,1.00003,target position 10 shares,0,10

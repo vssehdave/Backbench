@@ -148,6 +148,8 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
     shares = sum(l[1] for l in legs if l[0] == "stock") * bh_shares
     cash0 = capital - shares * closes[expiries[0]]
     cash, equity, cycles = cash0, {}, []
+    fills = [dict(date=str(expiries[0]), symbol="shares", side="buy", quantity=shares, price=closes[expiries[0]],
+                  fee=0.0, position_before=0, position_after=shares, reason="initial round-lot purchase")]
     for i, (e0, e1) in enumerate(zip(expiries, expiries[1:])):
         spot = closes[e0]
         window = [d for d in days if e0 <= d < e1]
@@ -172,6 +174,10 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
                 cash += -h["qty"] * fill * MULT * n - fee * abs(h["qty"]) * n
                 cycle["fee"] += fee * abs(h["qty"]) * n
                 h.update(bar_close=bar, fill=fill, entry_fill_date=str(h["first"]))
+                fills.append(dict(date=str(h["first"]), symbol=h["symbol"], side="buy" if h["qty"] > 0 else "sell",
+                                  quantity=abs(h["qty"]) * n, price=fill, fee=fee * abs(h["qty"]) * n,
+                                  position_before=0, position_after=h["qty"] * n,
+                                  reason=f"monthly roll: {h['kind']} strike {h['strike']} expiring {h['expiry']}"))
         for d in window:
             value = 0.0
             for h in held:
@@ -189,6 +195,10 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
                         - fee * abs(h["qty"]) * n
                     cycle["fee"] += fee * abs(h["qty"]) * n
                     h["closed_at"] = px
+                    fills.append(dict(date=str(e1), symbol=h["symbol"], side="sell" if long else "buy",
+                                      quantity=abs(h["qty"]) * n, price=max(px - (1 if long else -1) * half_spread, 0.0),
+                                      fee=fee * abs(h["qty"]) * n, position_before=h["qty"] * n, position_after=0,
+                                      reason="far leg closed at last close"))
             else:
                 intrinsic = max(final - h["strike"], 0.0) if h["kind"] == "call" else max(h["strike"] - final, 0.0)
                 h["intrinsic"] = intrinsic
@@ -196,6 +206,10 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
                     cash += h["qty"] * intrinsic * MULT * n
                     cycle["itm"] += intrinsic > 0
                     cycle["assigned"] += (not long) and intrinsic > 0  # assigned shares are rebought at the same close
+                    fills.append(dict(date=str(e1), symbol=h["symbol"], side="settle", quantity=abs(h["qty"]) * n,
+                                      price=intrinsic, fee=0.0, position_before=h["qty"] * n, position_after=0,
+                                      reason=("expires in the money: " + ("exercised" if long else "assigned"))
+                                      if intrinsic > 0 else "expires worthless"))
         equity[e1] = cash + shares * final
         cycle["legs"] = [{k: v for k, v in h.items() if k not in ("bars", "last", "first")} for h in held]
         cycles.append(cycle)
@@ -218,6 +232,8 @@ def run(strategy, closes, expiries, get_contracts, get_closes, capital=100_000.0
         "buy_and_hold": {"end_equity": bh[-1], "total_return": bh[-1] / capital - 1,
                          "max_drawdown": max_drawdown(bh)},
         "cycles": cycles,
+        "fills": fills,
+        "daily": {"dates": [str(d) for d in days], "equity": series, "buy_and_hold": bh},
     }
 
 

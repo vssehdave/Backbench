@@ -80,7 +80,10 @@ def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress
         closing *= multiplier
         if short is not None and shares < 0 and previous:
             # Borrow accrues on the short value held since the last close, over calendar days (as in xsection).
-            cash -= -shares * previous[1] * short / 10000 * (day - previous[0]).days / 365
+            fee = -shares * previous[1] * short / 10000 * (day - previous[0]).days / 365
+            cash -= fee
+            if log is not None:
+                log.setdefault("borrow", {})[str(day)] = fee
         previous = day, closing
         target = strategy(tuple(history), level) if history else shares
         if target is None and log is not None:
@@ -143,7 +146,9 @@ def trend_attribution(train, forward, equity, starting_equity):
     return groups
 
 
-def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None, short=None):
+def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None, short=None,
+          mc=None):
+    """mc is an optional montecarlo hook: mc(fold, rows, train, forward, run) re-runs this fold on synthetic paths."""
     if not rows or any(not all(math.isfinite(x) and x > 0 for x in r[1:]) for r in rows):
         raise ValueError("Expected positive finite OHLC observations")
     dates = [r[0] for r in rows]
@@ -201,6 +206,9 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
                                   perturbations=asdict(draw), drawdown=max_drawdown(curve, opening_state[0]),
                                   ending_delta_usd=curve[-1]-equity[-1], added_fills=len(simulated-original),
                                   removed_fills=len(original-simulated)))
+        if mc:
+            mc(len(results), rows, train, forward, lambda path: [opening_state[0]] + replay(
+                path, decide, artifacts[best], opening_state, history, spot=spot, short=short)[1])
         results.append(dict(train_start=str(start), forward_start=str(split), end_exclusive=str(stop),
                             selected=best, train_scores=scores, sensitivity=neighbours,
                             train_return=train_return, forward_return=forward_return,
@@ -210,7 +218,8 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
                             forward_buys=sum(t["shares"] > 0 for t in fills),
                             forward_sells=sum(t["shares"] < 0 for t in fills),
                             trend_regimes=trend_attribution(train, forward, equity, opening_state[0]),
-                            equity=equity, fills=fills, scenarios=scenarios))
+                            equity=equity, fills=fills, scenarios=scenarios,
+                            dates=[str(r[0]) for r in forward], borrow=log.get("borrow", {})))
         start = stop
     if not results:
         raise ValueError("Supply at least twelve complete calendar months")
