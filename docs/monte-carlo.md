@@ -48,3 +48,7 @@ SPY and catalog runs use 1000 paths, cross-section runs 200. Seed 0, mean block 
 | xs_momentum_12_1 | benchmark (SPY) | 19.3% (rank 29) | 23.1% | 39.0% | 50.9% | 67.5% / 29.0% / 1.5% | 103.5% (hist 125.2%) | 200 | 591s |
 
 Per-strategy READMEs have the same numbers, `mc_results*.json` beside each manifest holds the full detail (all percentiles, underwater distribution, terminal return percentiles), and `results/` holds REPORT.md and trade logs.
+
+## Standard report metrics
+
+`report.perf_metrics(returns, bench)` is the one place for CAGR, volatility, Sharpe, Sortino (downside deviation below 0), max drawdown, beta and annualized alpha (CAPM regression of daily returns on SPY, always SPY). Risk-free rate is 0 because the repo has no T-bill series. `write_report` puts a strategy-vs-SPY table at the top of REPORT.md, the values under `metrics` in report.json, and `equity.svg` (growth of 10,000 on a log scale plus a drawdown strip, standard library only). Pass `spy=` (date -> close) to `write_report`; without it the SPY row and beta/alpha are omitted.

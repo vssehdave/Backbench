@@ -1,4 +1,5 @@
 import csv
+import json
 import random
 import tempfile
 import unittest
@@ -163,7 +164,7 @@ class Output(unittest.TestCase):
             report.write_report(tmp, "harness", "t", dict(folds=a), m.summary()["mode_a"], folds, seed=3)
             names = {p.name for p in Path(tmp).iterdir()}
             for n in ("report.json", "REPORT.md", "trades_all.csv", "trades_best_day.md", "trades_worst_day.md",
-                      "trades_random_day.md", "trades_best_day.csv", "trades_worst_day.csv", "trades_random_day.csv"):
+                      "trades_random_day.md", "equity.svg", "trades_best_day.csv", "trades_worst_day.csv", "trades_random_day.csv"):
                 self.assertIn(n, names)
             for n in ("trades_all.csv", "trades_random_day.csv"):
                 with open(Path(tmp) / n, newline="") as fh:
@@ -174,7 +175,13 @@ class Output(unittest.TestCase):
             text = (Path(tmp) / "trades_random_day.md").read_text()
             for word in ("P&L", "Benchmark move", "Position before", "Position after"):
                 self.assertIn(word, text)
-            self.assertIn("Monte Carlo max drawdown", (Path(tmp) / "REPORT.md").read_text())
+            md = (Path(tmp) / "REPORT.md").read_text()
+            self.assertIn("Monte Carlo max drawdown", md)
+            self.assertTrue(md.splitlines()[2].startswith("![") and "(equity.svg)" in md.splitlines()[2])
+            self.assertIn("| strategy | ", md)
+            self.assertIn("| SPY | ", md)
+            self.assertIn("polyline", (Path(tmp) / "equity.svg").read_text())
+            self.assertIn("sortino", json.loads((Path(tmp) / "report.json").read_text())["metrics"]["strategy"])
 
 
 if __name__ == "__main__":

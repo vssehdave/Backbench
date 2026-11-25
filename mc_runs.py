@@ -25,12 +25,12 @@ def out_dir(manifest_path, engine):
     return (base / variant if variant else base), path.parent / f"mc_results{'_' + variant if variant else ''}.json"
 
 
-def finish(folder, engine, name, result, folds, runs, config, started, seed, extra=None):
+def finish(folder, engine, name, result, folds, runs, config, started, seed, extra=None, spy=None):
     """runs is {label: montecarlo summary}. Writes report.json, REPORT.md, trade logs and the mc_results file."""
     folder, target = folder
     seconds = time.perf_counter() - started
     config = dict(config, runtime_seconds=round(seconds, 1))
-    report.write_report(folder, engine, name, result, runs, folds, seed, dict(mc_config=config, **(extra or {})))
+    report.write_report(folder, engine, name, result, runs, folds, seed, dict(mc_config=config, **(extra or {})), spy)
     target.write_text(json.dumps(dict(name=name, config=config, series=runs), indent=2), encoding="utf-8")
     print(f"{name}: {seconds:.0f}s, wrote {folder} and {target}")
     return target
@@ -103,7 +103,8 @@ def run_options(manifest_path, paths, seed, block):
     config = dict(mode="B: block bootstrap of the strategy's own daily equity returns", paths=paths, seed=seed,
                   mean_block=block, start=str(daily["dates"][0]), end=str(daily["dates"][-1]))
     return finish(out_dir(manifest_path, "options"), "options", m["id"], result, report.folds_of("options", result),
-                  runs, config, started, seed)
+                  runs, config, started, seed,
+                  spy=closes if m["data"]["underlying"] == "SPY" else od.underlying_closes("SPY", start, today - timedelta(days=1)))
 
 
 def main(argv=None):
