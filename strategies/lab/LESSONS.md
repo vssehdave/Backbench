@@ -46,3 +46,10 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   up days (rebounds), so scaling down after vol spikes misses them. Leverage at 5% a year cost 1.5% of equity a year.
   On the holdout it again cut drawdown (-12% vs -19%) but trailed on CAGR (14.3% vs 16.7%). Next: the Sharpe gain has to
   come from a second return stream, not from timing one asset.
+
+- **02 (levered risk parity SPY/QQQ/GLD/TLT), LOSS by CAGR only.** First design to beat SPY on Sharpe, Sortino, alpha
+  and MC p95 DD in the holdout (gold's 2024-2025 run and low correlation did the work). It fell short on CAGR (15.1% vs
+  16.7%) because the 12% vol target held gross near 1.4x and the borrowed part paid 5% a year: in-sample the margin
+  interest was ~3% of equity a year, more than the whole Sharpe gain. IEF or TLT as the diversifier was worse in-sample
+  (TLT -0.3%/yr): bonds were a cost, gold was the useful diversifier. Next: get the leverage cheaper (SSO/QLD carry
+  their own financing at roughly T-bill rates, not 5%), or raise return without leverage (higher-return equity sleeve).
