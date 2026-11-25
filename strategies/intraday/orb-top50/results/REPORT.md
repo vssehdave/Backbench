@@ -325,4 +325,4 @@ Feature rules, tercile cut points from 2020-2022 only:
 | cap_rank | top tercile | -5.8 (12091) | -4.9 (14915) | -4.9 |
 | cap_rank | bottom tercile | -4.7 (11629) | -4.4 (14968) | -4.3 |
 
-Each run has its own folder next to this one (5min-long-short, ..., old-5min-top20-capped) with its README, results/REPORT.md, report.json and 2 bps trade logs. Full numbers are in ../results.json. No Monte Carlo section: that module lives on the unmerged research/monte-carlo branch.
+Each run has its own folder next to this one (5min-long-short, ..., old-5min-top20-capped) with its README, results/REPORT.md (metrics, Monte Carlo drawdown, equity.svg), report.json and 2 bps trade logs. Full numbers are in ../results.json.

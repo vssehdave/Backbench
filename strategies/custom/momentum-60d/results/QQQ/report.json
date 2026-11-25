@@ -1,0 +1,131 @@
+{
+  "name": "custom_mom60_QQQ",
+  "engine": "harness",
+  "metrics": {
+    "strategy": {
+      "total_return": 2.010198213376211,
+      "cagr": 0.1168447904245058,
+      "volatility": 0.14339975666617139,
+      "sharpe": 0.8427914358107509,
+      "sortino": 1.154388923119651,
+      "max_drawdown": -0.17761741587423685,
+      "beta": 0.4596402562330225,
+      "alpha": 0.05723947883084236
+    },
+    "QQQ buy and hold": {
+      "total_return": 4.511131973299992,
+      "cagr": 0.18667161673914645,
+      "volatility": 0.21895565874546233,
+      "sharpe": 0.8915933065045266,
+      "sortino": 1.263732181943818,
+      "max_drawdown": -0.3518881761894411,
+      "beta": 1.1427988101120945,
+      "alpha": 0.037050085991139736
+    },
+    "SPY": {
+      "total_return": 2.3923127741031576,
+      "cagr": 0.13030945172738284,
+      "volatility": 0.1780012510423917,
+      "sharpe": 0.7775519166168153,
+      "sortino": 1.087695733986064,
+      "max_drawdown": -0.34180657365807543,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "fills": 96
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 2513,
+      "historical": {
+        "max_drawdown": 0.17761741587423682,
+        "longest_underwater_sessions": 373,
+        "terminal_return": 2.010198213376202,
+        "share_of_sessions_underwater": 0.8818145642658177
+      },
+      "max_drawdown": {
+        "p5": 0.18021309491598717,
+        "p50": 0.2747388329479098,
+        "p95": 0.431276471628548,
+        "p99": 0.5010295166284303,
+        "historical_percentile_rank": 4.4,
+        "prob_exceed": {
+          "0.2": 0.881,
+          "0.3": 0.369,
+          "0.5": 0.011
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 315.9,
+        "p50": 683.0,
+        "p95": 1698.0,
+        "p99": 2213.4799999999996
+      },
+      "terminal_return": {
+        "p5": 0.12431896348975639,
+        "p50": 1.6757470231668,
+        "p95": 5.46090581920767,
+        "p99": 7.80495359243199
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8467568643056108,
+        "p50": 0.9025069637883009,
+        "p95": 0.9506963788300835,
+        "p99": 0.966975726223637
+      }
+    },
+    "benchmark (QQQ buy and hold)": {
+      "paths": 1000,
+      "sessions": 2513,
+      "historical": {
+        "max_drawdown": 0.3518881761894412,
+        "longest_underwater_sessions": 519,
+        "terminal_return": 4.5111319732999995,
+        "share_of_sessions_underwater": 0.8523676880222841
+      },
+      "max_drawdown": {
+        "p5": 0.22212872030266262,
+        "p50": 0.3187353047769156,
+        "p95": 0.4662887567041295,
+        "p99": 0.5470845676836393,
+        "historical_percentile_rank": 66.7,
+        "prob_exceed": {
+          "0.2": 0.98,
+          "0.3": 0.585,
+          "0.5": 0.028
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 203.0,
+        "p50": 452.0,
+        "p95": 1085.3999999999996,
+        "p99": 1520.04
+      },
+      "terminal_return": {
+        "p5": 1.0508972290953014,
+        "p50": 4.589164746629032,
+        "p95": 12.628011571162473,
+        "p99": 17.25198541906747
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.831675288499801,
+        "p50": 0.884600079586152,
+        "p95": 0.9415240748109829,
+        "p99": 0.965399920413848
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on bootstrapped bars",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-01-05",
+    "end": "2025-12-31",
+    "runtime_seconds": 107.6
+  }
+}

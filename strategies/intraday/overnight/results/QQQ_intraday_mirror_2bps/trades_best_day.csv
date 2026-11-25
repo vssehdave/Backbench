@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2025-04-09,close,QQQ,buy,133,415.65311399999996,1.000399,buy at the official open,0,133
+full period,2025-04-09,close,QQQ,sell,133,465.9075103357565,2.276892396817906,sell at the official close,133,0

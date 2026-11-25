@@ -187,6 +187,39 @@ class MetricsTests(unittest.TestCase):
         self.assertEqual(sorted(y), [2023, 2024])
         self.assertAlmostEqual(y[2024], -0.01)
 
+    def test_flat_curve_sharpe_is_none(self):
+        curve = [(date(2024, 1, 2), 100000.), (date(2024, 1, 3), 100000.)]
+        self.assertIsNone(I.metrics(curve)["sharpe"])
+
+
+class StandardReportTests(unittest.TestCase):
+    D = [date(2024, 1, 2), date(2024, 1, 3), date(2024, 1, 4), date(2024, 1, 5)]
+
+    def test_leg_fills_feed_the_standard_report(self):
+        legs = {self.D[2]: [("X", 100., 1.02)]}
+        curve, trades, _ = I.run_legs(legs, self.D, 2, 10000.)
+        fills = I.leg_fills(trades, "buy at open", "sell at close")
+        n = trades[0][4]
+        self.assertEqual([(f["side"], f["position_after"]) for f in fills], [("buy", n), ("sell", 0)])
+        self.assertAlmostEqual(sum(f["fee"] for f in fills), trades[0][7])
+        # P&L recomputed from the fill prices and fees matches the booked trade P&L.
+        self.assertAlmostEqual((fills[1]["price"] - fills[0]["price"]) * n - trades[0][7], trades[0][1])
+        spy = [(d, 10000. * (1 + 0.01 * i)) for i, d in enumerate(self.D)]
+        with tempfile.TemporaryDirectory() as tmp:
+            I.write_standard_report(Path(tmp, "r"), Path(tmp, "mc.json"), "t", curve, spy, fills, 10000., paths=20)
+            text = Path(tmp, "r", "REPORT.md").read_text(encoding="utf-8")
+            self.assertIn("p95", text)
+            self.assertIn("| X | buy |", Path(tmp, "r", "trades_best_day.md").read_text(encoding="utf-8"))
+            with self.assertRaises(ValueError):  # no fills at all
+                I.write_standard_report(Path(tmp, "e"), Path(tmp, "e.json"), "t", curve, spy, [], 10000., paths=20)
+
+    def test_orb_fills_mark_stops_and_signed_positions(self):
+        t = dict(side=-1, minute=575., entry=50., stop=51., exit=51., exit_minute=600)
+        fills = I.orb_fills([(self.D[0], "Y", t, 5000., 2., -102.)])
+        self.assertEqual([(f["side"], f["quantity"], f["position_after"]) for f in fills], [("sell", 100, -100), ("buy", 100, 0)])
+        self.assertIn("stop", fills[1]["reason"])
+        self.assertAlmostEqual(sum(f["fee"] for f in fills), 2.)
+
 
 if __name__ == "__main__":
     unittest.main()

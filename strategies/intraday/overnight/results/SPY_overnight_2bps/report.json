@@ -1,0 +1,128 @@
+{
+  "name": "intraday-overnight SPY_overnight_2bps",
+  "engine": "intraday",
+  "metrics": {
+    "strategy": {
+      "total_return": -0.23445375394082701,
+      "cagr": -0.02428953184737248,
+      "volatility": 0.11288063280634805,
+      "sharpe": -0.16072284405284853,
+      "sortino": -0.20622114028316868,
+      "max_drawdown": -0.37776288390251445,
+      "beta": 0.4167878223022307,
+      "alpha": -0.07813689336527636
+    },
+    "SPY": {
+      "total_return": 3.041539723459114,
+      "cagr": 0.13716988339729252,
+      "volatility": 0.1750920616871398,
+      "sharpe": 0.8221086447837666,
+      "sortino": 1.1516217155123603,
+      "max_drawdown": -0.3379388816644996,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "final_equity": 76554.62460591727,
+    "total_return": -0.23445375394082735,
+    "cagr": -0.024262177170871535,
+    "sharpe": -0.16072284405284853,
+    "sortino": -0.20622114028316868,
+    "volatility": 0.11288063280634805,
+    "max_drawdown": -0.37776288390251445,
+    "sessions": 2738
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 2738,
+      "historical": {
+        "max_drawdown": 0.37776288390251717,
+        "longest_underwater_sessions": 2736,
+        "terminal_return": -0.23445375394082735,
+        "share_of_sessions_underwater": 0.9992695398100804
+      },
+      "max_drawdown": {
+        "p5": 0.19273299345764466,
+        "p50": 0.42017977887957136,
+        "p95": 0.6784328077893748,
+        "p99": 0.7474601535575803,
+        "historical_percentile_rank": 40.0,
+        "prob_exceed": {
+          "0.2": 0.942,
+          "0.3": 0.79,
+          "0.5": 0.322
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 829.8,
+        "p50": 2180.0,
+        "p95": 2732.0,
+        "p99": 2738.0
+      },
+      "terminal_return": {
+        "p5": -0.6147486769442284,
+        "p50": -0.21608682724171563,
+        "p95": 0.45333921596642573,
+        "p99": 0.8280476294334067
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.9510591672753835,
+        "p50": 0.9868517165814463,
+        "p95": 0.9992695398100804,
+        "p99": 1.0
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 1000,
+      "sessions": 2738,
+      "historical": {
+        "max_drawdown": 0.33793888166449965,
+        "longest_underwater_sessions": 488,
+        "terminal_return": 3.0415397234591133,
+        "share_of_sessions_underwater": 0.8447772096420745
+      },
+      "max_drawdown": {
+        "p5": 0.19326466844115275,
+        "p50": 0.3199352998932927,
+        "p95": 0.481030820521293,
+        "p99": 0.5710338307250983,
+        "historical_percentile_rank": 59.3,
+        "prob_exceed": {
+          "0.2": 0.93,
+          "0.3": 0.57,
+          "0.5": 0.033
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 239.8,
+        "p50": 530.0,
+        "p95": 1312.6499999999994,
+        "p99": 1787.4399999999996
+      },
+      "terminal_return": {
+        "p5": 0.7987501648025714,
+        "p50": 3.096240822499873,
+        "p95": 8.458088225501568,
+        "p99": 12.640217843476908
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8305149744338933,
+        "p50": 0.8867786705624543,
+        "p95": 0.9444850255661067,
+        "p99": 0.9663988312636961
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "B: block bootstrap of the daily returns",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-01-04",
+    "end": "2026-11-20",
+    "runtime_seconds": 4.8
+  }
+}

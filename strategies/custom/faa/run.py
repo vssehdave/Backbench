@@ -1,4 +1,5 @@
-"""Run every FAA model the paper reports over 2016-2026 on the ETF proxies. Usage: python strategies/custom/faa/run.py"""
+"""Run every FAA model the paper reports over 2016-2026 on the ETF proxies, with the standard report (results/ladder_<key>/)
+for each ladder model. Usage: python strategies/custom/faa/run.py"""
 import json
 import sys
 from datetime import date
@@ -50,9 +51,12 @@ def equal_weight(seen, _):
     return {s: 1 / len(faa_rules.UNIVERSE) for s in faa_rules.UNIVERSE}
 
 
+def decide_for(params):
+    return equal_weight if params is None else (lambda seen, _: faa_rules.decide(seen, params))
+
+
 def run_variant(panel, params, start, limits=UNLEVERED, costs=xsection.Costs()):
-    decide = equal_weight if params is None else (lambda seen, _: faa_rules.decide(seen, params))
-    return customlib.run_panel(panel, decide, limits, "monthly", start, costs=costs)
+    return customlib.run_panel(panel, decide_for(params), limits, "monthly", start, costs=costs)
 
 
 def row(r):
@@ -111,6 +115,9 @@ def main():
                   f"dd={pct(v['max_drawdown'])} turn={v['turnover_per_year']:.1f}x cost={v['costs_pct_of_avg_equity_per_year']:.2%}")
     print("log_vs_rank", out["log_vs_rank"])
     print("SPY", {k: round(v, 3) for k, v in bench["SPY_buy_hold_total_return"].items() if k in ("cagr", "max_drawdown")})
+    for key, label, params, extra in LADDER:
+        customlib.report_panel(Path(__file__).parent, f"ladder_{key}", panel, lambda p, d=decide_for(params): d,
+                               extra.get("limits", UNLEVERED), "monthly", start, extra.get("costs", xsection.Costs()))
 
 
 if __name__ == "__main__":

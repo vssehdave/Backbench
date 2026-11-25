@@ -1,0 +1,3 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2022-04-08,close,QQQ,buy,206,352.390464,1.030618,buy at the official open,0,206
+full period,2022-04-08,close,QQQ,sell,206,349.07899165072035,2.5119696089689967,sell at the official close,206,0

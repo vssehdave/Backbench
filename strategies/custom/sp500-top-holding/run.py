@@ -56,6 +56,8 @@ def main():
     print(r["metrics"], r["turnover_per_year"], r["costs_pct_of_avg_equity_per_year"])
     for t in tl:
         print(*t)
+    customlib.report_panel(Path(__file__).parent, "sp500-top-holding", panel, lambda p: leader_rules.make_decide(p, shares),
+                           xsection.Limits(1., 1., 1.), "daily", start)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2020-07-10,close,BAC,buy,2961,23.019603,14.813883,"09:37 breakout entry, stop 22.68",0,2961
+full period,2020-07-10,close,BAC,sell,2961,23.9952,16.27750861632,15:55 exit before close,2961,0
+full period,2020-07-10,close,C,buy,1812,50.004999,9.065436,"09:37 breakout entry, stop 49.45",0,1812
+full period,2020-07-10,close,C,sell,1812,52.619474000000004,11.0295736298928,15:55 exit before close,1812,0
+full period,2020-07-10,close,WFC,buy,1845,24.694938,9.230535,"09:37 breakout entry, stop 24.15",0,1845
+full period,2020-07-10,close,WFC,sell,1845,25.464906,10.198379682341997,15:55 exit before close,1845,0
+full period,2020-07-10,close,XOM,buy,1461,41.788356,7.3093829999999995,"09:37 breakout entry, stop 41.10",0,1461
+full period,2020-07-10,close,XOM,sell,1461,42.571484,8.590639925354399,15:55 exit before close,1461,0
+full period,2020-07-10,close,JPM,buy,924,92.95858799999999,4.622772,"09:39 breakout entry, stop 91.87",0,924
+full period,2020-07-10,close,JPM,sell,924,96.52069200000001,6.459985459804799,15:55 exit before close,924,0
+full period,2020-07-10,close,DIS,buy,436,116.993394,2.181308,"09:40 breakout entry, stop 116.22",0,436
+full period,2020-07-10,close,DIS,sell,436,119.22615,3.2521495888399996,15:55 exit before close,436,0

@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2026-08-18,open,BTC,buy,0.1388,64471.7,23.266547096,target position 0.13879999999999998 shares,-2.7755575615628914e-17,0.13879999999999998

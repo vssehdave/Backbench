@@ -31,12 +31,13 @@ def out_dir(manifest_path, engine):
     return (base / variant if variant else base), path.parent / f"mc_results{'_' + variant if variant else ''}.json"
 
 
-def finish(folder, engine, name, result, folds, runs, config, started, seed, extra=None, spy=None):
+def finish(folder, engine, name, result, folds, runs, config, started, seed, extra=None, spy=None, periods=252):
     """runs is {label: montecarlo summary}. Writes report.json, REPORT.md, trade logs and the mc_results file."""
     folder, target = folder
     seconds = time.perf_counter() - started
     config = dict(config, runtime_seconds=round(seconds, 1))
-    report.write_report(folder, engine, name, result, runs, folds, seed, dict(mc_config=config, **(extra or {})), spy)
+    report.write_report(folder, engine, name, result, runs, folds, seed, dict(mc_config=config, **(extra or {})), spy,
+                        periods)
     target.write_text(json.dumps(dict(name=name, config=config, series=runs), indent=2), encoding="utf-8")
     print(f"{name}: {seconds:.0f}s, wrote {folder} and {target}")
     return target

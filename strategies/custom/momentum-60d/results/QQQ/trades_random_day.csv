@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2020-11-04,open,QQQ,buy,58,283.56,1.000174,target position 58 shares,0,58

@@ -1,0 +1,41 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2020-03-13,close,TSLA,buy,5,560.66211,1.000015,buy at the prior official close,0,5
+full period,2020-03-13,close,TSLA,sell,5,594.93099,1.0612928919700002,sell at the official open,5,0
+full period,2020-03-13,close,AAPL,buy,11,248.27964599999999,1.000033,buy at the prior official close,0,11
+full period,2020-03-13,close,AAPL,sell,11,264.81420356610397,1.0600398985280794,sell at the official open,11,0
+full period,2020-03-13,close,AMZN,buy,1,1675.9451219999999,1.000003,buy at the prior official close,0,1
+full period,2020-03-13,close,AMZN,sell,1,1754.6594717653377,1.0361489851183658,sell at the official open,1,0
+full period,2020-03-13,close,MSFT,buy,20,139.08781199999999,1.00006,buy at the prior official close,0,20
+full period,2020-03-13,close,MSFT,sell,20,147.4708944074328,1.0608180084958625,sell at the official open,20,0
+full period,2020-03-13,close,NVDA,buy,13,216.353262,1.000039,buy at the prior official close,0,13
+full period,2020-03-13,close,NVDA,sell,13,230.47257322776335,1.061759555110395,sell at the official open,13,0
+full period,2020-03-13,close,AMD,buy,72,39.017801999999996,1.000216,buy at the prior official close,0,72
+full period,2020-03-13,close,AMD,sell,72,42.19156,1.062794521792,sell at the official open,72,0
+full period,2020-03-13,close,GOOGL,buy,2,1111.7723099999998,1.000006,buy at the prior official close,0,2
+full period,2020-03-13,close,GOOGL,sell,2,1174.9186477384196,1.0484126482868228,sell at the official open,2,0
+full period,2020-03-13,close,NFLX,buy,8,315.31305,1.000024,buy at the prior official close,0,8
+full period,2020-03-13,close,NFLX,sell,8,330.38150007928954,1.054470871213067,sell at the official open,8,0
+full period,2020-03-13,close,V,buy,17,160.112016,1.000051,buy at the prior official close,0,17
+full period,2020-03-13,close,V,sell,17,168.68759378827232,1.0591253953446529,sell at the official open,17,0
+full period,2020-03-13,close,DIS,buy,30,91.828362,1.00009,buy at the prior official close,0,30
+full period,2020-03-13,close,DIS,sell,30,100.75220117928556,1.0623548603287987,sell at the official open,30,0
+full period,2020-03-13,close,BA,buy,18,154.870968,1.000054,buy at the prior official close,0,18
+full period,2020-03-13,close,BA,sell,18,174.93500600000002,1.0649199002247998,sell at the official open,18,0
+full period,2020-03-13,close,BAC,buy,134,20.884176,1.000402,buy at the prior official close,0,134
+full period,2020-03-13,close,BAC,sell,134,22.185679623529406,1.0616433500327906,sell at the official open,134,0
+full period,2020-03-13,close,MA,buy,11,241.54829999999998,1.000033,buy at the prior official close,0,11
+full period,2020-03-13,close,MA,sell,11,258.72497502582644,1.058660079340852,sell at the official open,11,0
+full period,2020-03-13,close,JPM,buy,31,88.06761,1.000093,buy at the prior official close,0,31
+full period,2020-03-13,close,JPM,sell,31,95.97776721905538,1.061384402146089,sell at the official open,31,0
+full period,2020-03-13,close,GILD,buy,41,68.593716,1.000123,buy at the prior official close,0,41
+full period,2020-03-13,close,GILD,sell,41,71.91005049211941,1.060858228645644,sell at the official open,41,0
+full period,2020-03-13,close,INTC,buy,61,45.549108,1.000183,buy at the prior official close,0,61
+full period,2020-03-13,close,INTC,sell,61,48.248985874659404,1.0608126756500968,sell at the official open,61,0
+full period,2020-03-13,close,MU,buy,72,38.60772,1.000216,buy at the prior official close,0,72
+full period,2020-03-13,close,MU,sell,72,41.5664392346532,1.0618673426728376,sell at the official open,72,0
+full period,2020-03-13,close,XOM,buy,71,39.237846,1.000213,buy at the prior official close,0,71
+full period,2020-03-13,close,XOM,sell,71,39.99750673755965,1.0587133533543547,sell at the official open,71,0
+full period,2020-03-13,close,UNH,buy,11,250.460082,1.000033,buy at the prior official close,0,11
+full period,2020-03-13,close,UNH,sell,11,262.075687279921,1.0594193507376304,sell at the official open,11,0
+full period,2020-03-13,close,T,buy,88,31.946388,1.000264,buy at the prior official close,0,88
+full period,2020-03-13,close,T,sell,88,32.91497684326983,1.0599322700214793,sell at the official open,88,0

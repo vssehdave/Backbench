@@ -13,6 +13,9 @@ from pathlib import Path
 
 import alpaca_bars
 import harness
+import mc_runs
+import montecarlo
+import report
 
 DATA = Path("data/intraday")
 OPEN_MIN, REGULAR_CLOSE, EXIT_BEFORE_CLOSE = 570, 960, 5
@@ -138,7 +141,8 @@ def run_legs(legs, sessions, slip_bps, equity=100000.):
     """Equal-weight legs per day. A leg is (symbol, raw entry price, total-return price ratio exit/entry).
 
     Per-side slippage worsens both fills. Shares are whole, sized from equity before the day's legs, and the day's
-    P&L (fees and slippage included) is booked on the day the leg exits.
+    P&L (fees and slippage included) is booked on the day the leg exits. A trade is
+    (day, pnl, return, symbol, shares, entry price, exit price, fees), prices after slippage.
     """
     s, curve, trades, fee_total, slip_total = slip_bps / 10000, [], [], 0., 0.
     for day in sessions:
@@ -153,7 +157,7 @@ def run_legs(legs, sessions, slip_bps, equity=100000.):
             equity += pnl
             fee_total += fee
             slip_total += shares * price * s + shares * price * ratio * s
-            trades.append((day, pnl, pnl / (shares * price)))
+            trades.append((day, pnl, pnl / (shares * price), symbol, shares, price * (1 + s), out, fee))
         curve.append((day, equity))
     return curve, trades, fee_total + slip_total
 
@@ -178,19 +182,15 @@ def yearly(curve, start_equity=100000.):
 
 
 def metrics(curve, trades=(), cost=0., start_equity=100000., sessions=None):
-    """CAGR, Sharpe (252-day, zero risk-free), max drawdown and trade statistics from a daily equity curve."""
+    """CAGR (calendar years), report.perf_metrics (Sharpe None on zero volatility) and trade statistics from a daily
+    equity curve."""
     values = [start_equity] + [v for _, v in curve]
-    returns = [b / a - 1 for a, b in zip(values, values[1:])]
     years = (curve[-1][0] - curve[0][0]).days / 365.25
-    mean = sum(returns) / len(returns)
-    sd = (sum((r - mean) ** 2 for r in returns) / (len(returns) - 1)) ** 0.5
-    peak, drawdown = values[0], 0.
-    for v in values:
-        peak = max(peak, v)
-        drawdown = min(drawdown, v / peak - 1)
+    m = report.perf_metrics([b / a - 1 for a, b in zip(values, values[1:])], years=years)
     out = dict(final_equity=values[-1], total_return=values[-1] / start_equity - 1,
                cagr=(values[-1] / start_equity) ** (1 / years) - 1 if values[-1] > 0 else -1.,
-               sharpe=mean / sd * 252 ** 0.5 if sd else 0., max_drawdown=drawdown, sessions=len(curve))
+               sharpe=m["sharpe"], sortino=m["sortino"], volatility=m["volatility"], max_drawdown=m["max_drawdown"],
+               sessions=len(curve))
     if trades:
         out.update(trades=len(trades), win_rate=sum(t[1] > 0 for t in trades) / len(trades),
                    avg_trade_usd=sum(t[1] for t in trades) / len(trades),
@@ -359,3 +359,58 @@ def month_trades(year, month, symbols, minutes, slips, end, sessions):
                         if t:
                             out[(m, short, slip)].append((iso, symbol, t, width))
     return out
+
+
+# ---- standard report ---------------------------------------------------------------------------------------------
+
+def _clock(minute):
+    minute = int(minute)
+    return f"{minute // 60:02d}:{minute % 60:02d}"
+
+
+def orb_fills(log):
+    """Entry and exit fills (report.write_report shape) from sized ORB trades (day, symbol, trade, notional, fee, pnl)."""
+    out = []
+    for day, symbol, t, notional, fee, _ in log:
+        shares = round(notional / t["entry"])
+        signed = shares * t["side"]
+        opening = sum(harness.fees(signed, t["entry"]))
+        stopped = (t["exit"] - t["stop"]) * t["side"] <= 0
+        out += [dict(date=str(day), symbol=symbol, side="buy" if signed > 0 else "sell", quantity=shares, price=t["entry"],
+                     fee=opening, reason=f"{_clock(t['minute'])} breakout entry, stop {t['stop']:.2f}", position_before=0,
+                     position_after=signed),
+                dict(date=str(day), symbol=symbol, side="sell" if signed > 0 else "buy", quantity=shares, price=t["exit"],
+                     fee=fee - opening, reason=f"{_clock(t['exit_minute'])} {'stop' if stopped else 'exit before close'}",
+                     position_before=signed, position_after=0)]
+    return out
+
+
+def leg_fills(trades, entry_reason, exit_reason):
+    """Entry and exit fills from run_legs trades, both dated the session the leg exits (its P&L day)."""
+    out = []
+    for day, _, _, symbol, shares, entry, exit_, fee in trades:
+        opening = sum(harness.fees(shares, entry))
+        out += [dict(date=str(day), symbol=symbol, side="buy", quantity=shares, price=entry, fee=opening, reason=entry_reason,
+                     position_before=0, position_after=shares),
+                dict(date=str(day), symbol=symbol, side="sell", quantity=shares, price=exit_, fee=fee - opening,
+                     reason=exit_reason, position_before=shares, position_after=0)]
+    return out
+
+
+def write_standard_report(out_dir, mc_file, name, curve, spy_curve, fills, start_equity=100000., paths=1000, seed=0,
+                          block=20.):
+    """report.write_report for a daily curve against SPY buy and hold, both one (day, equity) per session.
+
+    Monte Carlo mode B: a paired block bootstrap of the two daily return series. Raises if no session has a fill.
+    """
+    started = time.perf_counter()
+    if [d for d, _ in curve] != [d for d, _ in spy_curve]:
+        raise ValueError("Strategy and SPY curves must cover the same sessions")
+    equity, bench = ([start_equity] + [v for _, v in c] for c in (curve, spy_curve))
+    runs = montecarlo.pnl_bootstrap({"strategy": equity, "benchmark (SPY)": bench}, paths, seed, block)
+    fold = dict(label="full period", dates=[str(d) for d, _ in curve], equity=equity, bench=bench, fills=fills, borrow={},
+                bench_name="SPY")
+    config = dict(note="Max drawdown is on the one continuous backtest.", mode="B: block bootstrap of the daily returns",
+                  paths=paths, seed=seed, mean_block=block, start=str(curve[0][0]), end=str(curve[-1][0]))
+    return mc_runs.finish((Path(out_dir), Path(mc_file)), "intraday", name, metrics(curve, start_equity=start_equity),
+                          [fold], runs, config, started, seed)

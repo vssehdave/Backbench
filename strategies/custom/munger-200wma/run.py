@@ -46,6 +46,8 @@ def main():
     print("SPY", out["benchmarks"]["SPY_buy_hold_total_return"])
     print("EW", ew["metrics"])
     print(passing)
+    customlib.report_panel(Path(__file__).parent, "munger-200wma", panel, lambda p: munger_rules.make_decide(records), limits,
+                           "monthly", start)
 
 
 if __name__ == "__main__":
