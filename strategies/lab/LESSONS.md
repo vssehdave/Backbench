@@ -59,3 +59,10 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   0.93. Holdout CAGR 22.5%, Sharpe 1.29, alpha +9.2%. Cheap leverage was the missing piece. The remaining failure is
   tail risk: the bootstrap can string together bad equity blocks and a monthly inverse-vol rule has no brake inside
   the month, so the 2x sleeve drives a deeper p95 drawdown than SPY. Next: add a trend brake on the 2x sleeve.
+
+- **04 (03 + SSO + 200-day trend brake, weekly), LOSS.** Best in-sample so far (Sharpe 1.09, CAGR 16.7%, maxDD -20%),
+  because 2018 Q4 and 2022 were slow bear markets a 200-day filter catches. The holdout drawdowns were fast
+  (Apr-2025, a few weeks): the brake sold near the low and re-entered higher, so holdout Sharpe fell from 1.29 (03) to
+  1.07, Sortino to 1.48 and MC p95 DD rose to 29.7%. Adding SSO also raised beta to 0.90. Lesson: a slow trend brake
+  helps against slow bears only and costs in V-shaped shocks; the in-sample period had more slow bears than the
+  holdout. A brake must react to volatility (fast) rather than price trend (slow), or not exist.
