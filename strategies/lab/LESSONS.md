@@ -88,3 +88,9 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   index the vol scaler gives back about what it saves, and at 8x turnover it pays 0.4%/yr in costs. This isolates
   05's edge: the fast vol scaler is a risk limiter, not a return source; the return came from the QLD + GLD
   inverse-vol mix (two low-correlated return streams). Vol timing without a diversifier is not worth it.
+
+- **08 (05 with SSO in place of QLD, untuned), passes all five checks; correlation 0.98 with 05, so not a separate
+  winner.** In-sample Sharpe 1.01 (05: 1.10), holdout Sharpe 1.45. This is the most useful result of the round: with
+  parameters fixed before the run, the engine works on the S&P too, so 05 is not just a Nasdaq bet. The edge lies in
+  the structure (cheap 2x equity + gold, inverse-vol, fast vol cap), not in the choice of index. All the 03/05/08
+  variants are one bet (pairwise corr 0.95-0.98); a second winner must come from a different return stream.
