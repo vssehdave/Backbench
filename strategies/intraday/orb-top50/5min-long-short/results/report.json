@@ -1,0 +1,55 @@
+{
+ "name": "intraday-orb-top50-5min-long-short",
+ "engine": "intraday.orb_day + intraday.size_trades",
+ "description": "5-minute opening range breakout, long-short, on the monthly point-in-time top 50 S&P 500 stocks by market cap, 2020-01-02 to 2026-11-20. Fixed 1% risk per trade, each position capped at equity / 50 so gross never exceeds equity. IBKR fees plus per-side slippage.",
+ "result": {
+  "0bps": {
+   "final_equity": 2423.8482601266705,
+   "total_return": -0.9757615173987333,
+   "cagr": -0.41750712749246865,
+   "sharpe": -11.758144724696395,
+   "max_drawdown": -0.975774704924425,
+   "sessions": 1732,
+   "trades": 45785,
+   "win_rate": 0.2904663099268319,
+   "avg_trade_usd": -2.1311816476984444,
+   "avg_trade_bps": -49.21246921839158,
+   "trades_per_day": 26.43475750577367,
+   "cost_usd": 90113.1296678733,
+   "cost_drag_pct_per_year": 47.13205381023732,
+   "max_notional_pct_of_equity": 1.999996308234556
+  },
+  "2bps": {
+   "final_equity": 2056.88745189963,
+   "total_return": -0.9794311254810038,
+   "cagr": -0.43123555898594856,
+   "sharpe": -12.13626049533768,
+   "max_drawdown": -0.979434544919835,
+   "sessions": 1732,
+   "trades": 40094,
+   "win_rate": 0.27390632014765304,
+   "avg_trade_usd": -2.4428371464084577,
+   "avg_trade_bps": -58.96036761550317,
+   "trades_per_day": 23.148960739030024,
+   "cost_usd": 90713.7733838024,
+   "cost_drag_pct_per_year": 56.83320456794463,
+   "max_notional_pct_of_equity": 1.9999854911084112
+  },
+  "5bps": {
+   "final_equity": 1842.7973533401716,
+   "total_return": -0.9815720264665982,
+   "cagr": -0.4402456355685517,
+   "sharpe": -12.585506451856055,
+   "max_drawdown": -0.9815720264665982,
+   "sessions": 1732,
+   "trades": 34115,
+   "win_rate": 0.24912794958229517,
+   "avg_trade_usd": -2.877244691386783,
+   "avg_trade_bps": -71.39795306246783,
+   "trades_per_day": 19.69688221709007,
+   "cost_usd": 90769.8555069265,
+   "cost_drag_pct_per_year": 69.71111028974657,
+   "max_notional_pct_of_equity": 1.999987093977213
+  }
+ }
+}
