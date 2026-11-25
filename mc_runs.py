@@ -1,7 +1,8 @@
 """Monte Carlo risk runs: python money.py mc <manifest> [--paths 1000 --seed 0]. See docs/monte-carlo.md.
 
 The manifest picks the engine: a "cadence" field is a cross-section manifest (mode A on the panel), a "runner" of
-options_bt.py is an option strategy (mode B), anything else is the single-instrument harness (mode A on bars).
+options_bt.py is an option strategy (mode B), data.symbols is a multi-symbol catalog manifest (catalog_run.py, mode B),
+anything else is the single-instrument harness (mode A on bars).
 """
 import argparse
 import json
@@ -16,11 +17,16 @@ BENCHMARK = Path(__file__).parent / "strategies" / "catalog" / "_benchmarks" / "
 
 
 def out_dir(manifest_path, engine):
-    """(results folder, mc_results file) beside the manifest. A variant (manifest_long_short.json, or any xs
-    manifest) gets its own results/<variant>/ folder and mc_results_<variant>.json."""
+    """(results folder, mc_results file) beside the manifest. A variant (manifest_long_short.json, multi_btc.json, or
+    any xs manifest but a catalog folder's xs_manifest.json, a multi.json beside an xs_manifest.json) gets its own
+    results/<variant>/ folder and mc_results_<variant>.json."""
     path = Path(manifest_path)
-    variant = path.stem if engine == "xsection" else path.stem.removeprefix("options_manifest").removeprefix(
-        "manifest").strip("_")
+    if engine == "xsection":
+        variant = "" if path.stem == "xs_manifest" else path.stem
+    else:
+        variant = path.stem.removeprefix("options_manifest").removeprefix("manifest").removeprefix("multi").strip("_")
+        if engine == "multi" and (path.parent / "xs_manifest.json").exists():
+            variant = path.stem  # the folder's xs run owns results/
     base = path.parent / "results"
     return (base / variant if variant else base), path.parent / f"mc_results{'_' + variant if variant else ''}.json"
 
@@ -38,6 +44,7 @@ def finish(folder, engine, name, result, folds, runs, config, started, seed, ext
 
 
 def run_single(manifest_path, start, end, paths, seed, block, stress_paths):
+    import catalog_data
     import money
     started = time.perf_counter()
     manifest = money.load_manifest(manifest_path)
@@ -57,20 +64,23 @@ def run_single(manifest_path, start, end, paths, seed, block, stress_paths):
                   mode="A: path rerun on bootstrapped bars", paths=paths, seed=seed, mean_block=block, start=str(start),
                   end=str(end), stress_paths=stress_paths)
     return finish(out_dir(manifest_path, "harness"), "harness", manifest["id"], results["strategy"], folds, runs,
-                  config, started, seed, dict(benchmark_result=results["benchmark"]))
+                  config, started, seed, dict(benchmark_result=results["benchmark"]),
+                  spy={r[0]: r[4] for r in catalog_data.alpaca_daily("SPY", f"{start.year - 2}-01-01", str(end))})
 
 
-def run_xs(manifest_path, start, end, paths, seed, block):
+def run_xs(manifest_path, start, end, paths, seed, block, panel=None, extra=None):
+    """panel: an already built xs_data.Panel (the catalog runner shares one across strategies). extra goes into
+    report.json."""
     import xs_data
     import xsection
     started = time.perf_counter()
     hook = json.loads(Path(manifest_path).read_text(encoding="utf-8")).get("panel")
-    if hook:  # "module:function" beside the manifest, for strategies on their own universe (FAA's ETFs)
+    if panel is None and hook:  # "module:function" beside the manifest, for strategies on their own universe (FAA's ETFs)
         import importlib, sys
         sys.path.insert(0, str(Path(manifest_path).resolve().parent))
         mod, fn = hook.split(":")
         panel = getattr(importlib.import_module(mod), fn)(date(2015, 1, 1), end)
-    else:
+    elif panel is None:
         panel = xs_data.build_panel(date(2015, 1, 1), end)
     mc = montecarlo.MonteCarlo(paths, seed, block)
     result = xsection.run(manifest_path, start, end, panel, mc=mc.panel_fold)
@@ -84,15 +94,48 @@ def run_xs(manifest_path, start, end, paths, seed, block):
                   mode="A: path rerun on jointly bootstrapped dates", paths=paths, seed=seed, mean_block=block,
                   start=str(start), end=str(end))
     return finish(out_dir(manifest_path, "xsection"), "xsection", result["manifest"]["id"], result, folds, runs, config,
-                  started, seed)
+                  started, seed, extra)
 
 
-def run_options(manifest_path, paths, seed, block):
+class Ruined(ValueError):
+    """The strategy lost all its capital; there is no positive equity curve to report."""
+
+
+def run_multi(manifest_path, start, end, paths, seed, block):
+    """Multi-symbol catalog manifest (catalog_run.py). Mode B: no joint OHLCV bootstrap exists for these rules."""
+    import catalog_data
+    import catalog_run
+    started = time.perf_counter()
+    result = catalog_run.run(manifest_path, start, end)
+    folds = report.folds_of("multi", result)
+    curves = {"strategy": [1.], "benchmark": [1.]}
+    for f in folds:  # test windows chained into one curve each
+        for name, key in (("strategy", "equity"), ("benchmark", "bench")):
+            base = curves[name][-1]
+            curves[name] += [base * v / f[key][0] for v in f[key][1:]]
+    if min(curves["strategy"]) <= 0:
+        day = next(d for f in folds for d, v in zip(f["dates"], f["equity"]) if v <= 0)
+        raise Ruined(f"equity fell to {min(curves['strategy']):.1%} of starting capital (first non-positive {day}); "
+                     "returns and Monte Carlo are undefined past ruin")
+    data = result["manifest"]["data"]
+    # Beta and alpha vs SPY only for exchange sessions; a 24/7 Kraken series has no SPY return on most days.
+    spy = {r[0]: r[4] for r in catalog_data.alpaca_daily("SPY", f"{start.year - 2}-01-01", data.get("to", "2026-01-01"))
+           } if data["kind"] == "alpaca" else None
+    config = dict(note="Max drawdown is on the continuous backtest from start to end (or, with walk_forward, the "
+                       "contiguous test windows chained).",
+                  mode="B: block bootstrap of the strategy's own daily equity returns", paths=paths, seed=seed,
+                  mean_block=block, start=str(start), end=str(end))
+    return finish(out_dir(manifest_path, "multi"), "multi", result["manifest"]["id"], result, folds,
+                  montecarlo.pnl_bootstrap(curves, paths, seed, block), config, started, seed, spy=spy)
+
+
+def run_options(manifest_path, paths, seed, block, today=None):
+    """today: the as-of date (settled expiries before it); pinning it reuses the option cache built on that day."""
     import options_bt as ob
     import options_data as od
     started = time.perf_counter()
     m = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
-    today, start = date.today(), date.fromisoformat(m["start"])
+    today, start = today or date.today(), date.fromisoformat(m["start"])
     closes = od.underlying_closes(m["data"]["underlying"], start, today - timedelta(days=1))
     expiries = ob.monthly_expiries(set(closes), start, today - timedelta(days=1))
     contracts = lambda e, k, lo, hi: od.contracts(m["data"]["underlying"], e, k, lo, hi, today)
@@ -117,13 +160,17 @@ def main(argv=None):
     parser.add_argument("--start", type=date.fromisoformat, default=date(2016, 1, 1))
     parser.add_argument("--end", type=date.fromisoformat, default=date(2026, 1, 1), help="Exclusive")
     parser.add_argument("--stress-paths", type=int, default=20, help="existing execution-stress paths (single instrument)")
+    parser.add_argument("--today", type=date.fromisoformat, default=None,
+                        help="options only: as-of date (default today); pin it to reuse an earlier option cache")
     args = parser.parse_args(argv)
     m = json.loads(args.manifest.read_text(encoding="utf-8"))
     if "cadence" in m:
         run_xs(args.manifest, args.start, date(2026, 11, 1) if args.end == date(2026, 1, 1) else args.end,
                args.paths or 200, args.seed, args.block)
     elif m.get("runner") == "options_bt.py":
-        run_options(args.manifest, args.paths or 1000, args.seed, args.block)
+        run_options(args.manifest, args.paths or 1000, args.seed, args.block, args.today)
+    elif "symbols" in m.get("data", {}):
+        run_multi(args.manifest, args.start, args.end, args.paths or 1000, args.seed, args.block)
     else:
         run_single(args.manifest, args.start, args.end, args.paths or 1000, args.seed, args.block, args.stress_paths)
 

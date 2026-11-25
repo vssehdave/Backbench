@@ -161,7 +161,8 @@ class Output(unittest.TestCase):
         b = study(fixture(), lambda h, p: 1, [0], 1, 0, 42, date(2022, 7, 1), date(2023, 1, 1))
         folds = report.folds_of("harness", dict(config=dict(symbol="SPY"), folds=a), dict(folds=b))
         with tempfile.TemporaryDirectory() as tmp:
-            report.write_report(tmp, "harness", "t", dict(folds=a), m.summary()["mode_a"], folds, seed=3)
+            spy = {r[0]: r[2] for r in fixture()}
+            report.write_report(tmp, "harness", "t", dict(folds=a), m.summary()["mode_a"], folds, seed=3, spy=spy)
             names = {p.name for p in Path(tmp).iterdir()}
             for n in ("report.json", "REPORT.md", "trades_all.csv", "trades_best_day.md", "trades_worst_day.md",
                       "trades_random_day.md", "equity.svg", "trades_best_day.csv", "trades_worst_day.csv", "trades_random_day.csv"):

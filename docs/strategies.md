@@ -35,6 +35,8 @@ Single-instrument runs are long-only unless the manifest opts in with `"allow_sh
 
 ## Catalog multi-asset runs
 
-`catalog_run.py` runs a rule over several symbols (OHLCV from Alpaca or Kraken via `catalog_data.py`) with the same folds, fees, fills and borrow charge as `harness.py`, without changing it. Rules live in `catalog_rules.py`; each catalog folder's `multi*.json` and `multi*.results.json` hold the manifest and results. See `strategies/catalog/INDEX.md` for status and the proxies used.
+`catalog_run.py` runs a rule over several symbols (OHLCV from Alpaca or Kraken via `catalog_data.py`) with the same fees, fills and borrow charge as `harness.py`, without changing it: one continuous run start..end, walk-forward only if the manifest sets `walk_forward`. Rules live in `catalog_rules.py`; each catalog folder's `multi*.json` holds the manifest.
+
+`python catalog_report.py` runs every catalog folder that has a manifest (`manifest*.json` harness, `multi*.json`, `xs_manifest.json` via `strategies/xs/run_catalog.py`, `options_manifest*.json`), writes the standard report for each to `<folder>/results/<variant>/`, checks fills and the SPY drawdown, lists folders without a manifest as skipped, and regenerates `strategies/catalog/INDEX.md`.
 
 Monte Carlo drawdown distributions: `python money.py mc <manifest>`, see docs/monte-carlo.md.
