@@ -1,6 +1,7 @@
 {
   "id": "cat-4.5",
   "version": "1",
+  "start": "2017-06-01",
   "entry": "catalog_rules:letf",
   "data": {
     "kind": "alpaca",

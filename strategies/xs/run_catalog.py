@@ -1,24 +1,26 @@
-"""Run every catalog xs strategy on one cached S&P 500 panel and one ETF panel; write xs_results.json per folder.
+"""Run every xs strategy (catalog xs_manifest.json files and strategies/xs/*.json) with the standard report and Monte Carlo.
 
-python strategies/xs/run_catalog.py   (run from the repo root; needs the cached data/ or Alpaca keys)
-Results are survivorship-biased and each carries the strategy's LABELS. Equity curves and decision logs are dropped to
-keep the committed files small; rerun the script to regenerate them (or use `python money.py xs <manifest>`).
+python strategies/xs/run_catalog.py [--paths 200]   (run from the repo root; needs the cached data/ or Alpaca keys)
+One S&P 500 panel and one ETF panel per tradable set are shared. Each folder gets results/ (REPORT.md, report.json,
+equity.svg, trade logs) and mc_results.json, as `python money.py mc <manifest>` writes them. Stock results are
+survivorship-biased; report.json carries the strategy's LABELS.
 """
-import json
-import statistics
+import argparse
 import sys
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
+import mc_runs  # noqa: E402
 import xs_data  # noqa: E402
 import xsection  # noqa: E402
 
 CATALOG = ROOT / "strategies" / "catalog"
 SECTORS = ["XLB", "XLC", "XLE", "XLF", "XLI", "XLK", "XLP", "XLRE", "XLU", "XLV", "XLY"]
 FACTORS = ["SPY", "IWM", "IVE", "IVW", "MTUM"]
-START, END, FETCH = date(2016, 1, 1), date(2026, 11, 1), date(2015, 1, 1)
+# Alpaca SIP bars begin 2016-01-04, so 2016 is the warm-up year for the 252-session lookbacks.
+START, END, FETCH = date(2017, 1, 1), date(2026, 11, 1), date(2015, 1, 1)
 
 
 def etf_panel(tradable, data_dir=ROOT / "data" / "alpaca_xs"):
@@ -43,49 +45,39 @@ def etf_panel(tradable, data_dir=ROOT / "data" / "alpaca_xs"):
     return panel
 
 
-def summarize(report):
-    traded = [f for f in report["folds"] if f["decisions"] > 0]
-    out = dict(folds_total=len(report["folds"]), folds_traded=len(traded))
-    if not traded:
-        return out
-    pick = {"strategy": lambda f: f["strategy"], "equal_weight": lambda f: f["benchmarks"]["equal_weight_universe"],
-            "spy": lambda f: f["benchmarks"]["spy"], "cash": lambda f: f["benchmarks"]["cash"]}
-    for name, get in pick.items():
-        r = [get(f)["total_return"] for f in traded]
-        s = [get(f)["sharpe"] for f in traded if get(f)["sharpe"] is not None]
-        out[name] = dict(mean_return=statistics.fmean(r), median_return=statistics.median(r),
-                         mean_sharpe=statistics.fmean(s) if s else None)
-    out["mean_cost_drag"] = statistics.fmean(f["cost_drag"] for f in traded)
-    out["mean_turnover_per_year"] = statistics.fmean(f["turnover_per_year"] for f in traded)
-    return out
-
-
-def main():
-    sp = xs_data.build_panel(FETCH, END, log=print)
-    etf_sets = {}
-    rows = []
+def manifests():
+    """[(manifest, tradable ETFs or None for the S&P 500 panel)]: every catalog xs_manifest.json, then strategies/xs."""
+    out = []
     for manifest in sorted(CATALOG.glob("*/xs_manifest.json")):
-        folder = manifest.parent
-        is_etf = folder.name.startswith("4.")
-        if is_etf:
-            tradable = SECTORS + (["GLD"] if folder.name.startswith("4.1.2") else [])
-            key = tuple(tradable)
-            etf_sets.setdefault(key, etf_panel(tradable))
-            panel = etf_sets[key]
+        name = manifest.parent.name
+        tradable = SECTORS + (["GLD"] if name.startswith("4.1.2") else []) if name.startswith("4.") else None
+        out.append((manifest, tradable))
+    return out + [(m, None) for m in sorted(Path(__file__).parent.glob("*.json")) if not m.stem.startswith("mc_results")]
+
+
+def main(argv=None):
+    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    p.add_argument("--paths", type=int, default=200)
+    p.add_argument("--slow-paths", type=int, default=100, help="paths for the names given in --slow")
+    p.add_argument("--slow", nargs="*", default=[], help="folder or file stems that get --slow-paths")
+    p.add_argument("--only", nargs="*", default=None, help="run only these folder or file stems")
+    args = p.parse_args(argv)
+    todo = [(m, t) for m, t in manifests()
+            if args.only is None or (m.parent.name if m.parent.parent == CATALOG else m.stem) in args.only]
+    sp, etf_sets = None, {}
+    for manifest, tradable in todo:
+        key = manifest.parent.name if manifest.parent.parent == CATALOG else manifest.stem
+        if tradable:
+            if tuple(tradable) not in etf_sets:
+                etf_sets[tuple(tradable)] = etf_panel(tradable)
+            panel = etf_sets[tuple(tradable)]
         else:
+            sp = sp or xs_data.build_panel(FETCH, END, log=print)
             panel = sp
-        report = xsection.run(manifest, START, END, panel)
-        labels = xsection.load_manifest(manifest)[1][0].__globals__["LABELS"] + ["survivorship-biased"]
-        for f in report["folds"]:
-            f.pop("equity"), f.pop("bench_equity"), f.pop("decision_log")
-        report["labels"] = sorted(set(labels))
-        report["summary"] = summarize(report)
-        if is_etf:
-            report["data"]["survivorship"] = None
-        (folder / "xs_results.json").write_text(json.dumps(report, indent=1, default=str), encoding="utf-8")
-        rows.append((folder.name, report["summary"]))
-        print(folder.name, json.dumps(report["summary"], default=str)[:400], flush=True)
-    return rows
+        labels = xsection.load_manifest(manifest)[1][0].__globals__.get("LABELS", [])
+        labels = sorted(set(labels + ([] if tradable else ["survivorship-biased"])))
+        mc_runs.run_xs(manifest, START, END, args.slow_paths if key in args.slow else args.paths, 0, 20., panel,
+                       dict(labels=labels))
 
 
 if __name__ == "__main__":

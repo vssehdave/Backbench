@@ -1,6 +1,8 @@
 {
   "id": "cat-3.14-btc",
   "version": "1",
+  "start": "2024-12-05",
+  "end": "2026-11-23",
   "entry": "catalog_rules:pivot",
   "data": {
     "kind": "kraken",

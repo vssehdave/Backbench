@@ -19,7 +19,7 @@ COLUMNS = ["fold", "date", "when", "symbol", "side", "quantity", "price", "fees"
 def _fill(f, engine, state):
     """One normalized fill. state is {symbol: position} and is updated in place."""
     symbol = f.get("symbol", "position")
-    if engine == "harness":
+    if engine in ("harness", "multi"):
         before = state.get(symbol, 0)
         after = before + f["quantity"]
         side = "buy" if f["quantity"] > 0 else "sell"
@@ -44,12 +44,18 @@ def folds_of(engine, result, bench=None):
                      fills=result["fills"], borrow={}, bench_name="underlying buy and hold")]
     out = []
     for i, f in enumerate(result["folds"]):
-        if engine == "harness":
+        if engine == "harness":  # its buy_and_hold control keeps part of the cash, so it is not the SPY row
             other = bench["folds"][i]["equity"]
             symbol = result["config"]["symbol"]
             out.append(dict(label=f["forward_start"], dates=f["dates"], equity=[10000.] + f["equity"],
                             bench=[10000.] + other, fills=[dict(t, symbol=symbol) for t in f["fills"]],
-                            borrow=f["borrow"], bench_name="SPY"))
+                            borrow=f["borrow"], bench_name="benchmark (harness buy and hold, part cash)"))
+        elif engine == "multi":
+            # Weight 1.0 is half the cash, so the benchmark is not plain SPY; beta and alpha need the spy closes.
+            units = ", ".join(f"{s} {w:g}" for s, w in result["manifest"]["benchmark"].items())
+            out.append(dict(label=f["forward_start"], dates=f["dates"], equity=[10000.] + f["equity"],
+                            bench=[10000.] + f["bench_equity"], fills=f["fills"], borrow={},
+                            bench_name=f"benchmark ({units} unit)"))
         else:
             b = f["bench_equity"].get("spy") or f["bench_equity"]["equal_weight_universe"]
             name = "SPY" if f["bench_equity"].get("spy") else "equal-weight universe"
@@ -270,7 +276,8 @@ def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, s
     picks = pick_days(days, seed)
     metrics = standard_metrics(days, spy)
     (out / "equity.svg").write_text(equity_svg(*curves(days)), encoding="utf-8")
-    report = dict(name=name, engine=engine, metrics=metrics, result=result, monte_carlo=mc, **(extra or {}))
+    report = dict(name=name, engine=engine, fills=len(fills), metrics=metrics, result=result, monte_carlo=mc,
+                  **(extra or {}))
     (out / "report.json").write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
     write_csv(out / "trades_all.csv", fills)
     for key, d in picks.items():

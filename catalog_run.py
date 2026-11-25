@@ -1,7 +1,8 @@
-"""Multi-symbol OHLCV walk-forward for catalog rules. Run with python catalog_run.py --help.
+"""Multi-symbol OHLCV backtest for catalog rules. Run with python catalog_run.py --help; the standard report and Monte
+Carlo come from python money.py mc <multi manifest>.
 
-Same folds (6 months train, 6 months forward, 12-month steps), fee model, next-open fills, borrow accrual and margin
-guard as harness.py; rules see full OHLCV history of every symbol (including data before the first train window).
+Same windows (one continuous run start..end, or opt-in "walk_forward"), fee model, next-open fills, borrow accrual and
+margin guard as harness.py; rules see full OHLCV history of every symbol (including data before start).
 A rule is decide(hist, level) -> None (hold) | weights {symbol: float}. Weight 1.0 is a 5,000 USD unit (half of the
 10,000 USD start cash, as in the single-instrument catalog runs). Shares are fixed between changes of the weights;
 return Rebalance(weights) to re-size at the open even when the weights are unchanged.
@@ -76,8 +77,8 @@ def replay(bars, decide, level, state, hist, warmup=0, short=None, spot=None, lo
                         continue
                     cash -= debit
                     lots[s] = target[s]
-                    fills.append(dict(date=str(day), symbol=s, lots=delta, price=opens[s], commission=commission,
-                                      regulatory=regulatory))
+                    fills.append(dict(date=str(day), symbol=s, lots=delta, quantity=delta * lot, price=opens[s],
+                                      commission=commission, regulatory=regulatory))
         for s in symbols:
             hist[s].append(bars[s][i])
         marked = cash + sum(lots[s] * lot * closes[s] for s in symbols)
@@ -87,8 +88,8 @@ def replay(bars, decide, level, state, hist, warmup=0, short=None, spot=None, lo
                     commission, regulatory = (spot.commission(lots[s] * lot * closes[s]), 0.) if spot \
                         else harness.fees(-lots[s], closes[s])
                     cash += lots[s] * lot * closes[s] - commission - regulatory
-                    fills.append(dict(date=str(day), symbol=s, lots=-lots[s], price=closes[s], commission=commission,
-                                      regulatory=regulatory, forced=True))
+                    fills.append(dict(date=str(day), symbol=s, lots=-lots[s], quantity=-lots[s] * lot, price=closes[s],
+                                      commission=commission, regulatory=regulatory, forced=True))
                     lots[s] = 0
             wiped, marked = True, cash
             if log is not None:
@@ -101,39 +102,37 @@ def hold(weights):
     return lambda hist, level: weights
 
 
-def study(rows, decide, levels, bench_weights, start, end, warmup=0, short=None, spot=None):
+def study(rows, decide, levels, bench_weights, start, end, warmup=0, short=None, spot=None, walk_forward=None):
+    """One continuous run over start..end with levels[0] (as harness.study), or with walk_forward tiled test windows
+    that each pick a level on their own training window."""
     rows = align(rows)
     first = next(iter(rows))
-    days = [r[0] for r in rows[first]]
     folds = []
-    while harness.months_after(start, 12) <= end:
-        split = harness.months_after(start, 6)
-        stop = harness.months_after(split, 6)
+    for train_start, split, stop in harness.windows(start, end, walk_forward):
 
         def cut(lo, hi):
             return {s: [r for r in v if lo <= r[0] < hi] for s, v in rows.items()}, {s: [r for r in v if r[0] < lo] for s, v in rows.items()}
 
-        train, before_train = cut(start, split)
+        train, before_train = cut(train_start, split)
         forward, before_forward = cut(split, stop)
-        if not train[first] or not forward[first]:
+        if not forward[first] or (walk_forward and not train[first]):
             raise ValueError("Empty training or forward window")
-        scores = {p: replay(train, decide, p, (START_CASH, {}), before_train, warmup, short, spot)[1][-1] for p in levels}
-        best = max(levels, key=scores.get)
+        # Without walk-forward there is nothing to select: the first level runs.
+        scores = {p: replay(train, decide, p, (START_CASH, {}), before_train, warmup, short, spot)[1][-1]
+                  for p in (levels if walk_forward else [])}
+        best = max(levels, key=scores.get) if walk_forward else levels[0]
         log = {"abstentions": 0, "forced_closes": 0}
         _, equity, fills = replay(forward, decide, best, (START_CASH, {}), before_forward, warmup, short, spot, log)
         sensitivity = {p: replay(forward, decide, p, (START_CASH, {}), before_forward, warmup, short, spot)[1][-1] / START_CASH - 1
                        for p in levels}
-        bench = replay(forward, hold(bench_weights), None, (START_CASH, {}), before_forward, 0, None, spot)[1][-1]
+        bench = replay(forward, hold(bench_weights), None, (START_CASH, {}), before_forward, 0, None, spot)[1]
         folds.append(dict(forward_start=str(split), end_exclusive=str(stop), selected=best,
                           train_scores={p: v / START_CASH - 1 for p, v in scores.items()}, sensitivity=sensitivity,
-                          forward_return=equity[-1] / START_CASH - 1, benchmark_return=bench / START_CASH - 1,
+                          forward_return=equity[-1] / START_CASH - 1, benchmark_return=bench[-1] / START_CASH - 1,
                           abstentions=log["abstentions"], forced_closes=log["forced_closes"],
                           rejected=log.get("rejected", 0), buys=sum(f["lots"] > 0 for f in fills),
                           sells=sum(f["lots"] < 0 for f in fills), max_drawdown=harness.max_drawdown(equity, START_CASH),
-                          equity=equity, fills=fills))
-        start = stop
-    if not folds:
-        raise ValueError("Supply at least twelve complete calendar months")
+                          dates=[str(r[0]) for r in forward[first]], equity=equity, bench_equity=bench, fills=fills))
     return folds
 
 
@@ -156,6 +155,8 @@ def load_manifest(path):
         raise ValueError(f"{path}: levels must be non-empty and benchmark symbols must be in data.symbols")
     if "borrow_bps_per_year" in m and not m.get("allow_short"):
         raise ValueError(f"{path}: borrow_bps_per_year needs allow_short")
+    if "walk_forward" in m and harness.check_walk_forward(m["walk_forward"]):
+        raise ValueError(f"{path}: {harness.check_walk_forward(m['walk_forward'])}")
     return m
 
 
@@ -179,7 +180,8 @@ def run(manifest_path, start, end):
     first = min(r[0][0] for r in rows.values()), max(r[0][0] for r in rows.values())
     if first[1] > start + timedelta(days=7) or max(r[-1][0] for r in rows.values()) < end - timedelta(days=8):
         raise ValueError(f"Data does not cover {start}..{end}; latest first bar {first[1]}")
-    folds = study(rows, decide, manifest["levels"], manifest["benchmark"], start, end, manifest["warmup"], short, spot)
+    folds = study(rows, decide, manifest["levels"], manifest["benchmark"], start, end, manifest["warmup"], short, spot,
+                  manifest.get("walk_forward"))
     return dict(manifest=manifest, config=dict(start=str(start), end=str(end)),
                 data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                 execution_contract=dict(engine_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),

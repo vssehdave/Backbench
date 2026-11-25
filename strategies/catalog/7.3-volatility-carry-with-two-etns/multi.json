@@ -1,6 +1,7 @@
 {
   "id": "cat-7.3",
   "version": "1",
+  "start": "2018-02-01",
   "entry": "catalog_rules:vol_carry",
   "data": {
     "kind": "alpaca",
