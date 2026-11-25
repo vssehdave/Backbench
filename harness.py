@@ -58,8 +58,29 @@ def fees(delta, price):
 
 
 def months_after(start, months):
-    month = start.month + months
-    return date(start.year + (month > 12), (month - 1) % 12 + 1, 1)
+    year, month = divmod(start.month - 1 + months, 12)
+    return date(start.year + year, month + 1, 1)
+
+
+def check_walk_forward(spec):
+    """None for a valid manifest "walk_forward" value, else the problem."""
+    if not (isinstance(spec, dict) and set(spec) == {"train_months", "test_months"}
+            and all(type(v) is int and v > 0 for v in spec.values())):
+        return "walk_forward must give positive integer train_months and test_months"
+
+
+def windows(start, end, walk_forward=None):
+    """(train_start, test_start, test_stop) triples. Default: one window testing start..end on everything before
+    start. With walk_forward the test windows are test_months long, follow each other with no gap and tile start..end;
+    each trains on the train_months just before its own start."""
+    if not walk_forward:
+        return [(date.min, start, end)]
+    out, split = [], start
+    while split < end:
+        stop = min(months_after(split, walk_forward["test_months"]), end)
+        out.append((months_after(split, -walk_forward["train_months"]), split, stop))
+        split = stop
+    return out
 
 
 def replay(rows, strategy, level, state, history, seed=None, shock_bps=0, stress=None, spot=None, log=None,
@@ -147,8 +168,11 @@ def trend_attribution(train, forward, equity, starting_equity):
 
 
 def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_config=StressConfig(), spot=None, short=None,
-          mc=None):
-    """mc is an optional montecarlo hook: mc(fold, rows, train, forward, run) re-runs this fold on synthetic paths."""
+          mc=None, walk_forward=None):
+    """One continuous run over start..end with levels[0], warmed up on the rows before start; or, with walk_forward
+    (for strategies that fit a model), tiled out-of-sample windows that pick a level on their training window.
+
+    mc is an optional montecarlo hook: mc(fold, rows, train, forward, run) re-runs this fold on synthetic paths."""
     if not rows or any(not all(math.isfinite(x) and x > 0 for x in r[1:]) for r in rows):
         raise ValueError("Expected positive finite OHLC observations")
     dates = [r[0] for r in rows]
@@ -159,30 +183,29 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
         if sum(start <= day < end for day in dates) != expected:
             raise ValueError("Spot replay requires a bar for every UTC date in the requested interval")
     results = []
-    while months_after(start, 12) <= end:
-        split = months_after(start, 6)
-        stop = months_after(split, 6)
+    for start, split, stop in windows(start, end, walk_forward):
         train = [r for r in rows if start <= r[0] < split]
         forward = [r for r in rows if split <= r[0] < stop]
         if not train or not forward:
-            raise ValueError("Empty training or forward window")
+            raise ValueError("Empty training or forward window; supply rows before the start date to warm up")
         fit = getattr(strategy, "fit", None)
         decide = strategy.decide if fit else strategy
         selection_rows = train
         warmup = []
         prefix = []
         if fit:
-            inner_cut = months_after(start, 3)
+            inner_cut = months_after(train[0][0], 3)
             prefix = [r for r in train if r[0] < inner_cut]
             selection_rows = [r for r in train if r[0] >= inner_cut]
             if not prefix or not selection_rows:
                 raise ValueError("Fitted strategies require observations in both training halves")
             warmup = [r[2] for r in prefix]
+        candidates = levels if walk_forward else levels[:1]  # without walk-forward there is nothing to select
         scores = {}
-        for p in levels:
+        for p in candidates:
             parameter = fit(tuple(prefix), p) if fit else p
             scores[p] = replay(selection_rows, decide, parameter, (10000., 0), warmup, spot=spot, short=short)[1][-1]
-        best = max(levels, key=scores.get)
+        best = max(candidates, key=scores.get)
         # Fit using only this batch. Each artifact must be immutable and decisions pure.
         artifacts = {p: fit(tuple(train), p) if fit else p for p in levels}
         history = [r[2] for r in train]
@@ -209,7 +232,7 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
         if mc:
             mc(len(results), rows, train, forward, lambda path: [opening_state[0]] + replay(
                 path, decide, artifacts[best], opening_state, history, spot=spot, short=short)[1])
-        results.append(dict(train_start=str(start), forward_start=str(split), end_exclusive=str(stop),
+        results.append(dict(train_start=str(train[0][0]), forward_start=str(split), end_exclusive=str(stop),
                             selected=best, train_scores=scores, sensitivity=neighbours,
                             train_return=train_return, forward_return=forward_return,
                             selection_start=str(selection_rows[0][0]), selection_return=selection_return,
@@ -220,9 +243,6 @@ def study(rows, strategy, levels, paths, shock_bps, seed, start, end, stress_con
                             trend_regimes=trend_attribution(train, forward, equity, opening_state[0]),
                             equity=equity, fills=fills, scenarios=scenarios,
                             dates=[str(r[0]) for r in forward], borrow=log.get("borrow", {})))
-        start = stop
-    if not results:
-        raise ValueError("Supply at least twelve complete calendar months")
     return results
 
 
@@ -248,7 +268,7 @@ def main():
     parser.add_argument("--spot-fee-bps", type=float, help="Assumed spot fee per side, charged in USD")
     parser.add_argument("--spot-lot", type=float, help="Base asset units per lot")
     parser.add_argument("--spot-min-usd", type=float, help="Minimum eligible order value in USD")
-    parser.add_argument("--start", type=date.fromisoformat, default=date(2022, 1, 1))
+    parser.add_argument("--start", type=date.fromisoformat, default=date(2022, 7, 1), help="First test session; earlier rows only warm up")
     parser.add_argument("--end", type=date.fromisoformat, default=date(2024, 1, 1), help="Exclusive")
     parser.add_argument("--out", type=Path, default=Path("run.json"))
     args = parser.parse_args()
@@ -287,7 +307,7 @@ def main():
         if args.symbol == "FIXTURE":
             parser.error("--alpaca requires --symbol")
         try:
-            rows, quality = daily_from_alpaca(args.symbol, args.start, args.end, "sip", args.alpaca_dir,
+            rows, quality = daily_from_alpaca(args.symbol, months_after(args.start, -12), args.end, "sip", args.alpaca_dir,
                                               args.allow_splits)
         except (ValueError, RuntimeError) as exc:
             parser.error(str(exc))

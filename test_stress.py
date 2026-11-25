@@ -30,7 +30,7 @@ class StressChecks(unittest.TestCase):
     def test_neighbours_use_prefitted_artifacts_and_repeat(self):
         data = fixture()
         def run(config):
-            return study(data, MeanThreshold, [-1, 0, 1], 12, 0, 1, date(2022,1,1),
+            return study(data, MeanThreshold, [-1, 0, 1], 12, 0, 1, date(2022,7,1),
                          date(2023,1,1), config)[0]
         result = run(StressConfig(neighbour_steps=1))
         paths = result["scenarios"]

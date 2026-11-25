@@ -1,9 +1,9 @@
-# Worst day: 2025-10-10 (fold 2025-07-01)
+# Worst day: 2026-03-03 (fold 2016-06-01)
 
-- Strategy P&L: -30,392.81 USD (-2.840%)
-- Benchmark move that day: -2.703%
+- Strategy P&L: -46,727.93 USD (-2.708%)
+- Benchmark move that day: -0.881%
 - Borrow charged: 0.0000 USD
-- Position before: DBC +1.635e+04, EEM +6,738, VTI +1,093
-- Position after: DBC +1.635e+04, EEM +6,738, VTI +1,093
+- Position before: EEM +9,404, EFA +5,658, SHY +7,116
+- Position after: EEM +9,404, EFA +5,658, SHY +7,116
 
 No fills that day.

@@ -159,10 +159,6 @@ class Engine(unittest.TestCase):
         self.assertEqual([str(dates[x]) for x in i], ["2024-01-29", "2024-01-31"])
         w = xs.decision_indexes(dates, 0, 11, "weekly")
         self.assertEqual([str(dates[x]) for x in w], ["2024-01-29", "2024-02-02", "2024-02-09"])
-        schedule = list(xs.folds(date(2016, 1, 1), date(2026, 11, 1)))
-        self.assertEqual(len(schedule), 10)
-        self.assertEqual(schedule[0], (date(2016, 1, 1), date(2016, 7, 1), date(2017, 1, 1)))
-        self.assertEqual(schedule[-1][2], date(2026, 1, 1))
 
 
 class Study(unittest.TestCase):
@@ -172,18 +168,18 @@ class Study(unittest.TestCase):
         self.panel = panel_of(self.dates, self.adj)
         self.levels = [dict(), dict(flip=True)]
 
-    def go(self, fit=None):
+    def go(self, fit=None, start=date(2024, 1, 1), **kw):
         def decide(seen, params):
             w = momentum_pick(seen, params)
             return {s: -x for s, x in w.items()} if params.get("flip") else w
-        return xs.study(self.panel, (decide, fit), self.levels, LOOSE, Costs(), "monthly", date(2024, 1, 1),
-                        date(2025, 1, 1))
+        return xs.study(self.panel, (decide, fit), self.levels, LOOSE, Costs(), "monthly", start,
+                        date(2025, 1, 1), **kw)
 
     def test_rerun_is_deterministic(self):
         first, second = self.go(), self.go()
         self.assertEqual(json.dumps(first, default=str), json.dumps(second, default=str))
         self.assertEqual(len(first), 1)
-        self.assertEqual(first[0]["test_start"], "2024-07-01")
+        self.assertEqual(first[0]["test_start"], "2024-01-01")
         self.assertEqual(first[0]["benchmarks"]["cash"]["total_return"], 0.0)
         self.assertEqual(len(first[0]["equity"]), len(first[0]["bench_equity"]["spy"]))
 
@@ -195,8 +191,27 @@ class Study(unittest.TestCase):
             return level
 
         self.go(fit)
-        self.assertEqual(seen[-1], date(2024, 6, 28))  # the last session before the test window
-        self.assertTrue(all(d < date(2024, 7, 1) for d in seen))
+        self.assertEqual(seen, [date(2023, 12, 29)])  # fitted once, on the last session before the test start
+        seen.clear()
+        self.go(fit, date(2024, 4, 1), walk_forward=self.WF)
+        self.assertEqual(seen[-1], date(2024, 9, 30))  # the last session before the last test window
+        self.assertTrue(all(d < date(2024, 10, 1) for d in seen))
+
+    WF = {"train_months": 6, "test_months": 6}
+
+    def test_continuous_run_covers_every_session(self):
+        fold = self.go()[0]
+        expected = [str(d) for d in self.dates if date(2023, 12, 29) <= d < date(2025, 1, 1)]
+        self.assertEqual(fold["dates"], expected)  # the baseline close, then every session of 2024
+        self.assertEqual(fold["selected_level"], self.levels[0])
+
+    def test_walk_forward_windows_tile_the_period(self):
+        folds = self.go(start=date(2024, 4, 1), walk_forward=self.WF)
+        self.assertEqual([(f["test_start"][:7], f["test_end"][:7]) for f in folds], [("2024-04", "2024-09"), ("2024-10", "2024-12")])
+        stitched = [d for f in folds for d in f["dates"][1:]]
+        self.assertEqual(stitched, [str(d) for d in self.dates if date(2024, 4, 1) <= d < date(2025, 1, 1)])
+        for f in folds:
+            self.assertLess(f["selection_start"], f["test_start"])
 
 
 class Strategies(unittest.TestCase):

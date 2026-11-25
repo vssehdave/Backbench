@@ -14,7 +14,7 @@ from spot import Spot, spot_fixture
 from stress import StressConfig
 
 FIELDS = {"id", "version", "entry", "data", "calendar", "warmup", "levels", "costs", "benchmark", "max_exposure"}
-OPTIONAL = {"allow_short", "borrow_bps_per_year"}
+OPTIONAL = {"allow_short", "borrow_bps_per_year", "walk_forward"}
 BORROW_BPS = 50.  # annual, same general-collateral default as xsection.Costs
 KINDS = {"fixture": "xnys", "spot_fixture": "utc24", "alpaca": "xnys", "kraken": "utc24"}
 START_CASH = 10000.
@@ -55,6 +55,8 @@ def load_manifest(path):
             errors.append("levels must be a non-empty list of finite numbers")
         elif len(set(levels)) != len(levels):
             errors.append("levels must be distinct")
+    if "walk_forward" in m and harness.check_walk_forward(m["walk_forward"]):
+        errors.append(harness.check_walk_forward(m["walk_forward"]))
     if "allow_short" in m and type(m["allow_short"]) is not bool:
         errors.append("allow_short must be true or false")
     if "borrow_bps_per_year" in m:
@@ -162,7 +164,7 @@ def load_rows(manifest, start, end):
         rows, quality = daily_from_kraken(manifest["data"]["symbol"])
         return rows, "kraken_ohlc", quality
     from alpaca_bars import daily_from_alpaca
-    rows, quality = daily_from_alpaca(manifest["data"]["symbol"], start, end, "sip", Path("data/alpaca"), False)
+    rows, quality = daily_from_alpaca(manifest["data"]["symbol"], harness.months_after(start, -12), end, "sip", Path("data/alpaca"), False)
     return rows, "alpaca_sip_raw", quality
 
 
@@ -177,7 +179,7 @@ def run_test(manifest, start, end, paths, shock_bps, seed, mc=None):
                   shock_bps=shock_bps, strategy=manifest["id"], levels=manifest["levels"],
                   calendar=manifest["calendar"])
     folds = harness.study(rows, Plugin(manifest), manifest["levels"], paths, shock_bps, seed, start, end,
-                          StressConfig(), spot, short_rate(manifest), mc)
+                          StressConfig(), spot, short_rate(manifest), mc, manifest.get("walk_forward"))
     return dict(config=config, manifest=manifest, data_sha256=hashlib.sha256(repr(rows).encode()).hexdigest(),
                 execution_contract=dict(engine_sha256=harness.engine_digest(),
                                         fee_profile=spot.profile if spot else harness.FEE_PROFILE,

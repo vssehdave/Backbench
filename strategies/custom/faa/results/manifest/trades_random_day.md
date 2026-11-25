@@ -1,13 +1,13 @@
-# Random day: 2025-07-01 (fold 2025-07-01)
+# Random day: 2025-06-02 (fold 2016-06-01)
 
-- Strategy P&L: -550.13 USD (-0.055%)
-- Benchmark move that day: -0.033%
+- Strategy P&L: +3,491.92 USD (+0.252%)
+- Benchmark move that day: +0.562%
 - Borrow charged: 0.0000 USD
-- Position before: flat
-- Position after: AGG +3,560, EEM +7,032, SHY +4,240
+- Position before: AGG +4,907, EFA +5,665, SHY +5,810
+- Position after: AGG +5,025, EFA +5,427, SHY +5,923
 
 | when | symbol | side | quantity | price | fees USD | position before | position after | reason |
 |---|---|---|---|---|---|---|---|---|
-| 2025-07-01 close | AGG | buy | 3,374 | 98.7900 | 178.4864 | 0 | 3,560 | rebalance to target weight +0.3333 |
-| 2025-07-01 close | EEM | buy | 6,897 | 48.3300 | 190.8270 | 0 | 7,032 | rebalance to target weight +0.3333 |
-| 2025-07-01 close | SHY | buy | 4,040 | 82.5100 | 180.8185 | 0 | 4,240 | rebalance to target weight +0.3333 |
+| 2025-06-02 close | AGG | buy | 111.6 | 97.5200 | 5.8311 | 4,907 | 5,025 | rebalance to target weight +0.3333 |
+| 2025-06-02 close | EFA | sell | -225.7 | 89.7600 | 11.3353 | 5,665 | 5,427 | rebalance to target weight +0.3333 |
+| 2025-06-02 close | SHY | buy | 107.2 | 82.3100 | 4.7858 | 5,810 | 5,923 | rebalance to target weight +0.3333 |

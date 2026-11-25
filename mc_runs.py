@@ -51,8 +51,8 @@ def run_single(manifest_path, start, end, paths, seed, block, stress_paths):
     runs["benchmark full history (mode B)"] = montecarlo.pnl_bootstrap(
         {"b": full}, paths, seed, block)["b"]
     folds = report.folds_of("harness", results["strategy"], results["benchmark"])
-    config = dict(note="Max drawdown is on the forward windows chained into one equity curve per path; windows are the "
-                       "six months after each selection half, 12-month steps, so the gaps between them are not in the curve.",
+    config = dict(note="Max drawdown is on the continuous backtest from start to end (or, with walk_forward, the contiguous test "
+                       "windows chained into one equity curve per path).",
                   mode="A: path rerun on bootstrapped bars", paths=paths, seed=seed, mean_block=block, start=str(start),
                   end=str(end), stress_paths=stress_paths)
     return finish(out_dir(manifest_path, "harness"), "harness", manifest["id"], results["strategy"], folds, runs,
@@ -78,8 +78,8 @@ def run_xs(manifest_path, start, end, paths, seed, block):
         else summary["mode_a"]
     runs.pop("spy", None)
     folds = report.folds_of("xsection", result)
-    config = dict(note="Max drawdown is on the forward windows chained into one equity curve per path; the gaps between "
-                       "windows (12-month steps) are not in the curve.",
+    config = dict(note="Max drawdown is on the continuous backtest (or, with walk_forward, the contiguous test windows "
+                       "chained into one equity curve per path).",
                   mode="A: path rerun on jointly bootstrapped dates", paths=paths, seed=seed, mean_block=block,
                   start=str(start), end=str(end))
     return finish(out_dir(manifest_path, "xsection"), "xsection", result["manifest"]["id"], result, folds, runs, config,
