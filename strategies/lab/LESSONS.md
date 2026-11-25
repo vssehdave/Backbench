@@ -66,3 +66,12 @@ LOG.md. SPY buy and hold on the lab panel: 2016-2023 CAGR 13.2%, Sharpe 0.78, ma
   1.07, Sortino to 1.48 and MC p95 DD rose to 29.7%. Adding SSO also raised beta to 0.90. Lesson: a slow trend brake
   helps against slow bears only and costs in V-shaped shocks; the in-sample period had more slow bears than the
   holdout. A brake must react to volatility (fast) rather than price trend (slow), or not exist.
+
+- **05 (inverse-vol QLD/GLD, weekly, 20-day vol target 12%, rest in SHY), WIN.** Holdout CAGR 21.2%, Sharpe 1.48,
+  Sortino 2.11, alpha +10.6%, beta 0.57, maxDD -12.3%, MC p95 DD 20.9% (SPY 25.1%); traded every week (446 fills).
+  Why it works: (1) gold is the diversifier that paid in both periods; (2) leverage inside a 2x ETF is cheap;
+  (3) a 20-day vol scaler reacts in days, and because it keys off volatility rather than price it re-levers as vol
+  calms, even without a new high, so it did not miss the rebound the way 04's 200-day filter did. Cost: turnover
+  5.5x a year (0.28%/yr in costs), which is affordable. Honest caveat: the 03 -> 04 -> 05 sequence was shaped by
+  seeing the 03 and 04 holdouts, so this is a weaker out-of-sample test than a single-shot design. Round 2 should
+  confirm it on data neither period has seen (e.g. 2008-2015 with longer history) before trusting it.
