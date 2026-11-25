@@ -1,0 +1,5 @@
+{"assets": ["HYG", "EMB", "FXA"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.1% sharpe=0.31 sortino=0.42 dd=-19.2% turn=2.3x cost=0.12%
+{"assets": ["HYG", "EMB"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.8% sharpe=0.39 sortino=0.51 dd=-20.4% turn=2.3x cost=0.12%
+{"assets": ["HYG", "EMB", "LQD", "FXA"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=2.0% sharpe=0.31 sortino=0.42 dd=-20.6% turn=2.3x cost=0.12%
+{"assets": ["HYG", "EMB", "FXA"], "vol_days": 60, "fast_days": 20, "target": 0.08} cagr=1.9% sharpe=0.30 sortino=0.40 dd=-17.0% turn=3.2x cost=0.16%
+{"assets": ["HYG", "EMB", "FXA", "TLT"], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=1.6% sharpe=0.26 sortino=0.35 dd=-21.8% turn=2.3x cost=0.12%

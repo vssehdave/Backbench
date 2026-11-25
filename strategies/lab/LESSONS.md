@@ -126,3 +126,5 @@ with 05 (e.g. trend on commodities and FX, carry), so a separate winner is possi
   2024-2026 run. 05 is a "2x equity + gold" bet with a good risk engine, not an engine that wins with any diversifier.
 
 - **11 (multi-asset trend), LOSS, corr with 05 0.70.** In-sample Sharpe 0.46 (CAGR 1.4%); holdout CAGR 4.0%, Sharpe 1.05, maxDD -3.4%. Unlevered trend on ETF proxies is a smooth but tiny return; the holdout Sharpe came mostly from gold trending, which is why it correlates 0.70 with 05. It would need ~3x leverage to match SPY's CAGR, which the no-margin rule does not allow.
+
+- **12 (credit carry, HYG/EMB with 05's brake), LOSS, corr with 05 0.56.** In-sample Sharpe 0.39 (maxDD -20%, the 2020 credit crash got through the 20-day brake); holdout CAGR 5.6%, Sharpe 1.07, Sortino 1.56, passes four of five but not CAGR. Credit carry is a modest, partly equity-like premium (beta 0.23-0.32); without leverage it cannot reach SPY's CAGR.
