@@ -212,6 +212,15 @@ class Strategies(unittest.TestCase):
             manifest, (decide, fit) = xs.load_manifest(self.folder / f"{name}.json")
             self.assertTrue(callable(decide))
 
+    def test_panel_hook_runs_mc_on_its_own_universe(self):
+        import mc_runs
+        from unittest import mock
+        path = Path(__file__).parent / "strategies/custom/faa/manifest.json"
+        self.assertEqual(xs.load_manifest(path)[0]["panel"], "run:etf_panel")
+        with mock.patch("xs_data.build_panel", side_effect=AssertionError("stock panel used")),                 mock.patch("run.etf_panel", side_effect=RuntimeError("hook called"), create=True):
+            with self.assertRaisesRegex(RuntimeError, "hook called"):
+                mc_runs.run_xs(path, date(2016, 1, 1), date(2026, 1, 1), 2, 0, 20.)
+
     def test_bad_manifest_lists_every_problem(self):
         import tempfile
         with tempfile.TemporaryDirectory() as folder:
