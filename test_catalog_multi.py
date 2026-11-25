@@ -1,4 +1,8 @@
 import importlib
+import json
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 from datetime import date, timedelta
@@ -47,6 +51,24 @@ class MultiTests(unittest.TestCase):
         self.assertEqual([f["date"] for f in fills], ["2024-01-02", "2024-01-02"])
         self.assertLess(equity[-1], 10000. + 5000 * .1)  # fees and borrow only reduce the gain
 
+    def test_script_run_resizes_on_rebalance_like_the_imported_module(self):
+        # Under `python catalog_run.py` the rules saw a different Rebalance class, so isinstance() was False and nothing re-sized.
+        rule = "import catalog_rules\n\ndef rule(hist, level):\n    return catalog_rules.Rebalance({'A': 1.})\n"
+        manifest = {"id": "t", "version": "1", "entry": "rebalance_rule:rule", "data": {"kind": "alpaca", "symbols": ["A"]},
+                    "calendar": "xnys", "warmup": 1, "levels": [0], "costs": "equity_ibkr", "benchmark": {"A": 1.0}}
+        driver = ("import runpy, sys, catalog_data\n"
+                  "from datetime import date, timedelta\n"
+                  "bar = lambda i: (date(2014, 1, 1) + timedelta(i), 100 + i * .05, 101 + i * .05, 99 + i * .05, 100 + i * .05, 1e3)\n"
+                  "catalog_data.alpaca_daily = lambda s, a, b: [bar(i) for i in range(1200)]\n"
+                  "sys.argv = ['catalog_run.py', sys.argv[1], '--start', '2016-01-01', '--end', '2017-01-01', '--out', sys.argv[2]]\n"
+                  "runpy.run_path('catalog_run.py', run_name='__main__')\n")
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, "rebalance_rule.py").write_text(rule)
+            Path(tmp, "m.json").write_text(json.dumps(manifest))
+            subprocess.run([sys.executable, "-c", driver, str(Path(tmp, "m.json")), str(Path(tmp, "out.json"))],
+                           check=True, capture_output=True)
+            fold = json.loads(Path(tmp, "out.json").read_text())["folds"][0]
+        self.assertGreater(fold["buys"] + fold["sells"], 2)  # more than entry and exit: daily re-sizing happened
 
 if __name__ == "__main__":
     unittest.main()

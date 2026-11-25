@@ -6,11 +6,11 @@ Folders: 174 (153 top-level sections plus 21 sub-variants). Tested: 92. Not test
 
 | Not testable reason | Count |
 |---|---|
-| options chains | 61 |
+| options chains | 5 |
 | bonds/rates | 15 |
 | futures | 17 |
 | other data not available | 19 |
-| cross-sectional universe | 13 |
+| cross-sectional universe | 3 |
 | not a market trading rule | 15 |
 | FX | 5 |
 | multiple instruments | 1 |
@@ -100,9 +100,9 @@ Tested results are SPY 2016-2026 unless the row names another benchmark; multi-a
 | 3.18 | [Statistical arbitrage - optimization](3.18-statistical-arbitrage-optimization/) | Stocks | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.0% vs equal-weight +8.0%, SPY +8.8% over 9 folds |
 | 3.19 | [Market-making](3.19-market-making/) | Stocks | not testable: other data not available | needs order-book quotes and fills; only daily bars available |
 | 3.20 | [Alpha combos](3.20-alpha-combos/) | Stocks | not testable: cross-sectional universe |  |
-| 4.1 | [Sector momentum rotation](4.1-sector-momentum-rotation/) | Exchange-traded funds | tested (multi-asset and xs) | multi-asset: -8.9% vs B&H 49.0% (SPY), cash 0%; xs: survivorship-biased; mean 6-month +9.6% vs equal-weight +7.3%, SPY +8.8% over 9 folds; RESULTS DISAGREE, under review |
-| 4.1.1 | [Sector momentum rotation with MA filter](4.1.1-sector-momentum-rotation-with-ma-filter/) | Exchange-traded funds | tested (multi-asset and xs) | multi-asset: -2.5% vs B&H 49.0% (SPY), cash 0%; xs: survivorship-biased; mean 6-month +7.1% vs equal-weight +7.3%, SPY +8.8% over 9 folds; RESULTS DISAGREE, under review |
-| 4.1.2 | [Dual-momentum sector rotation](4.1.2-dual-momentum-sector-rotation/) | Exchange-traded funds | tested (multi-asset and xs) | multi-asset: 12.2% vs B&H 49.0% (SPY), cash 0%; xs: survivorship-biased; mean 6-month +6.2% vs equal-weight +7.4%, SPY +8.8% over 9 folds; RESULTS DISAGREE, under review |
+| 4.1 | [Sector momentum rotation](4.1-sector-momentum-rotation/) | Exchange-traded funds | tested (xs headline, multi-asset variant) | xs (trusted): +118.2% (CAGR 16.95%, max DD -20.6%) vs SPY +125.2% (CAGR 17.69%, max DD -19.3%) over the same 10 windows; mean 6-month +9.6% vs equal-weight +7.3%; survivorship-biased. Dollar-neutral multi-asset variant: -10.4% (CAGR -2.14%) |
+| 4.1.1 | [Sector momentum rotation with MA filter](4.1.1-sector-momentum-rotation-with-ma-filter/) | Exchange-traded funds | tested (xs headline, multi-asset variant) | xs (trusted): +78.4% (CAGR 12.32%, max DD -22.4%) vs SPY +125.2% (CAGR 17.69%, max DD -19.3%) over the same 10 windows; mean 6-month +7.1% vs equal-weight +7.3%; survivorship-biased. Dollar-neutral multi-asset variant: -2.5% (CAGR -0.50%) |
+| 4.1.2 | [Dual-momentum sector rotation](4.1.2-dual-momentum-sector-rotation/) | Exchange-traded funds | tested (xs headline, multi-asset variant) | xs (trusted): +64.4% (CAGR 10.49%, max DD -22.6%) vs SPY +125.2% (CAGR 17.69%, max DD -19.3%) over the same 10 windows; mean 6-month +6.2% vs equal-weight +7.4%; survivorship-biased. Half-capital multi-asset variant: +12.9% (CAGR 2.44%) |
 | 4.2 | [Alpha rotation](4.2-alpha-rotation/) | Exchange-traded funds | tested (xs) | PROXY; survivorship-biased; mean 6-month +4.5% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
 | 4.3 | [R-squared](4.3-r-squared/) | Exchange-traded funds | tested (xs) | PROXY; survivorship-biased; mean 6-month -1.7% vs equal-weight +7.3%, SPY +8.8% over 9 folds |
 | 4.4 | [Mean-reversion](4.4-mean-reversion/) | Exchange-traded funds | tested (multi-asset, ETF proxies) | -38.5% vs B&H 49.0% (SPY), cash 0% |
