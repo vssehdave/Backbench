@@ -1,0 +1,148 @@
+{
+  "name": "holdout",
+  "engine": "xsection",
+  "fills": 701,
+  "metrics": {
+    "strategy": {
+      "total_return": 0.3777375525498494,
+      "cagr": 0.11730828168250684,
+      "volatility": 0.1272331515226467,
+      "sharpe": 0.9358128303599463,
+      "sortino": 1.2928303579292673,
+      "max_drawdown": -0.1670076105968724,
+      "beta": 0.5977326483804956,
+      "alpha": 0.019102475922145486
+    },
+    "SPY": {
+      "total_return": 0.5617843252286863,
+      "cagr": 0.1668705378092028,
+      "volatility": 0.1609203868962923,
+      "sharpe": 1.039262646641829,
+      "sortino": 1.5298662097613325,
+      "max_drawdown": -0.18754263088722212,
+      "beta": 1.0,
+      "alpha": 0.0
+    }
+  },
+  "result": {
+    "start_cash": 100000.0,
+    "cadence": "weekly",
+    "limits": {
+      "max_gross": 1.0,
+      "max_net": 1.0,
+      "name_cap": 1.0
+    },
+    "costs": {
+      "commission_per_share": 0.0,
+      "commission_min": 0.0,
+      "commission_max_pct": 0.01,
+      "slippage_bps": 5.0,
+      "borrow_bps": 50.0,
+      "sell_fee_pct": 2.06e-05,
+      "sell_fee_per_share": 3e-06,
+      "margin_bps": 500.0
+    },
+    "costs_usd": {
+      "commission": 0.0,
+      "regulatory": 49.30547695965482,
+      "slippage": 2434.4065922765412,
+      "borrow": 2.373789817832409
+    },
+    "decisions": 152,
+    "abstentions": 0,
+    "forced_closes": 0,
+    "fills": 701
+  },
+  "monte_carlo": {
+    "strategy": {
+      "paths": 1000,
+      "sessions": 728,
+      "historical": {
+        "max_drawdown": 0.16700761059687283,
+        "longest_underwater_sessions": 292,
+        "terminal_return": 0.37773755254984875,
+        "share_of_sessions_underwater": 0.8846153846153846
+      },
+      "max_drawdown": {
+        "p5": 0.08385751343263013,
+        "p50": 0.14087386627656115,
+        "p95": 0.2357313382139243,
+        "p99": 0.2832132200712036,
+        "historical_percentile_rank": 70.3,
+        "prob_exceed": {
+          "0.2": 0.132,
+          "0.3": 0.006,
+          "0.5": 0.0
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 84.0,
+        "p50": 210.5,
+        "p95": 532.1499999999999,
+        "p99": 695.01
+      },
+      "terminal_return": {
+        "p5": 0.00040893075789587437,
+        "p50": 0.41633918740103926,
+        "p95": 0.9784297301638206,
+        "p99": 1.2780036583873204
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.7993818681318682,
+        "p50": 0.8887362637362637,
+        "p95": 0.9684752747252746,
+        "p99": 0.9890247252747253
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 1000,
+      "sessions": 728,
+      "historical": {
+        "max_drawdown": 0.18754263088722165,
+        "longest_underwater_sessions": 87,
+        "terminal_return": 0.5617843252286898,
+        "share_of_sessions_underwater": 0.8159340659340659
+      },
+      "max_drawdown": {
+        "p5": 0.08489301723739576,
+        "p50": 0.14779802100654388,
+        "p95": 0.250692226227663,
+        "p99": 0.3330354906938216,
+        "historical_percentile_rank": 75.7,
+        "prob_exceed": {
+          "0.2": 0.179,
+          "0.3": 0.018,
+          "0.5": 0.0
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 65.0,
+        "p50": 160.0,
+        "p95": 444.0,
+        "p99": 596.1499999999999
+      },
+      "terminal_return": {
+        "p5": 0.12847390402781322,
+        "p50": 0.6344354826246765,
+        "p95": 1.3268554263274064,
+        "p99": 1.673745990481469
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.7581730769230769,
+        "p50": 0.8489010989010989,
+        "p95": 0.9396291208791208,
+        "p99": 0.9725412087912088
+      }
+    }
+  },
+  "mc_config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on jointly bootstrapped dates",
+    "paths": 1000,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2024-01-02",
+    "end": "2026-11-24",
+    "runtime_seconds": 521.4
+  }
+}

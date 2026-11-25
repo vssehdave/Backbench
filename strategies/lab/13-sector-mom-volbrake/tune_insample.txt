@@ -1,0 +1,6 @@
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 3, "lookbacks": [63, 126, 252], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=7.3% sharpe=0.61 sortino=0.83 dd=-18.0% turn=16.0x cost=0.82%
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 2, "lookbacks": [63, 126, 252], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=6.7% sharpe=0.55 sortino=0.75 dd=-19.3% turn=16.4x cost=0.84%
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 4, "lookbacks": [63, 126, 252], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=7.7% sharpe=0.65 sortino=0.88 dd=-18.1% turn=11.9x cost=0.61%
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 3, "lookbacks": [126], "vol_days": 60, "fast_days": 20, "target": 0.15} cagr=7.2% sharpe=0.58 sortino=0.78 dd=-20.4% turn=17.9x cost=0.91%
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 3, "lookbacks": [63, 126, 252], "vol_days": 60, "fast_days": 20, "target": 0.12} cagr=6.6% sharpe=0.61 sortino=0.83 dd=-16.4% turn=15.9x cost=0.81%
+{"assets": ["XLB", "XLE", "XLF", "XLI", "XLK", "XLP", "XLU", "XLV", "XLY"], "top": 3, "lookbacks": [63, 126, 252], "vol_days": 60, "fast_days": 20, "target": 0.18} cagr=7.8% sharpe=0.61 sortino=0.84 dd=-20.0% turn=15.4x cost=0.79%
