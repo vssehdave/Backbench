@@ -1,0 +1,21 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2022-02-24,close,AMZN,buy,10,2863.4625779999997,1.00003,"09:36 breakout entry, stop 2790.00",0,10
+full period,2022-02-24,close,AMZN,sell,10,3030.6337519999997,1.6243405529119996,15:55 exit before close,10,0
+full period,2022-02-24,close,AMD,buy,204,107.88157199999999,1.020612,"09:36 breakout entry, stop 104.26",0,204
+full period,2022-02-24,close,AMD,sell,204,116.75664400000001,1.5112701207456,15:55 exit before close,204,0
+full period,2022-02-24,close,F,buy,2447,16.258250999999998,12.242341,"09:36 breakout entry, stop 15.96",0,2447
+full period,2022-02-24,close,F,sell,2447,17.171565,13.107928682833002,15:55 exit before close,2447,0
+full period,2022-02-24,close,PYPL,buy,311,96.879372,1.555933,"09:36 breakout entry, stop 94.50",0,311
+full period,2022-02-24,close,PYPL,sell,311,105.058984,2.2290038868943998,15:55 exit before close,311,0
+full period,2022-02-24,close,V,buy,104,208.5417,1.000312,"09:36 breakout entry, stop 201.45",0,104
+full period,2022-02-24,close,V,sell,104,217.56647800000002,1.4664264224672001,15:55 exit before close,104,0
+full period,2022-02-24,close,ADBE,buy,74,426.775338,1.000222,"09:36 breakout entry, stop 416.81",0,74
+full period,2022-02-24,close,ADBE,sell,74,464.15715,1.70778315946,15:55 exit before close,74,0
+full period,2022-02-24,close,XOM,sell,368,77.10457600000001,2.4256183697408003,"09:36 breakout entry, stop 79.12",0,-368
+full period,2022-02-24,close,XOM,buy,368,75.855168,1.841104,15:55 exit before close,-368,0
+full period,2022-02-24,close,TSLA,buy,23,732.226416,1.000069,"09:37 breakout entry, stop 700.00",0,23
+full period,2022-02-24,close,TSLA,sell,23,801.4296820000001,1.3797863833316002,15:55 exit before close,23,0
+full period,2022-02-24,close,AAPL,buy,267,154.770948,1.335801,"09:37 breakout entry, stop 152.00",0,267
+full period,2022-02-24,close,AAPL,sell,267,162.51749,2.229679698498,15:55 exit before close,267,0
+full period,2022-02-24,close,MSFT,buy,132,276.52549403999996,1.000396,"09:37 breakout entry, stop 271.52",0,132
+full period,2022-02-24,close,MSFT,sell,132,294.61106600000005,1.8015024106672002,15:55 exit before close,132,0

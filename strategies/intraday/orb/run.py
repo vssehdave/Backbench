@@ -1,6 +1,7 @@
 """5-minute opening-range breakout on a monthly top-20 universe of liquid stocks.
 
-Run from the repo root: python strategies/intraday/orb/run.py. Writes results.json next to this file.
+Run from the repo root: python strategies/intraday/orb/run.py. Writes results.json next to this file and the standard
+report (REPORT.md, equity.svg, Monte Carlo, trade logs) for each 2 bps run under results/.
 """
 import json
 import sys
@@ -35,6 +36,7 @@ def main():
     trades = {c: [] for c in configs}
     cost = dict.fromkeys(configs, 0.)
     sides = {c: [0, 0] for c in configs}
+    logs = {c: [] for c in configs}
     for year, month in months:
         month_days = [d for d in sessions if (d.year, d.month) == (year, month)]
         data = {s: I.month_bars(s, year, month, END, cal) for s in universe[(year, month)]}
@@ -49,6 +51,7 @@ def main():
                     cost[c] += fee + notional * slip / 10000 * 2
                     trades[c].append((day, pnl, pnl / notional))
                     sides[c][t["side"] < 0] += 1
+                    logs[c].append((day, symbol, t, notional, fee, pnl))
                 curves[c].append((day, equity[c]))
     first = sessions[0]
     flat_universe = {s: daily[s] for s in daily}
@@ -77,6 +80,10 @@ def main():
     report["wall_seconds"] = round(time.time() - started)
     (HERE / "results.json").write_text(json.dumps(report, indent=1, default=str), encoding="utf-8")
     print("wrote results.json in", report["wall_seconds"], "s")
+    for short in (True, False):
+        name = f"{'long_short' if short else 'long_only'}_{BASE_SLIP}bps"
+        I.write_standard_report(HERE / "results" / name, HERE / f"mc_results_{name}.json", f"intraday-orb {name}",
+                                curves[(short, BASE_SLIP)], hold["SPY"], I.orb_fills(logs[(short, BASE_SLIP)]))
 
 
 if __name__ == "__main__":

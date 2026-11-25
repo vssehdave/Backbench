@@ -1,0 +1,95 @@
+{
+  "name": "ladder_ravc_84",
+  "config": {
+    "note": "Max drawdown is on the one continuous backtest.",
+    "mode": "A: path rerun on jointly bootstrapped dates",
+    "paths": 200,
+    "seed": 0,
+    "mean_block": 20.0,
+    "start": "2016-06-01",
+    "end": "2026-10-30",
+    "runtime_seconds": 185.0
+  },
+  "series": {
+    "strategy": {
+      "paths": 200,
+      "sessions": 2620,
+      "historical": {
+        "max_drawdown": 0.11648769704372737,
+        "longest_underwater_sessions": 685,
+        "terminal_return": 0.7562523958010698,
+        "share_of_sessions_underwater": 0.9381679389312977
+      },
+      "max_drawdown": {
+        "p5": 0.11624857460529392,
+        "p50": 0.1932808013982643,
+        "p95": 0.31927185559329313,
+        "p99": 0.38546592056853424,
+        "historical_percentile_rank": 5.5,
+        "prob_exceed": {
+          "0.2": 0.435,
+          "0.3": 0.08,
+          "0.5": 0.005
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 323.65,
+        "p50": 701.0,
+        "p95": 1743.7000000000003,
+        "p99": 2212.5999999999995
+      },
+      "terminal_return": {
+        "p5": 0.14965465096297634,
+        "p50": 1.0207364859178583,
+        "p95": 2.1941579554966704,
+        "p99": 2.996848964293133
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8839503816793892,
+        "p50": 0.9286259541984733,
+        "p95": 0.9740458015267176,
+        "p99": 0.9859198473282442
+      }
+    },
+    "benchmark (SPY)": {
+      "paths": 200,
+      "sessions": 2620,
+      "historical": {
+        "max_drawdown": 0.33793888166449937,
+        "longest_underwater_sessions": 488,
+        "terminal_return": 3.241567042712017,
+        "share_of_sessions_underwater": 0.8435114503816794
+      },
+      "max_drawdown": {
+        "p5": 0.17013027752809468,
+        "p50": 0.31627424717434394,
+        "p95": 0.4169901930883414,
+        "p99": 0.4891146510660948,
+        "historical_percentile_rank": 60.25,
+        "prob_exceed": {
+          "0.2": 0.86,
+          "0.3": 0.525,
+          "0.5": 0.005
+        }
+      },
+      "longest_underwater_sessions": {
+        "p5": 193.95,
+        "p50": 464.0,
+        "p95": 989.9000000000002,
+        "p99": 1569.3099999999997
+      },
+      "terminal_return": {
+        "p5": 1.0673004674951616,
+        "p50": 3.336410971300955,
+        "p95": 8.226274885232593,
+        "p99": 10.546465590210948
+      },
+      "share_of_sessions_underwater": {
+        "p5": 0.8232824427480916,
+        "p50": 0.8790076335877863,
+        "p95": 0.9370419847328245,
+        "p99": 0.9569885496183206
+      }
+    }
+  }
+}

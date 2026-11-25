@@ -178,7 +178,7 @@ def spy_returns(dates, spy):
     return out
 
 
-def standard_metrics(days, spy=None):
+def standard_metrics(days, spy=None, periods=252):
     """{series name: perf_metrics} for the chained sessions of a run: strategy, its own benchmark, and SPY if different.
 
     Beta and alpha are always against SPY: from spy ({date: close}) if given, else from the benchmark when that is SPY,
@@ -186,9 +186,9 @@ def standard_metrics(days, spy=None):
     """
     r, b, bn = [d["ret"] for d in days], [d["bench_ret"] for d in days], days[0]["bench_name"]
     s = spy_returns([d["date"] for d in days], spy) if spy else (b if bn == "SPY" else None)
-    out = {"strategy": perf_metrics(r, s), bn: perf_metrics(b, s)}
+    out = {"strategy": perf_metrics(r, s, periods), bn: perf_metrics(b, s, periods)}
     if s is not None and bn != "SPY":
-        out["SPY"] = perf_metrics(s, s)
+        out["SPY"] = perf_metrics(s, s, periods)
     return out
 
 
@@ -259,16 +259,17 @@ def metric_row(name, m):
             f"{m['volatility']:.1%} | {m['max_drawdown']:.1%} | {_num(m['beta'], '.2f')} | {_num(m['alpha'], '+.1%')} |")
 
 
-def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, spy=None):
+def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, spy=None, periods=252):
     """Write the whole result folder. mc maps series name -> montecarlo summary dict (strategy first).
 
-    spy is an optional {date: close} map for beta and alpha when the engine's own benchmark is not SPY.
+    spy is an optional {date: close} map for beta and alpha when the engine's own benchmark is not SPY. periods is
+    sessions per year (365 for a 24/7 market).
     """
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     days, fills = ledger(folds, engine)
     picks = pick_days(days, seed)
-    metrics = standard_metrics(days, spy)
+    metrics = standard_metrics(days, spy, periods)
     (out / "equity.svg").write_text(equity_svg(*curves(days)), encoding="utf-8")
     report = dict(name=name, engine=engine, metrics=metrics, result=result, monte_carlo=mc, **(extra or {}))
     (out / "report.json").write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
@@ -278,7 +279,7 @@ def write_report(out_dir, engine, name, result, mc, folds, seed=0, extra=None, s
         write_csv(out / f"trades_{key}_day.csv", d["fills"])
     c = (extra or {}).get("mc_config", {})
     md = [f"# {name}", "", "![Growth of 10,000 and drawdown](equity.svg)", "", "## Performance", "",
-          f"{days[0]['date']} to {days[-1]['date']}, {len(days)} sessions chained, zero risk-free rate, 252 sessions a year "
+          f"{days[0]['date']} to {days[-1]['date']}, {len(days)} sessions chained, zero risk-free rate, {periods} sessions a year "
           "(CAGR from the session count). Sortino uses downside deviation below 0. Beta and annualized alpha are a CAPM "
           "regression of daily returns on SPY, whatever the headline benchmark.", ""] + METRIC_HEAD          + [metric_row(k, v) for k, v in metrics.items()] + ["", "## Monte Carlo max drawdown", "",
           f"{c.get('mode', '')}; {c.get('paths', '')} paths, seed {c.get('seed', '')}, mean block {c.get('mean_block', '')}. "

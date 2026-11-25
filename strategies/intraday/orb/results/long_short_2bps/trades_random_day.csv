@@ -1,0 +1,19 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2026-11-19,close,MDT,buy,131,101.160228,1.000393,"09:36 breakout entry, stop 100.00",0,131
+full period,2026-11-19,close,MDT,sell,131,100.759844,1.2723035150184,15:55 exit before close,131,0
+full period,2026-11-19,close,AAPL,sell,33,350.699846,1.2385047553108,"09:37 breakout entry, stop 355.28",0,-33
+full period,2026-11-19,close,AAPL,buy,33,349.23983400000003,1.000099,15:55 exit before close,-33,0
+full period,2026-11-19,close,AMD,buy,11,550.41516102,1.000033,"09:37 breakout entry, stop 537.09",0,11
+full period,2026-11-19,close,AMD,sell,11,536.9825820000001,1.1217132530812,10:12 stop,11,0
+full period,2026-11-19,close,GOOGL,sell,71,293.27633299999997,1.4291589646457998,"09:37 breakout entry, stop 295.43",0,-71
+full period,2026-11-19,close,GOOGL,buy,71,273.594708,1.000213,15:55 exit before close,-71,0
+full period,2026-11-19,close,AVGO,buy,25,367.743534,1.000075,"09:37 breakout entry, stop 361.65",0,25
+full period,2026-11-19,close,AVGO,sell,25,361.57767,1.18628750005,10:14 stop,25,0
+full period,2026-11-19,close,AMZN,sell,1,271.02748366000003,1.005586166163396,"09:39 breakout entry, stop 273.66",0,-1
+full period,2026-11-19,close,AMZN,buy,1,273.714732,1.000003,09:50 stop,-1,0
+full period,2026-11-19,close,ORCL,sell,2,116.19675600000001,1.0047933063472,"09:57 breakout entry, stop 118.50",0,-2
+full period,2026-11-19,close,ORCL,buy,2,110.592114,1.0000060000000002,15:55 exit before close,-2,0
+full period,2026-11-19,close,NFLX,sell,102,59.878022,1.1261216998263999,"10:12 breakout entry, stop 60.45",0,-102
+full period,2026-11-19,close,NFLX,buy,102,58.616721,1.0003060000000001,15:55 exit before close,-102,0
+full period,2026-11-19,close,AMAT,sell,19,359.947996,1.1409406456344,"10:15 breakout entry, stop 367.84",0,-19
+full period,2026-11-19,close,AMAT,buy,19,339.11781,1.0000569999999998,15:55 exit before close,-19,0

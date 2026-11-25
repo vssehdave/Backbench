@@ -1,0 +1,2 @@
+fold,date,when,symbol,side,quantity,price,fees,reason,position_before,position_after
+full period,2021-09-29,open,SPY,sell,-39,435.19,1.3497486459999999,target position 0 shares,39,0
